@@ -37,3 +37,7 @@ Route::get('/user/profile', [HomeController::class, 'getProfile']);
 Route::get('/user/support', [HomeController::class, 'getSupport']);
 
 Route::get('/user/notifications', [HomeController::class, 'getNotifications']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

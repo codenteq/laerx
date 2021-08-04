@@ -1,0 +1,70 @@
+body a{
+    text-decoration: none;
+}
+
+.sidebar-menu a,
+.sidebar-heading {
+    background-color: #1a1e21 !important;
+    color: white;
+    padding: 16px;
+}
+
+.copyright {
+    position: fixed;
+    bottom: 0;
+}
+
+.bottom-navigation a {
+    padding: 0 25px 0 25px;
+}
+
+.bottom-navigation a i {
+    font-size: 20px;
+}
+
+.content figure figcaption span {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.content figure figcaption span a {
+    text-decoration: none;
+}
+
+.content figure figcaption .active {
+    color: #000000;
+    text-decoration: none;
+}
+
+section .container .row .base {
+    width: 400px;
+    height: 200px;
+    background-color: #f8f8f8;
+    color: #3d3d3d !important;
+    border-left: solid 15px #ffd338;
+    border-radius: 15px;
+    transition-duration:0.3s;
+}
+
+section .container .row .base a {
+    color: #1c1f23;
+    transition-duration:0.3s;
+}
+
+section .container .row .base a:hover {
+    color: #ffd338;
+}
+
+section .container .row .base:hover {
+    border-left: solid 40px #ffd338;
+    border-radius: 15px;
+    color: #ffd338;
+}
+
+.container .row .exams {
+    width: 450px;
+}
+
+.container .row .exams-active {
+    background-color: #0a53be;
+}

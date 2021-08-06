@@ -1,4 +1,4 @@
-@extends('user.layout.app')
+@extends('manager.layout.app')
 
 @section('content')
 
@@ -6,11 +6,11 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Sınav Sonuçlarım</h2>
+                    <h2>Kursiyer Raporları</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="{{route('user.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Sınav Sonuçlarım</span>
+                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span class="active">Kursiyer Raporları</span>
                 </figcaption>
             </figure>
             <div class="container d-md-none d-lg-none d-xl-none d-xxl-none">
@@ -104,35 +104,21 @@
                         <thead>
                         <tr>
                             <th scope="col">id</th>
-                            <th scope="col">Başlık</th>
-                            <th scope="col">Soru Sayısı</th>
-                            <th scope="col">Süre</th>
-                            <th scope="col">Puan</th>
-                            <th scope="col">Sonuç</th>
-                            <th scope="col">Detay</th>
-                            <th scope="col">Tarih</th>
+                            <th scope="col">Adı Soyadı</th>
+                            <th scope="col">TCKNO</th>
+                            <th scope="col">Yapılan Test Sayısı</th>
+                            <th scope="col">Ortalama Puan</th>
+                            <th scope="col">İşlemler</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <th scope="row">37</th>
-                            <td>2021-07-29_17:56</td>
-                            <td>50</td>
-                            <td>45</td>
-                            <th>0</th>
-                            <td class="text-danger fw-bold">BAŞARISIZ</td>
-                            <td><button class="btn btn-primary">Sınav Detay</button></td>
-                            <td>2021-07-29 17:56:57</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">38</th>
-                            <td>2021-07-27_18:11</td>
-                            <td>50</td>
-                            <td>45</td>
-                            <th>92</th>
-                            <td class="text-primary fw-bold">BAŞARILI</td>
-                            <td><button class="btn btn-primary">Sınav Detay</button></td>
-                            <td>2021-07-27_18:11</td>
+                            <th scope="row">1</th>
+                            <td>Ahmet Sefa Arşiv</td>
+                            <td>11111111111</td>
+                            <td>4</td>
+                            <th>85</th>
+                            <td><a href="#"><i class="fas fa-eye "></i></a></td>
                         </tr>
                         </tbody>
                     </table>
@@ -145,7 +131,7 @@
 
 @section('meta')
 
-    <title>Sınav Sonuçlarım</title>
+    <title>Kursiyer Raporları</title>
 
 @endsection
 
@@ -156,4 +142,3 @@
 @section('js')
 
 @endsection
-

@@ -1,4 +1,4 @@
-@extends('user.layout.app')
+@extends('manager.layout.app')
 
 @section('content')
 
@@ -9,11 +9,14 @@
                     <h2>Bildirimler</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="{{route('user.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
                     <span class="active">Bildirimler</span>
                 </figcaption>
             </figure>
             <div class="row">
+                <div class="col-12 col-lg-12 mt-3">
+                    <h4><button class="btn btn-success">Bildirim Oluştur</button></h4>
+                </div>
                 <div class="col-12 col-lg-12">
                     <table class="table">
                         <thead>
@@ -51,4 +54,3 @@
 @section('js')
 
 @endsection
-

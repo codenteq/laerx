@@ -25,45 +25,37 @@
             <span style="font-family: MADE Tommy Soft; font-size: 38px;">Codente</span><span style="font-family: MADE Tommy Soft Outline; font-size: 38px;">q</span><br>
             <span style="font-weight: normal !important;"><small>v1.0.0-Beta</small></span>
             <div style="font-size: 1rem !important; width: 200px !important;" class="list-group list-group-flush sidebar-menu">
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/dashboard') ? 'active' : '' }}" href="{{route('user.dashboard')}}">
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/dashboard') ? 'active' : '' }}" href="{{route('manager.dashboard')}}">
                     <i class="fa fa-home fa-2x"></i><br>
                     <span style="position: relative;">Ana Sayfa</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/lessons') ? 'active' : '' }}" href="{{route('user.lessons')}}">
-                    <i class="fa fa-book fa-2x"></i><br>
-                    <span style="position: relative;">Derslerim</span>
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations') ? 'active' : '' }} {{ request()->is('manager/user-add') ? 'active' : '' }} {{ request()->is('manager/user-list') ? 'active' : '' }}" href="{{route('manager.user-operations')}}">
+                    <i class="fas fa-users-cog fa-2x"></i><br>
+                    <span style="position: relative;">Kursiyer İşlemleri</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/exams') ? 'active' : '' }}" href="{{route('user.exams')}}">
-                    <i class="fa fa-laptop fa-2x"></i><br>
-                    Online Sınavlarım
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-results') ? 'active' : '' }}" href="{{route('manager.user-results')}}">
+                    <i class="fa fa-chart-pie fa-2x"></i><br>
+                    Kursiyer Raporları
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('user/class-exams') ? 'active' : '' }}" href="{{route('user.class-exams')}}">
-                    <i class="fa fa-users fa-2x"></i><br>
-                    Sınıf Sınavlarım
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('user/results') ? 'active' : '' }}" href="{{route('user.results')}}">
-                    <i class="fas fa-file-contract fa-2x"></i><br>
-                    Sınav Sonuçlarım
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('user/appointment') ? 'active' : '' }}" href="{{route('user.appointment')}}">
-                    <i class="fa fa-hourglass-start fa-2x"></i><br>
-                    Randevularım
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('user/live-lessons') ? 'active' : '' }}" href="{{route('user.live-lessons')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lessons') ? 'active' : '' }} {{ request()->is('manager/live-lessons-add') ? 'active' : '' }}" href="{{route('manager.live-lessons')}}">
                     <i class="fas fa-video fa-2x"></i><br>
                     Canlı Ders
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('user/profile') ? 'active' : '' }}" href="{{route('user.profile')}}">
-                    <i class="fa fa-user fa-2x"></i><br>
-                    Profil
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teachers') ? 'active' : '' }} {{ request()->is('manager/course-teachers-add') ? 'active' : '' }}" href="{{route('manager.course-teachers')}}">
+                    <i class="fas fa-chalkboard-teacher fa-2x"></i><br>
+                    Eğitmenler
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('user/support') ? 'active' : '' }}" href="{{route('user.support')}}">
-                    <i class="fa fa-question-circle fa-2x"></i><br>
-                    Destek
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment') ? 'active' : '' }} {{ request()->is('manager/cars-list') ? 'active' : '' }} {{ request()->is('manager/cars-add') ? 'active' : '' }} {{ request()->is('manager/appointment-list') ? 'active' : '' }} {{ request()->is('manager/appointment-add') ? 'active' : '' }}" href="{{route('manager.appointment')}}">
+                    <i class="fa fa-car fa-2x"></i><br>
+                    Araç & Randevu
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('user/notifications') ? 'active' : '' }}" href="{{route('user.notifications')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/notifications') ? 'active' : '' }}" href="{{route('manager.notifications')}}">
                     <i class="fa fa-bell fa-2x"></i><br>
                     Bildirimler
+                </a>
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/supports') ? 'active' : '' }}" href="{{route('manager.supports')}}">
+                    <i class="fas fa-headset fa-2x"></i><br>
+                    Destek
                 </a>
                 <a class="list-group-item list-group-item-action text-center mb-5" href="#">
                     <i class="fas fa-sign-out-alt fa-2x"></i><br>
@@ -90,7 +82,7 @@
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
                                     class="fa fa-user-circle fa-lg"></i></a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('user.profile')}}">Profil</a>
+                                <a class="dropdown-item" href="/user/profile">Profil</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="">Çıkış Yap</a>
                             </div>
@@ -100,14 +92,13 @@
             </div>
         </nav>
 
-
-@yield('content')
+        @yield('content')
 
         <nav class="navbar fixed-bottom navbar-light bg-light bottom-navigation d-flex flex-row d-md-none d-lg-none d-xl-none d-xxl-none">
             <a class="btn btn-light" id="sidebarToggleM"><span class="fa fa-bars"></span></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.dashboard')}}"><i class="fas fa-home"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.lessons')}}"><i class="fas fa-book"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.exams')}}"><i class="fas fa-laptop"></i></a>
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i></a>
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('manager.user-operations')}}"><i class="fas fa-users-cog"></i></a>
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('manager.user-results')}}"><i class="fa fa-chart-pie"></i></a>
         </nav>
     </div>
 </div>

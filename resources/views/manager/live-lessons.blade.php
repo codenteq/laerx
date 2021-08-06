@@ -1,4 +1,4 @@
-@extends('user.layout.app')
+@extends('manager.layout.app')
 
 @section('content')
 
@@ -6,16 +6,16 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Canlı Derslerim</h2>
+                    <h2>Canlı Dersler</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="{{route('user.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Canlı Derslerim</span>
+                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span class="active">Canlı Dersler</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <h4><button class="btn btn-success">Tamamlanmış Dersler</button> <button class="btn btn-warning">Tamamlanmamış Dersler</button></h4>
+                    <h4><a href="{{route('manager.live-lessons-add')}}" class="btn btn-success">Ders Oluştur</a></h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3">
                     <table class="table">
@@ -47,7 +47,7 @@
 
 @section('meta')
 
-    <title>Canlı Derslerim</title>
+    <title>Canlı Dersler</title>
 
 @endsection
 

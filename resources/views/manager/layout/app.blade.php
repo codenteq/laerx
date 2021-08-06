@@ -57,7 +57,7 @@
                     <i class="fas fa-headset fa-2x"></i><br>
                     Destek
                 </a>
-                <a class="list-group-item list-group-item-action text-center mb-5" href="#">
+                <a class="list-group-item list-group-item-action text-center mb-5" href="{{route('logout')}}">
                     <i class="fas fa-sign-out-alt fa-2x"></i><br>
                     Çıkış Yap
                 </a>
@@ -84,7 +84,7 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/user/profile">Profil</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="">Çıkış Yap</a>
+                                <a class="dropdown-item" href="{{route('logout')}}">Çıkış Yap</a>
                             </div>
                         </li>
                     </ul>

@@ -9,13 +9,13 @@
                     <h2>Canlı Dersler</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/manager/dashboard"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
                     <span class="active">Canlı Dersler</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <h4><a href="/manager/live-lessons-add" class="btn btn-success">Ders Oluştur</a></h4>
+                    <h4><a href="{{route('manager.live-lessons-add')}}" class="btn btn-success">Ders Oluştur</a></h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3">
                     <table class="table">

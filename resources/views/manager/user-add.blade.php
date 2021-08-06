@@ -9,8 +9,8 @@
                     <h2>Kursiyer Ekle</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/manager/dashboard"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="/manager/user-operations"><i class="fas fa-users-cog"></i> Kursiyer İşlemleri</a> /</span>
+                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span><a href="{{route('manager.user-operations')}}"><i class="fas fa-users-cog"></i> Kursiyer İşlemleri</a> /</span>
                     <span class="active">Kursiyer Ekle</span>
                 </figcaption>
             </figure>
@@ -110,7 +110,7 @@
 
                         <div class="mt-3 mb-5">
                             <button type="button" class="btn btn-success">Kaydet</button>
-                            <a href="/manager/user-operations" class="btn btn-danger">İptal</a>
+                            <a href="{{route('manager.user-operations')}}" class="btn btn-danger">İptal</a>
                         </div>
 
                     </form>

@@ -9,13 +9,13 @@
                     <h2>Randevular</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/manager/appointment"><i class="fas fa-car"></i> Araç & Randevular</a> /</span>
+                    <span><a href="{{route('manager.appointment')}}"><i class="fas fa-car"></i> Araç & Randevular</a> /</span>
                     <span class="active">Randevular</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <h4><a href="/manager/appointment-add" class="btn btn-success">Randevu Oluştur</a></h4>
+                    <h4><a href="{{route('manager.appointment-add')}}" class="btn btn-success">Randevu Oluştur</a></h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3">
                     <table class="table">

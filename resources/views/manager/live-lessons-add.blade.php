@@ -9,8 +9,8 @@
                     <h2>Canlı Ders Ekle</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/manager/dashboard"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="/manager/live-lessons"><i class="fas fa-video"></i> Canlı Dersler</a> /</span>
+                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span><a href="{{route('manager.live-lessons')}}"><i class="fas fa-video"></i> Canlı Dersler</a> /</span>
                     <span class="active">Canlı Ders Ekle</span>
                 </figcaption>
             </figure>
@@ -97,7 +97,7 @@
 
                         <div class="mt-3 mb-5">
                             <button type="button" class="btn btn-success">Kaydet</button>
-                            <a href="/manager/live-lessons" class="btn btn-danger">İptal</a>
+                            <a href="{{route('manager.live-lessons')}}" class="btn btn-danger">İptal</a>
                         </div>
 
                     </form>

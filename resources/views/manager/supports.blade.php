@@ -9,7 +9,7 @@
                     <h2>Destek</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/manager/dashboard"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
                     <span class="active">Destek</span>
                 </figcaption>
             </figure>

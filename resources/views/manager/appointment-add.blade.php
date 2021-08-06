@@ -9,8 +9,8 @@
                     <h2>Randevu Ekle</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/manager/appointment"><i class="fas fa-car"></i> Araç & Randevular</a> /</span>
-                    <span><a href="/manager/appointment-list"><i class="fas fa-car"></i> Randevular</a> /</span>
+                    <span><a href="{{route('manager.appointment')}}"><i class="fas fa-car"></i> Araç & Randevular</a> /</span>
+                    <span><a href="{{route('manager.appointment-list')}}"><i class="fas fa-car"></i> Randevular</a> /</span>
                     <span class="active">Randevu Ekle</span>
                 </figcaption>
             </figure>
@@ -52,7 +52,7 @@
 
                         <div class="mt-3 mb-5">
                             <button type="button" class="btn btn-success">Kaydet</button>
-                            <a href="/manager/appointment-list" class="btn btn-danger">İptal</a>
+                            <a href="{{route('manager.appointment-list')}}" class="btn btn-danger">İptal</a>
                         </div>
 
                     </form>

@@ -9,7 +9,7 @@
                     <h2>Canlı Derslerim</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/user/dashboard"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span><a href="{{route('user.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
                     <span class="active">Canlı Derslerim</span>
                 </figcaption>
             </figure>

@@ -9,7 +9,7 @@
                     <h2>Kursiyer Raporları</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/manager/dashboard"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
                     <span class="active">Kursiyer Raporları</span>
                 </figcaption>
             </figure>

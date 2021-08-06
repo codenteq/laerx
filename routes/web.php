@@ -19,57 +19,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/user/dashboard', [HomeController::class, 'getDashboard']);
+Route::prefix('user')->name('user.')->group(function () {
+    Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
+    Route::get('lessons', [HomeController::class, 'getLessons'])->name('lessons');
+    Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
+    Route::get('class-exams', [HomeController::class, 'getClassExams'])->name('class-exams');
+    Route::get('results', [HomeController::class, 'getResults'])->name('results');
+    Route::get('appointment', [HomeController::class, 'getAppointment'])->name('appointment');
+    Route::get('live-lessons', [HomeController::class, 'getLiveLessons'])->name('live-lessons');
+    Route::get('profile', [HomeController::class, 'getProfile'])->name('profile');
+    Route::get('support', [HomeController::class, 'getSupport'])->name('support');
+    Route::get('notifications', [HomeController::class, 'getNotifications'])->name('notifications');
+});
 
-Route::get('/user/lessons', [HomeController::class, 'getLessons']);
-
-Route::get('/user/exams', [HomeController::class, 'getExams']);
-
-Route::get('/user/class-exams', [HomeController::class, 'getClassExams']);
-
-Route::get('/user/results', [HomeController::class, 'getResults']);
-
-Route::get('/user/appointment', [HomeController::class, 'getAppointment']);
-
-Route::get('/user/live-lessons', [HomeController::class, 'getLiveLessons']);
-
-Route::get('/user/profile', [HomeController::class, 'getProfile']);
-
-Route::get('/user/support', [HomeController::class, 'getSupport']);
-
-Route::get('/user/notifications', [HomeController::class, 'getNotifications']);
-
-Route::get('/manager/dashboard', [ManagerController::class, 'getManagerDashboard']);
-
-Route::get('/manager/user-operations', [ManagerController::class, 'getManagerUserOperations']);
-
-Route::get('/manager/user-results', [ManagerController::class, 'getManagerUserResults']);
-
-Route::get('/manager/live-lessons', [ManagerController::class, 'getManagerLiveLessons']);
-
-Route::get('/manager/course-teachers', [ManagerController::class, 'getManagerTeachers']);
-
-Route::get('/manager/notifications', [ManagerController::class, 'getManagerNotifications']);
-
-Route::get('/manager/supports', [ManagerController::class, 'getManagerSupports']);
-
-Route::get('/manager/appointment', [ManagerController::class, 'getManagerAppointment']);
-
-Route::get('/manager/user-add', [ManagerController::class, 'getManagerUserAdd']);
-
-Route::get('/manager/user-list', [ManagerController::class, 'getManagerUserLİst']);
-
-Route::get('/manager/live-lessons-add', [ManagerController::class, 'getManagerLiveLessonAdd']);
-
-Route::get('/manager/course-teachers-add', [ManagerController::class, 'getManagerTeacherAdd']);
-
-Route::get('/manager/cars-list', [ManagerController::class, 'getManagerCars']);
-
-Route::get('/manager/cars-add', [ManagerController::class, 'getManagerCarsAdd']);
-
-Route::get('/manager/appointment-list', [ManagerController::class, 'getManagerAppointmentList']);
-
-Route::get('/manager/appointment-add', [ManagerController::class, 'getManagerAppointmentAdd']);
+Route::prefix('manager')->name('manager.')->group(function () {
+    Route::get('dashboard', [ManagerController::class, 'getManagerDashboard'])->name('dashboard');
+    Route::get('user-operations', [ManagerController::class, 'getManagerUserOperations'])->name('user-operations');
+    Route::get('user-results', [ManagerController::class, 'getManagerUserResults'])->name('user-results');
+    Route::get('live-lessons', [ManagerController::class, 'getManagerLiveLessons'])->name('live-lessons');
+    Route::get('course-teachers', [ManagerController::class, 'getManagerTeachers'])->name('course-teachers');
+    Route::get('notifications', [ManagerController::class, 'getManagerNotifications'])->name('notifications');
+    Route::get('supports', [ManagerController::class, 'getManagerSupports'])->name('supports');
+    Route::get('appointment', [ManagerController::class, 'getManagerAppointment'])->name('appointment');
+    Route::get('user-add', [ManagerController::class, 'getManagerUserAdd'])->name('user-add');
+    Route::get('user-list', [ManagerController::class, 'getManagerUserLİst'])->name('user-list');
+    Route::get('live-lessons-add', [ManagerController::class, 'getManagerLiveLessonAdd'])->name('live-lessons-add');
+    Route::get('course-teachers-add', [ManagerController::class, 'getManagerTeacherAdd'])->name('course-teachers-add');
+    Route::get('cars-list', [ManagerController::class, 'getManagerCars'])->name('cars-list');
+    Route::get('cars-add', [ManagerController::class, 'getManagerCarsAdd'])->name('cars-add');
+    Route::get('appointment-list', [ManagerController::class, 'getManagerAppointmentList'])->name('appointment-list');
+    Route::get('appointment-add', [ManagerController::class, 'getManagerAppointmentAdd'])->name('appointment-add');
+});
 
 Auth::routes();
 

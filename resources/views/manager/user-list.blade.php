@@ -9,8 +9,8 @@
                     <h2>Kursiyer Listesi</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/manager/dashboard"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="/manager/user-operations"><i class="fas fa-users-cog"></i> Kursiyer İşlemleri</a> /</span>
+                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span><a href="{{route('manager.user-operations')}}"><i class="fas fa-users-cog"></i> Kursiyer İşlemleri</a> /</span>
                     <span class="active">Kursiyer Listesi</span>
                 </figcaption>
             </figure>

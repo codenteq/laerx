@@ -9,8 +9,8 @@
                     <h2>Araç Ekle</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/manager/appointment"><i class="fas fa-car"></i> Araç & Randevular</a> /</span>
-                    <span><a href="/manager/cars-list"><i class="fas fa-car"></i> Araçlar</a> /</span>
+                    <span><a href="{{route('manager.appointment')}}"><i class="fas fa-car"></i> Araç & Randevular</a> /</span>
+                    <span><a href="{{route('manager.cars-list')}}"><i class="fas fa-car"></i> Araçlar</a> /</span>
                     <span class="active">Araç Ekle</span>
                 </figcaption>
             </figure>
@@ -46,7 +46,7 @@
 
                         <div class="mt-3 mb-5">
                             <button type="button" class="btn btn-success">Kaydet</button>
-                            <a href="/manager/cars-list" class="btn btn-danger">İptal</a>
+                            <a href="{{route('manager.cars-list')}}" class="btn btn-danger">İptal</a>
                         </div>
 
                     </form>

@@ -25,35 +25,35 @@
             <span style="font-family: MADE Tommy Soft; font-size: 38px;">Codente</span><span style="font-family: MADE Tommy Soft Outline; font-size: 38px;">q</span><br>
             <span style="font-weight: normal !important;"><small>v1.0.0-Beta</small></span>
             <div style="font-size: 1rem !important; width: 200px !important;" class="list-group list-group-flush sidebar-menu">
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/dashboard') ? 'active' : '' }}" href="/manager/dashboard">
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/dashboard') ? 'active' : '' }}" href="{{route('manager.dashboard')}}">
                     <i class="fa fa-home fa-2x"></i><br>
                     <span style="position: relative;">Ana Sayfa</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations') ? 'active' : '' }} {{ request()->is('manager/user-add') ? 'active' : '' }} {{ request()->is('manager/user-list') ? 'active' : '' }}" href="/manager/user-operations">
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations') ? 'active' : '' }} {{ request()->is('manager/user-add') ? 'active' : '' }} {{ request()->is('manager/user-list') ? 'active' : '' }}" href="{{route('manager.user-operations')}}">
                     <i class="fas fa-users-cog fa-2x"></i><br>
                     <span style="position: relative;">Kursiyer İşlemleri</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-results') ? 'active' : '' }}" href="/manager/user-results">
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-results') ? 'active' : '' }}" href="{{route('manager.user-results')}}">
                     <i class="fa fa-chart-pie fa-2x"></i><br>
                     Kursiyer Raporları
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lessons') ? 'active' : '' }} {{ request()->is('manager/live-lessons-add') ? 'active' : '' }}" href="/manager/live-lessons">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lessons') ? 'active' : '' }} {{ request()->is('manager/live-lessons-add') ? 'active' : '' }}" href="{{route('manager.live-lessons')}}">
                     <i class="fas fa-video fa-2x"></i><br>
                     Canlı Ders
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teachers') ? 'active' : '' }} {{ request()->is('manager/course-teachers-add') ? 'active' : '' }}" href="/manager/course-teachers">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teachers') ? 'active' : '' }} {{ request()->is('manager/course-teachers-add') ? 'active' : '' }}" href="{{route('manager.course-teachers')}}">
                     <i class="fas fa-chalkboard-teacher fa-2x"></i><br>
                     Eğitmenler
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment') ? 'active' : '' }} {{ request()->is('manager/cars-list') ? 'active' : '' }} {{ request()->is('manager/cars-add') ? 'active' : '' }} {{ request()->is('manager/appointment-list') ? 'active' : '' }} {{ request()->is('manager/appointment-add') ? 'active' : '' }}" href="/manager/appointment">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment') ? 'active' : '' }} {{ request()->is('manager/cars-list') ? 'active' : '' }} {{ request()->is('manager/cars-add') ? 'active' : '' }} {{ request()->is('manager/appointment-list') ? 'active' : '' }} {{ request()->is('manager/appointment-add') ? 'active' : '' }}" href="{{route('manager.appointment')}}">
                     <i class="fa fa-car fa-2x"></i><br>
                     Araç & Randevu
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/notifications') ? 'active' : '' }}" href="/manager/notifications">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/notifications') ? 'active' : '' }}" href="{{route('manager.notifications')}}">
                     <i class="fa fa-bell fa-2x"></i><br>
                     Bildirimler
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/supports') ? 'active' : '' }}" href="/manager/supports">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/supports') ? 'active' : '' }}" href="{{route('manager.supports')}}">
                     <i class="fas fa-headset fa-2x"></i><br>
                     Destek
                 </a>
@@ -96,9 +96,9 @@
 
         <nav class="navbar fixed-bottom navbar-light bg-light bottom-navigation d-flex flex-row d-md-none d-lg-none d-xl-none d-xxl-none">
             <a class="btn btn-light" id="sidebarToggleM"><span class="fa fa-bars"></span></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="/manager/dashboard"><i class="fas fa-home"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="/manager/user-operations"><i class="fas fa-users-cog"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="/manager/user-results"><i class="fa fa-chart-pie"></i></a>
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i></a>
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('manager.user-operations')}}"><i class="fas fa-users-cog"></i></a>
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('manager.user-results')}}"><i class="fa fa-chart-pie"></i></a>
         </nav>
     </div>
 </div>

@@ -9,13 +9,13 @@
                     <h2>Eğitmenler</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/manager/dashboard"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
                     <span class="active">Eğitmenler</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <h4><a href="/manager/course-teachers-add" class="btn btn-success">Yeni Eğitmen Ekle</a></h4>
+                    <h4><a href="{{route('manager.course-teachers-add')}}" class="btn btn-success">Yeni Eğitmen Ekle</a></h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3">
                     <table class="table">

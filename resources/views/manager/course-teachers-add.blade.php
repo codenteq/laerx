@@ -9,8 +9,8 @@
                     <h2>Eğitmen Ekle</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/manager/dashboard"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="/manager/course-teachers"><i class="fas fa-chalkboard-teacher"></i> Eğitmenler</a> /</span>
+                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span><a href="{{route('manager.course-teachers')}}"><i class="fas fa-chalkboard-teacher"></i> Eğitmenler</a> /</span>
                     <span class="active">Eğitmen Ekle</span>
                 </figcaption>
             </figure>
@@ -52,7 +52,7 @@
 
                         <div class="mt-3 mb-5">
                             <button type="button" class="btn btn-success">Kaydet</button>
-                            <a href="/manager/course-teachers" class="btn btn-danger">İptal</a>
+                            <a href="{{route('manager.course-teachers')}}" class="btn btn-danger">İptal</a>
                         </div>
 
                     </form>

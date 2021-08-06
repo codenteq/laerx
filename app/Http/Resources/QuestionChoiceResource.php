@@ -14,7 +14,7 @@ class QuestionChoiceResource extends JsonResource
      */
     public function toArray($request)
     {
-        $questions = $this->whenLoaded('questions');
+        $questions = $this->whenLoaded('question');
         return [
             'id' => $this->id,
             'title' => $this->title,

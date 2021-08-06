@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ClassExam extends Model
 {
     use HasFactory;
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function test() {
+        return $this->hasOne(Test::class,'id');
+    }
 }

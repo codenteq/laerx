@@ -9,7 +9,10 @@ class QuestionChoice extends Model
 {
     use HasFactory;
 
-    public function questions() {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function question() {
         return $this->belongsTo(Question::class);
     }
 }

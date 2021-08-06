@@ -12,6 +12,14 @@ class UserAnswer extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
+    public function user()
+    {
+        return $this->hasOne(User::class,'userId');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function question()
     {
         return $this->hasOne(Question::class,'questionId');

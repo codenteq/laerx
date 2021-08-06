@@ -9,12 +9,25 @@ class Question extends Model
 {
     use HasFactory;
 
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'questionImage' => 'boolean',
         'choiceImage' => 'boolean',
     ];
 
-    public function choices() {
+    public function choice() {
         return $this->hasMany(QuestionChoice::class,'questionId');
+    }
+
+    public function company()
+    {
+        return $this->hasOne(Company::class,'companyId');
+    }
+
+    public function questionType()
+    {
+        return $this->hasOne(QuestionType::class,'typeId');
     }
 }

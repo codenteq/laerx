@@ -1,4 +1,4 @@
-@extends('user.layout.app')
+@extends('manager.layout.app')
 
 @section('content')
 
@@ -6,11 +6,11 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Bildirimler</h2>
+                    <h2>Destek</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="{{route('user.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Bildirimler</span>
+                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span class="active">Destek</span>
                 </figcaption>
             </figure>
             <div class="row">
@@ -19,15 +19,23 @@
                         <thead>
                         <tr>
                             <th scope="col">id</th>
-                            <th scope="col">Mesaj</th>
+                            <th scope="col">TKNO</th>
+                            <th scope="col">Adı Soyadı</th>
+                            <th scope="col">Destek Nedeni</th>
+                            <th scope="col">İletişim Adresi</th>
                             <th scope="col">Tarih</th>
+                            <th scope="col">İşlemler</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>11111111111</td>
+                            <td>Ahmet Sefa Arşiv</td>
+                            <td>Test</td>
+                            <td>Cedit mahallesi</td>
+                            <td>05/08/2021</td>
+                            <td><a href="#"><i class="fas fa-eye"></i></a></td>
                         </tr>
                         </tbody>
                     </table>
@@ -40,7 +48,7 @@
 
 @section('meta')
 
-    <title>Bildirimler</title>
+    <title>Destek</title>
 
 @endsection
 
@@ -51,4 +59,3 @@
 @section('js')
 
 @endsection
-

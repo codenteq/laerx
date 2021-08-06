@@ -9,7 +9,7 @@
                     <h2>Randevularım</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="/user/dashboard"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
+                    <span><a href="{{route('user.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
                     <span class="active">Randevularım</span>
                 </figcaption>
             </figure>

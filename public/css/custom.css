@@ -68,3 +68,26 @@ section .container .row .base:hover {
 .container .row .exams-active {
     background-color: #0a53be;
 }
+
+.card {
+    opacity: 0.9
+}
+
+.login-box {
+    background-image: url("/images/login-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.login-button {
+    border: none;
+    background-color: #ffd338;
+    width: 100%;
+}
+
+.login-button:hover {
+    color: #ffd338;
+    width: 100%;
+    background-color: #000000;
+}

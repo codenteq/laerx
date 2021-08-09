@@ -42,7 +42,7 @@ Route::prefix('manager')->name('manager.')->group(function () {
     Route::get('supports', [ManagerController::class, 'getManagerSupports'])->name('supports');
     Route::get('appointment', [ManagerController::class, 'getManagerAppointment'])->name('appointment');
     Route::get('user-add', [ManagerController::class, 'getManagerUserAdd'])->name('user-add');
-    Route::get('user-list', [ManagerController::class, 'getManagerUserLİst'])->name('user-list');
+    Route::get('user-list', [ManagerController::class, 'getManagerUserList'])->name('user-list');
     Route::get('live-lessons-add', [ManagerController::class, 'getManagerLiveLessonAdd'])->name('live-lessons-add');
     Route::get('course-teachers-add', [ManagerController::class, 'getManagerTeacherAdd'])->name('course-teachers-add');
     Route::get('cars-list', [ManagerController::class, 'getManagerCars'])->name('cars-list');

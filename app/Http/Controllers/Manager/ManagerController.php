@@ -43,7 +43,7 @@ class ManagerController extends Controller
         return view('manager.user-add');
     }
 
-    public function getManagerUserLİst() {
+    public function getManagerUserList() {
         return view('manager.user-list');
     }
 

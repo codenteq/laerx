@@ -17,10 +17,10 @@ class CreateLiveLessonsTable extends Migration
             $table->id();
             $table->string('title');
             $table->dateTime('live_date');
-            $table->integer('periodId');
+            $table->foreignId('periodId');
             $table->date('month');
-            $table->integer('groupId');
-            $table->integer('typeId');
+            $table->foreignId('groupId');
+            $table->foreignId('typeId');
             $table->timestamps();
         });
     }

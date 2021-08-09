@@ -15,7 +15,8 @@ class CreateQuestionChoicesTable extends Migration
     {
         Schema::create('question_choices', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->nullable();
+            $table->string('path')->nullable();
             $table->foreignId('questionId');
             $table->timestamps();
         });

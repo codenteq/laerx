@@ -18,13 +18,13 @@ class CreateUserInfosTable extends Migration
             $table->string('phone')->nullable();
             $table->string('address',600)->nullable();
             $table->boolean('status')->nullable();
-            $table->integer('periodId')->nullable();
+            $table->foreignId('periodId')->nullable();
             $table->string('month')->nullable();
-            $table->integer('groupId')->nullable();
-            $table->integer('languageId')->nullable();
+            $table->foreignId('groupId')->nullable();
+            $table->foreignId('languageId')->nullable();
             $table->string('photo')->nullable();
-            $table->integer('companyId')->nullable();
-            $table->integer('userId')->nullable();
+            $table->foreignId('companyId')->nullable();
+            $table->foreignId('userId')->nullable();
             $table->timestamps();
         });
     }

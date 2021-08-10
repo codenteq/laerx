@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('user')->name('user.')->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
@@ -51,6 +58,15 @@ Route::prefix('manager')->name('manager.')->group(function () {
     Route::get('appointment-add', [ManagerController::class, 'getManagerAppointmentAdd'])->name('appointment-add');
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('dashboard', [AdminController::class, 'getAdminDashboard'])->name('dashboard');
+    Route::get('group', [AdminController::class, 'getAdminGroup'])->name('group');
+    Route::get('group-add', [AdminController::class, 'getAdminGroupAdd'])->name('group-add');
+    Route::get('period', [AdminController::class, 'getAdminPeriod'])->name('period');
+    Route::get('period-add', [AdminController::class, 'getAdminPeriodAdd'])->name('period-add');
+    Route::get('users-add', [AdminController::class, 'getAdminUsersAdd'])->name('users-add');
+    Route::get('users', [AdminController::class, 'getAdminUsers'])->name('users');
+    Route::resource('language', LanguageController::class);
+    Route::resource('company', CompanyController::class);
+});

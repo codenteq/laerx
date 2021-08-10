@@ -12,19 +12,19 @@ class ManagerController extends Controller
     }
 
     public function getManagerUserOperations() {
-        return view('manager.user-operations');
+        return view('manager.users.user-operations');
     }
 
     public function getManagerUserResults() {
-        return view('manager.user-results');
+        return view('manager.users.user-results');
     }
 
     public function getManagerLiveLessons() {
-        return view('manager.live-lessons');
+        return view('manager.live.live-lessons');
     }
 
     public function getManagerTeachers() {
-        return view('manager.course-teachers');
+        return view('manager.course.course-teachers');
     }
 
     public function getManagerNotifications() {
@@ -36,38 +36,38 @@ class ManagerController extends Controller
     }
 
     public function getManagerAppointment() {
-        return view('manager.appointment');
+        return view('manager.appointment.appointment');
     }
 
     public function getManagerUserAdd() {
-        return view('manager.user-add');
+        return view('manager.users.user-add');
     }
 
     public function getManagerUserLİst() {
-        return view('manager.user-list');
+        return view('manager.users.user-list');
     }
 
     public function getManagerLiveLessonAdd() {
-        return view('manager.live-lessons-add');
+        return view('manager.live.live-lessons-add');
     }
 
     public function getManagerTeacherAdd() {
-        return view('manager.course-teachers-add');
+        return view('manager.course.course-teachers-add');
     }
 
     public function getManagerCars() {
-        return view('manager.cars-list');
+        return view('manager.cars.cars-list');
     }
 
     public function getManagerCarsAdd() {
-        return view('manager.cars-add');
+        return view('manager.cars.cars-add');
     }
 
     public function getManagerAppointmentList() {
-        return view('manager.appointment-list');
+        return view('manager.appointment.appointment-list');
     }
 
     public function getManagerAppointmentAdd() {
-        return view('manager.appointment-add');
+        return view('manager.appointment.appointment-add');
     }
 }

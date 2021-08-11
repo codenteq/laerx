@@ -16,7 +16,7 @@
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
                     <div class="col base p-5 mb-2">
-                        <a href="{{route('admin.company')}}">
+                        <a href="{{route('admin.company.index')}}">
                             <i class="fas fa-building fa-4x"></i><br>
                             <span>Şirketler</span>
                         </a>
@@ -40,7 +40,7 @@
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
-                        <a href="{{route('admin.language')}}">
+                        <a href="{{route('admin.language.index')}}">
                             <i class="fa fa-language fa-4x"></i><br>
                             <span>Diller</span>
                         </a>

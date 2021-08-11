@@ -15,7 +15,7 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <h4><a href="{{route('manager.appointment-add')}}" class="btn btn-success">Randevu Oluştur</a></h4>
+                    <h4><a href="{{route('manager.appointments.create')}}" class="btn btn-success">Randevu Oluştur</a></h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3">
                     <table class="table">

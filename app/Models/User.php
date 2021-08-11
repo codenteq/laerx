@@ -11,15 +11,22 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    const Admin = 1;
+    const Manager = 2;
+    const User = 3;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
+        'tc',
         'name',
+        'surname',
         'email',
         'password',
+        'type',
     ];
 
     /**
@@ -40,4 +47,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function info()
+    {
+        return $this->hasManyThrough(UserInfo::class,Company::class);
+    }
 }

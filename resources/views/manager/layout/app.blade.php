@@ -29,7 +29,7 @@
                     <i class="fa fa-home fa-2x"></i><br>
                     <span style="position: relative;">Ana Sayfa</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations') ? 'active' : '' }} {{ request()->is('manager/user-add') ? 'active' : '' }} {{ request()->is('manager/user-list') ? 'active' : '' }}" href="{{route('manager.user-operations')}}">
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations') ? 'active' : '' }} {{ request()->is('manager/user/create') ? 'active' : '' }} {{ request()->is('manager/user') ? 'active' : '' }}" href="{{route('manager.user-operations')}}">
                     <i class="fas fa-users-cog fa-2x"></i><br>
                     <span style="position: relative;">Kursiyer İşlemleri</span>
                 </a>
@@ -37,15 +37,15 @@
                     <i class="fa fa-chart-pie fa-2x"></i><br>
                     Kursiyer Raporları
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lessons') ? 'active' : '' }} {{ request()->is('manager/live-lessons-add') ? 'active' : '' }}" href="{{route('manager.live-lessons')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lessons') ? 'active' : '' }} {{ request()->is('manager/live-lessons/create') ? 'active' : '' }}" href="{{route('manager.live-lessons.index')}}">
                     <i class="fas fa-video fa-2x"></i><br>
                     Canlı Ders
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teachers') ? 'active' : '' }} {{ request()->is('manager/course-teachers-add') ? 'active' : '' }}" href="{{route('manager.course-teachers')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teachers') ? 'active' : '' }} {{ request()->is('manager/course-teachers/create') ? 'active' : '' }}" href="{{route('manager.course-teachers.index')}}">
                     <i class="fas fa-chalkboard-teacher fa-2x"></i><br>
                     Eğitmenler
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment') ? 'active' : '' }} {{ request()->is('manager/cars-list') ? 'active' : '' }} {{ request()->is('manager/cars-add') ? 'active' : '' }} {{ request()->is('manager/appointment-list') ? 'active' : '' }} {{ request()->is('manager/appointment-add') ? 'active' : '' }}" href="{{route('manager.appointment')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment') ? 'active' : '' }} {{ request()->is('manager/cars') ? 'active' : '' }} {{ request()->is('manager/cars/create') ? 'active' : '' }} {{ request()->is('manager/appointments') ? 'active' : '' }} {{ request()->is('manager/appointments/create') ? 'active' : '' }}" href="{{route('manager.appointment')}}">
                     <i class="fa fa-car fa-2x"></i><br>
                     Araç & Randevu
                 </a>

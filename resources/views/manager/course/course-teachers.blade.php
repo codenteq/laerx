@@ -15,7 +15,7 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <h4><a href="{{route('manager.course-teachers-add')}}" class="btn btn-success">Yeni Eğitmen Ekle</a></h4>
+                    <h4><a href="{{route('manager.course-teachers.create')}}" class="btn btn-success">Yeni Eğitmen Ekle</a></h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3">
                     <table class="table">

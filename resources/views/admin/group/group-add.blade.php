@@ -10,29 +10,21 @@
                 </blockquote>
                 <figcaption>
                     <span><a href="{{route('admin.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="{{route('admin.group')}}"><i class="fas fa-layer-group"></i> Ehliyet Grupları</a> /</span>
+                    <span><a href="{{route('admin.group.index')}}"><i class="fas fa-layer-group"></i> Ehliyet Grupları</a> /</span>
                     <span class="active">Grup Oluştur</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <form class="form-control">
+                    <form class="form-control" name="form-data">
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingFirst" placeholder="Dil Kodu">
+                            <input type="text" class="form-control" name="title" placeholder="Dil Kodu">
                             <label for="floatingFirst">Ehliyet Grubu</label>
                         </div>
-
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Grup Aktif/Pasif</label>
-                        </div>
-
-                        <br>
-
                         <div class="mt-3 mb-5">
-                            <button type="button" class="btn btn-success">Kaydet</button>
-                            <a href="{{route('admin.group')}}" class="btn btn-danger">İptal</a>
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet</button>
+                            <a href="{{route('admin.group.index')}}" class="btn btn-danger">İptal</a>
                         </div>
 
                     </form>
@@ -50,9 +42,16 @@
 @endsection
 
 @section('css')
-
+    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
 @endsection
 
 @section('js')
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
+    <script>
+        const actionUrl = '{{route('admin.group.store')}}';
+        const backUrl = '{{route('admin.group.index')}}';
+    </script>
+    <script src="{{asset('js/post.js')}}"></script>
 @endsection

@@ -15,10 +15,10 @@ class CreateUserAnswersTable extends Migration
     {
         Schema::create('user_answers', function (Blueprint $table) {
             $table->id();
-            $table->integer('questionId');
-            $table->integer('choiceId');
-            $table->integer('testId');
-            $table->integer('userId');
+            $table->foreignId('questionId');
+            $table->foreignId('choiceId');
+            $table->foreignId('testId');
+            $table->foreignId('userId');
             $table->timestamps();
         });
     }

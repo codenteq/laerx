@@ -10,34 +10,31 @@
                 </blockquote>
                 <figcaption>
                     <span><a href="{{route('admin.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="{{route('admin.language')}}"><i class="fas fa-language"></i> Diller</a> /</span>
+                    <span><a href="{{route('admin.language.index')}}"><i
+                                class="fas fa-language"></i> Diller</a> /</span>
                     <span class="active">Dil Oluştur</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <form class="form-control">
-
+                    <form class="form-control" name="form-data">
+                        @csrf
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingFirst" placeholder="Dil Kodu">
+                            <input type="text" class="form-control" name="code" placeholder="Dil Kodu">
                             <label for="floatingFirst">Dil Kodu</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingFirst" placeholder="Dil Adı">
+                            <input type="text" class="form-control" name="title" placeholder="Dil Adı">
                             <label for="floatingFirst">Dil Adı</label>
-                        </div>
-
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Dil Aktif/Pasif</label>
                         </div>
 
                         <br>
 
                         <div class="mt-3 mb-5">
-                            <button type="button" class="btn btn-success">Kaydet</button>
-                            <a href="{{route('admin.language')}}" class="btn btn-danger">İptal</a>
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
+                            </button>
+                            <a href="{{route('admin.language.index')}}" class="btn btn-danger">İptal</a>
                         </div>
 
                     </form>
@@ -55,9 +52,17 @@
 @endsection
 
 @section('css')
-
+    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
 @endsection
 
 @section('js')
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
+    <script>
+        const actionUrl = '{{route('admin.language.store')}}';
+        const backUrl = '{{route('admin.language.index')}}';
+    </script>
+    <script src="{{asset('js/post.js')}}"></script>
 @endsection

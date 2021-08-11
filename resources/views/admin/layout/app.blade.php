@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Quiz app uygulaması codenteq adı altında yazılmış bir online sınav uygulamasıdır.">
+    <meta name="description"
+          content="Quiz app uygulaması codenteq adı altında yazılmış bir online sınav uygulamasıdır.">
     <meta name="author" content="Ahmet Arşiv">
     <meta name="generator" content="Quiz App">
     @yield('meta')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="icon" href="{{asset('images/c-icon.png')}}" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="{{asset('images/c-icon.png')}}" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     @yield('css')
@@ -22,30 +26,38 @@
     <!-- Sidebar-->
     <div class="border-end d-flex d-sm-flex" id="sidebar-wrapper">
         <div class="sidebar-heading border-bottom fw-bold">
-            <span style="font-family: MADE Tommy Soft; font-size: 38px;">Codente</span><span style="font-family: MADE Tommy Soft Outline; font-size: 38px;">q</span><br>
+            <span style="font-family: MADE Tommy Soft; font-size: 38px;">Codente</span><span
+                style="font-family: MADE Tommy Soft Outline; font-size: 38px;">q</span><br>
             <span style="font-weight: normal !important;"><small>v1.0.0-Beta</small></span>
-            <div style="font-size: 1rem !important; width: 200px !important;" class="list-group list-group-flush sidebar-menu">
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{route('admin.dashboard')}}">
+            <div style="font-size: 1rem !important; width: 200px !important;"
+                 class="list-group list-group-flush sidebar-menu">
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('admin/dashboard') ? 'active' : '' }}"
+                   href="{{route('admin.dashboard')}}">
                     <i class="fa fa-home fa-2x"></i><br>
                     <span style="position: relative;">Ana Sayfa</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('admin/company') ? 'active' : '' }} {{ request()->is('admin/company-add') ? 'active' : '' }}" href="{{route('admin.company')}}">
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('admin/company') ? 'active' : '' }} {{ request()->is('admin/company/create') ? 'active' : '' }}"
+                   href="{{route('admin.company.index')}}">
                     <i class="fas fa-building fa-2x"></i><br>
                     <span style="position: relative;">Şirketler</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('admin/users') ? 'active' : '' }} {{ request()->is('admin/users-add') ? 'active' : '' }}" href="{{route('admin.users')}}">
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('admin/manager-user') ? 'active' : '' }} {{ request()->is('admin/manager-user/create') ? 'active' : '' }}"
+                   href="{{route('admin.manager-user.index')}}">
                     <i class="fas fa-users fa-2x"></i><br>
                     <span style="position: relative;">Kullanıcılar</span>
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/language') ? 'active' : '' }} {{ request()->is('admin/language-add') ? 'active' : '' }}" href="{{route('admin.language')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/language') ? 'active' : '' }} {{ request()->is('admin/language/create') ? 'active' : '' }}"
+                   href="{{route('admin.language.index')}}">
                     <i class="fas fa-language fa-2x"></i><br>
                     Diller
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/group') ? 'active' : '' }} {{ request()->is('admin/group-add') ? 'active' : '' }}" href="{{route('admin.group')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/group') ? 'active' : '' }} {{ request()->is('admin/group/create') ? 'active' : '' }}"
+                   href="{{route('admin.group.index')}}">
                     <i class="fas fa-layer-group fa-2x"></i><br>
                     Ehliyet Grupları
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/period') ? 'active' : '' }} {{ request()->is('admin/period-add') ? 'active' : '' }}" href="{{route('admin.period')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/period') ? 'active' : '' }} {{ request()->is('admin/period/create') ? 'active' : '' }}"
+                   href="{{route('admin.period.index')}}">
                     <i class="fas fa-cloud-sun fa-2x"></i><br>
                     Dönemler
                 </a>
@@ -87,17 +99,24 @@
 
         @yield('content')
 
-        <nav class="navbar fixed-bottom navbar-light bg-light bottom-navigation d-flex flex-row d-md-none d-lg-none d-xl-none d-xxl-none">
+        <nav
+            class="navbar fixed-bottom navbar-light bg-light bottom-navigation d-flex flex-row d-md-none d-lg-none d-xl-none d-xxl-none">
             <a class="btn btn-light" id="sidebarToggleM"><span class="fa fa-bars"></span></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('admin.dashboard')}}"><i class="fas fa-home"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('admin.company')}}"><i class="fas fa-building"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('admin.users')}}"><i class="fas fa-users"></i></a>
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('admin.dashboard')}}"><i
+                    class="fas fa-home"></i></a>
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('admin.company.index')}}"><i
+                    class="fas fa-building"></i></a>
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('admin.manager-user.index')}}"><i
+                    class="fas fa-users"></i></a>
         </nav>
     </div>
 </div>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 <script src="{{asset('js/app.js')}}"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 @yield('js')
 </html>

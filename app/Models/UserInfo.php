@@ -9,11 +9,24 @@ class UserInfo extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'phone',
+        'address',
+        'status',
+        'periodId',
+        'month',
+        'groupId',
+        'languageId',
+        'photo',
+        'companyId',
+        'userId'
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function user() {
-        return $this->hasOne(User::class,'userId');
+        return $this->hasOne(User::class,'id','userId')->withDefault();
     }
 
     /**
@@ -21,7 +34,7 @@ class UserInfo extends Model
      */
     public function language()
     {
-        return $this->hasOne(Language::class,'languageId');
+        return $this->hasOne(Language::class,'id','languageId')->withDefault();
     }
 
     /**
@@ -29,7 +42,7 @@ class UserInfo extends Model
      */
     public function period()
     {
-        return $this->hasOne(Period::class,'periodId');
+        return $this->hasOne(Period::class,'periodId')->withDefault();
     }
 
     /**
@@ -37,7 +50,7 @@ class UserInfo extends Model
      */
     public function group()
     {
-        return $this->hasOne(Group::class,'groupId');
+        return $this->hasOne(Group::class,'groupId')->withDefault();
     }
 
     /**
@@ -45,6 +58,6 @@ class UserInfo extends Model
      */
     public function company()
     {
-        return $this->hasOne(Company::class, 'companyId');
+        return $this->hasOne(Company::class, 'id','companyId')->withDefault();
     }
 }

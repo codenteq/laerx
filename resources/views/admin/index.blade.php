@@ -22,19 +22,19 @@
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
-                        <a href="{{route('admin.users')}}">
+                        <a href="{{route('admin.manager-user.index')}}">
                             <i class="fas fa-users fa-4x"></i><br>
                             <span>Kullanıcı Listesi</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
-                        <a href="{{route('admin.users-add')}}">
+                        <a href="{{route('admin.manager-user.create')}}">
                             <i class="fas fa-user-plus fa-4x"></i><br>
                             <span>Kullanıcı Ekle</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
-                        <a href="{{route('admin.period')}}">
+                        <a href="{{route('admin.period.index')}}">
                             <i class="fa fa-cloud-sun fa-4x"></i><br>
                             <span>Dönemler</span>
                         </a>
@@ -46,7 +46,7 @@
                         </a>
                     </div>
                     <div class="col base p-5 mb-5">
-                        <a href="{{route('admin.group')}}">
+                        <a href="{{route('admin.group.index')}}">
                             <i class="fa fa-layer-group fa-4x"></i><br>
                             <span>Ehliyet Grupları</span>
                         </a>

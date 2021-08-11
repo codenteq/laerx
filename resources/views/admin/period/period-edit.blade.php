@@ -6,13 +6,13 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Dil Düzenle</h2>
+                    <h2>Dönem Oluştur</h2>
                 </blockquote>
                 <figcaption>
                     <span><a href="{{route('admin.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="{{route('admin.language.index')}}"><i
-                                class="fas fa-language"></i> Diller</a> /</span>
-                    <span class="active">Dil Düzenle</span>
+                    <span><a href="{{route('admin.period.index')}}"><i
+                                class="fas fa-cloud-sun"></i> Dönemler</a> /</span>
+                    <span class="active">Dönem Oluştur</span>
                 </figcaption>
             </figure>
             <div class="row">
@@ -21,23 +21,15 @@
                         @method('PUT')
                         @csrf
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="code" placeholder="Dil Kodu"
-                                   value="{{$language->code}}">
-                            <label for="floatingFirst">Dil Kodu</label>
+                            <input type="number" class="form-control" name="title" placeholder="Dönem"
+                                   value="{{$period->title}}">
+                            <label for="floatingFirst">Dönem</label>
                         </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="title" placeholder="Dil Adı"
-                                   value="{{$language->title}}">
-                            <label for="floatingFirst">Dil Adı</label>
-                        </div>
-
-                        <br>
 
                         <div class="mt-3 mb-5">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
                             </button>
-                            <a href="{{route('admin.language.index')}}" class="btn btn-danger">İptal</a>
+                            <a href="{{route('admin.period.index')}}" class="btn btn-danger">İptal</a>
                         </div>
 
                     </form>
@@ -50,7 +42,7 @@
 
 @section('meta')
 
-    <title>Dil Düzenle</title>
+    <title>Dönem Düzenle</title>
 
 @endsection
 
@@ -64,8 +56,8 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const actionUrl = '{{route('admin.language.update',$language)}}';
-        const backUrl = '{{route('admin.language.index')}}';
+        const actionUrl = '{{route('admin.period.update',$period)}}';
+        const backUrl = '{{route('admin.period.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>
 @endsection

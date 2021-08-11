@@ -49,7 +49,7 @@
 
 @section('meta')
 
-    <title>Şirket Oluştur</title>
+    <title>Şirket Düzenle</title>
 
 @endsection
 

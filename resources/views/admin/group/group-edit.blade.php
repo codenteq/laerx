@@ -41,7 +41,7 @@
 
 @section('meta')
 
-    <title>Grup Oluştur</title>
+    <title>Grup Düzenle</title>
 
 @endsection
 

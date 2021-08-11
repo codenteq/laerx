@@ -41,8 +41,8 @@
                     <i class="fas fa-building fa-2x"></i><br>
                     <span style="position: relative;">Şirketler</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('admin/users') ? 'active' : '' }} {{ request()->is('admin/users-add') ? 'active' : '' }}"
-                   href="{{route('admin.users')}}">
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('admin/manager-user') ? 'active' : '' }} {{ request()->is('admin/manager-user/create') ? 'active' : '' }}"
+                   href="{{route('admin.manager-user.index')}}">
                     <i class="fas fa-users fa-2x"></i><br>
                     <span style="position: relative;">Kullanıcılar</span>
                 </a>
@@ -56,8 +56,8 @@
                     <i class="fas fa-layer-group fa-2x"></i><br>
                     Ehliyet Grupları
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/period') ? 'active' : '' }} {{ request()->is('admin/period-add') ? 'active' : '' }}"
-                   href="{{route('admin.period')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/period') ? 'active' : '' }} {{ request()->is('admin/period/create') ? 'active' : '' }}"
+                   href="{{route('admin.period.index')}}">
                     <i class="fas fa-cloud-sun fa-2x"></i><br>
                     Dönemler
                 </a>
@@ -106,7 +106,7 @@
                     class="fas fa-home"></i></a>
             <a class="list-unstyled link-dark text-decoration-none" href="{{route('admin.company.index')}}"><i
                     class="fas fa-building"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('admin.users')}}"><i
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('admin.manager-user.index')}}"><i
                     class="fas fa-users"></i></a>
         </nav>
     </div>

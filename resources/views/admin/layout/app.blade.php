@@ -51,8 +51,8 @@
                     <i class="fas fa-language fa-2x"></i><br>
                     Diller
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/group') ? 'active' : '' }} {{ request()->is('admin/group-add') ? 'active' : '' }}"
-                   href="{{route('admin.group')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/group') ? 'active' : '' }} {{ request()->is('admin/group/create') ? 'active' : '' }}"
+                   href="{{route('admin.group.index')}}">
                     <i class="fas fa-layer-group fa-2x"></i><br>
                     Ehliyet Grupları
                 </a>

@@ -20,17 +20,17 @@
                         @method('PUT')
                         @csrf
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="title" placeholder="Şirket Adı" value="{{$detail->title}}">
+                            <input type="text" class="form-control" name="title" placeholder="Şirket Adı" value="{{$company->title}}">
                             <label>Şirket Adı</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" name="start_date" placeholder="Başlangıç Tarihi" value="{{$detail->start_date}}">
+                            <input type="date" class="form-control" name="start_date" placeholder="Başlangıç Tarihi" value="{{$company->start_date}}">
                             <label>Başlangıç Tarihi</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" name="end_date" placeholder="Bitiş Tarihi" value="{{$detail->end_date}}">
+                            <input type="date" class="form-control" name="end_date" placeholder="Bitiş Tarihi" value="{{$company->end_date}}">
                             <label>Bitiş Tarihi</label>
                         </div>
 
@@ -62,7 +62,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const actionUrl = '{{route('admin.company.update',$detail->id)}}';
+        const actionUrl = '{{route('admin.company.update',$company)}}';
         const backUrl = '{{route('admin.company.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>

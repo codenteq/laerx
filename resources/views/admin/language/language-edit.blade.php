@@ -6,26 +6,29 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Dil Oluştur</h2>
+                    <h2>Dil Düzenle</h2>
                 </blockquote>
                 <figcaption>
                     <span><a href="{{route('admin.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
                     <span><a href="{{route('admin.language.index')}}"><i
                                 class="fas fa-language"></i> Diller</a> /</span>
-                    <span class="active">Dil Oluştur</span>
+                    <span class="active">Dil Düzenle</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="form-control" name="form-data">
+                        @method('PUT')
                         @csrf
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="code" placeholder="Dil Kodu">
+                            <input type="text" class="form-control" name="code" placeholder="Dil Kodu"
+                                   value="{{$language->code}}">
                             <label for="floatingFirst">Dil Kodu</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="title" placeholder="Dil Adı">
+                            <input type="text" class="form-control" name="title" placeholder="Dil Adı"
+                                   value="{{$language->title}}">
                             <label for="floatingFirst">Dil Adı</label>
                         </div>
 
@@ -61,7 +64,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const actionUrl = '{{route('admin.language.store')}}';
+        const actionUrl = '{{route('admin.language.update',$language)}}';
         const backUrl = '{{route('admin.language.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>

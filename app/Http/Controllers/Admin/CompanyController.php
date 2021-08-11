@@ -18,7 +18,7 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = cache()->remember('companies', 60, function () {
-            return Company::with('companies')->limit(10)->get();
+            return Company::with('companies')->get();
         });
         return view('admin.company.company', compact('companies'));
     }
@@ -37,12 +37,13 @@ class CompanyController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function store(CompanyRequest $request)
+    public function store(Company $company, CompanyRequest $request)
     {
         try {
-            Company::create($request->all());
+            $company->create($request->all());
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -63,24 +64,24 @@ class CompanyController extends Controller
      * Show the form for editing the specified resource.
      *
      * @return \Illuminate\Http\Response
+     * @param \App\Models\Company $company
      */
-    public function edit($company)
+    public function edit(Company $company)
     {
-        $detail = Company::find($company);
-        return view('admin.company.company-edit', compact('detail'));
+        return view('admin.company.company-edit', compact('company'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Company
+     * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $company)
+    public function update(CompanyRequest $request,Company $company)
     {
         try {
-            Company::find($company)->update($request->all());
+            $company->update($request->all());
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

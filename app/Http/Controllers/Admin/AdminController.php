@@ -19,14 +19,6 @@ class AdminController extends Controller
         return view('admin.language.language-add');
     }
 
-    public function getAdminGroup() {
-        return view('admin.group.group');
-    }
-
-    public function getAdminGroupAdd() {
-        return view('admin.group.group-add');
-    }
-
     public function getAdminPeriod() {
         return view('admin.period.period');
     }

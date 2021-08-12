@@ -12,9 +12,9 @@
 
                         <div class="form-group row">
                             <div class="col-12 mb-3">
-                                <input id="email" type="email" placeholder="E-mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="tc" type="text" placeholder="TCKN" class="form-control @error('tc') is-invalid @enderror" name="tc" value="{{ old('tc') }}" required autocomplete="tc" autofocus maxlength="11">
 
-                                @error('email')
+                                @error('tc')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

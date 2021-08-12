@@ -11,51 +11,59 @@
                 <figcaption>
                     <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
                     <span><a href="{{route('manager.user-operations')}}"><i class="fas fa-users-cog"></i> Kursiyer İşlemleri</a> /</span>
-                    <span class="active">Kursiyer Ekle</span>
+                    <span class="active">Kursiyer Düzenle</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="form-control" name="form-data">
-
+                        @csrf
+                        @method('PUT')
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="tc" placeholder="TCKN">
+                            <input type="text" class="form-control" name="tc" placeholder="TCKN"
+                                   value="{{$user->user->tc}}">
                             <label for="floatingFirst">TC Kimlik No</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="name" placeholder="Üye Adı">
+                            <input type="text" class="form-control" name="name" placeholder="Üye Adı"
+                                   value="{{$user->user->name}}">
                             <label for="floatingFirst">Adı</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="surname" placeholder="Üye Soyadı">
+                            <input type="text" class="form-control" name="surname" placeholder="Üye Soyadı"
+                                   value="{{$user->user->surname}}">
                             <label for="floatingLast">Soyadı</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" name="email" placeholder="Eposta Adresi">
+                            <input type="email" class="form-control" name="email" placeholder="Eposta Adresi"
+                                   value="{{$user->user->email}}">
                             <label for="floatingMail">Eposta Adresi</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="password" placeholder="Şifre">
+                            <input type="password" class="form-control" name="password" placeholder="Şifre"
+                                   value="{{$user->user->password}}">
                             <label>Şifre</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="phone" placeholder="Telefon Numarası">
+                            <input type="text" class="form-control" name="phone" placeholder="Telefon Numarası"
+                                   value="{{$user->phone}}">
                             <label for="floatingPhone">Telefon Numarası</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="address" placeholder="Adres">
+                            <input type="text" class="form-control" name="address" placeholder="Adres"
+                                   value="{{$user->address}}">
                             <label for="floatingAddress">Adres</label>
                         </div>
 
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="status"
-                                   checked>
+                                {{$user->status === 1 ? 'checked' : null}}>
                             <label class="form-check-label" for="flexSwitchCheckChecked">Kullanıcı Aktif/Pasif</label>
                         </div>
 
@@ -74,19 +82,11 @@
                         <br>
 
                         <div class="form-floating">
-                            <select class="form-select" name="month" aria-label="Floating label select example">
-                                <option>Ocak</option>
-                                <option>Şubat</option>
-                                <option>Mart</option>
-                                <option>Nisan</option>
-                                <option>Mayıs</option>
-                                <option>Haziran</option>
-                                <option>Temmuz</option>
-                                <option>Ağustos</option>
-                                <option>Eylül</option>
-                                <option>Ekim</option>
-                                <option>Kasım</option>
-                                <option>Aralık</option>
+                            <select class="form-select" name="monthId" aria-label="Floating label select example">
+                                @foreach($months as $month)
+                                    <option
+                                        value="{{$month->id}}" {{$user->monthId === $month->id ? 'selected' : null}}>{{$month->title}}</option>
+                                @endforeach
                             </select>
                             <label for="floatingSelect">Ay</label>
                         </div>
@@ -136,7 +136,7 @@
 
 @section('meta')
 
-    <title>Kursiyer Ekle</title>
+    <title>Kursiyer Düzenle</title>
 
 @endsection
 
@@ -150,7 +150,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const actionUrl = '{{route('manager.user.store')}}';
+        const actionUrl = '{{route('manager.user.update',$user->userId)}}';
         const backUrl = '{{route('manager.user.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>

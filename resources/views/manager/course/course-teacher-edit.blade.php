@@ -11,44 +11,46 @@
                 <figcaption>
                     <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
                     <span><a href="{{route('manager.course-teacher.index')}}"><i class="fas fa-chalkboard-teacher"></i> Eğitmenler</a> /</span>
-                    <span class="active">Eğitmen Ekle</span>
+                    <span class="active">Eğitmen Düzenle</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="form-control" name="form-data">
+                        @csrf
+                        @method('put')
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="tc" placeholder="TCKN" maxlength="11">
+                            <input type="text" class="form-control" name="tc" placeholder="TCKN" maxlength="11" value="{{$user->user->tc}}">
                             <label for="floatingFirst">TCKN</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="name" placeholder="Ad">
+                            <input type="text" class="form-control" name="name" placeholder="Ad" value="{{$user->user->name}}">
                             <label for="floatingFirst">Ad</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="surname" placeholder="Soyad">
+                            <input type="text" class="form-control" name="surname" placeholder="Soyad" value="{{$user->user->surname}}">
                             <label for="floatingFirst">Soyad</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" name="email" placeholder="E-posta">
+                            <input type="email" class="form-control" name="email" placeholder="E-posta" value="{{$user->user->email}}">
                             <label for="floatingFirst">E-posta</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="password" placeholder="Şifre">
-                            <label for="floatingFirst">Şifre</label>
+                            <input type="password" class="form-control" name="password" placeholder="Yeni Şifre">
+                            <label for="floatingFirst">Yeni Şifre</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="phone" placeholder="Telefon">
+                            <input type="text" class="form-control" name="phone" placeholder="Telefon" value="{{$user->phone}}">
                             <label for="floatingFirst">Telefon</label>
                         </div>
 
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" checked>
+                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" {{$user->status === 1 ? 'checked' : null}}>
                             <label class="form-check-label" for="flexSwitchCheckChecked">Eğitmen Aktif/Pasif</label>
                         </div>
 
@@ -83,7 +85,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const actionUrl = '{{route('manager.course-teacher.store')}}';
+        const actionUrl = '{{route('manager.course-teacher.update',$user->userId)}}';
         const backUrl = '{{route('manager.course-teacher.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>

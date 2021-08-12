@@ -80,7 +80,7 @@
                 </button>
                 <div class="collapse navbar-collapse d-none d-sm-block" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                        <li class="nav-item active"><a class="nav-link">Hoşgeldiniz, Ahmet Arşiv</a></li>
+                        <li class="nav-item active"><a class="nav-link">Hoşgeldiniz, {{auth()->user()->name .' '. auth()->user()->surname}}</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
@@ -88,7 +88,7 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('user.profile')}}">Profil</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{route('logout')}}">Çıkış Yap</a>
+                                <a class="dropdown-item" href="{{route('logout-user')}}">Çıkış Yap</a>
                             </div>
                         </li>
                     </ul>

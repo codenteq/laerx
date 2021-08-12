@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Manager;
 
+use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Manager\CourseTeacherRequest;
+use App\Models\User;
+use App\Models\UserInfo;
 use Illuminate\Http\Request;
 
-class CourseTeachersController extends Controller
+class CourseTeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +18,8 @@ class CourseTeachersController extends Controller
      */
     public function index()
     {
-        return view('manager.course.course-teachers');
+        $users = UserInfo::where('companyId', auth()->user()->info->companyId)->with('user')->get();
+        return view('manager.course.course-teachers', compact('users'));
     }
 
     /**
@@ -24,62 +29,70 @@ class CourseTeachersController extends Controller
      */
     public function create()
     {
-        return view('manager.course.course-teachers-add');
+        return view('manager.course.course-teacher-add');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Requests\Manager\CourseTeacherRequest $request
+     * @param \App\Models\User $course_teacher
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(User $course_teacher, CourseTeacherRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        try {
+            $course_teacher->create([
+                'type' => User::Manager,
+            ]);
+            return response(ResponseMessage::SuccessMessage);
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage);
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
+     * @param \App\Models\User $course_teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $course_teacher)
     {
-        //
+        $user = UserInfo::where('userId',$course_teacher->id)->with('user')->first();
+        return view('manager.course.course-teacher-edit',compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\Manager\CourseTeacherRequest $request
+     * @param \App\Models\User $course_teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $course_teacher)
     {
-        //
+        try {
+            $course_teacher->update($request->all());
+            return response(ResponseMessage::SuccessMessage);
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param \App\Models\User $course_teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $course_teacher)
     {
-        //
+        try {
+            $course_teacher->delete();
+            UserInfo::where('userId',$course_teacher->id)->delete();
+            return response(ResponseMessage::SuccessMessage);
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage);
+        }
     }
 }

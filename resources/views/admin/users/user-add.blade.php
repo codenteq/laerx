@@ -19,7 +19,7 @@
                     <form class="form-control" name="form-data">
 
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" name="tc" placeholder="TCKN">
+                            <input type="text" class="form-control" name="tc" placeholder="TCKN" maxlength="11">
                             <label for="floatingFirst">TC Kimlik No</label>
                         </div>
 
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" name="phone" placeholder="Telefon Numarası">
+                            <input type="text" class="form-control" name="phone" placeholder="Telefon Numarası">
                             <label for="floatingPhone">Telefon Numarası</label>
                         </div>
 

@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\ManagerUserController;
 use App\Http\Controllers\Admin\PeriodController;
 use App\Http\Controllers\Manager\AppointmentController;
 use App\Http\Controllers\Manager\CarsController;
-use App\Http\Controllers\Manager\CourseTeachersController;
+use App\Http\Controllers\Manager\CourseTeacherController;
 use App\Http\Controllers\Manager\LiveLessonsController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\Manager\UserController;
@@ -33,6 +33,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/logout-user', [App\Http\Controllers\HomeController::class, 'logoutUser'])->name('logout-user');
 
 Route::prefix('user')->name('user.')->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
@@ -54,7 +55,7 @@ Route::prefix('manager')->name('manager.')->group(function () {
     Route::get('user-operations', [UserController::class, 'getManagerUserOperations'])->name('user-operations');
     Route::get('user-results', [UserController::class, 'getManagerUserResults'])->name('user-results');
     Route::resource('live-lessons', LiveLessonsController::class);
-    Route::resource('course-teachers', CourseTeachersController::class);
+    Route::resource('course-teacher', CourseTeacherController::class);
     Route::resource('cars', CarsController::class);
     Route::resource('appointments', AppointmentController::class);
     Route::get('appointment', [AppointmentController::class, 'getManagerAppointment'])->name('appointment');

@@ -41,7 +41,7 @@
                     <i class="fas fa-video fa-2x"></i><br>
                     Canlı Ders
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teachers') ? 'active' : '' }} {{ request()->is('manager/course-teachers/create') ? 'active' : '' }}" href="{{route('manager.course-teachers.index')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teacher') ? 'active' : '' }} {{ request()->is('manager/course-teacher/create') ? 'active' : '' }}" href="{{route('manager.course-teacher.index')}}">
                     <i class="fas fa-chalkboard-teacher fa-2x"></i><br>
                     Eğitmenler
                 </a>
@@ -76,7 +76,7 @@
                 </button>
                 <div class="collapse navbar-collapse d-none d-sm-block" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                        <li class="nav-item active"><a class="nav-link">Hoşgeldiniz, Ahmet Arşiv</a></li>
+                        <li class="nav-item active"><a class="nav-link">Hoşgeldiniz, {{auth()->user()->name .' '. auth()->user()->surname}}</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
@@ -84,7 +84,7 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/user/profile">Profil</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{route('logout')}}">Çıkış Yap</a>
+                                <a class="dropdown-item" href="{{route('logout-user')}}">Çıkış Yap</a>
                             </div>
                         </li>
                     </ul>
@@ -106,5 +106,6 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="{{asset('js/app.js')}}"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 @yield('js')
 </html>

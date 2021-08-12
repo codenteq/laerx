@@ -47,7 +47,7 @@ class ManagerUserController extends Controller
     {
         try {
             $user->create([
-                'type' => 2
+                'type' => User::Manager
             ]);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
@@ -66,7 +66,7 @@ class ManagerUserController extends Controller
         $companies = Company::with('companies')->get();
         $languages = Language::all();
         $user = UserInfo::where('userId', $manager_user->id)->with('company', 'user', 'language')->first();
-        return view('admin.users.user-edit', compact('user', 'companies', 'languages'));
+        return view('manager.users.user-edit', compact('user', 'companies', 'languages'));
     }
 
     /**

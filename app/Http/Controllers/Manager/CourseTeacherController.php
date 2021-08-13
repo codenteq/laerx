@@ -69,7 +69,7 @@ class CourseTeacherController extends Controller
      * @param \App\Models\User $course_teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $course_teacher)
+    public function update(CourseTeacherRequest $request, User $course_teacher)
     {
         try {
             $course_teacher->update($request->all());

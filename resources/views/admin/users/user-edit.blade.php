@@ -38,8 +38,8 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="password" placeholder="Şifre" value="{{$user->user->password}}">
-                            <label for="floatingLast">Şifre</label>
+                            <input type="password" class="form-control" name="password" placeholder="Yeni Şifre">
+                            <label for="floatingLast">Yeni Şifre</label>
                         </div>
 
                         <div class="form-floating mb-3">

@@ -6,7 +6,7 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Eğitmen Ekle</h2>
+                    <h2>Eğitmen Düzenle</h2>
                 </blockquote>
                 <figcaption>
                     <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
@@ -71,7 +71,7 @@
 
 @section('meta')
 
-    <title>Eğitmen Ekle</title>
+    <title>Eğitmen Düzenle</title>
 
 @endsection
 

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Manager;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CourseTeacherRequest extends FormRequest
+class LiveLessonRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,13 @@ class CourseTeacherRequest extends FormRequest
     public function rules()
     {
         return [
-            'tc' => 'required|string|min:11|max:11|unique:users,tc,'.$this->user->id,
-            'name' => 'required',
-            'surname' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|numeric'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'tc.unique' => 'Bu TCKN kullanılıyor.'
+            'title' => 'required|string',
+            'live_date' => 'required',
+            'url' => 'required|string',
+            'periodId' => 'required|numeric',
+            'monthId' => 'required|numeric',
+            'groupId' => 'required|numeric',
+            'typeId' => 'required|numeric'
         ];
     }
 }

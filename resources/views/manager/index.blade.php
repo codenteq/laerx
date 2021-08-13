@@ -16,7 +16,7 @@
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
                     <div class="col base p-5 mb-2">
-                        <a href="{{route('manager.live-lessons.index')}}">
+                        <a href="{{route('manager.live-lesson.index')}}">
                             <i class="fas fa-video fa-4x"></i><br>
                             <span>Canlı Ders</span>
                         </a>

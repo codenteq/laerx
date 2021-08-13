@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Manager\LiveLessonRequest;
 use App\Models\Group;
-use App\Models\Language;
+use App\Models\LiveLesson;
 use App\Models\Month;
 use App\Models\Period;
-use App\Models\User;
-use App\Models\UserInfo;
+use App\Models\QuestionType;
 use Illuminate\Http\Request;
-use App\Http\Requests\Manager\UserRequest;
 
-class UserController extends Controller
+class LiveLessonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,8 +21,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = UserInfo::where('companyId',auth()->user()->info->companyId)->with('company', 'user', 'language','period','month')->get();
-        return view('manager.users.user-list',compact('users'));
+        $live_lessons = LiveLesson::with('type')->get();
+        return view('manager.live.live-lessons', compact('live_lessons'));
     }
 
     /**
@@ -33,63 +32,59 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('manager.users.user-add', [
+        return view('manager.live.live-lessons-add', [
+            'months' => Month::all(),
             'periods' => Period::all(),
             'groups' => Group::all(),
-            'languages' => Language::all(),
-            'months' => Month::all()
+            'types' => QuestionType::all(),
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Manager\UserRequest $request
-     * @param \App\Models\User $user
+     * @param \App\Http\Requests\Manager\LiveLessonRequest $request
+     * @param \App\Models\LiveLesson $live_lesson
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user, UserRequest $request)
+    public function store(LiveLesson $live_lesson, LiveLessonRequest $request)
     {
         try {
-            $user->create([
-                'type' => User::Normal,
-                'companyId' => auth()->user()->info->companyId
-            ]);
+            $live_lesson->create($request->all());
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
         }
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\User $user
+     * @param \App\Models\LiveLesson $live_lesson
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(LiveLesson $live_lesson)
     {
-        return view('manager.users.user-edit',[
+        return view('manager.live.live-lesson-edit', [
+            'months' => Month::all(),
             'periods' => Period::all(),
             'groups' => Group::all(),
-            'languages' => Language::all(),
-            'months' => Month::all(),
-            'user' => UserInfo::where('userId', $user->id)->with('company', 'user', 'language','period')->first()
+            'types' => QuestionType::all(),
+            'live_lesson' => $live_lesson,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Manager\UserRequest $request
-     * @param \App\Models\User $user
+     * @param \App\Http\Requests\Manager\LiveLessonRequest $request
+     * @param \App\Models\LiveLesson $live_lesson
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $user)
+    public function update(LiveLessonRequest $request, LiveLesson $live_lesson)
     {
         try {
-            $user->update($request->all());
+            $live_lesson->update($request->all());
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -99,27 +94,16 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\User $user
+     * @param \App\Models\LiveLesson $live_lesson
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(LiveLesson $live_lesson)
     {
         try {
-            $user->delete();
-            UserInfo::where('userId', $user->id)->delete();
+            $live_lesson->delete();
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
         }
-    }
-
-    public function getManagerUserOperations()
-    {
-        return view('manager.users.user-operations');
-    }
-
-    public function getManagerUserResults()
-    {
-        return view('manager.users.user-results');
     }
 }

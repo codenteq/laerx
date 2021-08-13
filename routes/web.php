@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\PeriodController;
 use App\Http\Controllers\Manager\AppointmentController;
 use App\Http\Controllers\Manager\CarsController;
 use App\Http\Controllers\Manager\CourseTeacherController;
-use App\Http\Controllers\Manager\LiveLessonsController;
+use App\Http\Controllers\Manager\LiveLessonController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\Manager\UserController;
 use App\Http\Controllers\User\HomeController;
@@ -54,7 +54,7 @@ Route::prefix('manager')->name('manager.')->group(function () {
     Route::resource('user', UserController::class);
     Route::get('user-operations', [UserController::class, 'getManagerUserOperations'])->name('user-operations');
     Route::get('user-results', [UserController::class, 'getManagerUserResults'])->name('user-results');
-    Route::resource('live-lessons', LiveLessonsController::class);
+    Route::resource('live-lesson', LiveLessonController::class);
     Route::resource('course-teacher', CourseTeacherController::class);
     Route::resource('cars', CarsController::class);
     Route::resource('appointments', AppointmentController::class);

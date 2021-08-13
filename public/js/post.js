@@ -1,5 +1,7 @@
-
+const btn = document.querySelector(".btn-success");
 function createAndUpdateButton() {
+    btn.disabled = true;
+    btn.innerHTML = 'Kaydediliyor...';
     const formData = document.forms.namedItem('form-data');
     const form = new FormData(formData);
     axios.post(actionUrl, form).then(res => {
@@ -10,6 +12,8 @@ function createAndUpdateButton() {
             }, 3500)
         } else {
             toastr.error(res.data.message, res.data.title);
+            btn.disabled = true;
+            btn.innerHTML = 'Kaydet';
         }
     }).catch(err => {
         let error = err.response.data.errors;
@@ -17,6 +21,8 @@ function createAndUpdateButton() {
         for (const [key, value] of Object.entries(error)) {
             toastr.error(value, 'Başarısız');
         }
+        btn.disabled = false;
+        btn.innerHTML = 'Kaydet';
     })
 }
 const table = document.querySelector('#example');

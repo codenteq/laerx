@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests\Manager;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
 
-class CourseTeacherRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +30,12 @@ class CourseTeacherRequest extends FormRequest
             'name' => 'required',
             'surname' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|numeric'
+            'password' => 'string',
+            'phone' => 'required|numeric',
+            'address' => 'required|string',
+            'periodId' => 'required|numeric',
+            'monthId' => 'required|numeric',
+            'languageId' => 'required|numeric',
         ];
     }
 

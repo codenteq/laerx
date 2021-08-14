@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
+use App\Models\Support;
 use Illuminate\Http\Request;
 
-class CarsController extends Controller
+class SupportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class CarsController extends Controller
      */
     public function index()
     {
-        return view('manager.cars.cars-list');
+        $supports = Support::all();
+        return view('manager.supports',compact('supports'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CarsController extends Controller
      */
     public function create()
     {
-        return view('manager.cars.cars-add');
+        //
     }
 
     /**
@@ -41,21 +43,21 @@ class CarsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Support  $support
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Support $support)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Support  $support
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Support $support)
     {
         //
     }
@@ -64,10 +66,10 @@ class CarsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Support  $support
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Support $support)
     {
         //
     }
@@ -75,10 +77,10 @@ class CarsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Support  $support
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Support $support)
     {
         //
     }

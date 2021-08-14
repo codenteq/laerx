@@ -7,12 +7,14 @@ function createAndUpdateButton() {
     axios.post(actionUrl, form).then(res => {
         if (res.data.status === true) {
             toastr.success(res.data.message, res.data.title);
+            btn.disabled = false;
+            btn.innerHTML = 'Kaydet';
             setTimeout(() => {
                 window.location.href = backUrl;
             }, 3500)
         } else {
             toastr.error(res.data.message, res.data.title);
-            btn.disabled = true;
+            btn.disabled = false;
             btn.innerHTML = 'Kaydet';
         }
     }).catch(err => {

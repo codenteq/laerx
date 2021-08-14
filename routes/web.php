@@ -66,8 +66,8 @@ Route::prefix('manager')->name('manager.')->group(function () {
     Route::resource('live-lesson', LiveLessonController::class);
     Route::resource('course-teacher', CourseTeacherController::class);
     Route::resource('car', CarController::class);
-    Route::resource('appointments', AppointmentController::class);
-    Route::get('appointment', [AppointmentController::class, 'getManagerAppointment'])->name('appointment');
+    Route::get('appointment-car', [AppointmentController::class, 'getManagerAppointment'])->name('appointment-car');
+    Route::resource('appointment', AppointmentController::class);
     Route::get('/support',[SupportController::class,'index'])->name('support.index');
     Route::get('notifications', [ManagerController::class, 'getManagerNotifications'])->name('notifications');
 });

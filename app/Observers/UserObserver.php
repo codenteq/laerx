@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Helpers\Helper;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Support\Facades\Hash;
@@ -53,7 +54,7 @@ class UserObserver
             'groupId' => $this->request->groupId,
             'languageId' => $this->request->languageId,
             'photo' => $path,
-            'companyId' => auth()->user()->type === 1 ? $this->request->companyId : auth()->user()->info->companyId,
+            'companyId' => auth()->user()->type === 1 ? $this->request->companyId : Helper::companyId(),
             'userId' => $user->id
         ]);
     }
@@ -82,7 +83,7 @@ class UserObserver
             'groupId' => $this->request->groupId,
             'languageId' => $this->request->languageId,
             'photo' => $path,
-            'companyId' => auth()->user()->type === 1 ? $this->request->companyId : auth()->user()->info->companyId,
+            'companyId' => auth()->user()->type === 1 ? $this->request->companyId : Helper::companyId(),
             'userId' => $user->id
         ]);
     }

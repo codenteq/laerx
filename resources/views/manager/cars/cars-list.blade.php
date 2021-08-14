@@ -9,7 +9,7 @@
                     <h2>Araçlar</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="{{route('manager.appointment')}}"><i class="fas fa-car"></i> Araç & Randevular</a> /</span>
+                    <span><a href="{{route('manager.appointment-car')}}"><i class="fas fa-car"></i> Araç & Randevular</a> /</span>
                     <span class="active">Araçlar</span>
                 </figcaption>
             </figure>
@@ -68,7 +68,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const backUrl = '{{route('manager.user.index')}}';
+        const backUrl = '{{route('manager.car.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>
 @endsection

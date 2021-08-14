@@ -56,8 +56,8 @@
                     <i class="fas fa-chalkboard-teacher fa-2x"></i><br>
                     Eğitmenler
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment') ? 'active' : '' }} {{ request()->is('manager/cars') ? 'active' : '' }} {{ request()->is('manager/cars/create') ? 'active' : '' }} {{ request()->is('manager/appointments') ? 'active' : '' }} {{ request()->is('manager/appointments/create') ? 'active' : '' }}"
-                   href="{{route('manager.appointment')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment-car') ? 'active' : '' }} {{ request()->is('manager/car') ? 'active' : '' }} {{ request()->is('manager/car/create') ? 'active' : '' }} {{ request()->is('manager/appointment') ? 'active' : '' }} {{ request()->is('manager/appointment/create') ? 'active' : '' }}"
+                   href="{{route('manager.appointment-car')}}">
                     <i class="fa fa-car fa-2x"></i><br>
                     Araç & Randevu
                 </a>

@@ -23,7 +23,7 @@
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
-                        <a href="{{route('manager.appointments.index')}}">
+                        <a href="{{route('manager.appointment.index')}}">
                             <i class="fas fa-hourglass-start fa-4x"></i><br>
                             <span>Randevular</span>
                         </a>

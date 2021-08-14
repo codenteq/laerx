@@ -40,7 +40,7 @@
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
-                        <a href="{{route('manager.appointment')}}">
+                        <a href="{{route('manager.appointment-car')}}">
                             <i class="fas fa-car fa-4x"></i><br>
                             <span>Araç & Randevular</span>
                         </a>

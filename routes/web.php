@@ -13,6 +13,7 @@ use App\Http\Controllers\Manager\LiveLessonController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\Manager\UserController;
 use App\Http\Controllers\User\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes([
+    'login'    => true,
+    'logout'   => false,
+    'register' => false,
+    'reset'    => true,  // for resetting passwords
+    'confirm'  => true,  // for additional password confirmations
+    'verify'   => true,  // for email verification
+]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout-user', [App\Http\Controllers\HomeController::class, 'logoutUser'])->name('logout-user');

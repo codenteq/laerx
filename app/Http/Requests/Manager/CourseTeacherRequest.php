@@ -23,8 +23,11 @@ class CourseTeacherRequest extends FormRequest
      */
     public function rules()
     {
+        $id = null;
+        if ($this->course_teacher)
+            $id = $this->course_teacher->id;
         return [
-            'tc' => 'required|string|min:11|max:11|unique:users,tc,'.$this->user->id,
+            'tc' => 'required|string|min:11|max:11|unique:users,tc,'.$id,
             'name' => 'required',
             'surname' => 'required',
             'email' => 'required|email',

@@ -25,12 +25,14 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+        $id = null;
+        if ($this->user)
+            $id = $this->user->id;
         return [
-            'tc' => 'required|string|min:11|max:11|unique:users,tc,'.$this->user->id,
+            'tc' => 'required|string|min:11|max:11|unique:users,tc,' . $id,
             'name' => 'required',
             'surname' => 'required',
             'email' => 'required|email',
-            'password' => 'string',
             'phone' => 'required|numeric',
             'address' => 'required|string',
             'periodId' => 'required|numeric',

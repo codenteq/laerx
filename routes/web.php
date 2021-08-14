@@ -7,10 +7,11 @@ use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\ManagerUserController;
 use App\Http\Controllers\Admin\PeriodController;
 use App\Http\Controllers\Manager\AppointmentController;
-use App\Http\Controllers\Manager\CarsController;
+use App\Http\Controllers\Manager\CarController;
 use App\Http\Controllers\Manager\CourseTeacherController;
 use App\Http\Controllers\Manager\LiveLessonController;
 use App\Http\Controllers\Manager\ManagerController;
+use App\Http\Controllers\Manager\SupportController;
 use App\Http\Controllers\Manager\UserController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -64,11 +65,11 @@ Route::prefix('manager')->name('manager.')->group(function () {
     Route::get('user-results', [UserController::class, 'getManagerUserResults'])->name('user-results');
     Route::resource('live-lesson', LiveLessonController::class);
     Route::resource('course-teacher', CourseTeacherController::class);
-    Route::resource('cars', CarsController::class);
+    Route::resource('car', CarController::class);
     Route::resource('appointments', AppointmentController::class);
     Route::get('appointment', [AppointmentController::class, 'getManagerAppointment'])->name('appointment');
+    Route::get('/support',[SupportController::class,'index'])->name('support.index');
     Route::get('notifications', [ManagerController::class, 'getManagerNotifications'])->name('notifications');
-    Route::get('supports', [ManagerController::class, 'getManagerSupports'])->name('supports');
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {

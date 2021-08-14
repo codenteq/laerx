@@ -17,7 +17,7 @@
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
                     <div class="col base p-5 mb-2">
-                        <a href="{{route('manager.cars.index')}}">
+                        <a href="{{route('manager.car.index')}}">
                             <i class="fas fa-car fa-4x"></i><br>
                             <span>Araçlar</span>
                         </a>

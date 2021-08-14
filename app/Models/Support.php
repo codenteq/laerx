@@ -26,4 +26,9 @@ class Support extends Model
     {
         return $this->hasOne(User::class, 'id','userId');
     }
+
+    public function info()
+    {
+        return $this->hasOne(UserInfo::class, 'userId','userId');
+    }
 }

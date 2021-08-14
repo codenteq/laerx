@@ -46,7 +46,7 @@
                         </a>
                     </div>
                     <div class="col base p-5 mb-5">
-                        <a href="{{route('manager.supports')}}">
+                        <a href="{{route('manager.support.index')}}">
                             <i class="fas fa-headset fa-4x"></i></i><br>
                             <span>Destek Mesajları</span>
                         </a>

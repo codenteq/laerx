@@ -11,22 +11,25 @@
                 <figcaption>
                     <span><a href="{{route('manager.appointment')}}"><i class="fas fa-car"></i> Araç & Randevular</a> /</span>
                     <span><a href="{{route('manager.car.index')}}"><i class="fas fa-car"></i> Araçlar</a> /</span>
-                    <span class="active">Araç Ekle</span>
+                    <span class="active">Araç Düzenle</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="form-control" name="form-data">
-
+                        @csrf
+                        @method('PUT')
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="plate_code" placeholder="Araç Plaka">
+                            <input type="text" class="form-control" name="plate_code" placeholder="Araç Plaka"
+                                   value="{{$car->plate_code}}">
                             <label for="floatingFirst">Araç Plaka</label>
                         </div>
 
                         <div class="form-floating">
                             <select class="form-select" name="typeId" aria-label="Floating label select example">
                                 @foreach($cartypes as $type)
-                                    <option value="{{$type->id}}">{{$type->title}}</option>
+                                    <option
+                                        value="{{$type->id}}" {{$car->typeId === $type->id ? 'selected' : null}}>{{$type->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Araç Türü</label>
@@ -35,14 +38,16 @@
                         <br>
 
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" checked>
+                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked"
+                                {{$car->status === 1 ? 'checked' : null}}>
                             <label class="form-check-label" for="flexSwitchCheckChecked">Araç Aktif/Pasif</label>
                         </div>
 
                         <br>
 
                         <div class="mt-3 mb-5">
-                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet</button>
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
+                            </button>
                             <a href="{{route('manager.car.index')}}" class="btn btn-danger">İptal</a>
                         </div>
 
@@ -56,7 +61,7 @@
 
 @section('meta')
 
-    <title>Araç Ekle</title>
+    <title>Araç Düzenle</title>
 
 @endsection
 
@@ -70,7 +75,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const actionUrl = '{{route('manager.car.store')}}';
+        const actionUrl = '{{route('manager.car.update',$car)}}';
         const backUrl = '{{route('manager.car.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>

@@ -18,25 +18,46 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">TKNO</th>
+                            <th scope="col">TCKN</th>
                             <th scope="col">Adı Soyadı</th>
                             <th scope="col">Destek Nedeni</th>
-                            <th scope="col">İletişim Adresi</th>
-                            <th scope="col">Tarih</th>
+                            <th scope="col">İletişim Telefon</th>
+                            <th scope="col">Oluşturulma Tarihi</th>
                             <th scope="col">İşlemler</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>11111111111</td>
-                            <td>Ahmet Sefa Arşiv</td>
-                            <td>Test</td>
-                            <td>Cedit mahallesi</td>
-                            <td>05/08/2021</td>
-                            <td><a href="#"><i class="fas fa-eye"></i></a></td>
-                        </tr>
+                        @foreach($supports as $support)
+                            <tr>
+                                <td>{{$support->user->tc}}</td>
+                                <td>{{$support->user->name .' '. $support->user->surname}}</td>
+                                <td>{{$support->subject}}</td>
+                                <td>{{$support->info->phone}}</td>
+                                <td>{{$support->created_at}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#supportShow{{$support->id}}">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <div class="modal fade" id="supportShow{{$support->id}}" data-bs-backdrop="static"
+                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">{{$support->user->name .' '. $support->user->surname}}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {{$support->message}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

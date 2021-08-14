@@ -66,8 +66,8 @@
                     <i class="fa fa-bell fa-2x"></i><br>
                     Bildirimler
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/supports') ? 'active' : '' }}"
-                   href="{{route('manager.supports')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/support') ? 'active' : '' }}"
+                   href="{{route('manager.support.index')}}">
                     <i class="fas fa-headset fa-2x"></i><br>
                     Destek
                 </a>

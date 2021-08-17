@@ -22,30 +22,26 @@
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Adı Soyadı</th>
-                            <th scope="col">Eposta</th>
-                            <th scope="col">Telefon</th>
-                            <th scope="col">Durum</th>
+                            <th scope="col">Soru</th>
                             <th scope="col">Kayıt Tarihi</th>
                             <th scope="col">İşlemler</th>
                         </tr>
                         </thead>
                         <tbody>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="text-success fw-bold">Aktif</td>
-                                    <td></td>
-                                    <td>
-                                        <a href="#"><i
-                                                class="fas fa-user-edit"></i></a>
-                                        <button class="btn"
-                                                onclick="deleteButton">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                        @foreach ($questions as $question)
+                            <tr>
+                                <td>{{$question->title}}</td>
+                                <td>{{$question->created_at}}</td>
+                                <td>
+                                    <a href="{{route('manager.question.edit',$question)}}"><i
+                                            class="fas fa-edit"></i></a>
+                                    <button class="btn"
+                                            onclick="deleteButton(this,`${{route('manager.question.destroy',$question)}}`)">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -62,14 +58,19 @@
 @endsection
 
 @section('css')
-
+    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
     @include('layouts.stylesheet')
-
 @endsection
 
 @section('js')
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     @include('layouts.script')
-
+    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
+    <script>
+        const backUrl = '{{route('manager.user.index')}}';
+    </script>
+    <script src="{{asset('js/post.js')}}"></script>
 @endsection

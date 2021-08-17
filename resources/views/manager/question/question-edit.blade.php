@@ -6,23 +6,25 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Soru Ekle</h2>
+                    <h2>Soru Düzenle</h2>
                 </blockquote>
                 <figcaption>
                     <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Soru Ekle</span>
+                    <span class="active">Soru Düzenle</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="p-2" name="form-data">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="status" id="switchQuestionImageShow">
+                            <input class="form-check-input" type="checkbox" name="status"
+                                   {{$question->questionImage == 1 ? 'checked' : null}} id="switchQuestionImageShow">
                             <label class="form-check-label" for="switchQuestionImageShow">Soru Resim</label>
                         </div>
                         <br>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="title" placeholder="Başlık">
+                            <input type="text" class="form-control" name="title" placeholder="Başlık"
+                                   value="{{$question->title}}">
                             <label for="floatingFirst">Soru</label>
                         </div>
                         <div class="input-group mb-3 d-none question-image">
@@ -32,63 +34,33 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" name="typeId" aria-label="Floating label select example">
                                 @foreach($types as $type)
-                                    <option value="{{$type->id}}">{{$type->title}}</option>
+                                    <option
+                                        value="{{$type->id}}" {{$question->typeId === $type->id ? 'selected' : null}}>{{$type->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Soru Tipi</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input " type="checkbox" name="status" id="switchImageShow">
+                            <input class="form-check-input" type="checkbox" name="statusChoiceImage"
+                                   {{$question->choiceImage == 1 ? 'checked' : null}} id="switchImageShow">
                         </div>
                         <br>
-                        <div class="row mb-3 text-choice">
-                            <div class="form-floating ps-1 col-11">
-                                <input type="text" class="form-control " name="choice_text_1" placeholder="Cevap 01">
-                                <label class="" for="floatingFirst">Cevap 01</label>
+                        @foreach($question->choice as $key => $choice)
+                            <div class="row mb-3 text-choice">
+                                <div class="form-floating ps-1 col-11">
+                                    <input type="text" class="form-control " name="choice_text_{{$choice->id}}" placeholder="Cevap 0{{$key + 1}}"
+                                           value="{{$choice->title}}">
+                                    <label class="" for="floatingFirst">Cevap 0{{$key + 1}}</label>
+                                </div>
+                                <div class="col-1">
+                                    <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
+                                           data-bs-toggle="tooltip" data-bs-placement="top"
+                                           {{$choice->id === $choice->choiceKey->choiceId ? 'checked' : null}}
+                                           name="status_choice_{{$choice->choiceKey->id}}"
+                                           title="Doğru Cevabı İşaretleyin.">
+                                </div>
                             </div>
-                            <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
-                                       data-bs-toggle="tooltip" data-bs-placement="top"
-                                       name="status_1"
-                                       title="Doğru Cevabı İşaretleyin.">
-                            </div>
-                        </div>
-                        <div class="row mb-3 text-choice">
-                            <div class="form-floating ps-1 col-11">
-                                <input type="text" class="form-control " name="choice_text_2" placeholder="Cevap 02">
-                                <label class="" for="floatingFirst">Cevap 02</label>
-                            </div>
-                            <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
-                                       data-bs-toggle="tooltip" data-bs-placement="top"
-                                       name="status_2"
-                                       title="Doğru Cevabı İşaretleyin.">
-                            </div>
-                        </div>
-                        <div class="row mb-3 text-choice">
-                            <div class="form-floating ps-1 col-11">
-                                <input type="text" class="form-control " name="choice_text_3" placeholder="Cevap 0">
-                                <label class="" for="floatingFirst">Cevap 03</label>
-                            </div>
-                            <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
-                                       data-bs-toggle="tooltip" data-bs-placement="top"
-                                       name="status_3"
-                                       title="Doğru Cevabı İşaretleyin.">
-                            </div>
-                        </div>
-                        <div class="row mb-3 text-choice">
-                            <div class="form-floating ps-1 col-11">
-                                <input type="text" class="form-control " name="choice_text_4" placeholder="Cevap 04">
-                                <label class="" for="floatingFirst">Cevap 04</label>
-                            </div>
-                            <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
-                                       data-bs-toggle="tooltip" data-bs-placement="top"
-                                       name="status_4"
-                                       title="Doğru Cevabı İşaretleyin.">
-                            </div>
-                        </div>
+                        @endforeach
                         <div class="row mb-3 image-choice d-none">
                             <div class="mb-3 col-11">
                                 <input type="file" class="form-control" name="photo">
@@ -146,7 +118,7 @@
 
 @section('meta')
 
-    <title>Soru Ekle</title>
+    <title>Soru Düzenle</title>
 
 @endsection
 

@@ -73,7 +73,7 @@ class UserObserver
         $user->email = $this->request->email;
         $user->password = Hash::make($this->request->password);
 
-        !$this->request->file('avatar') ? $path = null : $path = $this->request->file('photo')->store('public/avatar');
+        !$this->request->file('photo') ? $path = null : $path = $this->request->file('photo')->store('public/avatar');
         UserInfo::where('userId', $user->id)->update([
             'phone' => $this->request->phone,
             'address' => $this->request->address,

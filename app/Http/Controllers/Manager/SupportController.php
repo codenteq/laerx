@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Manager;
 
+use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Support;
 use Illuminate\Http\Request;
@@ -71,7 +72,12 @@ class SupportController extends Controller
      */
     public function update(Request $request, Support $support)
     {
-        //
+        try {
+            $support->update($request->all());
+            return response(ResponseMessage::SuccessMessage);
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage);
+        }
     }
 
     /**

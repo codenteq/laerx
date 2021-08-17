@@ -9,6 +9,16 @@ class Question extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'typeId',
+        'questionImage',
+        'choiceImage',
+        'imagePath',
+        'typeId',
+        'companyId'
+    ];
+
     /**
      * @var string[]
      */
@@ -18,7 +28,7 @@ class Question extends Model
     ];
 
     public function choice() {
-        return $this->hasMany(QuestionChoice::class,'questionId');
+        return $this->hasMany(QuestionChoice::class,'questionId','id');
     }
 
     public function company()

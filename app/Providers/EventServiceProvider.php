@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Appointment;
+use App\Models\Question;
 use App\Models\User;
 use App\Observers\AppointmentObserver;
+use App\Observers\QuestionObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -33,5 +35,6 @@ class EventServiceProvider extends ServiceProvider
     {
         User::observe(UserObserver::class);
         Appointment::observe(AppointmentObserver::class);
+        Question::observe(QuestionObserver::class);
     }
 }

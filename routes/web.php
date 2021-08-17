@@ -59,7 +59,7 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::get('notifications', [HomeController::class, 'getNotifications'])->name('notifications');
 });
 
-Route::prefix('manager')->name('manager.')->group(function () {
+Route::prefix('manager')->name('manager.')->middleware('auth')->group(function () {
     Route::get('dashboard', [ManagerController::class, 'getManagerDashboard'])->name('dashboard');
     Route::resource('user', UserController::class);
     Route::get('user-operations', [UserController::class, 'getManagerUserOperations'])->name('user-operations');
@@ -71,11 +71,12 @@ Route::prefix('manager')->name('manager.')->group(function () {
     Route::resource('appointment', AppointmentController::class);
     Route::get('appointment-setting', [ManagerController::class, 'getManagerAppointmentSetting'])->name('appointment-setting');
     Route::get('/support',[SupportController::class,'index'])->name('support.index');
+    Route::put('/support/{support}',[SupportController::class,'update'])->name('support.update');
     Route::resource('question', QuestionController::class);
     Route::resource('notification', NotificationController::class);
 });
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('dashboard', [AdminController::class, 'getAdminDashboard'])->name('dashboard');
     Route::resource('language', LanguageController::class);
     Route::resource('company', CompanyController::class);

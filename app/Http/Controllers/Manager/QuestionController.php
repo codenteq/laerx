@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Manager;
 
+use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Manager\QuestionRequest;
+use App\Models\Question;
+use App\Models\QuestionType;
 
 class QuestionController extends Controller
 {
@@ -14,7 +17,8 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return view('manager.question.question');
+        $questions = Question::latest()->get();
+        return view('manager.question.question',compact('questions'));
     }
 
     /**
@@ -24,61 +28,63 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        return view('manager.question.question-add');
+        $types = QuestionType::all();
+        return view('manager.question.question-add', compact('types'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Requests\Manager\QuestionRequest $request
+     * @param \App\Models\Question $question
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Question $question, QuestionRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        try {
+            $question->create($request->all());
+            return response(ResponseMessage::SuccessMessage);
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage);
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param \App\Models\Question $question
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Question $question)
     {
-        //
+        $types = QuestionType::all();
+        return view('manager.question.question-edit',compact('question','types'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\Manager\QuestionRequest $request
+     * @param \App\Models\Question $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(QuestionRequest $request, Question $question)
     {
-        //
+        try {
+            $question->update($request->all());
+            return response(ResponseMessage::SuccessMessage);
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param \App\Models\Question $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Question $question)
     {
         //
     }

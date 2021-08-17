@@ -11,6 +11,8 @@ use App\Http\Controllers\Manager\CarController;
 use App\Http\Controllers\Manager\CourseTeacherController;
 use App\Http\Controllers\Manager\LiveLessonController;
 use App\Http\Controllers\Manager\ManagerController;
+use App\Http\Controllers\Manager\NotificationController;
+use App\Http\Controllers\Manager\QuestionController;
 use App\Http\Controllers\Manager\SupportController;
 use App\Http\Controllers\Manager\UserController;
 use App\Http\Controllers\User\HomeController;
@@ -59,7 +61,6 @@ Route::prefix('user')->name('user.')->group(function () {
 
 Route::prefix('manager')->name('manager.')->group(function () {
     Route::get('dashboard', [ManagerController::class, 'getManagerDashboard'])->name('dashboard');
-
     Route::resource('user', UserController::class);
     Route::get('user-operations', [UserController::class, 'getManagerUserOperations'])->name('user-operations');
     Route::get('user-results', [UserController::class, 'getManagerUserResults'])->name('user-results');
@@ -68,8 +69,10 @@ Route::prefix('manager')->name('manager.')->group(function () {
     Route::resource('car', CarController::class);
     Route::get('appointment-car', [AppointmentController::class, 'getManagerAppointment'])->name('appointment-car');
     Route::resource('appointment', AppointmentController::class);
+    Route::get('appointment-setting', [ManagerController::class, 'getManagerAppointmentSetting'])->name('appointment-setting');
     Route::get('/support',[SupportController::class,'index'])->name('support.index');
-    Route::get('notifications', [ManagerController::class, 'getManagerNotifications'])->name('notifications');
+    Route::resource('question', QuestionController::class);
+    Route::resource('notification', NotificationController::class);
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {

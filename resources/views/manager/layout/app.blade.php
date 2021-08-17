@@ -36,37 +36,42 @@
                     <i class="fa fa-home fa-2x"></i><br>
                     <span style="position: relative;">Ana Sayfa</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations') ? 'active' : '' }} {{ request()->is('manager/user/create') ? 'active' : '' }} {{ request()->is('manager/user') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations*') ? 'active' : '' }} {{ request()->is('manager/user') ? 'active' : '' }} {{ request()->is('manager/user/create') ? 'active' : '' }}"
                    href="{{route('manager.user-operations')}}">
                     <i class="fas fa-users-cog fa-2x"></i><br>
                     <span style="position: relative;">Kursiyer İşlemleri</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-results') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-results*') ? 'active' : '' }}"
                    href="{{route('manager.user-results')}}">
                     <i class="fa fa-chart-pie fa-2x"></i><br>
                     Kursiyer Raporları
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lesson') ? 'active' : '' }} {{ request()->is('manager/live-lesson/create') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/question*') ? 'active' : '' }}"
+                   href="{{route('manager.question.index')}}">
+                    <i class="fas fa-question fa-2x"></i><br>
+                    Sorular
+                </a>
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lesson*') ? 'active' : '' }}"
                    href="{{route('manager.live-lesson.index')}}">
                     <i class="fas fa-video fa-2x"></i><br>
                     Canlı Ders
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teacher') ? 'active' : '' }} {{ request()->is('manager/course-teacher/create') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teacher*') ? 'active' : '' }}"
                    href="{{route('manager.course-teacher.index')}}">
                     <i class="fas fa-chalkboard-teacher fa-2x"></i><br>
                     Eğitmenler
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment-car') ? 'active' : '' }} {{ request()->is('manager/car') ? 'active' : '' }} {{ request()->is('manager/car/create') ? 'active' : '' }} {{ request()->is('manager/appointment') ? 'active' : '' }} {{ request()->is('manager/appointment/create') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment-car*') ? 'active' : '' }} {{ request()->is('manager/car*') ? 'active' : '' }}{{ request()->is('manager/appointment*') ? 'active' : '' }} {{ request()->is('manager/appointment-setting*') ? 'active' : '' }}"
                    href="{{route('manager.appointment-car')}}">
                     <i class="fa fa-car fa-2x"></i><br>
                     Araç & Randevu
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/notifications') ? 'active' : '' }}"
-                   href="{{route('manager.notifications')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/notification*') ? 'active' : '' }}"
+                   href="{{route('manager.notification.index')}}">
                     <i class="fa fa-bell fa-2x"></i><br>
                     Bildirimler
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/support') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/support*') ? 'active' : '' }}"
                    href="{{route('manager.support.index')}}">
                     <i class="fas fa-headset fa-2x"></i><br>
                     Destek

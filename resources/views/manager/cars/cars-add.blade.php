@@ -9,7 +9,7 @@
                     <h2>Araç Ekle</h2>
                 </blockquote>
                 <figcaption>
-                    <span><a href="{{route('manager.appointment')}}"><i class="fas fa-car"></i> Araç & Randevular</a> /</span>
+                    <span><a href="{{route('manager.appointment.index')}}"><i class="fas fa-car"></i> Araç & Randevular</a> /</span>
                     <span><a href="{{route('manager.car.index')}}"><i class="fas fa-car"></i> Araçlar</a> /</span>
                     <span class="active">Araç Ekle</span>
                 </figcaption>

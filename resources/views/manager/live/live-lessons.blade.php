@@ -17,8 +17,8 @@
                 <div class="col-12 col-lg-12 mt-3">
                     <h4><a href="{{route('manager.live-lesson.create')}}" class="btn btn-success">Ders Oluştur</a></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3">
-                    <table id="example" class="table">
+                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                    <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
                             <th scope="col">Ders Adı</th>
@@ -64,6 +64,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('layouts.stylesheet')
 @endsection
 
 @section('js')
@@ -75,4 +76,5 @@
         const backUrl = '{{route('manager.live-lesson.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>
+    @include('layouts.script')
 @endsection

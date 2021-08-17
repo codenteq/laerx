@@ -18,28 +18,28 @@
                 <div class="col-12 col-lg-12 mt-3">
                     <h4><a href="{{route('admin.group.create')}}" class="btn btn-success">Grup Oluştur</a></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3">
-                    <table id="example" class="table table-striped" style="width:100%">
+                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                    <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
-                            <th>Kodu</th>
+                            <th>Grup</th>
                             <th>İşlemler</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach ($groups as $group)
-                        <tr>
-                            <td>{{$group->title}}</td>
-                            <td>
-                                <a href="{{route('admin.group.edit',$group)}}"><i
-                                        class="fas fa-user-edit"></i></a>
-                                <button class="btn"
-                                        onclick="deleteButton(this,`${{route('admin.group.destroy',$group)}}`)"><i
-                                        class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                        </tbody>
+                            <tr>
+                                <td>{{$group->title}}</td>
+                                <td>
+                                    <a href="{{route('admin.group.edit',$group)}}"><i
+                                            class="fas fa-user-edit"></i></a>
+                                    <button class="btn"
+                                            onclick="deleteButton(this,`${{route('admin.group.destroy',$group)}}`)"><i
+                                            class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -57,6 +57,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('layouts.stylesheet')
 @endsection
 
 @section('js')
@@ -68,4 +69,5 @@
         const backUrl = '{{route('admin.company.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>
+    @include('layouts.script')
 @endsection

@@ -6,16 +6,16 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Eğitmenler</h2>
+                    <h2>Sorular</h2>
                 </blockquote>
                 <figcaption>
                     <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Eğitmenler</span>
+                    <span class="active">Sorular</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <h4><a href="{{route('manager.course-teacher.create')}}" class="btn btn-success">Yeni Eğitmen
+                    <h4><a href="{{route('manager.question.create')}}" class="btn btn-success">Soru
                             Ekle</a></h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-scroll">
@@ -31,25 +31,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($users as $user)
-                            @if ($user->user->type === 2)
                                 <tr>
-                                    <th scope="row">{{$user->user->name .' '. $user->user->surname}}</th>
-                                    <td>{{$user->user->email}}</td>
-                                    <td>{{$user->phone}}</td>
-                                    <td class="{{$user->status === 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$user->status === 1 ? 'Aktif' : 'Pasif'}}</td>
-                                    <td>{{$user->created_at}}</td>
+                                    <th scope="row"></th>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-success fw-bold">Aktif</td>
+                                    <td></td>
                                     <td>
-                                        <a href="{{route('manager.course-teacher.edit',$user->userId)}}"><i
+                                        <a href="#"><i
                                                 class="fas fa-user-edit"></i></a>
                                         <button class="btn"
-                                                onclick="deleteButton(this,`${{route('manager.course-teacher.destroy',$user->userId)}}`)">
+                                                onclick="deleteButton">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </td>
                                 </tr>
-                            @endif
-                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -61,23 +57,19 @@
 
 @section('meta')
 
-    <title>Eğitmenler</title>
+    <title>Sorular</title>
 
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+
     @include('layouts.stylesheet')
+
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
-    <script>
-        const backUrl = '{{route('manager.course-teacher.index')}}';
-    </script>
-    <script src="{{asset('js/post.js')}}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     @include('layouts.script')
+
 @endsection

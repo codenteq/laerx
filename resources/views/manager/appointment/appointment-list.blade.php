@@ -19,8 +19,8 @@
                     <h4><a href="{{route('manager.appointment.create')}}" class="btn btn-success">Randevu Oluştur</a>
                     </h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3">
-                    <table id="example" class="table">
+                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                    <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
                             <th scope="col">Kursiyer</th>
@@ -66,6 +66,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('layouts.stylesheet')
 @endsection
 
 @section('js')
@@ -77,4 +78,5 @@
         const backUrl = '{{route('manager.appointment.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>
+    @include('layouts.script')
 @endsection

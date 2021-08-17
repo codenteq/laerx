@@ -12,13 +12,8 @@ class ManagerController extends Controller
         return view('manager.index');
     }
 
-    public function getManagerLiveLessons()
+    public function getManagerAppointmentSetting()
     {
-
-    }
-
-    public function getManagerNotifications()
-    {
-        return view('manager.notifications');
+        return view('manager.appointment.appointment-setting');
     }
 }

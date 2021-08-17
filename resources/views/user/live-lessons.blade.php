@@ -17,8 +17,8 @@
                 <div class="col-12 col-lg-12 mt-3">
                     <h4><button class="btn btn-success">Tamamlanmış Dersler</button> <button class="btn btn-warning">Tamamlanmamış Dersler</button></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3">
-                    <table class="table">
+                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                    <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
                             <th scope="col">id</th>
@@ -53,9 +53,14 @@
 
 @section('css')
 
+    @include('layouts.stylesheet')
+
 @endsection
 
 @section('js')
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    @include('layouts.script')
 
 @endsection
 

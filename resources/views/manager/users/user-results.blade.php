@@ -97,29 +97,29 @@
         <section>
             <div class="row mt-5">
                 <div class="col-6">
-                    <h4>Sınavlarım</h4>
+                    <h4>Sınav Detayları</h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3">
-                    <table class="table">
+                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                    <table id="data-table" class="table table-striped">
                         <thead>
-                        <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">Adı Soyadı</th>
-                            <th scope="col">TCKNO</th>
-                            <th scope="col">Yapılan Test Sayısı</th>
-                            <th scope="col">Ortalama Puan</th>
-                            <th scope="col">İşlemler</th>
-                        </tr>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Adı Soyadı</th>
+                                <th scope="col">TCKNO</th>
+                                <th scope="col">Yapılan Test Sayısı</th>
+                                <th scope="col">Ortalama Puan</th>
+                                <th scope="col">İşlemler</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Ahmet Sefa Arşiv</td>
-                            <td>11111111111</td>
-                            <td>4</td>
-                            <th>85</th>
-                            <td><a href="#"><i class="fas fa-eye "></i></a></td>
-                        </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Ahmet Sefa Arşiv</td>
+                                <td>11111111111</td>
+                                <td>4</td>
+                                <th>85</th>
+                                <td><a href="#"><i class="fas fa-eye "></i></a></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -137,8 +137,13 @@
 
 @section('css')
 
+    @include('layouts.stylesheet')
+
 @endsection
 
 @section('js')
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    @include('layouts.script')
 
 @endsection

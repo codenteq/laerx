@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AppointmentSetting extends Model
+class NotificationUser extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ignore_date','companyId'];
+    protected $fillable = ['userId', 'notificationId'];
 }

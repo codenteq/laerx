@@ -17,7 +17,8 @@
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="p-2" name="form-data">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="status" id="switchQuestionImageShow">
+                            <input class="form-check-input" type="checkbox" name="questionImage"
+                                   id="switchQuestionImageShow">
                             <label class="form-check-label" for="switchQuestionImageShow">Soru Resim</label>
                         </div>
                         <br>
@@ -38,7 +39,8 @@
                             <label for="floatingSelect">Soru Tipi</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input " type="checkbox" name="status" id="switchImageShow">
+                            <input class="form-check-input " type="checkbox" name="choiceImage" id="switchImageShow">
+                            <label class="form-check-label" for="switchImageShow">Şık Resim</label>
                         </div>
                         <br>
                         <div class="row mb-3 text-choice">
@@ -47,7 +49,8 @@
                                 <label class="" for="floatingFirst">Cevap 01</label>
                             </div>
                             <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
+                                <input class="form-check-input p-3" type="checkbox"
+                                       id="flexCheckDefault"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        name="status_1"
                                        title="Doğru Cevabı İşaretleyin.">
@@ -59,7 +62,8 @@
                                 <label class="" for="floatingFirst">Cevap 02</label>
                             </div>
                             <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
+                                <input class="form-check-input p-3" type="checkbox"
+                                       id="flexCheckDefault"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        name="status_2"
                                        title="Doğru Cevabı İşaretleyin.">
@@ -71,7 +75,8 @@
                                 <label class="" for="floatingFirst">Cevap 03</label>
                             </div>
                             <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
+                                <input class="form-check-input p-3" type="checkbox"
+                                       id="flexCheckDefault"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        name="status_3"
                                        title="Doğru Cevabı İşaretleyin.">
@@ -83,49 +88,55 @@
                                 <label class="" for="floatingFirst">Cevap 04</label>
                             </div>
                             <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
+                                <input class="form-check-input p-3" type="checkbox"
+                                       id="flexCheckDefault"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        name="status_4"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>
                         </div>
+
                         <div class="row mb-3 image-choice d-none">
                             <div class="mb-3 col-11">
-                                <input type="file" class="form-control" name="photo">
+                                <input type="file" class="form-control" name="choice_image_1">
                             </div>
                             <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" value="" id="flexCheckDefault"
+                                <input class="form-check-input p-3" type="checkbox"
+                                       name="status_1" id="flexCheckDefault"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>
                         </div>
                         <div class="row mb-3 image-choice d-none">
                             <div class="mb-3 col-11">
-                                <input type="file" class="form-control" name="photo">
+                                <input type="file" class="form-control" name="choice_image_2">
                             </div>
 
                             <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" value="" id="flexCheckDefault"
+                                <input class="form-check-input p-3" type="checkbox"
+                                       name="status_2" id="flexCheckDefault"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>
                         </div>
                         <div class="row mb-3 image-choice d-none">
                             <div class="mb-3 col-11">
-                                <input type="file" class="form-control" name="photo">
+                                <input type="file" class="form-control" name="choice_image_3">
                             </div>
                             <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" value="" id="flexCheckDefault"
+                                <input class="form-check-input p-3" type="checkbox"
+                                       name="status_3" id="flexCheckDefault"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>
                         </div>
                         <div class="row mb-3 image-choice d-none">
                             <div class="mb-3 col-11">
-                                <input type="file" class="form-control" name="photo">
+                                <input type="file" class="form-control" name="choice_image_4">
                             </div>
                             <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" value="" id="flexCheckDefault"
+                                <input class="form-check-input p-3" type="checkbox"
+                                       name="status_4" id="flexCheckDefault"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>

@@ -11,9 +11,4 @@ class ManagerController extends Controller
     {
         return view('manager.index');
     }
-
-    public function getManagerAppointmentSetting()
-    {
-        return view('manager.appointment.appointment-setting');
-    }
 }

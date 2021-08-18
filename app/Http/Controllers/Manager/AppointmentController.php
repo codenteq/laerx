@@ -7,8 +7,10 @@ use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\AppointmentRequest;
 use App\Models\Appointment;
+use App\Models\AppointmentSetting;
 use App\Models\Car;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -129,6 +131,27 @@ class AppointmentController extends Controller
     public function getManagerAppointment()
     {
         return view('manager.appointment.appointment');
+    }
+
+    public function getAppointmentSetting()
+    {
+        $months = Helper::currentMounth();
+        return view('manager.appointment.appointment-setting',compact('months'));
+    }
+
+    public function postAppointmentSetting(Request $request)
+    {
+        try {
+            foreach ($request->all() as $key => $val) {
+                AppointmentSetting::updateOrCreate([
+                    'ignore_date' => $val,
+                    'companyId' => Helper::companyId()
+                ]);
+            }
+            return response(ResponseMessage::SuccessMessage);
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage);
+        }
     }
 }
 

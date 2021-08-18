@@ -6,7 +6,10 @@ use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\QuestionRequest;
 use App\Models\Question;
+use App\Models\QuestionChoice;
+use App\Models\QuestionChoiceKey;
 use App\Models\QuestionType;
+use Illuminate\Support\Facades\Log;
 
 class QuestionController extends Controller
 {
@@ -71,10 +74,12 @@ class QuestionController extends Controller
     public function update(QuestionRequest $request, Question $question)
     {
         try {
+
             $question->update($request->all());
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            echo $ex;
+            //return response(ResponseMessage::ErrorMessage);
         }
     }
 
@@ -86,6 +91,11 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        try {
+            $question->delete();
+            return response(ResponseMessage::SuccessMessage);
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage);
+        }
     }
 }

@@ -16,6 +16,8 @@
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="p-2" name="form-data">
+                        @csrf
+                        @method('PUT')
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="status"
                                    {{$question->questionImage == 1 ? 'checked' : null}} id="switchQuestionImageShow">
@@ -48,7 +50,7 @@
                         @foreach($question->choice as $key => $choice)
                             <div class="row mb-3 text-choice">
                                 <div class="form-floating ps-1 col-11">
-                                    <input type="text" class="form-control " name="choice_text_{{$choice->id}}" placeholder="Cevap 0{{$key + 1}}"
+                                    <input type="text" class="form-control " name="{{$choice->id}}" placeholder="Cevap 0{{$key + 1}}"
                                            value="{{$choice->title}}">
                                     <label class="" for="floatingFirst">Cevap 0{{$key + 1}}</label>
                                 </div>
@@ -56,7 +58,8 @@
                                     <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
                                            data-bs-toggle="tooltip" data-bs-placement="top"
                                            {{$choice->id === $choice->choiceKey->choiceId ? 'checked' : null}}
-                                           name="status_choice_{{$choice->choiceKey->id}}"
+                                           name="correct_choice"
+                                           value="{{$choice->id}}"
                                            title="Doğru Cevabı İşaretleyin.">
                                 </div>
                             </div>
@@ -132,7 +135,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const actionUrl = '{{route('manager.question.store')}}';
+        const actionUrl = '{{route('manager.question.update',$question)}}';
         const backUrl = '{{route('manager.question.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>

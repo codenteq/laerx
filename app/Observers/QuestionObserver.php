@@ -6,6 +6,7 @@ use App\Helpers\Helper;
 use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\QuestionChoiceKey;
+use Illuminate\Support\Facades\Log;
 
 class QuestionObserver
 {
@@ -30,6 +31,8 @@ class QuestionObserver
         $question->choiceImage = isset($this->request->choiceImage) === 'on' ? 1 : 0;
         $question->typeId = $this->request->typeId;
         $question->companyId = Helper::companyId();
+        isset($this->request->questionImage) ? $path = $this->request->file('imagePath')->store('public/questions') : $path = null;
+        $question->imagePath = $path;
     }
 
     /**
@@ -42,10 +45,12 @@ class QuestionObserver
     {
         for ($i = 1; $i <= 4; $i++) {
             $choice = 'choice_text_' . $i;
+            $choiceImage = 'choice_image_' . $i;
             $answer = 'status_' . $i;
+            isset($this->request->choiceImage) ? $path = $this->request->file($choiceImage)->store('public/choices') : $path = null;
             $qChoice = QuestionChoice::create([
                 'title' => $this->request->$choice,
-                'path' => null,
+                'path' => $path,
                 'questionId' => $question->id,
             ]);
             if (isset($this->request->$answer)) {
@@ -70,21 +75,19 @@ class QuestionObserver
         $question->choiceImage = isset($this->request->choiceImage) === 'on' ? 1 : 0;
         $question->typeId = $this->request->typeId;
 
-        for ($i = 1; $i <= 4; $i++) {
-            $choice = 'choice_text_' . $i;
-            $answer = 'status_' . $i;
-            $qChoice = QuestionChoice::where()->update([
-                'title' => $this->request->$choice,
+        $req = $this->request->except(['_token', '_method', 'typeId', 'correct_choice', 'title']);
+        foreach ($req as $key => $val) {
+            QuestionChoice::find($key)->update([
+                'title' => $val,
                 'path' => null,
                 'questionId' => $question->id,
             ]);
-            if (isset($this->request->$answer)) {
-                QuestionChoiceKey::where('questionId',$question->id)->update([
-                    'choiceId' => $qChoice->id,
-                    'questionId' => $question->id,
-                ]);
-            }
         }
+
+        QuestionChoiceKey::where('questionId',$question->id)->update([
+            'choiceId' =>   $this->request->correct_choice,
+            'questionId' => $question->id,
+        ]);
     }
 
     /**
@@ -95,7 +98,8 @@ class QuestionObserver
      */
     public function deleted(Question $question)
     {
-        //
+        QuestionChoice::where('questionId', $question->id)->delete();
+        QuestionChoiceKey::where('questionId', $question->id)->delete();
     }
 
     /**

@@ -23,7 +23,7 @@
                         <thead>
                         <tr>
                             <th scope="col">Soru</th>
-                            <th scope="col">Kayıt Tarihi</th>
+                            <th scope="col">Oluşturulma Tarihi</th>
                             <th scope="col">İşlemler</th>
                         </tr>
                         </thead>
@@ -70,7 +70,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const backUrl = '{{route('manager.user.index')}}';
+        const backUrl = '{{route('manager.question.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>
 @endsection

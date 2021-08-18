@@ -68,8 +68,9 @@ Route::prefix('manager')->name('manager.')->middleware('auth')->group(function (
     Route::resource('course-teacher', CourseTeacherController::class);
     Route::resource('car', CarController::class);
     Route::get('appointment-car', [AppointmentController::class, 'getManagerAppointment'])->name('appointment-car');
+    Route::post('appointment/setting/create', [AppointmentController::class, 'postAppointmentSetting'])->name('appointment.setting.store');
+    Route::get('appointment/setting', [AppointmentController::class, 'getAppointmentSetting'])->name('appointment.setting');
     Route::resource('appointment', AppointmentController::class);
-    Route::get('appointment-setting', [ManagerController::class, 'getManagerAppointmentSetting'])->name('appointment-setting');
     Route::get('/support',[SupportController::class,'index'])->name('support.index');
     Route::put('/support/{support}',[SupportController::class,'update'])->name('support.update');
     Route::resource('question', QuestionController::class);
@@ -83,5 +84,4 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('group', GroupController::class);
     Route::resource('period', PeriodController::class);
     Route::resource('manager-user', ManagerUserController::class);
-
 });

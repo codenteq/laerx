@@ -29,7 +29,7 @@
                         </a>
                     </div>
                     <div class="col base p-5 mb-5">
-                        <a href="{{route('manager.appointment-setting')}}">
+                        <a href="{{route('manager.appointment.setting')}}">
                             <i class="fas fa-sliders-h fa-4x"></i><br>
                             <span>Randevu Ayarları</span>
                         </a>

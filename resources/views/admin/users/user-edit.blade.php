@@ -20,8 +20,8 @@
                         @method('PUT')
                         @csrf
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" name="tc" placeholder="TCKN"
-                                   value="{{$user->user->tc}}">
+                            <input type="text" class="form-control" name="tc" placeholder="TCKN"
+                                   value="{{$user->user->tc}}" maxlength="11">
                             <label for="floatingFirst">TC Kimlik No</label>
                         </div>
 
@@ -38,8 +38,8 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="password" placeholder="Şifre" value="{{$user->user->password}}">
-                            <label for="floatingLast">Şifre</label>
+                            <input type="password" class="form-control" name="password" placeholder="Yeni Şifre">
+                            <label for="floatingLast">Yeni Şifre</label>
                         </div>
 
                         <div class="form-floating mb-3">
@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" name="phone" placeholder="Telefon Numarası"
+                            <input type="text" class="form-control" name="phone" placeholder="Telefon Numarası"
                                    value="{{$user->phone}}">
                             <label for="floatingPhone">Telefon Numarası</label>
                         </div>

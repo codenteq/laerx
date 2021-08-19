@@ -11,19 +11,4 @@ class ManagerController extends Controller
     {
         return view('manager.index');
     }
-
-    public function getManagerLiveLessons()
-    {
-
-    }
-
-    public function getManagerNotifications()
-    {
-        return view('manager.notifications');
-    }
-
-    public function getManagerSupports()
-    {
-        return view('manager.supports');
-    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Helpers\Helper;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Support\Facades\Hash;
@@ -43,16 +44,17 @@ class UserObserver
      */
     public function created(User $user)
     {
+        !$this->request->file('photo') ? $path = null : $path = $this->request->file('photo')->store('public/avatar');
         UserInfo::create([
             'phone' => $this->request->phone,
             'address' => $this->request->address,
             'status' => isset($this->request->status) == 'on' ? 1 : 0,
             'periodId' => $this->request->periodId,
-            'month' => $this->request->month,
+            'monthId' => $this->request->monthId,
             'groupId' => $this->request->groupId,
             'languageId' => $this->request->languageId,
-            'photo' => $this->request->photo,
-            'companyId' => $this->request->companyId,
+            'photo' => $path,
+            'companyId' => auth()->user()->type === 1 ? $this->request->companyId : Helper::companyId(),
             'userId' => $user->id
         ]);
     }
@@ -71,16 +73,17 @@ class UserObserver
         $user->email = $this->request->email;
         $user->password = Hash::make($this->request->password);
 
-        UserInfo::where('userId',$user->id)->update([
+        !$this->request->file('photo') ? $path = null : $path = $this->request->file('photo')->store('public/avatar');
+        UserInfo::where('userId', $user->id)->update([
             'phone' => $this->request->phone,
             'address' => $this->request->address,
             'status' => isset($this->request->status) == 'on' ? 1 : 0,
             'periodId' => $this->request->periodId,
-            'month' => $this->request->month,
+            'monthId' => $this->request->monthId,
             'groupId' => $this->request->groupId,
             'languageId' => $this->request->languageId,
-            'photo' => $this->request->photo,
-            'companyId' => $this->request->companyId,
+            'photo' => $path,
+            'companyId' => auth()->user()->type === 1 ? $this->request->companyId : Helper::companyId(),
             'userId' => $user->id
         ]);
     }

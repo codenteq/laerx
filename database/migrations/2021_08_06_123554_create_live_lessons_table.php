@@ -17,8 +17,9 @@ class CreateLiveLessonsTable extends Migration
             $table->id();
             $table->string('title');
             $table->dateTime('live_date');
+            $table->string('url');
             $table->foreignId('periodId');
-            $table->date('month');
+            $table->foreignId('monthId');
             $table->foreignId('groupId');
             $table->foreignId('typeId');
             $table->timestamps();

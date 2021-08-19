@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CompanyRequest;
+use App\Http\Requests\Admin\CompanyRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 

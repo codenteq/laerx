@@ -14,29 +14,58 @@
                 </figcaption>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12">
-                    <table class="table">
+                <div class="col-12 col-lg-12 overflow-scroll">
+                    <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">TKNO</th>
+                            <th scope="col">TCKN</th>
                             <th scope="col">Adı Soyadı</th>
                             <th scope="col">Destek Nedeni</th>
-                            <th scope="col">İletişim Adresi</th>
-                            <th scope="col">Tarih</th>
+                            <th scope="col">İletişim Telefon</th>
+                            <th scope="col">Oluşturulma Tarihi</th>
                             <th scope="col">İşlemler</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>11111111111</td>
-                            <td>Ahmet Sefa Arşiv</td>
-                            <td>Test</td>
-                            <td>Cedit mahallesi</td>
-                            <td>05/08/2021</td>
-                            <td><a href="#"><i class="fas fa-eye"></i></a></td>
-                        </tr>
+                        @foreach($supports as $support)
+                            <tr>
+                                <td>{{$support->user->tc}}</td>
+                                <td>{{$support->user->name .' '. $support->user->surname}}</td>
+                                <td>{{$support->subject}}</td>
+                                <td>{{$support->info->phone}}</td>
+                                <td>{{$support->created_at}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#supportShow{{$support->id}}">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <div class="modal fade" id="supportShow{{$support->id}}" data-bs-backdrop="static"
+                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">{{$support->user->name .' '. $support->user->surname}}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {{$support->message}}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form name="form-data">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input type="hidden" name="status" value="1">
+                                                        <button type="button" onclick="modalCreateAndUpdateButton(`${{route('manager.support.update',$support)}}`)" class="btn btn-primary">Tamamlandı</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -53,9 +82,14 @@
 @endsection
 
 @section('css')
-
+    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('layouts.stylesheet')
 @endsection
 
 @section('js')
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    @include('layouts.script')
+    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
+    <script src="{{asset('js/post.js')}}"></script>
 @endsection

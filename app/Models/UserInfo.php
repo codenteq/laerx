@@ -14,7 +14,7 @@ class UserInfo extends Model
         'address',
         'status',
         'periodId',
-        'month',
+        'monthId',
         'groupId',
         'languageId',
         'photo',
@@ -42,7 +42,7 @@ class UserInfo extends Model
      */
     public function period()
     {
-        return $this->hasOne(Period::class,'periodId')->withDefault();
+        return $this->hasOne(Period::class,'id','periodId')->withDefault();
     }
 
     /**
@@ -50,7 +50,7 @@ class UserInfo extends Model
      */
     public function group()
     {
-        return $this->hasOne(Group::class,'groupId')->withDefault();
+        return $this->hasOne(Group::class,'id','groupId')->withDefault();
     }
 
     /**
@@ -59,5 +59,13 @@ class UserInfo extends Model
     public function company()
     {
         return $this->hasOne(Company::class, 'id','companyId')->withDefault();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function month()
+    {
+        return $this->hasOne(Month::class, 'id','monthId')->withDefault();
     }
 }

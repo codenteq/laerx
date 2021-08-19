@@ -9,6 +9,7 @@
     @yield('meta')
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
 
     <link rel="icon" href="{{asset('images/c-icon.png')}}" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -65,7 +66,7 @@
                     <i class="fa fa-bell fa-2x"></i><br>
                     Bildirimler
                 </a>
-                <a class="list-group-item list-group-item-action text-center mb-5" href="{{route('logout')}}">
+                <a class="list-group-item list-group-item-action text-center mb-5" href="{{route('logout-user')}}">
                     <i class="fas fa-sign-out-alt fa-2x"></i><br>
                     Çıkış Yap
                 </a>
@@ -84,7 +85,7 @@
                 </button>
                 <div class="collapse navbar-collapse d-none d-sm-block" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                        <li class="nav-item active"><a class="nav-link">Hoşgeldiniz, Ahmet Arşiv</a></li>
+                        <li class="nav-item active"><a class="nav-link">Hoşgeldiniz, {{auth()->user()->name .' '. auth()->user()->surname}}</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
@@ -92,7 +93,7 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('user.profile')}}">Profil</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{route('logout')}}">Çıkış Yap</a>
+                                <a class="dropdown-item" href="{{route('logout-user')}}">Çıkış Yap</a>
                             </div>
                         </li>
                     </ul>
@@ -113,6 +114,7 @@
 </div>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="{{asset('js/app.js')}}"></script>
 @yield('js')

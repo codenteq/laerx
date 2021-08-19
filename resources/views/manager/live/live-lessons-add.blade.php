@@ -10,30 +10,35 @@
                 </blockquote>
                 <figcaption>
                     <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="{{route('manager.live-lessons.index')}}"><i class="fas fa-video"></i> Canlı Dersler</a> /</span>
+                    <span><a href="{{route('manager.live-lesson.index')}}"><i
+                                class="fas fa-video"></i> Canlı Dersler</a> /</span>
                     <span class="active">Canlı Ders Ekle</span>
                 </figcaption>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <form class="form-control">
-
+                    <form class="form-control" name="form-data">
+                        @csrf
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="floatingFirst" placeholder="Tarih">
+                            <input type="datetime-local" class="form-control" name="live_date" placeholder="Tarih">
                             <label for="floatingFirst">Tarih</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingFirst" placeholder="Üye Adı">
+                            <input type="text" class="form-control" name="title" placeholder="Üye Adı">
                             <label for="floatingFirst">Ders Adı</label>
                         </div>
 
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="url" placeholder="Ders Link">
+                            <label for="floatingFirst">Ders Link</label>
+                        </div>
+
                         <div class="form-floating">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                <option value="1">İlk Yardım Bilgisi</option>
-                                <option value="2">Trafik ve Çevre Bilgisi</option>
-                                <option value="3">Araç Tekniği</option>
-                                <option value="4">Trafik Adbı</option>
+                            <select class="form-select" name="typeId" aria-label="Floating label select example">
+                                @foreach($types as $type)
+                                    <option value="{{$type->id}}">{{$type->title}}</option>
+                                @endforeach
                             </select>
                             <label for="floatingSelect">Kategori</label>
                         </div>
@@ -41,11 +46,10 @@
                         <br>
 
                         <div class="form-floating">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                <option value="1">2019</option>
-                                <option value="2">2020</option>
-                                <option value="3">2021</option>
-                                <option value="4">2022</option>
+                            <select class="form-select" name="periodId" aria-label="Floating label select example">
+                                @foreach($periods as $period)
+                                    <option value="{{$period->id}}">{{$period->title}}</option>
+                                @endforeach
                             </select>
                             <label for="floatingSelect">Dönem</label>
                         </div>
@@ -53,19 +57,10 @@
                         <br>
 
                         <div class="form-floating">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                <option value="1">Ocak</option>
-                                <option value="2">Şubat</option>
-                                <option value="3">Mart</option>
-                                <option value="4">Nisan</option>
-                                <option value="5">Mayıs</option>
-                                <option value="6">Haziran</option>
-                                <option value="7">Temmuz</option>
-                                <option value="8">Ağustos</option>
-                                <option value="9">Eylül</option>
-                                <option value="10">Ekim</option>
-                                <option value="11">Kasım</option>
-                                <option value="12">Aralık</option>
+                            <select class="form-select" name="monthId" aria-label="Floating label select example">
+                                @foreach($months as $month)
+                                    <option value="{{$month->id}}">{{$month->title}}</option>
+                                @endforeach
                             </select>
                             <label for="floatingSelect">Ay</label>
                         </div>
@@ -73,15 +68,10 @@
                         <br>
 
                         <div class="form-floating">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                <option value="1">A</option>
-                                <option value="2">B</option>
-                                <option value="3">C</option>
-                                <option value="4">D</option>
-                                <option value="5">E</option>
-                                <option value="6">F</option>
-                                <option value="7">G</option>
-                                <option value="8">H</option>
+                            <select class="form-select" name="groupId" aria-label="Floating label select example">
+                                @foreach($groups as $group)
+                                    <option value="{{$group->id}}">{{$group->title}}</option>
+                                @endforeach
                             </select>
                             <label for="floatingSelect">Grup</label>
                         </div>
@@ -89,15 +79,16 @@
                         <br>
 
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Kursiyere bildirim Aktif/Pasif</label>
+                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" checked>
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Kursiyere bildirim
+                                Aktif/Pasif</label>
                         </div>
 
                         <br>
 
                         <div class="mt-3 mb-5">
-                            <button type="button" class="btn btn-success">Kaydet</button>
-                            <a href="{{route('manager.live-lessons.index')}}" class="btn btn-danger">İptal</a>
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet</button>
+                            <a href="{{route('manager.live-lesson.index')}}" class="btn btn-danger">İptal</a>
                         </div>
 
                     </form>
@@ -115,9 +106,17 @@
 @endsection
 
 @section('css')
-
+    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
 @endsection
 
 @section('js')
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
+    <script>
+        const actionUrl = '{{route('manager.live-lesson.store')}}';
+        const backUrl = '{{route('manager.live-lesson.index')}}';
+    </script>
+    <script src="{{asset('js/post.js')}}"></script>
 @endsection

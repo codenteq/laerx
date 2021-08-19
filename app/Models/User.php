@@ -13,7 +13,7 @@ class User extends Authenticatable
 
     const Admin = 1;
     const Manager = 2;
-    const User = 3;
+    const Normal = 3;
 
     /**
      * The attributes that are mass assignable.
@@ -50,6 +50,6 @@ class User extends Authenticatable
 
     public function info()
     {
-        return $this->hasManyThrough(UserInfo::class,Company::class);
+        return $this->hasOne(UserInfo::class,'userId','id');
     }
 }

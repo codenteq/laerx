@@ -23,16 +23,26 @@ class ManagerUserRequest extends FormRequest
      */
     public function rules()
     {
+        $id = null;
+        if ($this->manager_user)
+            $id = $this->manager_user->id;
         return [
-            'tc' => 'required',
-            'name' => 'required',
-            'surname' => 'required',
+            'tc' => 'required|string|min:11|max:11|unique:users,tc,'.$id,
+            'name' => 'required|string',
+            'surname' => 'required|string',
             'email' => 'required|email',
-            'password' => 'required',
-            'address' => 'required',
-            'languageId' => 'required',
-            'companyId' => 'required',
-            'phone' => 'required',
+            'address' => 'required|string',
+            'languageId' => 'required|numeric',
+            'companyId' => 'required|numeric',
+            'phone' => 'required|numeric',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'tc.unique' => 'Bu TCKN kullanılıyor.'
+        ];
+    }
+
 }

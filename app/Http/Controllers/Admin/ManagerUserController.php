@@ -47,7 +47,7 @@ class ManagerUserController extends Controller
     {
         try {
             $user->create([
-                'type' => 2
+                'type' => User::Manager
             ]);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {

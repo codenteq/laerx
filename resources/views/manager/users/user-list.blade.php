@@ -16,10 +16,12 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <table id="example" class="table table-striped" style="width:100%">
+                    <h4><a href="{{route('manager.user.create')}}" class="btn btn-success">Kursiyer Oluştur</a></h4>
+                </div>
+                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                    <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
-                            <th>İd</th>
                             <th>Seç</th>
                             <th>Adı Soyadı</th>
                             <th>TCKN</th>
@@ -31,17 +33,28 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
-                            <td>Ahmet Sefa Arşiv</td>
-                            <td>11111111111</td>
-                            <td>2021</td>
-                            <td>Ağustos</td>
-                            <td>B</td>
-                            <td>Aktif</td>
-                            <td><a href="#"><i class="fas fa-user-edit"></i></a> <a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                        </tr>
+                        @foreach ($users as $user)
+                            @if ($user->user->type === 3)
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                    </td>
+                                    <td>{{$user->user->name .' '. $user->user->surname}}</td>
+                                    <td>{{$user->user->tc}}</td>
+                                    <td>{{$user->period->title}}</td>
+                                    <td>{{$user->month->title}}</td>
+                                    <td>{{$user->group->title}}</td>
+                                    <td>{{$user->status === 0 ? 'Pasif' : 'Aktif'}}</td>
+                                    <td>
+                                        <a href="{{route('manager.user.edit',$user->userId)}}"><i
+                                                class="fas fa-user-edit"></i></a>
+                                        <button class="btn"
+                                                onclick="deleteButton(this,`${{route('manager.user.destroy',$user->userId)}}`)">
+                                            <i
+                                                class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -58,9 +71,18 @@
 @endsection
 
 @section('css')
-
+    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('layouts.stylesheet')
 @endsection
 
 @section('js')
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
+    <script>
+        const backUrl = '{{route('manager.user.index')}}';
+    </script>
+    <script src="{{asset('js/post.js')}}"></script>
+    @include('layouts.script')
 @endsection
+

@@ -16,7 +16,7 @@
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
                     <div class="col base p-5 mb-2">
-                        <a href="{{route('manager.live-lessons.index')}}">
+                        <a href="{{route('manager.live-lesson.index')}}">
                             <i class="fas fa-video fa-4x"></i><br>
                             <span>Canlı Ders</span>
                         </a>
@@ -40,13 +40,13 @@
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
-                        <a href="{{route('manager.appointment')}}">
+                        <a href="{{route('manager.appointment-car')}}">
                             <i class="fas fa-car fa-4x"></i><br>
                             <span>Araç & Randevular</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-5">
-                        <a href="{{route('manager.supports')}}">
+                        <a href="{{route('manager.support.index')}}">
                             <i class="fas fa-headset fa-4x"></i></i><br>
                             <span>Destek Mesajları</span>
                         </a>

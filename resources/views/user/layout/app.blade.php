@@ -46,17 +46,13 @@
                     <i class="fas fa-file-contract fa-2x"></i><br>
                     Sınav Sonuçlarım
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('user/appointment') ? 'active' : '' }}" href="{{route('user.appointment')}}">
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('user/appointment') ? 'active' : '' }}" href="{{route('user.appointment.index')}}">
                     <i class="fa fa-hourglass-start fa-2x"></i><br>
                     Randevularım
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/live-lessons') ? 'active' : '' }}" href="{{route('user.live-lessons')}}">
                     <i class="fas fa-video fa-2x"></i><br>
                     Canlı Ders
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('user/profile') ? 'active' : '' }}" href="{{route('user.profile')}}">
-                    <i class="fa fa-user fa-2x"></i><br>
-                    Profil
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/support') ? 'active' : '' }}" href="{{route('user.support')}}">
                     <i class="fa fa-question-circle fa-2x"></i><br>
@@ -65,10 +61,6 @@
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/notifications') ? 'active' : '' }}" href="{{route('user.notifications')}}">
                     <i class="fa fa-bell fa-2x"></i><br>
                     Bildirimler
-                </a>
-                <a class="list-group-item list-group-item-action text-center mb-5" href="{{route('logout-user')}}">
-                    <i class="fas fa-sign-out-alt fa-2x"></i><br>
-                    Çıkış Yap
                 </a>
             </div>
         </div>
@@ -117,5 +109,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="{{asset('js/app.js')}}"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 @yield('js')
 </html>

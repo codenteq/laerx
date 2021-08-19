@@ -27,13 +27,11 @@ class AppointmentObserver
     public function saving(Appointment $appointment)
     {
         $companyId = Helper::companyId();
-        $appointment->userId = $this->request->userId;
+        $appointment->userId = auth()->user()->type == 2 ? $this->request->userId : auth()->id();
         $appointment->teacherId = $this->request->teacherId;
         $appointment->carId = $this->request->carId;
         $appointment->companyId = $companyId;
         $appointment->date = $this->request->date;
-        $appointment->status = $this->request->status === "on" ? 1 : 0;
-
     }
 
     /**

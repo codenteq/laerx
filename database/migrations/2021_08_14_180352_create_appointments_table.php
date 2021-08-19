@@ -16,7 +16,7 @@ class CreateAppointmentsTable extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->boolean('status');
+            $table->boolean('status')->default(1);
             $table->foreignId('teacherId');
             $table->foreignId('userId');
             $table->foreignId('carId');

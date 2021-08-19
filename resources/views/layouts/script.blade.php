@@ -3,6 +3,7 @@
 <script>
     $(document).ready(function () {
         $('#data-table').DataTable({
+            "aaSorting": [],
             "language": {
                 "decimal": "",
                 "emptyTable": "Tabloda veri yok",

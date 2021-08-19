@@ -55,6 +55,7 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::resource('appointment',\App\Http\Controllers\User\AppointmentController::class);
     Route::get('live-lessons', [HomeController::class, 'getLiveLessons'])->name('live-lessons');
     Route::get('profile', [HomeController::class, 'getProfile'])->name('profile');
+    Route::put('profile', [HomeController::class, 'postProfileUpdate'])->name('profile.update');
     Route::get('support', [HomeController::class, 'getSupport'])->name('support');
     Route::post('support/create', [HomeController::class, 'postSupportStore'])->name('support.store');
     Route::get('notifications', [HomeController::class, 'getNotifications'])->name('notifications');

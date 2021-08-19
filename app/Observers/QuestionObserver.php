@@ -6,7 +6,6 @@ use App\Helpers\Helper;
 use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\QuestionChoiceKey;
-use Illuminate\Support\Facades\Log;
 
 class QuestionObserver
 {
@@ -63,34 +62,6 @@ class QuestionObserver
     }
 
     /**
-     * Handle the Question "updating" event.
-     *
-     * @param \App\Models\Question $question
-     * @return void
-     */
-    public function updating(Question $question)
-    {
-        $question->title = $this->request->title;
-        $question->questionImage = isset($this->request->questionImage) === 'on' ? 1 : 0;
-        $question->choiceImage = isset($this->request->choiceImage) === 'on' ? 1 : 0;
-        $question->typeId = $this->request->typeId;
-
-        $req = $this->request->except(['_token', '_method', 'typeId', 'correct_choice', 'title']);
-        foreach ($req as $key => $val) {
-            QuestionChoice::find($key)->update([
-                'title' => $val,
-                'path' => null,
-                'questionId' => $question->id,
-            ]);
-        }
-
-        QuestionChoiceKey::where('questionId',$question->id)->update([
-            'choiceId' =>   $this->request->correct_choice,
-            'questionId' => $question->id,
-        ]);
-    }
-
-    /**
      * Handle the Question "deleted" event.
      *
      * @param \App\Models\Question $question
@@ -102,25 +73,4 @@ class QuestionObserver
         QuestionChoiceKey::where('questionId', $question->id)->delete();
     }
 
-    /**
-     * Handle the Question "restored" event.
-     *
-     * @param \App\Models\Question $question
-     * @return void
-     */
-    public function restored(Question $question)
-    {
-        //
-    }
-
-    /**
-     * Handle the Question "force deleted" event.
-     *
-     * @param \App\Models\Question $question
-     * @return void
-     */
-    public function forceDeleted(Question $question)
-    {
-        //
-    }
 }

@@ -6,13 +6,18 @@ use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\QuestionRequest;
 use App\Models\Question;
-use App\Models\QuestionChoice;
-use App\Models\QuestionChoiceKey;
 use App\Models\QuestionType;
-use Illuminate\Support\Facades\Log;
+use App\Services\Manager\QuestionService;
 
 class QuestionController extends Controller
 {
+    private $questionService;
+
+    public function __construct(QuestionService $questionService)
+    {
+        $this->questionService = $questionService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -74,12 +79,13 @@ class QuestionController extends Controller
     public function update(QuestionRequest $request, Question $question)
     {
         try {
-
-            $question->update($request->all());
+            $this->questionService->questionUpdate($question->id, $request->all());
+            $request->choiceImage == "on" ? $this->questionService->questionChoiceImageUpdate()
+                : $this->questionService->questionChoiceUpdate($request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'choiceImage','questionImage']));
+            $this->questionService->questionChoiceKeyUpdate($question->id,$request->only(['correct_choice']));
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
-            echo $ex;
-            //return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage);
         }
     }
 

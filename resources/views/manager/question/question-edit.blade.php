@@ -19,7 +19,7 @@
                         @csrf
                         @method('PUT')
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="status"
+                            <input class="form-check-input" type="checkbox" name="questionImage"
                                    {{$question->questionImage == 1 ? 'checked' : null}} id="switchQuestionImageShow">
                             <label class="form-check-label" for="switchQuestionImageShow">Soru Resim</label>
                         </div>
@@ -43,68 +43,40 @@
                             <label for="floatingSelect">Soru Tipi</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="statusChoiceImage"
+                            <input class="form-check-input" type="checkbox" name="choiceImage"
                                    {{$question->choiceImage == 1 ? 'checked' : null}} id="switchImageShow">
                         </div>
                         <br>
                         @foreach($question->choice as $key => $choice)
-                            <div class="row mb-3 text-choice">
-                                <div class="form-floating ps-1 col-11">
-                                    <input type="text" class="form-control " name="{{$choice->id}}" placeholder="Cevap 0{{$key + 1}}"
-                                           value="{{$choice->title}}">
-                                    <label class="" for="floatingFirst">Cevap 0{{$key + 1}}</label>
+                            <!-- text choice -->
+                                <div class="row mb-3 text-choice">
+                                    <div class="form-floating ps-1 col-11">
+                                        <input type="text" class="form-control " name="{{$choice->id}}" placeholder="Cevap 0{{$key + 1}}"
+                                               value="{{$choice->title}}">
+                                        <label class="" for="floatingFirst">Cevap 0{{$key + 1}}</label>
+                                    </div>
+                                    <div class="col-1">
+                                        <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
+                                               data-bs-toggle="tooltip" data-bs-placement="top"
+                                               {{$choice->id === $choice->choiceKey->choiceId ? 'checked' : null}}
+                                               name="correct_choice"
+                                               value="{{$choice->id}}"
+                                               title="Doğru Cevabı İşaretleyin.">
+                                    </div>
+                                </div>
+                                <!-- image choice -->
+                            <div class="row mb-3 image-choice d-none">
+                                <div class="mb-3 col-11">
+                                    <input type="file" class="form-control" name="{{$choice->id}}">
                                 </div>
                                 <div class="col-1">
-                                    <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
+                                    <input class="form-check-input p-3" type="checkbox" value="" id="flexCheckDefault"
                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                           {{$choice->id === $choice->choiceKey->choiceId ? 'checked' : null}}
-                                           name="correct_choice"
-                                           value="{{$choice->id}}"
                                            title="Doğru Cevabı İşaretleyin.">
                                 </div>
                             </div>
                         @endforeach
-                        <div class="row mb-3 image-choice d-none">
-                            <div class="mb-3 col-11">
-                                <input type="file" class="form-control" name="photo">
-                            </div>
-                            <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" value="" id="flexCheckDefault"
-                                       data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="Doğru Cevabı İşaretleyin.">
-                            </div>
-                        </div>
-                        <div class="row mb-3 image-choice d-none">
-                            <div class="mb-3 col-11">
-                                <input type="file" class="form-control" name="photo">
-                            </div>
 
-                            <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" value="" id="flexCheckDefault"
-                                       data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="Doğru Cevabı İşaretleyin.">
-                            </div>
-                        </div>
-                        <div class="row mb-3 image-choice d-none">
-                            <div class="mb-3 col-11">
-                                <input type="file" class="form-control" name="photo">
-                            </div>
-                            <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" value="" id="flexCheckDefault"
-                                       data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="Doğru Cevabı İşaretleyin.">
-                            </div>
-                        </div>
-                        <div class="row mb-3 image-choice d-none">
-                            <div class="mb-3 col-11">
-                                <input type="file" class="form-control" name="photo">
-                            </div>
-                            <div class="col-1">
-                                <input class="form-check-input p-3" type="checkbox" value="" id="flexCheckDefault"
-                                       data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="Doğru Cevabı İşaretleyin.">
-                            </div>
-                        </div>
 
                         <div class="mt-3 mb-5">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
@@ -167,13 +139,29 @@
             }
         });
 
+        if (choiceImage.checked === true) {
+            textInput.forEach((input, index) => {
+                textInput[index].classList.add('d-none');
+                imageInput[index].classList.remove('d-none');
+            })
+        } else {
+            textInput.forEach((input, index) => {
+                textInput[index].classList.remove('d-none');
+                imageInput[index].classList.add('d-none');
+            });
+        }
+
         questionImageChoice.addEventListener('click', () => {
             if (questionImageChoice.checked === true)
                 questionImageInput.classList.remove('d-none')
             else
                 questionImageInput.classList.add('d-none')
-
         });
+
+        if (questionImageChoice.checked === true)
+            questionImageInput.classList.remove('d-none')
+        else
+            questionImageInput.classList.add('d-none')
 
     </script>
 @endsection

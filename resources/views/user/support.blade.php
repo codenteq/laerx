@@ -14,28 +14,20 @@
                 </figcaption>
             </figure>
             <div class="row">
-                <form class="form-control p-5">
+                <form class="form-control p-5" name="form-data">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingWhy" placeholder="İletişim Nedeniniz?">
+                        <input type="text" class="form-control" id="floatingWhy" name="subject" placeholder="İletişim Nedeniniz?">
                         <label for="floatingWhy">İletişim Nedeniniz?</label>
                     </div>
 
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingPhone"
-                               placeholder="Sizinle iletişime geçmemiz için Telefon veya E-Posta adresi bilgisi - İsteğe bağlı">
-                        <label for="floatingPhone">Sizinle iletişime geçmemiz için Telefon veya E-Posta adresi
-                            bilgisi - İsteğe bağlı</label>
-                    </div>
-
                     <div class="form-floating">
-                            <textarea class="form-control" placeholder="Mesajınız" id="floatingTextarea"
+                            <textarea class="form-control" placeholder="Mesajınız" name="message" id="floatingTextarea"
                                       style="height: 100px"></textarea>
                         <label for="floatingTextarea">Mesajınız</label>
                     </div>
 
                     <div class="mt-3">
-                        <button type="button" class="btn btn-success">Gönder</button>
-                        <button type="button" class="btn btn-danger">İptal</button>
+                        <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Gönder</button>
                     </div>
                 </form>
             </div>
@@ -51,10 +43,19 @@
 @endsection
 
 @section('css')
-
+    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
 @endsection
 
 @section('js')
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
+    <script>
+        const actionUrl = '{{route('user.support.store')}}';
+        const backUrl = '{{route('user.support')}}';
+    </script>
+    <script src="{{asset('js/post.js')}}"></script>
 @endsection
+
 

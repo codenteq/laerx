@@ -16,7 +16,8 @@ class LiveLesson extends Model
         'periodId',
         'monthId',
         'groupId',
-        'typeId'
+        'typeId',
+        'companyId'
     ];
 
     /**

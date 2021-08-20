@@ -62,12 +62,6 @@
                             <label for="floatingAddress">Tarih</label>
                         </div>
 
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked"
-                                   checked>
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Randevu Aktif/Pasif</label>
-                        </div>
-
                         <div class="mt-3 mb-5">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet</button>
                             <a href="{{route('manager.appointment.index')}}" class="btn btn-danger">İptal</a>

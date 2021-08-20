@@ -15,13 +15,15 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <h4><button class="btn btn-success">Tamamlanmış Dersler</button> <button class="btn btn-warning">Tamamlanmamış Dersler</button></h4>
+                    <h4>
+                        <button class="btn btn-success">Tamamlanmış Dersler</button>
+                        <button class="btn btn-warning">Tamamlanmamış Dersler</button>
+                    </h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-scroll">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">id</th>
                             <th scope="col">Ders Adı</th>
                             <th scope="col">Ders'e Katıl</th>
                             <th scope="col">Ders Kategorisi</th>
@@ -29,13 +31,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Trafik Adabı</td>
-                            <td><button class="btn btn-light">Katıl</button></td>
-                            <td>Trafikte Adap</td>
-                            <td>12-06-2021/09.35</td>
-                        </tr>
+                        @foreach($liveLessons as $liveLesson)
+                            <tr>
+                                <td>{{$liveLesson->title}}</td>
+                                <td>
+                                    <a class="btn btn-success" target="_blank"
+                                       href="{{url($liveLesson->url)}}">Katıl</a>
+                                </td>
+                                <td>{{$liveLesson->type->title}}</td>
+                                <td>{{$liveLesson->live_date}}</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -59,7 +65,8 @@
 
 @section('js')
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     @include('layouts.script')
 
 @endsection

@@ -22,6 +22,7 @@ class CreateLiveLessonsTable extends Migration
             $table->foreignId('monthId');
             $table->foreignId('groupId');
             $table->foreignId('typeId');
+            $table->foreignId('companyId');
             $table->timestamps();
         });
     }

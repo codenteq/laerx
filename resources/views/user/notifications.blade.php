@@ -18,17 +18,17 @@
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">id</th>
                             <th scope="col">Mesaj</th>
                             <th scope="col">Tarih</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
+                        @foreach ($notifications as $notification)
+                            <tr>
+                                <td>{{$notification->notification->message}}</td>
+                                <td>{{$notification->created_at}}</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -52,7 +52,8 @@
 
 @section('js')
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     @include('layouts.script')
 
 @endsection

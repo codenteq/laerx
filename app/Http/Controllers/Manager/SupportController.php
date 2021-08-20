@@ -16,7 +16,7 @@ class SupportController extends Controller
      */
     public function index()
     {
-        $supports = Support::all();
+        $supports = Support::latest()->get();
         return view('manager.supports',compact('supports'));
     }
 

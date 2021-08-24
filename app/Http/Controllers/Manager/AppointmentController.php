@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Helpers\Helper;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\AppointmentRequest;
@@ -22,7 +21,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $appointments = Appointment::where('companyId', Helper::companyId())
+        $appointments = Appointment::where('companyId', companyId())
             ->with('user', 'teacher', 'car')
             ->latest()
             ->get();
@@ -53,7 +52,7 @@ class AppointmentController extends Controller
     public function store(Appointment $appointment, AppointmentRequest $request)
     {
         try {
-            if (!Helper::ignoreDateCheck($request->date)) {
+            if (!ignoreDateCheck($request->date)) {
                 $appointment->create($request->all());
                 return response(ResponseMessage::SuccessMessage);
             } else {
@@ -101,7 +100,7 @@ class AppointmentController extends Controller
     public function update(AppointmentRequest $request, Appointment $appointment)
     {
         try {
-            if (!Helper::ignoreDateCheck($request->date)) {
+            if (!ignoreDateCheck($request->date)) {
                 $appointment->update($request->all());
                 return response(ResponseMessage::SuccessMessage);
             } else {
@@ -135,7 +134,7 @@ class AppointmentController extends Controller
 
     public function getAppointmentSetting()
     {
-        $months = Helper::currentMounth();
+        $months = currentMounth();
         return view('manager.appointment.appointment-setting',compact('months'));
     }
 
@@ -145,7 +144,7 @@ class AppointmentController extends Controller
             foreach ($request->all() as $key => $val) {
                 AppointmentSetting::updateOrCreate([
                     'ignore_date' => $val,
-                    'companyId' => Helper::companyId()
+                    'companyId' => companyId()
                 ]);
             }
             return response(ResponseMessage::SuccessMessage);

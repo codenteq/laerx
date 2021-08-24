@@ -11,12 +11,15 @@ class Company extends Model
 
     protected $fillable = [
         'title',
-        'start_date',
-        'end_date'
     ];
 
     public function companies()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function info()
+    {
+        return $this->hasOne(CompanyInfo::class,'companyId');
     }
 }

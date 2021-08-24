@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\City;
+use App\Models\State;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -32,4 +33,17 @@ class HomeController extends Controller
         Auth::logout();
         return redirect('login');
     }
+
+    public function getCity($countryId)
+    {
+        $cities =  City::where('countryId',$countryId)->get();
+        return response()->json($cities);
+    }
+
+    public function getState($cityId)
+    {
+        $states =  State::where('cityId',$cityId)->get();
+        return response()->json($states);
+    }
+
 }

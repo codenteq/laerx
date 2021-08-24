@@ -4,12 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\GroupRequest;
 use App\Models\Group;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use App\Services\Admin\GroupService;
 
 class GroupController extends Controller
 {
+    private $groupService;
+
+    public function __construct(GroupService $groupService)
+    {
+        $this->groupService = $groupService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +25,7 @@ class GroupController extends Controller
     public function index()
     {
         $groups = Group::all();
-        return view('admin.group.group',compact('groups'));
+        return view('admin.group.group', compact('groups'));
     }
 
     /**
@@ -34,16 +41,13 @@ class GroupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Requests\Admin\GroupRequest $request
      * @return \Illuminate\Http\Response
-     * @param  \App\Models\Group  $group
      */
-    public function store(Group  $group, Request $request)
+    public function store(GroupRequest $request)
     {
         try {
-            $group->create([
-                'title' => Str::upper($request->title),
-            ]);
+            $this->groupService->store($request);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -53,7 +57,7 @@ class GroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Group  $group
+     * @param \App\Models\Group $group
      * @return \Illuminate\Http\Response
      */
     public function edit(Group $group)
@@ -64,16 +68,14 @@ class GroupController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Group  $group
+     * @param \App\Http\Requests\Admin\GroupRequest $request
+     * @param \App\Models\Group $group
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Group $group)
+    public function update(GroupRequest $request, Group $group)
     {
         try {
-            $group->update([
-                'title' => Str::upper($request->title)
-            ]);
+            $this->groupService->update($request, $group->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -83,13 +85,13 @@ class GroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Group  $group
+     * @param \App\Models\Group $group
      * @return \Illuminate\Http\Response
      */
     public function destroy(Group $group)
     {
         try {
-            $group->delete();
+            $this->groupService->destroy($group->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

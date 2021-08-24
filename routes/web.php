@@ -46,6 +46,9 @@ Auth::routes([
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout-user', [App\Http\Controllers\HomeController::class, 'logoutUser'])->name('logout-user');
 
+Route::get('/city/{countryId?}', [App\Http\Controllers\HomeController::class, 'getCity'])->name('city');
+Route::get('/state/{cityId?}', [App\Http\Controllers\HomeController::class, 'getState'])->name('state');
+
 Route::prefix('user')->name('user.')->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
     Route::get('lessons', [HomeController::class, 'getLessons'])->name('lessons');

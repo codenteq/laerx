@@ -25,6 +25,16 @@ class CompanyRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'tax_no' => 'required|string|min:11|max:11',
+            'email' => 'required|email',
+            'phone' => 'required|numeric',
+            'countryId' => 'required|numeric',
+            'cityId' => 'required|numeric',
+            'stateId' => 'required|numeric',
+            'address' => 'required|string',
+            'zip_code' => 'required',
+            'packageId' => 'required|numeric',
+            'website_url' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'required|date'
         ];

@@ -34,8 +34,13 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="password" placeholder="Şifre">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Şifre">
                             <label for="floatingLast">Şifre</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" name="password_confirmation" id="password-confirm" placeholder="Şifre">
+                            <label for="floatingLast">Şifre Tekrar</label>
                         </div>
 
                         <div class="form-floating mb-3">

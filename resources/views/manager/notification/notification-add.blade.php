@@ -18,7 +18,7 @@
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="form-control" name="form-data">
                         @foreach($users as $user)
-                            @if($user->info->companyId === \App\Helpers\Helper::companyId())
+                            @if($user->info->companyId === companyId())
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="1"
                                            name="{{$user->id}}"

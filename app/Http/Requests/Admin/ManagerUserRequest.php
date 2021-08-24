@@ -31,6 +31,7 @@ class ManagerUserRequest extends FormRequest
             'name' => 'required|string',
             'surname' => 'required|string',
             'email' => 'required|email',
+            'password' => 'confirmed',
             'address' => 'required|string',
             'languageId' => 'required|numeric',
             'companyId' => 'required|numeric',
@@ -41,7 +42,7 @@ class ManagerUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'tc.unique' => 'Bu TCKN kullanılıyor.'
+            'tc.unique' => 'Bu TCKN kullanılıyor.',
         ];
     }
 

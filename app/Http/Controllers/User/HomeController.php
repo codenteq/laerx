@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Helpers\Helper;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Car;
@@ -51,7 +50,7 @@ class HomeController extends Controller
 
     public function getLiveLessons()
     {
-        $liveLessons = LiveLesson::where('companyId', Helper::companyId())
+        $liveLessons = LiveLesson::where('companyId', companyId())
             ->where('periodId', auth()->user()->info->periodId)
             ->where('monthId', auth()->user()->info->monthId)
             ->where('groupId', auth()->user()->info->groupId)
@@ -73,8 +72,7 @@ class HomeController extends Controller
             $this->globalService->userUpdate(auth()->id());
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
-            echo $ex;
-            //return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage);
         }
     }
 

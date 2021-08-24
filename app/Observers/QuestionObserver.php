@@ -2,7 +2,6 @@
 
 namespace App\Observers;
 
-use App\Helpers\Helper;
 use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\QuestionChoiceKey;
@@ -29,7 +28,7 @@ class QuestionObserver
         $question->questionImage = isset($this->request->questionImage) === 'on' ? 1 : 0;
         $question->choiceImage = isset($this->request->choiceImage) === 'on' ? 1 : 0;
         $question->typeId = $this->request->typeId;
-        $question->companyId = Helper::companyId();
+        $question->companyId = companyId();
         isset($this->request->questionImage) ? $path = $this->request->file('imagePath')->store('public/questions') : $path = null;
         $question->imagePath = $path;
     }

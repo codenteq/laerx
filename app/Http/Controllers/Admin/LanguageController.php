@@ -4,12 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\LanguageRequest;
 use App\Models\Language;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use App\Services\Admin\LanguageService;
 
 class LanguageController extends Controller
 {
+    private $languageService;
+
+    public function __construct(LanguageService $languageService)
+    {
+        $this->languageService = $languageService;
+    }
+
     /**
      * Display a listing of the resource.
      * @param  \App\Models\Language  $language
@@ -33,17 +40,14 @@ class LanguageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Admin\LanguageRequest  $request
      * @param  \App\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
-    public function store(Language $language, Request $request)
+    public function store(LanguageRequest $request)
     {
         try {
-            $language->create([
-                'title' => Str::title($request->title),
-                'code' => Str::lower($request->code)
-            ]);
+            $this->languageService->store($request);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -64,17 +68,14 @@ class LanguageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Admin\LanguageRequest  $request
      * @param  \App\Models\Language  $language
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Language $language)
+    public function update(LanguageRequest $request, Language $language)
     {
         try {
-            $language->update([
-                'title' => Str::ucfirst($request->title),
-                'code' => Str::lower($request->code)
-            ]);
+            $this->languageService->update($request,$language->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -90,7 +91,7 @@ class LanguageController extends Controller
     public function destroy(Language $language)
     {
         try {
-            $language->delete();
+            $this->languageService->destroy($language->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

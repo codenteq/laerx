@@ -43,6 +43,11 @@
                         </div>
 
                         <div class="form-floating mb-3">
+                            <input type="password" class="form-control" name="password_confirmation" id="password-confirm" placeholder="Şifre">
+                            <label for="floatingLast">Yeni Şifre Tekrar</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
                             <input type="email" class="form-control" name="email" placeholder="Eposta Adresi"
                                    value="{{$user->user->email}}">
                             <label for="floatingMail">Eposta Adresi</label>

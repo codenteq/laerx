@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Helpers\Helper;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\CourseTeacherRequest;
@@ -19,7 +18,7 @@ class CourseTeacherController extends Controller
      */
     public function index()
     {
-        $users = UserInfo::where('companyId', Helper::companyId())->with('user')->get();
+        $users = UserInfo::where('companyId', companyId())->with('user')->get();
         return view('manager.course.course-teachers', compact('users'));
     }
 

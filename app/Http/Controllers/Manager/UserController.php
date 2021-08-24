@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Helpers\Helper;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Group;
@@ -23,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = UserInfo::where('companyId',Helper::companyId())->with('company', 'user', 'language','period','month')->get();
+        $users = UserInfo::where('companyId',companyId())->with('company', 'user', 'language','period','month')->get();
         return view('manager.users.user-list',compact('users'));
     }
 
@@ -54,7 +53,7 @@ class UserController extends Controller
         try {
             $user->create([
                 'type' => User::Normal,
-                'companyId' => Helper::companyId(),
+                'companyId' => companyId(),
             ]);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {

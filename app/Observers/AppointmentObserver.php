@@ -2,7 +2,6 @@
 
 namespace App\Observers;
 
-use App\Helpers\Helper;
 use App\Models\Appointment;
 
 class AppointmentObserver
@@ -26,7 +25,7 @@ class AppointmentObserver
      */
     public function saving(Appointment $appointment)
     {
-        $companyId = Helper::companyId();
+        $companyId = companyId();
         $appointment->userId = auth()->user()->type == 2 ? $this->request->userId : auth()->id();
         $appointment->teacherId = $this->request->teacherId;
         $appointment->carId = $this->request->carId;

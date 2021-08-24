@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Helpers\Helper;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
@@ -22,7 +21,7 @@ class AppointmentController extends Controller
         return view('user.appointments.appointment',[
             'teachers' => User::where('type', 2)->get(),
             'cars' => Car::where('status', 1)->get(),
-            'appointments' => Appointment::where('userId', auth()->id())->where('companyId', Helper::companyId())->get()
+            'appointments' => Appointment::where('userId', auth()->id())->where('companyId', companyId())->get()
         ]);
     }
 
@@ -36,7 +35,7 @@ class AppointmentController extends Controller
     public function store(Appointment $appointment, Request $request)
     {
         try {
-            if (!Helper::ignoreDateCheck($request->date)) {
+            if (!ignoreDateCheck($request->date)) {
                 $appointment->create($request->all());
                 return response(ResponseMessage::SuccessMessage);
             } else {

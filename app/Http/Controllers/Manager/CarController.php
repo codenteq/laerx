@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Helpers\Helper;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\CarRequest;
@@ -46,7 +45,7 @@ class CarController extends Controller
         try {
             $car->create([
                 'plate_code' => strtoupper($request->plate_code),
-                'companyId' => Helper::companyId(),
+                'companyId' => companyId(),
                 'typeId' => $request->typeId,
                 'status' => $request->status === "on" ? 1 : 0
             ]);
@@ -93,7 +92,7 @@ class CarController extends Controller
         try {
             $car->update([
                 'plate_code' => strtoupper($request->plate_code),
-                'companyId' => Helper::companyId(),
+                'companyId' => companyId(),
                 'typeId' => $request->typeId,
                 'status' => $request->status === "on" ? 1 : 0
             ]);

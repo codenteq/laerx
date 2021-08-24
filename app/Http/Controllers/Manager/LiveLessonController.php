@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Helpers\Helper;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\LiveLessonRequest;
@@ -51,7 +50,7 @@ class LiveLessonController extends Controller
     public function store(LiveLesson $live_lesson, LiveLessonRequest $request)
     {
         try {
-            $request->merge(['companyId' => Helper::companyId()]);
+            $request->merge(['companyId' => companyId()]);
             $live_lesson->create($request->all());
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {

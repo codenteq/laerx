@@ -9,12 +9,20 @@ use App\Models\Company;
 use App\Models\Language;
 use App\Models\User;
 use App\Models\UserInfo;
+use App\Services\GlobalService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class ManagerUserController extends Controller
 {
+    private $globalService;
+
+    public function __construct(GlobalService $globalService)
+    {
+        $this->globalService = $globalService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +30,7 @@ class ManagerUserController extends Controller
      */
     public function index()
     {
-        $users = UserInfo::with('company', 'user', 'language')->get();
+        $users = UserInfo::with('company', 'user', 'language')->latest()->get();
         return view('admin.users.users', compact('users'));
     }
 
@@ -33,7 +41,7 @@ class ManagerUserController extends Controller
      */
     public function create()
     {
-        $companies = Company::with('companies')->get();
+        $companies = Company::with('companies')->latest()->get();
         $languages = Language::all();
         return view('admin.users.user-add', compact('companies', 'languages'));
     }
@@ -43,12 +51,10 @@ class ManagerUserController extends Controller
      * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user, ManagerUserRequest $request)
+    public function store(ManagerUserRequest $request)
     {
         try {
-            $user->create([
-                'type' => User::Manager
-            ]);
+            $this->globalService->userStore(User::Manager);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -79,7 +85,7 @@ class ManagerUserController extends Controller
     public function update(ManagerUserRequest $request, User $manager_user)
     {
         try {
-            $manager_user->update($request->all());
+            $this->globalService->userUpdate($manager_user->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -95,8 +101,7 @@ class ManagerUserController extends Controller
     public function destroy(User $manager_user)
     {
         try {
-            $manager_user->delete();
-            UserInfo::where('userId', $manager_user->id)->delete();
+            $this->globalService->userDestroy($manager_user->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

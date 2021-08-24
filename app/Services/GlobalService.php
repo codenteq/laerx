@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Helpers\Helper;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +19,7 @@ class GlobalService
         $this->request = request();
     }
 
-    public function userCreate()
+    public function userStore($type)
     {
         $user = new User();
         $user->tc = $this->request->tc;
@@ -28,14 +27,15 @@ class GlobalService
         $user->surname = Str::title($this->request->surname);
         $user->email = $this->request->email;
         $user->password = Hash::make($this->request->password);
+        $user->type = $type;
         $user->save();
-        self::userInfoCreate($user->id);
+        self::userInfoStore($user->id);
     }
 
     /**
      * @param $id
      */
-    public function userInfoCreate($id)
+    public function userInfoStore($id)
     {
         !$this->request->file('photo') ? $path = null : $path = $this->request->file('photo')->store('public/avatar');
         UserInfo::create([
@@ -47,7 +47,7 @@ class GlobalService
             'groupId' => $this->request->groupId,
             'languageId' => $this->request->languageId,
             'photo' => $path,
-            'companyId' => auth()->user()->type === 1 ? $this->request->companyId : Helper::companyId(),
+            'companyId' => auth()->user()->type === 1 ? $this->request->companyId : companyId(),
             'userId' => $id
         ]);
     }
@@ -84,9 +84,20 @@ class GlobalService
             $user->groupId = $this->request->groupId;
             $user->languageId = $this->request->languageId;
             $user->photo = $path;
-            $user->companyId = auth()->user()->type === 1 ? $this->request->companyId : Helper::companyId();
+            $user->companyId = auth()->user()->type === 1 ? $this->request->companyId : companyId();
             $user->userId = $id;
         }
         $user->save();
+    }
+
+    public function userDestroy($id)
+    {
+        User::find($id)->delete();
+        self::userInfoDestroy($id);
+    }
+
+    public function userInfoDestroy($id)
+    {
+        UserInfo::where('userId',$id)->delete();
     }
 }

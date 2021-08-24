@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\ManagerUserController;
 use App\Http\Controllers\Admin\PeriodController;
+use App\Http\Controllers\Admin\QuestionTypeController;
 use App\Http\Controllers\Manager\AppointmentController;
 use App\Http\Controllers\Manager\CarController;
 use App\Http\Controllers\Manager\CourseTeacherController;
@@ -88,5 +89,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('company', CompanyController::class);
     Route::resource('group', GroupController::class);
     Route::resource('period', PeriodController::class);
+    Route::resource('type', QuestionTypeController::class);
     Route::resource('manager-user', ManagerUserController::class);
 });

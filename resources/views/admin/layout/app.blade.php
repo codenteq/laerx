@@ -62,6 +62,11 @@
                     <i class="fas fa-cloud-sun fa-2x"></i><br>
                     Dönemler
                 </a>
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/type*') ? 'active' : '' }}"
+                   href="{{route('admin.type.index')}}">
+                    <i class="fas fa-file-alt fa-2x"></i><br>
+                    Soru Kategorileri
+                </a>
                 <a class="list-group-item list-group-item-action text-center mb-5" href="{{route('logout-user')}}">
                     <i class="fas fa-sign-out-alt fa-2x"></i><br>
                     Çıkış Yap

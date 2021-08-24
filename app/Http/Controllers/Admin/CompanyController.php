@@ -76,7 +76,6 @@ class CompanyController extends Controller
             'company' => $company,
             'cities' => City::all(),
             'states' => State::all(),
-            'invoice' => Invoice::select('start_date', 'end_date')->where('companyId', $company->id)->orderBy('id', 'desc')->first(),
             'packages' => Package::all(),
             'countries' => Country::all()
         ]);

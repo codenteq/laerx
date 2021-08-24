@@ -22,4 +22,9 @@ class Company extends Model
     {
         return $this->hasOne(CompanyInfo::class,'companyId');
     }
+
+    public function invoice()
+    {
+        return $this->hasOne(Invoice::class,'companyId');
+    }
 }

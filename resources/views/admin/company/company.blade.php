@@ -25,8 +25,8 @@
                             <th>İd</th>
                             <th>Seç</th>
                             <th>Şirket Adı</th>
-                            <th>Başlangıç Tarihi</th>
-                            <th>Bitiş Tarihi</th>
+                            <th>Kalan Gün</th>
+                            <th>Ödeme</th>
                             <th>Durum</th>
                             <th>Güncelleme Tarih</th>
                             <th>İşlemler</th>
@@ -38,8 +38,8 @@
                                 <td>{{$company->id}}</td>
                                 <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
                                 <td>{{$company->title}}</td>
-                                <td>{{$company->start_date}}</td>
-                                <td>{{$company->end_date}}</td>
+                                <td>{{invoiceDiffDate($company->id)}}</td>
+                                <td class="{{$company->invoice->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$company->invoice->status == 1 ? 'Ödeme Alındı' : 'Ödeme Alınmadı'}}</td>
                                 <td class="text-success fw-bold">Aktif</td>
                                 <td>{{$company->updated_at}}</td>
                                 <td>

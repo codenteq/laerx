@@ -43,4 +43,10 @@ class CompanyService
         ]);
         $this->companyInfoService->update($request, $id);
     }
+
+    public function destroy($id): void
+    {
+        Company::find($id)->delete();
+        $this->companyInfoService->destroy($id);
+    }
 }

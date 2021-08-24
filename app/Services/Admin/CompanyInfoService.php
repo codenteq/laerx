@@ -61,4 +61,10 @@ class CompanyInfoService
             'companyId' => $id,
         ]);
     }
+
+    public function destroy($id) : void
+    {
+        CompanyInfo::where('companyId',$id)->delete();
+        $this->invoiceService->destroy($id);
+    }
 }

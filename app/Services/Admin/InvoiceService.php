@@ -35,4 +35,9 @@ class InvoiceService
             'companyId' => $id,
         ]);
     }
+
+    public function destroy($id) : void
+    {
+        Invoice::where('companyId',$id)->delete();
+    }
 }

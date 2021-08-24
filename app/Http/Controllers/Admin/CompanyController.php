@@ -76,6 +76,7 @@ class CompanyController extends Controller
             'company' => $company,
             'cities' => City::all(),
             'states' => State::all(),
+            'invoice' => Invoice::select('start_date','end_date')->where('companyId', $company->id)->orderBy('id', 'desc')->first(),
             'packages' => Package::all(),
             'countries' => Country::all()
         ]);
@@ -106,7 +107,7 @@ class CompanyController extends Controller
     public function destroy(Company $company)
     {
         try {
-            $company->delete();
+            $this->companyService->destroy($company->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

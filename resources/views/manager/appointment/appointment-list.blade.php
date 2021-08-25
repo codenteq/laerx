@@ -8,12 +8,14 @@
                 <blockquote class="blockquote">
                     <h2>Randevular</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.appointment-car')}}"><i
-                                class="fas fa-car"></i> Araç & Randevular</a> /</span>
-                    <span class="active">Randevular</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.appointment-car')}}">Araç & Randevular</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Randevular</li>
+                    </ol>
+                </nav>
             </figure>
+
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <h4><a href="{{route('manager.appointment.create')}}" class="btn btn-success">Randevu Oluştur</a>

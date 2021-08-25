@@ -8,10 +8,12 @@
                 <blockquote class="blockquote">
                     <h2>Kursiyer İşlemleri</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Kursiyer İşlemleri</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Kursiyer İşlemleri</li>
+                    </ol>
+                </nav>
             </figure>
 
             <div class="container text-center">

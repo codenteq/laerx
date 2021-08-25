@@ -8,12 +8,13 @@
                 <blockquote class="blockquote">
                     <h2>Canlı Ders Ekle</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="{{route('manager.live-lesson.index')}}"><i
-                                class="fas fa-video"></i> Canlı Dersler</a> /</span>
-                    <span class="active">Canlı Ders Ekle</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.live-lesson.index')}}">Canlı Dersler</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Canlı Ders Ekle</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
@@ -79,7 +80,8 @@
                         <br>
 
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" checked>
+                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked"
+                                   checked>
                             <label class="form-check-label" for="flexSwitchCheckChecked">Kursiyere bildirim
                                 Aktif/Pasif</label>
                         </div>
@@ -87,7 +89,8 @@
                         <br>
 
                         <div class="mt-3 mb-5">
-                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet</button>
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
+                            </button>
                             <a href="{{route('manager.live-lesson.index')}}" class="btn btn-danger">İptal</a>
                         </div>
 

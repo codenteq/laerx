@@ -8,13 +8,19 @@
                 <blockquote class="blockquote">
                     <h2>Ana Sayfa</h2>
                 </blockquote>
-                <figcaption>
-                    <span><i class="fas fa-home"></i> Ana Sayfa</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Gösterge Paneli</li>
+                    </ol>
+                </nav>
             </figure>
 
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
+                    <div class="alert alert-info mb-3 w-100 text-start" role="alert">
+                        <i class="fas fa-info-circle me-2"></i>Aktif paketinizden kalan süre: {{invoiceDiffDate(companyId())}} gün
+                    </div>
                     <div class="col base p-5 mb-2">
                         <a href="{{route('manager.live-lesson.index')}}">
                             <i class="fas fa-video fa-4x"></i><br>

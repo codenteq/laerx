@@ -8,10 +8,13 @@
                 <blockquote class="blockquote">
                     <h2>Soru Düzenle</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Soru Düzenle</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.question.index')}}">Sorular</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Soru Düzenle</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">

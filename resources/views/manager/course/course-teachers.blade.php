@@ -8,11 +8,14 @@
                 <blockquote class="blockquote">
                     <h2>Eğitmenler</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Eğitmenler</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Eğitmenler</li>
+                    </ol>
+                </nav>
             </figure>
+
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <h4><a href="{{route('manager.course-teacher.create')}}" class="btn btn-success">Yeni Eğitmen

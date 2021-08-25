@@ -33,17 +33,17 @@
                             <tr>
                                 <td>{{$live_lesson->title}}</td>
                                 <td>
-                                    <a href="//{{$live_lesson->url}}" target="_blank" class="btn btn-light">Katıl</a>
+                                    <a href="{{url($live_lesson->url)}}" target="_blank" class="btn btn-light">Katıl</a>
                                 </td>
                                 <td>{{$live_lesson->type->title}}</td>
                                 <td>{{$live_lesson->live_date}}</td>
                                 <td>
                                     <a href="{{route('manager.live-lesson.edit',$live_lesson)}}"><i
-                                            class="fas fa-user-edit"></i></a>
+                                            class="fas fa-edit"></i></a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('manager.live-lesson.destroy',$live_lesson)}}`)">
                                         <i
-                                            class="fas fa-trash-alt"></i></button>
+                                            class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                         @endforeach

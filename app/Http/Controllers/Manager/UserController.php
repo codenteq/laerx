@@ -10,11 +10,19 @@ use App\Models\Month;
 use App\Models\Period;
 use App\Models\User;
 use App\Models\UserInfo;
+use App\Services\GlobalService;
 use Illuminate\Http\Request;
 use App\Http\Requests\Manager\UserRequest;
 
 class UserController extends Controller
 {
+    private $globalService;
+
+    public function __construct(GlobalService $globalService)
+    {
+        $this->globalService = $globalService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,8 +30,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = UserInfo::where('companyId',companyId())->with('company', 'user', 'language','period','month')->get();
-        return view('manager.users.user-list',compact('users'));
+        $users = UserInfo::where('companyId', companyId())->with('company', 'user', 'language', 'period', 'month')->latest()->get();
+        return view('manager.users.user-list', compact('users'));
     }
 
     /**
@@ -45,16 +53,12 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\Manager\UserRequest $request
-     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user, UserRequest $request)
+    public function store(UserRequest $request)
     {
         try {
-            $user->create([
-                'type' => User::Normal,
-                'companyId' => companyId(),
-            ]);
+            $this->globalService->userStore($request, User::Normal);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -70,12 +74,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('manager.users.user-edit',[
+        return view('manager.users.user-edit', [
             'periods' => Period::all(),
             'groups' => Group::all(),
             'languages' => Language::all(),
             'months' => Month::all(),
-            'user' => UserInfo::where('userId', $user->id)->with('company', 'user', 'language','period')->first()
+            'user' => UserInfo::where('userId', $user->id)->with('company', 'user', 'language', 'period')->first()
         ]);
     }
 
@@ -89,7 +93,7 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         try {
-            $user->update($request->all());
+            $this->globalService->userUpdate($request, $user->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -105,8 +109,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         try {
-            $user->delete();
-            UserInfo::where('userId', $user->id)->delete();
+            $this->globalService->userDestroy($user->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

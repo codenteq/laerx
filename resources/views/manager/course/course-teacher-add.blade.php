@@ -44,6 +44,11 @@
                         </div>
 
                         <div class="form-floating mb-3">
+                            <input type="password" class="form-control" name="password_confirmation" id="password-confirm" placeholder="Şifre">
+                            <label for="floatingLast">Şifre Tekrar</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="phone" placeholder="Telefon">
                             <label for="floatingFirst">Telefon</label>
                         </div>

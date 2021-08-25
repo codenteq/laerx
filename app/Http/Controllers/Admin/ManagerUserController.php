@@ -54,7 +54,7 @@ class ManagerUserController extends Controller
     public function store(ManagerUserRequest $request)
     {
         try {
-            $this->globalService->userStore(User::Manager);
+            $this->globalService->userStore($request,User::Manager);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -85,7 +85,7 @@ class ManagerUserController extends Controller
     public function update(ManagerUserRequest $request, User $manager_user)
     {
         try {
-            $this->globalService->userUpdate($manager_user->id);
+            $this->globalService->userUpdate($request,$manager_user->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

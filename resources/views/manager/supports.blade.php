@@ -56,7 +56,7 @@
                                                     <form name="form-data">
                                                         @csrf
                                                         @method('PUT')
-                                                        <input type="hidden" name="status" value="0">
+                                                        <input type="hidden" name="status" value="1">
                                                         <button type="button" onclick="modalCreateAndUpdateButton(`${{route('manager.support.update',$support)}}`)" class="btn btn-primary">Tamamlandı</button>
                                                     </form>
                                                 </div>

@@ -40,7 +40,7 @@ if (!function_exists('invoiceDiffDate')) {
 }
 
 if (!function_exists('imagePath')) {
-    function profilePath($path): string
+    function imagePath($path): string
     {
         return '/storage/' . $path;
     }

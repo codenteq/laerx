@@ -52,7 +52,9 @@
                                 <input class="form-check-input p-3" type="checkbox"
                                        id="flexCheckDefault"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       name="status_1"
+                                       name="correct_choice"
+                                       value="1"
+                                       onclick="correctChoice(this)"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>
                         </div>
@@ -65,7 +67,9 @@
                                 <input class="form-check-input p-3" type="checkbox"
                                        id="flexCheckDefault"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       name="status_2"
+                                       name="correct_choice"
+                                       value="2"
+                                       onclick="correctChoice(this)"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>
                         </div>
@@ -78,7 +82,9 @@
                                 <input class="form-check-input p-3" type="checkbox"
                                        id="flexCheckDefault"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       name="status_3"
+                                       name="correct_choice"
+                                       value="3"
+                                       onclick="correctChoice(this)"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>
                         </div>
@@ -91,7 +97,9 @@
                                 <input class="form-check-input p-3" type="checkbox"
                                        id="flexCheckDefault"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       name="status_4"
+                                       name="correct_choice"
+                                       value="4"
+                                       onclick="correctChoice(this)"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>
                         </div>
@@ -102,7 +110,10 @@
                             </div>
                             <div class="col-1">
                                 <input class="form-check-input p-3" type="checkbox"
-                                       name="status_1" id="flexCheckDefault"
+                                       id="flexCheckDefault"
+                                       name="correct_choice"
+                                       value="1"
+                                       onclick="correctChoice(this)"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>
@@ -114,7 +125,10 @@
 
                             <div class="col-1">
                                 <input class="form-check-input p-3" type="checkbox"
-                                       name="status_2" id="flexCheckDefault"
+                                       id="flexCheckDefault"
+                                       name="correct_choice"
+                                       value="2"
+                                       onclick="correctChoice(this)"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>
@@ -125,7 +139,10 @@
                             </div>
                             <div class="col-1">
                                 <input class="form-check-input p-3" type="checkbox"
-                                       name="status_3" id="flexCheckDefault"
+                                       id="flexCheckDefault"
+                                       name="correct_choice"
+                                       value="3"
+                                       onclick="correctChoice(this)"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>
@@ -136,7 +153,10 @@
                             </div>
                             <div class="col-1">
                                 <input class="form-check-input p-3" type="checkbox"
-                                       name="status_4" id="flexCheckDefault"
+                                       id="flexCheckDefault"
+                                       name="correct_choice"
+                                       value="4"
+                                       onclick="correctChoice(this)"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
                                        title="Doğru Cevabı İşaretleyin.">
                             </div>
@@ -211,5 +231,14 @@
 
         });
 
+    </script>
+    <script>
+        // checkbox only select
+        function correctChoice(checkbox) {
+            var checkboxes = document.getElementsByName('correct_choice')
+            checkboxes.forEach((item) => {
+                if (item !== checkbox) item.checked = false
+            })
+        }
     </script>
 @endsection

@@ -27,7 +27,8 @@ class QuestionRequest extends FormRequest
             'title' => 'required|string',
             'questionImage' => 'string',
             'choiceImage' => 'string',
-            'imagePath' => 'mimes:jpg,jpeg,png',
+            'imagePath' => 'file|mimes:jpg,jpeg,png',
+            'correct_choice' => 'required'
         ];
     }
 }

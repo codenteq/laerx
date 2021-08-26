@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\ImageConvertJob;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Support\Facades\Hash;
@@ -32,6 +33,8 @@ class GlobalService
     public function userInfoStore($request, $id): void
     {
         !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar','public');
+        if ($path != null)
+            ImageConvertJob::dispatch($id, 'user', $path);
         UserInfo::create([
             'phone' => $request->phone,
             'address' => $request->address,
@@ -67,7 +70,9 @@ class GlobalService
     public function userInfoUpdate($request, $id): void
     {
         !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar','public');
-        $user = UserInfo::where('userId', $id)->first();
+        if ($path != null)
+            ImageConvertJob::dispatch($id, 'user', $path);
+        $user = UserInfo::where('userId', $id,'user')->first();
 
         $user->phone = $request->phone;
         $user->address = $request->address;

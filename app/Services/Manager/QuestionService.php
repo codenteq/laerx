@@ -3,10 +3,10 @@
 namespace App\Services\Manager;
 
 use App\Http\Requests\Manager\QuestionRequest;
+use App\Jobs\ImageConvertJob;
 use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\QuestionChoiceKey;
-use Illuminate\Support\Facades\Log;
 
 class QuestionService
 {
@@ -23,6 +23,9 @@ class QuestionService
             $question->imagePath = $path;
         }
         $question->save();
+        if ($request->file('imagePath') && isset($request->questionImage)) {
+            ImageConvertJob::dispatch($question->id, 'question', $path);
+        }
         if (isset($request->choiceImage) == "on")
             self::choiceImageStore($request, $question->id);
         else
@@ -46,7 +49,7 @@ class QuestionService
 
     public function choiceImageStore($request, $id)
     {
-        $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'photo', 'choiceImage', 'questionImage']);
+        $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'photo', 'choiceImage', 'questionImage','imagePath']);
         for ($i = 1; $i <= 4; $i++) {
             $choiceImage = 'choice_image_' . $i;
             $path = $request->file($choiceImage)->store('choices', 'public');
@@ -55,6 +58,7 @@ class QuestionService
                 'path' => $path,
                 'questionId' => $id
             ]);
+            ImageConvertJob::dispatch($choice->id, 'questionChoice', $path);
             self::choiceKeyStore($choice->id, $id);
         }
     }
@@ -77,6 +81,7 @@ class QuestionService
         if (request()->file('imagePath') && isset($request->questionImage)) {
             $path = request()->file('imagePath')->store('questions', 'public');
             $question->imagePath = $path;
+            ImageConvertJob::dispatch($id, 'question', $path);
         }
         $question->save();
         self::choiceKeyUpdate($request, $id);
@@ -90,7 +95,6 @@ class QuestionService
     {
         $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage']);
         foreach ($req as $key => $val) {
-            Log::info($key);
             QuestionChoice::find($key)->update([
                 'title' => $request->input($val),
                 'path' => null,
@@ -108,14 +112,15 @@ class QuestionService
 
     public function choiceImageUpdate($request)
     {
-        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage']);
+        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage','imagePath']);
         foreach ($req as $key => $val) {
-            if (request()->file($key)) {
-                $path = request()->file($key)->store('choices','public');
+            if ($request->hasFile($key)) {
+                $path = $request->file($key)->store('choices','public');
                 QuestionChoice::find($key)->update([
                     'title' => null,
                     'path' => $path,
                 ]);
+                ImageConvertJob::dispatch($key, 'questionChoice', $path);
             }
         }
     }

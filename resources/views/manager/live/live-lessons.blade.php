@@ -8,10 +8,12 @@
                 <blockquote class="blockquote">
                     <h2>Canlı Dersler</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Canlı Dersler</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Canlı Dersler</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
@@ -33,17 +35,17 @@
                             <tr>
                                 <td>{{$live_lesson->title}}</td>
                                 <td>
-                                    <a href="//{{$live_lesson->url}}" target="_blank" class="btn btn-light">Katıl</a>
+                                    <a href="{{url($live_lesson->url)}}" target="_blank" class="btn btn-light">Katıl</a>
                                 </td>
                                 <td>{{$live_lesson->type->title}}</td>
                                 <td>{{$live_lesson->live_date}}</td>
                                 <td>
                                     <a href="{{route('manager.live-lesson.edit',$live_lesson)}}"><i
-                                            class="fas fa-user-edit"></i></a>
+                                            class="fas fa-edit"></i></a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('manager.live-lesson.destroy',$live_lesson)}}`)">
                                         <i
-                                            class="fas fa-trash-alt"></i></button>
+                                            class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                         @endforeach

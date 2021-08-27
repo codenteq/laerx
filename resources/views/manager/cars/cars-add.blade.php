@@ -8,11 +8,13 @@
                 <blockquote class="blockquote">
                     <h2>Araç Ekle</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.appointment-car')}}"><i class="fas fa-car"></i> Araç & Randevular</a> /</span>
-                    <span><a href="{{route('manager.car.index')}}"><i class="fas fa-car"></i> Araçlar</a> /</span>
-                    <span class="active">Araç Ekle</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.appointment-car')}}">Araç & Randevular</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.car.index')}}">Araçlar</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Araç Ekle</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">

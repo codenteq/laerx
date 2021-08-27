@@ -8,11 +8,13 @@
                 <blockquote class="blockquote">
                     <h2>Bildirim Oluştur</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="{{route('manager.notification.index')}}"><i class="fas fa-bell"></i> Bildirimler</a> /</span>
-                    <span class="active">Bildirim Oluştur</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.notification.index')}}">Bildirimler</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Bildirim Oluştur</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">

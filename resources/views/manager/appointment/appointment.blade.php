@@ -8,10 +8,12 @@
                 <blockquote class="blockquote">
                     <h2>Araç & Randevular</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-car"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Araç & Randevular</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Araç & Randevular</li>
+                    </ol>
+                </nav>
             </figure>
 
             <div class="container text-center">

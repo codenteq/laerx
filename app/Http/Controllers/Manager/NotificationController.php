@@ -7,10 +7,18 @@ use App\Http\Controllers\Controller;
 use App\Models\Notification;
 use App\Models\NotificationUser;
 use App\Models\User;
+use App\Services\Manager\NotificationService;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
+    private $notificationService;
+
+    public function __construct(NotificationService $notificationService)
+    {
+        $this->notificationService = $notificationService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +27,7 @@ class NotificationController extends Controller
     public function index()
     {
         $notifications = Notification::latest()->get();
-        return view('manager.notification.notifications',compact('notifications'));
+        return view('manager.notification.notifications', compact('notifications'));
     }
 
     /**
@@ -37,13 +45,12 @@ class NotificationController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Notification $notification
      * @return \Illuminate\Http\Response
      */
-    public function store(Notification $notification, Request $request)
+    public function store(Request $request)
     {
         try {
-            Notification::create($request->all());
+            $this->notificationService->store($request);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

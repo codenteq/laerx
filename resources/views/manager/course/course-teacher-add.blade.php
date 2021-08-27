@@ -8,11 +8,13 @@
                 <blockquote class="blockquote">
                     <h2>Eğitmen Ekle</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="{{route('manager.course-teacher.index')}}"><i class="fas fa-chalkboard-teacher"></i> Eğitmenler</a> /</span>
-                    <span class="active">Eğitmen Ekle</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.course-teacher.index')}}">Eğitmenler</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Eğitmen Ekle</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
@@ -41,6 +43,11 @@
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control" name="password" placeholder="Şifre">
                             <label for="floatingFirst">Şifre</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" name="password_confirmation" id="password-confirm" placeholder="Şifre">
+                            <label for="floatingLast">Şifre Tekrar</label>
                         </div>
 
                         <div class="form-floating mb-3">

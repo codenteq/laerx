@@ -9,11 +9,19 @@ use App\Models\Appointment;
 use App\Models\AppointmentSetting;
 use App\Models\Car;
 use App\Models\User;
+use App\Services\Manager\AppointmentService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
+    private $appointmentService;
+
+    public function __construct(AppointmentService $apppointmentService)
+    {
+        $this->appointmentService = $apppointmentService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,14 +54,13 @@ class AppointmentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\Manager\AppointmentRequest $request
-     * @param \App\Models\Appointment $appointment
      * @return \Illuminate\Http\Response
      */
-    public function store(Appointment $appointment, AppointmentRequest $request)
+    public function store(AppointmentRequest $request)
     {
         try {
             if (!ignoreDateCheck($request->date)) {
-                $appointment->create($request->all());
+                $this->appointmentService->store($request);
                 return response(ResponseMessage::SuccessMessage);
             } else {
                 return response(ResponseMessage::IgnoreDateMessage);
@@ -61,17 +68,6 @@ class AppointmentController extends Controller
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Appointment $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Appointment $appointment)
-    {
-        //
     }
 
     /**
@@ -101,7 +97,7 @@ class AppointmentController extends Controller
     {
         try {
             if (!ignoreDateCheck($request->date)) {
-                $appointment->update($request->all());
+                $this->appointmentService->update($request, $appointment->id);
                 return response(ResponseMessage::SuccessMessage);
             } else {
                 return response(ResponseMessage::IgnoreDateMessage);
@@ -120,7 +116,7 @@ class AppointmentController extends Controller
     public function destroy(Appointment $appointment)
     {
         try {
-            $appointment->delete();
+            $this->appointmentService->destroy($appointment->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -135,18 +131,13 @@ class AppointmentController extends Controller
     public function getAppointmentSetting()
     {
         $months = currentMounth();
-        return view('manager.appointment.appointment-setting',compact('months'));
+        return view('manager.appointment.appointment-setting', compact('months'));
     }
 
     public function postAppointmentSetting(Request $request)
     {
         try {
-            foreach ($request->all() as $key => $val) {
-                AppointmentSetting::updateOrCreate([
-                    'ignore_date' => $val,
-                    'companyId' => companyId()
-                ]);
-            }
+            $this->appointmentService->settingStoreAndUpdate($request);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

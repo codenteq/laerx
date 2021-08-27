@@ -13,7 +13,7 @@ if (!function_exists('ignoreDateCheck')) {
 }
 
 if (!function_exists('companyId')) {
-    function companyId() : int
+    function companyId(): int
     {
         return auth()->user()->info->companyId;
     }
@@ -36,6 +36,13 @@ if (!function_exists('invoiceDiffDate')) {
         $invoice = Invoice::select('end_date')->where('companyId', $id)->orderBy('id', 'desc')->first();
         $end = Carbon::parse($invoice->end_date);
         return $end->diffInDays(Carbon::now());
+    }
+}
+
+if (!function_exists('imagePath')) {
+    function imagePath($path): string
+    {
+        return '/storage/' . $path;
     }
 }
 

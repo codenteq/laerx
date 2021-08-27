@@ -25,7 +25,6 @@ class AppointmentRequest extends FormRequest
     {
         return [
             'date' => 'required|date',
-            'status' => 'required|string',
             'teacherId' => 'required|numeric',
             'userId' => 'required|numeric',
             'carId' => 'required|numeric',

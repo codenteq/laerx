@@ -8,11 +8,14 @@
                 <blockquote class="blockquote">
                     <h2>Kursiyer Ekle</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="{{route('manager.user-operations')}}"><i class="fas fa-users-cog"></i> Kursiyer İşlemleri</a> /</span>
-                    <span class="active">Kursiyer Düzenle</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.user-operations')}}">Kursiyer İşlemleri</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.user.index')}}">Kursiyer Listesi</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Kursiyer Düzenle</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
@@ -46,6 +49,11 @@
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control" name="password" placeholder="Yeni Şifre">
                             <label>Yeni Şifre</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" name="password_confirmation" id="password-confirm" placeholder="Şifre">
+                            <label for="floatingLast">Şifre Tekrar</label>
                         </div>
 
                         <div class="form-floating mb-3">

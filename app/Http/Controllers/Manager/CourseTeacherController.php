@@ -7,10 +7,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\CourseTeacherRequest;
 use App\Models\User;
 use App\Models\UserInfo;
+use App\Services\GlobalService;
 use Illuminate\Http\Request;
 
 class CourseTeacherController extends Controller
 {
+    private $globalService;
+
+    public function __construct(GlobalService $globalService)
+    {
+        $this->globalService = $globalService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +26,7 @@ class CourseTeacherController extends Controller
      */
     public function index()
     {
-        $users = UserInfo::where('companyId', companyId())->with('user')->get();
+        $users = UserInfo::where('companyId', companyId())->with('user')->latest()->get();
         return view('manager.course.course-teachers', compact('users'));
     }
 
@@ -36,15 +44,12 @@ class CourseTeacherController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\Manager\CourseTeacherRequest $request
-     * @param \App\Models\User $course_teacher
      * @return \Illuminate\Http\Response
      */
-    public function store(User $course_teacher, CourseTeacherRequest $request)
+    public function store(CourseTeacherRequest $request)
     {
         try {
-            $course_teacher->create([
-                'type' => User::Manager,
-            ]);
+            $this->globalService->userStore($request,User::Manager);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -72,7 +77,7 @@ class CourseTeacherController extends Controller
     public function update(CourseTeacherRequest $request, User $course_teacher)
     {
         try {
-            $course_teacher->update($request->all());
+            $this->globalService->userUpdate($request,$course_teacher->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -88,8 +93,7 @@ class CourseTeacherController extends Controller
     public function destroy(User $course_teacher)
     {
         try {
-            $course_teacher->delete();
-            UserInfo::where('userId',$course_teacher->id)->delete();
+            $this->globalService->userDestroy($course_teacher->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

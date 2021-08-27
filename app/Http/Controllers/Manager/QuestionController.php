@@ -26,7 +26,7 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::latest()->get();
-        return view('manager.question.question',compact('questions'));
+        return view('manager.question.question', compact('questions'));
     }
 
     /**
@@ -44,16 +44,16 @@ class QuestionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\Manager\QuestionRequest $request
-     * @param \App\Models\Question $question
      * @return \Illuminate\Http\Response
      */
-    public function store(Question $question, QuestionRequest $request)
+    public function store(QuestionRequest $request)
     {
         try {
-            $question->create($request->all());
+            $this->questionService->store($request);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            echo $ex;
+            //return response(ResponseMessage::ErrorMessage);
         }
     }
 
@@ -66,7 +66,7 @@ class QuestionController extends Controller
     public function edit(Question $question)
     {
         $types = QuestionType::all();
-        return view('manager.question.question-edit',compact('question','types'));
+        return view('manager.question.question-edit', compact('question', 'types'));
     }
 
     /**
@@ -79,10 +79,7 @@ class QuestionController extends Controller
     public function update(QuestionRequest $request, Question $question)
     {
         try {
-            $this->questionService->questionUpdate($question->id, $request->all());
-            $request->choiceImage == "on" ? $this->questionService->questionChoiceImageUpdate()
-                : $this->questionService->questionChoiceUpdate($request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'choiceImage','questionImage']));
-            $this->questionService->questionChoiceKeyUpdate($question->id,$request->only(['correct_choice']));
+            $this->questionService->update($request, $question->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -98,7 +95,7 @@ class QuestionController extends Controller
     public function destroy(Question $question)
     {
         try {
-            $question->delete();
+            $this->questionService->destroy($question->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

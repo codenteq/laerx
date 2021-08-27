@@ -10,10 +10,17 @@ use App\Models\LiveLesson;
 use App\Models\Month;
 use App\Models\Period;
 use App\Models\QuestionType;
-use Illuminate\Http\Request;
+use App\Services\Manager\LiveLessonService;
 
 class LiveLessonController extends Controller
 {
+    private $liveLessonService;
+
+    public function __construct(LiveLessonService $liveLessonService)
+    {
+        $this->liveLessonService = $liveLessonService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,14 +51,12 @@ class LiveLessonController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\Manager\LiveLessonRequest $request
-     * @param \App\Models\LiveLesson $live_lesson
      * @return \Illuminate\Http\Response
      */
-    public function store(LiveLesson $live_lesson, LiveLessonRequest $request)
+    public function store(LiveLessonRequest $request)
     {
         try {
-            $request->merge(['companyId' => companyId()]);
-            $live_lesson->create($request->all());
+            $this->liveLessonService->store($request);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -85,7 +90,7 @@ class LiveLessonController extends Controller
     public function update(LiveLessonRequest $request, LiveLesson $live_lesson)
     {
         try {
-            $live_lesson->update($request->all());
+            $this->liveLessonService->update($request, $live_lesson->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -101,7 +106,7 @@ class LiveLessonController extends Controller
     public function destroy(LiveLesson $live_lesson)
     {
         try {
-            $live_lesson->delete();
+            $this->liveLessonService->destroy($live_lesson->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

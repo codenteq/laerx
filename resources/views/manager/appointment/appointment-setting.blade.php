@@ -8,16 +8,17 @@
                 <blockquote class="blockquote">
                     <h2>Randevu Ayarları</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.appointment-car')}}"><i
-                                class="fas fa-car"></i> Araç & Randevular</a> /</span>
-                    <span class="active">Randevu Ayarları</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.appointment-car')}}">Araç & Randevular</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Randevu Ayarları</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
 
-                    <div class="card col-8">
+                    <div class="card col-12 col-md-8">
                         <h5 class="card-header"><i class="fas fa-calendar-alt"></i>&nbsp;Randevu Olmayan Günler</h5>
                         <div class="card-body">
                             <form name="form-data">

@@ -8,12 +8,13 @@
                 <blockquote class="blockquote">
                     <h2>Canlı Ders Düzenle</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="{{route('manager.live-lesson.index')}}"><i
-                                class="fas fa-video"></i> Canlı Dersler</a> /</span>
-                    <span class="active">Canlı Ders Düzenle</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.live-lesson.index')}}">Canlı Dersler</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Canlı Ders Düzenle</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">

@@ -8,10 +8,13 @@
                 <blockquote class="blockquote">
                     <h2>Soru Düzenle</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('manager.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Soru Düzenle</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.question.index')}}">Sorular</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Soru Düzenle</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
@@ -24,6 +27,9 @@
                             <label class="form-check-label" for="switchQuestionImageShow">Soru Resim</label>
                         </div>
                         <br>
+                        @if($question->imagePath)
+                            <img src="{{imagePath($question->imagePath)}}" height="100" class="mb-3 w-auto" alt="">
+                        @endif
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="title" placeholder="Başlık"
                                    value="{{$question->title}}">
@@ -45,33 +51,43 @@
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="choiceImage"
                                    {{$question->choiceImage == 1 ? 'checked' : null}} id="switchImageShow">
+                            <label class="form-check-label" for="switchImageShow">Şık Resim</label>
                         </div>
                         <br>
                         @foreach($question->choice as $key => $choice)
-                            <!-- text choice -->
-                                <div class="row mb-3 text-choice">
-                                    <div class="form-floating ps-1 col-11">
-                                        <input type="text" class="form-control " name="{{$choice->id}}" placeholder="Cevap 0{{$key + 1}}"
-                                               value="{{$choice->title}}">
-                                        <label class="" for="floatingFirst">Cevap 0{{$key + 1}}</label>
-                                    </div>
-                                    <div class="col-1">
-                                        <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
-                                               data-bs-toggle="tooltip" data-bs-placement="top"
-                                               {{$choice->id === $choice->choiceKey->choiceId ? 'checked' : null}}
-                                               name="correct_choice"
-                                               value="{{$choice->id}}"
-                                               title="Doğru Cevabı İşaretleyin.">
-                                    </div>
+                        <!-- text choice -->
+                            <div class="row mb-3 text-choice">
+                                <div class="form-floating ps-1 col-10 col-md-11">
+                                    <input type="text" class="form-control " name="{{$choice->id}}"
+                                           placeholder="Cevap 0{{$key + 1}}"
+                                           value="{{$choice->title}}">
+                                    <label class="" for="floatingFirst">Cevap 0{{$key + 1}}</label>
                                 </div>
-                                <!-- image choice -->
+                                <div class="col-2 col-md-1">
+                                    <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
+                                           data-bs-toggle="tooltip" data-bs-placement="top"
+                                           @if($choice->path == null){{$choice->id === $choice->choiceKey->choiceId ? 'checked' : null}} @endif
+                                           name="correct_choice"
+                                           value="{{$choice->id}}"
+                                           onclick="correctChoice(this)"
+                                           title="Doğru Cevabı İşaretleyin.">
+                                </div>
+                            </div>
+                            <!-- image choice -->
                             <div class="row mb-3 image-choice d-none">
-                                <div class="mb-3 col-11">
+                                @if($choice->path)
+                                    <img src="{{imagePath($choice->path)}}" height="100" class="mb-3 w-auto" alt="">
+                                @endif
+                                <div class="mb-3 col-10 col-md-11">
                                     <input type="file" class="form-control" name="{{$choice->id}}">
                                 </div>
-                                <div class="col-1">
-                                    <input class="form-check-input p-3" type="checkbox" value="" id="flexCheckDefault"
+                                <div class="col-2 col-md-1">
+                                    <input class="form-check-input p-3" type="checkbox" value="{{$choice->id}}"
+                                           id="flexCheckDefault"
+                                           name="correct_choice"
                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                           onclick="correctChoice(this)"
+                                           @if($choice->path != null){{$choice->id === $choice->choiceKey->choiceId ? 'checked' : null}} @endif
                                            title="Doğru Cevabı İşaretleyin.">
                                 </div>
                             </div>
@@ -163,5 +179,15 @@
         else
             questionImageInput.classList.add('d-none')
 
+    </script>
+
+    <script>
+        // checkbox only select
+        function correctChoice(checkbox) {
+            var checkboxes = document.getElementsByName('correct_choice')
+            checkboxes.forEach((item) => {
+                if (item !== checkbox) item.checked = false
+            })
+        }
     </script>
 @endsection

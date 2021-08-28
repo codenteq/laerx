@@ -7,6 +7,7 @@ use App\Jobs\ImageConvertJob;
 use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\QuestionChoiceKey;
+use Illuminate\Support\Facades\Log;
 
 class QuestionService
 {
@@ -93,10 +94,10 @@ class QuestionService
 
     public function choiceUpdate($request)
     {
-        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage']);
+        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage','imagePath']);
         foreach ($req as $key => $val) {
             QuestionChoice::find($key)->update([
-                'title' => $request->$val,
+                'title' => $val,
                 'path' => null,
             ]);
         }

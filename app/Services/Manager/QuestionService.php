@@ -96,7 +96,7 @@ class QuestionService
         $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage']);
         foreach ($req as $key => $val) {
             QuestionChoice::find($key)->update([
-                'title' => $request->input($val),
+                'title' => $request->$val,
                 'path' => null,
             ]);
         }

@@ -8,10 +8,12 @@
                 <blockquote class="blockquote">
                     <h2>Sınav Sonuçlarım</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('user.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Sınav Sonuçlarım</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sınav Sonuçlarım</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="container d-md-none d-lg-none d-xl-none d-xxl-none">
                 <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">

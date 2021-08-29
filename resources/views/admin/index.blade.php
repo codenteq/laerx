@@ -8,11 +8,12 @@
                 <blockquote class="blockquote">
                     <h2>Ana Sayfa</h2>
                 </blockquote>
-                <figcaption>
-                    <span><i class="fas fa-home"></i> Ana Sayfa</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
+                    </ol>
+                </nav>
             </figure>
-
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
                     <div class="col base p-5 mb-2">

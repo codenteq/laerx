@@ -6,14 +6,15 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Grup Oluştur</h2>
+                    <h2>Grup Güncelle</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('admin.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="{{route('admin.group.index')}}"><i
-                                class="fas fa-layer-group"></i> Ehliyet Grupları</a> /</span>
-                    <span class="active">Grup Oluştur</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.group.index')}}">Ehliyet Grupları</a></li>
+                        <li class="breadcrumb-item">Grup Güncelle</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">

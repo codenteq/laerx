@@ -6,13 +6,15 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Blog adı buraya gelecek</h2>
+                    <h2>Blog Name</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('user.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="{{route('user.lessons.index')}}"><i class="fas fa-home"></i> Derslerim</a> /</span>
-                    <span class="active">Blog adı buraya gelecek</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('user.lessons.index')}}">Derslerim</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Blog Name</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">

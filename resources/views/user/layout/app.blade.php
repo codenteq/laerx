@@ -30,7 +30,7 @@
                     <i class="fa fa-home fa-2x"></i><br>
                     <span style="position: relative;">Ana Sayfa</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/lessons') ? 'active' : '' }}" href="{{route('user.lessons')}}">
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/lessons*') ? 'active' : '' }}" href="{{route('user.lessons.index')}}">
                     <i class="fa fa-book fa-2x"></i><br>
                     <span style="position: relative;">Derslerim</span>
                 </a>
@@ -99,7 +99,7 @@
         <nav class="navbar fixed-bottom navbar-light bg-light bottom-navigation d-flex flex-row d-md-none d-lg-none d-xl-none d-xxl-none">
             <a class="btn btn-light" id="sidebarToggleM"><span class="fa fa-bars"></span></a>
             <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.dashboard')}}"><i class="fas fa-home"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.lessons')}}"><i class="fas fa-book"></i></a>
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.lessons.index')}}"><i class="fas fa-book"></i></a>
             <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.exams')}}"><i class="fas fa-laptop"></i></a>
         </nav>
     </div>

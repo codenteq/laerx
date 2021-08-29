@@ -51,6 +51,11 @@
                     <i class="fas fa-question fa-2x"></i><br>
                     Sorular
                 </a>
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/blog*') ? 'active' : '' }}"
+                   href="{{route('manager.blog.index')}}">
+                    <i class="fab fa-blogger-b fa-2x"></i><br>
+                    Blog
+                </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lesson*') ? 'active' : '' }}"
                    href="{{route('manager.live-lesson.index')}}">
                     <i class="fas fa-video fa-2x"></i><br>

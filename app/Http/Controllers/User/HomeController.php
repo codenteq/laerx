@@ -28,11 +28,6 @@ class HomeController extends Controller
         return view('user.index');
     }
 
-    public function getLessons()
-    {
-        return view('user.lessons');
-    }
-
     public function getExams()
     {
         return view('user.exams');

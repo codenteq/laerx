@@ -6,14 +6,15 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Dil Düzenle</h2>
+                    <h2>Dil Güncelle</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('admin.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span><a href="{{route('admin.language.index')}}"><i
-                                class="fas fa-language"></i> Diller</a> /</span>
-                    <span class="active">Dil Düzenle</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.language.index')}}">Diller</a></li>
+                        <li class="breadcrumb-item">Dil Güncelle</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">

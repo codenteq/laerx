@@ -2,6 +2,9 @@
 
 use App\Models\AppointmentSetting;
 use App\Models\Invoice;
+use App\Models\QuestionChoiceKey;
+use App\Models\TestQuestion;
+use App\Models\UserAnswer;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 
@@ -46,3 +49,74 @@ if (!function_exists('imagePath')) {
     }
 }
 
+if (!function_exists('questionLength')) {
+    function questionLength($id): int
+    {
+        return TestQuestion::where('testId',$id)->get()->count();
+    }
+}
+
+if (!function_exists('result')) {
+    function result($id): float
+    {
+        $tests = UserAnswer::where('testId',$id)->where('userId',auth()->id())->get();
+        $result = 0;
+        foreach ($tests as $test) {
+            $choiceKey = (bool)QuestionChoiceKey::where('questionId',$test->questionId)->where('choiceId',$test->choiceId)->first();
+            $choiceKey === true ? $result++ : null;
+        }
+        return number_format(100 / $tests->count() * $result,2);
+    }
+}
+
+if (!function_exists('totalResultTrue')) {
+    function totalCorrect(): int
+    {
+        $tests = UserAnswer::where('userId',auth()->id())->get();
+        $result = 0;
+        foreach ($tests as $test) {
+            $choiceKey = (bool)QuestionChoiceKey::where('questionId',$test->questionId)->where('choiceId',$test->choiceId)->first();
+            $choiceKey === true ? $result++ : null;
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('totalInCorrect')) {
+        function totalInCorrect(): int
+    {
+        $tests = UserAnswer::where('userId',auth()->id())->get();
+        $result = 0;
+        foreach ($tests as $test) {
+            $choiceKey = (bool)QuestionChoiceKey::where('questionId',$test->questionId)->where('choiceId',$test->choiceId)->first();
+            $choiceKey === false ? $result++ : null;
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('totalPoint')) {
+    function totalPoint(): float
+    {
+        $tests = UserAnswer::where('userId',auth()->id())->get();
+        $result = 0;
+        foreach ($tests as $test) {
+            $choiceKey = (bool)QuestionChoiceKey::where('questionId',$test->questionId)->where('choiceId',$test->choiceId)->first();
+            $choiceKey === true ? $result++ : null;
+        }
+        return number_format(100 / $tests->count() * $result,2);
+    }
+}
+
+if (!function_exists('totalResultStatus')) {
+    function totalResultStatus($id): string
+    {
+        $tests = UserAnswer::where('testId',$id)->where('userId',auth()->id())->get();
+        $result = 0;
+        foreach ($tests as $test) {
+            $choiceKey = (bool)QuestionChoiceKey::where('questionId',$test->questionId)->where('choiceId',$test->choiceId)->first();
+            $choiceKey === true ? $result++ : null;
+        }
+        return number_format(100 / $tests->count() * $result,2)  >= 70 ? 'Başarılı' : 'Başarısız';
+    }
+}

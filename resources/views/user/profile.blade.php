@@ -6,12 +6,14 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Hesap Ayarlarım</h2>
+                    <h2>Profil</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('user.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Profil</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Profil</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
@@ -46,6 +48,12 @@
                         </div>
 
                         <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingMail" placeholder="Şifre Tekrar"
+                                   name="password_confirmation">
+                            <label for="floatingMail">Yeni Şifre</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingPhone" placeholder="Telefon Numarası"
                                    name="phone"
                                    value="{{$user->phone}}">
@@ -59,7 +67,7 @@
                             <label for="floatingAddress">Adres</label>
                         </div>
 
-                        <div class="form-floating">
+                        <div class="form-floating mb-3">
                             <select class="form-select" id="floatingSelect" name="languageId" aria-label="Floating label select example">
                                 @foreach($languages as $language)
                                     <option
@@ -67,6 +75,11 @@
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Dil Seçiniz...</label>
+                        </div>
+
+                        <div class="input-group">
+                            <input type="file" class="form-control" name="photo">
+                            <label class="input-group-text" for="inputGroupFile02">Profil Resmi</label>
                         </div>
 
                         <div class="mt-3">

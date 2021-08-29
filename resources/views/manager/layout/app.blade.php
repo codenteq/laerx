@@ -51,6 +51,11 @@
                     <i class="fas fa-question fa-2x"></i><br>
                     Sorular
                 </a>
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/blog*') ? 'active' : '' }}"
+                   href="{{route('manager.blog.index')}}">
+                    <i class="fab fa-blogger-b fa-2x"></i><br>
+                    Blog
+                </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lesson*') ? 'active' : '' }}"
                    href="{{route('manager.live-lesson.index')}}">
                     <i class="fas fa-video fa-2x"></i><br>
@@ -105,6 +110,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('manager.course-teacher.edit',auth()->id())}}">Profil</a>
+                                <a class="dropdown-item" href="{{route('manager.invoice.index')}}">Faturalar</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{route('logout-user')}}">Çıkış Yap</a>
                             </div>

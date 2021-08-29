@@ -8,18 +8,14 @@
                 <blockquote class="blockquote">
                     <h2>Canlı Derslerim</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('user.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Canlı Derslerim</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Canlı Derslerim</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
-                    <h4>
-                        <button class="btn btn-success">Tamamlanmış Dersler</button>
-                        <button class="btn btn-warning">Tamamlanmamış Dersler</button>
-                    </h4>
-                </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-scroll">
                     <table id="data-table" class="table table-striped">
                         <thead>

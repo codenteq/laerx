@@ -72,16 +72,17 @@ class GlobalService
         !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar','public');
         if ($path != null)
             ImageConvertJob::dispatch($id, 'user', $path);
+
         $user = UserInfo::where('userId', $id,'user')->first();
 
         $user->phone = $request->phone;
         $user->address = $request->address;
+        $user->languageId = $request->languageId;
         if (auth()->user()->type == 1 || auth()->user()->type == 2) {
             $user->status = isset($request->status) == 'on' ? 1 : 0;
             $user->periodId = $request->periodId;
             $user->monthId = $request->monthId;
             $user->groupId = $request->groupId;
-            $user->languageId = $request->languageId;
             $user->photo = $path;
             $user->companyId = auth()->user()->type === 1 ? $request->companyId : companyId();
             $user->userId = $id;

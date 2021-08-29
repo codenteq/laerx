@@ -14,6 +14,7 @@ use App\Http\Controllers\Manager\LiveLessonController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\Manager\NotificationController;
 use App\Http\Controllers\Manager\QuestionController;
+use App\Http\Controllers\Manager\SalesController;
 use App\Http\Controllers\Manager\SupportController;
 use App\Http\Controllers\Manager\UserController;
 use App\Http\Controllers\User\HomeController;
@@ -81,6 +82,7 @@ Route::prefix('manager')->name('manager.')->middleware('auth')->group(function (
     Route::put('/support/{support}',[SupportController::class,'update'])->name('support.update');
     Route::resource('question', QuestionController::class);
     Route::resource('notification', NotificationController::class);
+    Route::resource('invoice', SalesController::class);
 });
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {

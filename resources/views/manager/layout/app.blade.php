@@ -105,6 +105,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('manager.course-teacher.edit',auth()->id())}}">Profil</a>
+                                <a class="dropdown-item" href="{{route('manager.invoice.index')}}">Faturalar</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{route('logout-user')}}">Çıkış Yap</a>
                             </div>

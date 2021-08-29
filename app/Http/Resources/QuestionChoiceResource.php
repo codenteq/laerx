@@ -18,6 +18,7 @@ class QuestionChoiceResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'path' => $this->path,
             'questions' => new QuestionResource($questions)
         ];
     }

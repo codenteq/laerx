@@ -17,7 +17,7 @@ class CreateSupportsTable extends Migration
             $table->id();
             $table->string('subject');
             $table->text('message');
-            $table->boolean('status');
+            $table->boolean('status')->default(0);
             $table->foreignId('userId');
             $table->timestamps();
         });

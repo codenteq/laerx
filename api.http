@@ -1,0 +1,2 @@
+GET http://localhost/api/fetchQuestion
+Accept: application/json

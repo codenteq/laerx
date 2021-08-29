@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 use App\Models\Car;
 use App\Models\User;
+use App\Services\User\AppointmentService;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -29,14 +30,14 @@ class AppointmentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Appointment  $appointment
+     * @param AppointmentService $appointmentService
      * @return \Illuminate\Http\Response
      */
-    public function store(Appointment $appointment, Request $request)
+    public function store(AppointmentService $appointmentService, Request $request)
     {
         try {
             if (!ignoreDateCheck($request->date)) {
-                $appointment->create($request->all());
+                $appointmentService->store($request);
                 return response(ResponseMessage::SuccessMessage);
             } else {
                 return response(ResponseMessage::IgnoreDateMessage);
@@ -44,50 +45,5 @@ class AppointmentController extends Controller
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Appointment $appointment)
-    {
-        //
     }
 }

@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/fetchQuestion', [QuestionController::class, 'index']);
+Route::post('/postUserAnswer', [QuestionController::class, 'store']);

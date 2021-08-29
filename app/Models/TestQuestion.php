@@ -9,6 +9,11 @@ class TestQuestion extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'questionId',
+        'testId',
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */

@@ -46,6 +46,12 @@
                         </div>
 
                         <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingMail" placeholder="Şifre Tekrar"
+                                   name="password_confirmation">
+                            <label for="floatingMail">Yeni Şifre</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingPhone" placeholder="Telefon Numarası"
                                    name="phone"
                                    value="{{$user->phone}}">
@@ -59,7 +65,7 @@
                             <label for="floatingAddress">Adres</label>
                         </div>
 
-                        <div class="form-floating">
+                        <div class="form-floating mb-3">
                             <select class="form-select" id="floatingSelect" name="languageId" aria-label="Floating label select example">
                                 @foreach($languages as $language)
                                     <option
@@ -67,6 +73,11 @@
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Dil Seçiniz...</label>
+                        </div>
+
+                        <div class="input-group">
+                            <input type="file" class="form-control" name="photo">
+                            <label class="input-group-text" for="inputGroupFile02">Profil Resmi</label>
                         </div>
 
                         <div class="mt-3">

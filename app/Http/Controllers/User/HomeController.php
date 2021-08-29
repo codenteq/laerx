@@ -4,14 +4,15 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
-use App\Models\Car;
+use App\Http\Requests\User\UserRequest;
 use App\Models\Language;
 use App\Models\LiveLesson;
 use App\Models\NotificationUser;
 use App\Models\Support;
-use App\Models\User;
+use App\Models\Test;
 use App\Models\UserInfo;
 use App\Services\GlobalService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -45,7 +46,8 @@ class HomeController extends Controller
 
     public function getResults()
     {
-        return view('user.results');
+        $tests = Test::where('userId', auth()->id())->latest()->get();
+        return view('user.results', compact('tests'));
     }
 
     public function getLiveLessons()
@@ -54,6 +56,7 @@ class HomeController extends Controller
             ->where('periodId', auth()->user()->info->periodId)
             ->where('monthId', auth()->user()->info->monthId)
             ->where('groupId', auth()->user()->info->groupId)
+            ->where('live_date', '>=', Carbon::now())
             ->latest()
             ->get();
         return view('user.live-lessons', compact('liveLessons'));
@@ -66,10 +69,10 @@ class HomeController extends Controller
         return view('user.profile', compact('user', 'languages'));
     }
 
-    public function postProfileUpdate()
+    public function postProfileUpdate(UserRequest $request)
     {
         try {
-            $this->globalService->userUpdate(auth()->id());
+            $this->globalService->userUpdate($request, auth()->id());
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -85,10 +88,9 @@ class HomeController extends Controller
     {
         try {
             Support::create([
-                'subject' => $request->subject,
-                'message' => $request->message,
+                'subject' => $request->input('subject'),
+                'message' => $request->input('message'),
                 'userId' => auth()->id(),
-                'status' => 1
             ]);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {

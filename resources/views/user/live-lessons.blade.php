@@ -14,12 +14,6 @@
                 </figcaption>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
-                    <h4>
-                        <button class="btn btn-success">Tamamlanmış Dersler</button>
-                        <button class="btn btn-warning">Tamamlanmamış Dersler</button>
-                    </h4>
-                </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-scroll">
                     <table id="data-table" class="table table-striped">
                         <thead>

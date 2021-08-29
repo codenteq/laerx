@@ -17,6 +17,8 @@ use App\Http\Controllers\Manager\QuestionController;
 use App\Http\Controllers\Manager\SalesController;
 use App\Http\Controllers\Manager\SupportController;
 use App\Http\Controllers\Manager\UserController;
+use App\Http\Controllers\Teacher\TeacherAppointmentController;
+use App\Http\Controllers\Teacher\TeacherProfileController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -83,6 +85,11 @@ Route::prefix('manager')->name('manager.')->middleware('auth')->group(function (
     Route::resource('question', QuestionController::class);
     Route::resource('notification', NotificationController::class);
     Route::resource('invoice', SalesController::class);
+});
+
+Route::prefix('teacher')->name('teacher.')->middleware('auth')->group(function () {
+    Route::resource('appointment', TeacherAppointmentController::class);
+    Route::resource('profile', TeacherProfileController::class);
 });
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {

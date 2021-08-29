@@ -8,10 +8,12 @@
                 <blockquote class="blockquote">
                     <h2>Destek</h2>
                 </blockquote>
-                <figcaption>
-                    <span><a href="{{route('user.dashboard')}}"><i class="fas fa-home"></i> Ana Sayfa</a> /</span>
-                    <span class="active">Destek</span>
-                </figcaption>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Destek</li>
+                    </ol>
+                </nav>
             </figure>
             <div class="row">
                 <form class="form-control p-5" name="form-data">

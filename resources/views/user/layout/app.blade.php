@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
           content="Quiz app uygulaması codenteq adı altında yazılmış bir online sınav uygulamasıdır.">
-    <meta name="author" content="Ahmet Arşiv">
     <meta name="generator" content="Quiz App">
     @yield('meta')
 
@@ -38,8 +37,9 @@
                     <i class="fa fa-home fa-2x"></i><br>
                     <span style="position: relative;">Ana Sayfa</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/lessons') ? 'active' : '' }}"
-                   href="{{route('user.lessons')}}">
+
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/lessons*') ? 'active' : '' }}"
+                   href="{{route('user.lesson.index')}}">
                     <i class="fa fa-book fa-2x"></i><br>
                     <span style="position: relative;">Derslerim</span>
                 </a>
@@ -99,7 +99,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{imagePath(auth()->user()->info->photo)}}" class="rounded-circle" height="30" alt="">
+                                <img src="{{imagePath(auth()->user()->info->photo)}}" class="rounded-circle" height="30"
+                                     alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('user.profile')}}">Profil</a>
@@ -118,12 +119,21 @@
         <nav
             class="navbar fixed-bottom navbar-light bg-light bottom-navigation d-flex flex-row d-md-none d-lg-none d-xl-none d-xxl-none">
             <a class="btn btn-light" id="sidebarToggleM"><span class="fa fa-bars"></span></a>
+
             <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.dashboard')}}"><i
                     class="fas fa-home"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.lessons')}}"><i
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.lesson.index')}}"><i
                     class="fas fa-book"></i></a>
             <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.exams')}}"><i
                     class="fas fa-laptop"></i></a>
+
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.dashboard')}}"><i
+                    class="fas fa-home"></i></a>
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.lesson.index')}}"><i
+                    class="fas fa-book"></i></a>
+            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.exams')}}"><i
+                    class="fas fa-laptop"></i></a>
+
         </nav>
     </div>
 </div>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ManagerUserController;
 use App\Http\Controllers\Admin\PeriodController;
 use App\Http\Controllers\Admin\QuestionTypeController;
 use App\Http\Controllers\Manager\AppointmentController;
+use App\Http\Controllers\Manager\BlogController;
 use App\Http\Controllers\Manager\CarController;
 use App\Http\Controllers\Manager\CourseTeacherController;
 use App\Http\Controllers\Manager\LiveLessonController;
@@ -17,7 +18,10 @@ use App\Http\Controllers\Manager\QuestionController;
 use App\Http\Controllers\Manager\SalesController;
 use App\Http\Controllers\Manager\SupportController;
 use App\Http\Controllers\Manager\UserController;
+use App\Http\Controllers\Teacher\TeacherAppointmentController;
+use App\Http\Controllers\Teacher\TeacherProfileController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\LessonController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -53,11 +57,11 @@ Route::get('/state/{cityId?}', [App\Http\Controllers\HomeController::class, 'get
 
 Route::prefix('user')->name('user.')->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
-    Route::get('lessons', [HomeController::class, 'getLessons'])->name('lessons');
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
     Route::get('class-exams', [HomeController::class, 'getClassExams'])->name('class-exams');
     Route::get('results', [HomeController::class, 'getResults'])->name('results');
     Route::resource('appointment',\App\Http\Controllers\User\AppointmentController::class);
+    Route::resource('lesson', LessonController::class);
     Route::get('live-lessons', [HomeController::class, 'getLiveLessons'])->name('live-lessons');
     Route::get('profile', [HomeController::class, 'getProfile'])->name('profile');
     Route::put('profile', [HomeController::class, 'postProfileUpdate'])->name('profile.update');
@@ -83,6 +87,12 @@ Route::prefix('manager')->name('manager.')->middleware('auth')->group(function (
     Route::resource('question', QuestionController::class);
     Route::resource('notification', NotificationController::class);
     Route::resource('invoice', SalesController::class);
+    Route::resource('blog', BlogController::class);
+});
+
+Route::prefix('teacher')->name('teacher.')->middleware('auth')->group(function () {
+    Route::resource('appointment', TeacherAppointmentController::class);
+    Route::resource('profile', TeacherProfileController::class);
 });
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {

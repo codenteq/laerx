@@ -1,4 +1,4 @@
-@extends('user.layout.app')
+@extends('manager.layout.app')
 
 @section('content')
 
@@ -6,38 +6,43 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Canlı Derslerim</h2>
+                    <h2>Bloglar</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Canlı Derslerim</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Bloglar</li>
                     </ol>
                 </nav>
             </figure>
             <div class="row">
+                <div class="col-12 col-lg-12 mt-3">
+                    <h4><a href="{{route('manager.blog.create')}}" class="btn btn-success">Blog Oluştur</a></h4>
+                </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-scroll">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Ders Adı</th>
-                            <th scope="col">Ders'e Katıl</th>
-                            <th scope="col">Ders Kategorisi</th>
-                            <th scope="col">Ders Tarihi</th>
+                            <th scope="col">Adı</th>
+                            <th scope="col">Kategori</th>
+                            <th scope="col">Durum</th>
+                            <th scope="col">İşlemler</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($liveLessons as $liveLesson)
                             <tr>
-                                <td>{{$liveLesson->title}}</td>
+                                <th scope="row">-</th>
+                                <td>-</td>
+                                <td>-</td>
                                 <td>
-                                    <a class="btn btn-success" target="_blank"
-                                       href="{{url($liveLesson->url)}}">Katıl</a>
+                                    <a href="#">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button class="btn">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
                                 </td>
-                                <td>{{$liveLesson->type->title}}</td>
-                                <td>{{$liveLesson->live_date}}</td>
                             </tr>
-                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -49,21 +54,16 @@
 
 @section('meta')
 
-    <title>Canlı Derslerim</title>
+    <title>Bloglar</title>
 
 @endsection
 
 @section('css')
-
     @include('layouts.stylesheet')
-
 @endsection
 
 @section('js')
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     @include('layouts.script')
-
 @endsection
-

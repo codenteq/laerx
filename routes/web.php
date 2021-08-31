@@ -41,12 +41,12 @@ Route::get('/', function () {
 });
 
 Auth::routes([
-    'login'    => true,
-    'logout'   => false,
+    'login' => true,
+    'logout' => false,
     'register' => false,
-    'reset'    => true,  // for resetting passwords
-    'confirm'  => true,  // for additional password confirmations
-    'verify'   => true,  // for email verification
+    'reset' => true,  // for resetting passwords
+    'confirm' => true,  // for additional password confirmations
+    'verify' => true,  // for email verification
 ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -60,7 +60,7 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
     Route::get('class-exams', [HomeController::class, 'getClassExams'])->name('class-exams');
     Route::get('results', [HomeController::class, 'getResults'])->name('results');
-    Route::resource('appointment',\App\Http\Controllers\User\AppointmentController::class);
+    Route::resource('appointment', \App\Http\Controllers\User\AppointmentController::class);
     Route::resource('lesson', LessonController::class);
     Route::get('live-lessons', [HomeController::class, 'getLiveLessons'])->name('live-lessons');
     Route::get('profile', [HomeController::class, 'getProfile'])->name('profile');
@@ -82,8 +82,8 @@ Route::prefix('manager')->name('manager.')->middleware('auth')->group(function (
     Route::post('appointment/setting/create', [AppointmentController::class, 'postAppointmentSetting'])->name('appointment.setting.store');
     Route::get('appointment/setting', [AppointmentController::class, 'getAppointmentSetting'])->name('appointment.setting');
     Route::resource('appointment', AppointmentController::class);
-    Route::get('/support',[SupportController::class,'index'])->name('support.index');
-    Route::put('/support/{support}',[SupportController::class,'update'])->name('support.update');
+    Route::get('/support', [SupportController::class, 'index'])->name('support.index');
+    Route::put('/support/{support}', [SupportController::class, 'update'])->name('support.update');
     Route::resource('question', QuestionController::class);
     Route::resource('notification', NotificationController::class);
     Route::resource('invoice', SalesController::class);

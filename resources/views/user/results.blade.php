@@ -26,25 +26,25 @@
                     <div class="col">
                         <div class="p-3 border bg-light rounded-3">
                             <small>Toplam Doğru Sayısı</small>
-                            <h4>{{totalCorrect()}}</h4>
+                            <h4>{{$tests->sum('correct')}}</h4>
                         </div>
                     </div>
                     <div class="col">
                         <div class="p-3 border bg-light rounded-3">
                             <small>Toplam Yanlış Sayısı</small>
-                            <h4>{{totalInCorrect()}}</h4>
+                            <h4>{{$tests->sum('in_correct')}}</h4>
                         </div>
                     </div>
                     <div class="col">
                         <div class="p-3 border bg-light rounded-3">
                             <small>Toplam Boş Soru</small>
-                            <h4>0</h4>
+                            <h4>{{$tests->sum('blank_question')}}</h4>
                         </div>
                     </div>
                     <div class="col">
                         <div class="p-3 border bg-light rounded-3">
                             <small>Ortalama Puan</small>
-                            <h4>{{totalPoint()}}</h4>
+                            <h4>{{totalPoint($tests->sum('correct'), $tests->sum('test_question_count'))}}</h4>
                         </div>
                     </div>
                 </div>
@@ -71,11 +71,11 @@
                         <tbody>
                         @foreach ($tests as $test)
                             <tr>
-                                <th scope="row">{{$test->title}}</th>
-                                <td>{{questionLength($test->id)}}</td>
-                                <td>45</td>
-                                <th>{{result($test->id)}}</th>
-                                <td class="{{totalResultStatus($test->id) == 'Başarılı' ? 'text-success' : 'text-danger'}} fw-bold">{{totalResultStatus($test->id)}}</td>
+                                <th scope="row">{{$test->testId}}</th>
+                                <td>{{$test->test_question_count}}</td>
+                                <td>45dk</td>
+                                <th>{{$test->point}}</th>
+                                <td class="{{resultStatus($test->point) == 'Başarılı' ? 'text-success' : 'text-danger'}} fw-bold">{{resultStatus($test->point)}}</td>
                                 <td>
                                     <button class="btn btn-primary">Sınav Detay</button>
                                 </td>

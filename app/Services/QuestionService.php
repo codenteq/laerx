@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\TestResultJob;
 use App\Models\Test;
 use App\Models\TestQuestion;
 use App\Models\UserAnswer;
@@ -10,7 +11,7 @@ class QuestionService
 {
     public function testStore($questions)
     {
-        $test = Test::create(['title' => rand(),'userId' => auth()->id()]);
+        $test = Test::create(['title' => rand(),'userId' => 3]);
         foreach ($questions as $question) {
             TestQuestion::create([
                 'questionId' => $question->id,
@@ -29,5 +30,6 @@ class QuestionService
                 'choiceId' => $val['choiceId']
             ]);
         }
+        TestResultJob::dispatch($request->userId ,$request->testId)->onQueue('result');
     }
 }

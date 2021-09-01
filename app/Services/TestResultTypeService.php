@@ -5,16 +5,21 @@ namespace App\Services;
 use App\Models\Question;
 use App\Models\QuestionChoiceKey;
 use App\Models\TestResultType;
-use App\Models\UserAnswer;
 
 class TestResultTypeService
 {
-    public function execute($userId, $testId, $resultId): void
+    /**
+     * @param $userId
+     * @param $testId
+     * @param $resultId
+     * @param $userAnswers
+     */
+    public function execute($userId, $testId, $resultId, $userAnswers): void
     {
-        $typeCorrects = self::typeCorrect($userId, $testId);
-        $typeInCorrects = self::typeInCorrect($userId, $testId);
-        $typeBlankQuestion = self::typeBlankQuestion($userId, $testId);
-        $ids = self::ids($userId, $testId);
+        $typeCorrects = self::typeCorrect($userAnswers);
+        $typeInCorrects = self::typeInCorrect($userAnswers);
+        $typeBlankQuestion = self::typeBlankQuestion($userAnswers);
+        $ids = self::ids($userAnswers);
 
         $resultType = [];
         $i = 0;
@@ -37,66 +42,59 @@ class TestResultTypeService
         }
     }
 
+
     /**
-     * @param $userId
-     * @param $testId
-     * @return mixed
+     * @param $userAnswers
      */
-    public function typeCorrect($userId, $testId)
+    public function typeCorrect($userAnswers)
     {
-        $tests = UserAnswer::where('testId', $testId)->where('userId', $userId)->get();
         $questionIds = [];
-        foreach ($tests as $test) {
-            $choiceKey = QuestionChoiceKey::where('questionId', $test->questionId)->where('choiceId', $test->choiceId)->first();
+        foreach ($userAnswers as $answer) {
+            $choiceKey = QuestionChoiceKey::where('questionId', $answer->questionId)->where('choiceId', $answer->choiceId)->first();
             if (!is_null($choiceKey?->questionId)) {
                 array_push($questionIds, $choiceKey->questionId);
             }
         }
-        $typeCorrects = Question::selectRaw('*, count(*) as count')->groupBy('typeId')->whereIn('id', $questionIds)->get();
-        return $typeCorrects;
+        return Question::selectRaw('*, count(*) as count')->groupBy('typeId')->whereIn('id', $questionIds)->get();
     }
 
+
     /**
-     * @param $userId
-     * @param $testId
-     * @return mixed
+     * @param $userAnswers
      */
-    public function typeInCorrect($userId, $testId)
+    public function typeInCorrect($userAnswers)
     {
-        $tests = UserAnswer::where('testId', $testId)->where('userId', $userId)->get();
         $questionIds = [];
-        foreach ($tests as $test) {
-            $choiceKey = QuestionChoiceKey::where('questionId', $test->questionId)->where('choiceId', $test->choiceId)->first();
+        foreach ($userAnswers as $answer) {
+            $choiceKey = QuestionChoiceKey::where('questionId', $answer->questionId)->where('choiceId', $answer->choiceId)->first();
             if (is_null($choiceKey?->questionId)) {
-                array_push($questionIds, $test->questionId);
+                array_push($questionIds, $answer->questionId);
             }
         }
-        $typeInCorrects = Question::selectRaw('*, count(*) as count')->groupBy('typeId')->whereIn('id', $questionIds)->get();
-        return $typeInCorrects;
+        return Question::selectRaw('*, count(*) as count')->groupBy('typeId')->whereIn('id', $questionIds)->get();
     }
 
+
     /**
-     * @param $userId
-     * @param $testId
+     * @param $userAnswers
      * @return int
      */
-    public function typeBlankQuestion($userId, $testId)
+    public function typeBlankQuestion($userAnswers): int
     {
-        $blank = UserAnswer::where('testId', $testId)->where('userId', $userId)->whereNull('choiceId')->count();
-        return $blank;
+        return $userAnswers->whereNull('choiceId')->count();
     }
 
+
     /**
+     * @param $userAnswers
      * @return array
      */
-    public function ids($userId, $testId)
+    public function ids($userAnswers): array
     {
-        $tests = UserAnswer::where('testId', $testId)->where('userId', $userId)->get();
         $ids = [];
-        foreach ($tests as $test) {
-            array_push($ids, $test->questionId);
+        foreach ($userAnswers as $answer) {
+            array_push($ids, $answer->questionId);
         }
-
         return $ids;
     }
 }

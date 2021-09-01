@@ -4,6 +4,8 @@
     $(document).ready(function () {
         $('#data-table').DataTable({
             "aaSorting": [],
+            "scrollY": "50vh",
+            "scrollCollapse": true,
             "language": {
                 "decimal": "",
                 "emptyTable": "Tabloda veri yok",

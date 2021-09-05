@@ -80,9 +80,11 @@ class TestResultService
     public function inCorrect($userAnswers): int
     {
         $in_correct = 0;
-        foreach ($userAnswers as $answers) {
-            $choiceKey = (bool)QuestionChoiceKey::where('questionId', $answers->questionId)->where('choiceId', $answers->choiceId)->first();
-            $choiceKey !== true ? $in_correct++ : null;
+        foreach ($userAnswers as $answer) {
+            if ($answer->choiceId != null) {
+                $choiceKey = (bool)QuestionChoiceKey::where('questionId', $answer->questionId)->where('choiceId', $answer->choiceId)->first();
+                $choiceKey !== true ? $in_correct++ : null;
+            }
         }
         return $in_correct;
     }

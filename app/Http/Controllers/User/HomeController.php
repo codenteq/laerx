@@ -52,7 +52,7 @@ class HomeController extends Controller
     public function getResultDetail($detailId)
     {
         $tests = TestResultType::where('resultId',$detailId)->get();
-        $result =  TestResult::find($detailId);
+        $result =  TestResult::findOrFail($detailId);
         return view('user.result-detail',compact('tests','result'));
     }
 

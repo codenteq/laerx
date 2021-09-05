@@ -31,6 +31,7 @@ class TestResultService
         $blankQuestion = self::blankQuestion($userAnswers);
 
         $result = TestResult::create([
+            'total_question' => $correct + $inCorrect + $blankQuestion,
             'point' => $point,
             'correct' => $correct,
             'in_correct' => $inCorrect,

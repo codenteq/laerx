@@ -15,6 +15,7 @@ class CreateTestResultsTable extends Migration
     {
         Schema::create('test_results', function (Blueprint $table) {
             $table->id();
+            $table->integer('total_question');
             $table->integer('point');
             $table->integer('correct');
             $table->integer('in_correct');

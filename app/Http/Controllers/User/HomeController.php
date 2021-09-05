@@ -9,7 +9,9 @@ use App\Models\Language;
 use App\Models\LiveLesson;
 use App\Models\NotificationUser;
 use App\Models\Support;
+use App\Models\Test;
 use App\Models\TestResult;
+use App\Models\TestResultType;
 use App\Models\UserInfo;
 use App\Services\GlobalService;
 use Carbon\Carbon;
@@ -47,9 +49,11 @@ class HomeController extends Controller
         return view('user.results', compact('tests'));
     }
 
-    public function getResultDetail()
+    public function getResultDetail($detailId)
     {
-        return view('user.result-detail');
+        $tests = TestResultType::where('resultId',$detailId)->get();
+        $result =  TestResult::find($detailId);
+        return view('user.result-detail',compact('tests','result'));
     }
 
     public function getLiveLessons()

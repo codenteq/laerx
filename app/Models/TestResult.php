@@ -10,6 +10,7 @@ class TestResult extends Model
     use HasFactory;
 
     protected $fillable = [
+        'total_question',
         'point',
         'correct',
         'in_correct',

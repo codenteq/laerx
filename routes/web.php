@@ -59,7 +59,10 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
     Route::get('class-exams', [HomeController::class, 'getClassExams'])->name('class-exams');
-    Route::get('results', [HomeController::class, 'getResults'])->name('results');
+    Route::prefix('result')->group(function () {
+        Route::get('/', [HomeController::class, 'getResults'])->name('results');
+        Route::get('/details/{detailId}', [HomeController::class, 'getResultDetail'])->name('result.detail');
+    });
     Route::resource('appointment', \App\Http\Controllers\User\AppointmentController::class);
     Route::resource('lesson', LessonController::class);
     Route::get('live-lessons', [HomeController::class, 'getLiveLessons'])->name('live-lessons');

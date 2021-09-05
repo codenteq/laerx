@@ -77,7 +77,7 @@
                                 <th>{{$test->point}}</th>
                                 <td class="{{resultStatus($test->point) == 'Başarılı' ? 'text-success' : 'text-danger'}} fw-bold">{{resultStatus($test->point)}}</td>
                                 <td>
-                                    <button class="btn btn-primary">Sınav Detay</button>
+                                    <a href="{{route('user.result.detail',$test->id)}}" class="btn btn-primary">Sınav Detay</a>
                                 </td>
                                 <td>{{$test->created_at}}</td>
                             </tr>

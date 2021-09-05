@@ -47,6 +47,11 @@ class HomeController extends Controller
         return view('user.results', compact('tests'));
     }
 
+    public function getResultDetail()
+    {
+        return view('user.result-detail');
+    }
+
     public function getLiveLessons()
     {
         $liveLessons = LiveLesson::where('companyId', companyId())

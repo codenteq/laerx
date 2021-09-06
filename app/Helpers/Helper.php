@@ -53,14 +53,19 @@ if (!function_exists('imagePath')) {
 if (!function_exists('totalPoint')) {
     function totalPoint($correct, $length): int
     {
-
-        return 100 / $length * $correct;
+        if ($correct && $length) {
+            return 100 / $length * $correct;
+        }
+        return 0;
     }
 }
 
 if (!function_exists('resultStatus')) {
     function resultStatus($point): string
     {
-        return $point  >= 70 ? 'Başarılı' : 'Başarısız';
+        if ($point) {
+            return $point >= 70 ? 'Başarılı' : 'Başarısız';
+        }
+        return 0;
     }
 }

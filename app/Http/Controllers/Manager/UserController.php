@@ -126,17 +126,22 @@ class UserController extends Controller
 
     public function getManagerUserResults()
     {
-        $test = Test::all();
-        $testResults = TestResult::selectRaw('*, count(*) as count')
-            ->selectRaw('sum(correct) as sum_correct')
-            ->selectRaw('sum(total_question) as sum_total_question')
-            ->groupBy('userId')->get();
-        return view('manager.users.user-results',compact('test','testResults'));
+        $test = cache()->remember('test', 60, function () {
+            return Test::whereRelation('userInfo', 'companyId', companyId())->get();
+        });
+        $testResults = cache()->remember('testResults',60, function () {
+            return TestResult::selectRaw('*, count(*) as count')
+                ->selectRaw('sum(correct) as sum_correct')
+                ->selectRaw('sum(total_question) as sum_total_question')
+                ->whereRelation('userInfo', 'companyId', companyId())
+                ->groupBy('userId')->get();
+        });
+        return view('manager.users.user-results', compact('test', 'testResults'));
     }
 
     public function getManagerUserResultDetail($userId)
     {
-        $resultTypes = TestResultType::where('userId',$userId)
+        $resultTypes = TestResultType::where('userId', $userId)
             ->selectRaw('*, sum(correct) as sum_correct')
             ->selectRaw('sum(in_correct) as sum_in_correct')
             ->selectRaw('sum(blank_question) as sum_blank_question')
@@ -144,7 +149,7 @@ class UserController extends Controller
             ->groupBy('typeId')
             ->with('type')
             ->get();
-        $results =  TestResult::where('userId',$userId)->get();
-        return view('manager.users.user-result-detail',compact('resultTypes','results'));
+        $results = TestResult::where('userId', $userId)->get();
+        return view('manager.users.user-result-detail', compact('resultTypes', 'results'));
     }
 }

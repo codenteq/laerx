@@ -33,4 +33,9 @@ class TestResult extends Model
     {
         return $this->hasOne(User::class,'id','userId');
     }
+
+    public function userInfo()
+    {
+        return $this->hasOne(UserInfo::class,'userId','userId');
+    }
 }

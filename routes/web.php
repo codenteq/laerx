@@ -78,6 +78,7 @@ Route::prefix('manager')->name('manager.')->middleware('auth')->group(function (
     Route::resource('user', UserController::class);
     Route::get('user-operations', [UserController::class, 'getManagerUserOperations'])->name('user-operations');
     Route::get('user-results', [UserController::class, 'getManagerUserResults'])->name('user-results');
+    Route::get('user-result-detail/{resultId}', [UserController::class, 'getManagerUserResultDetail'])->name('user-result-detail');
     Route::resource('live-lesson', LiveLessonController::class);
     Route::resource('course-teacher', CourseTeacherController::class);
     Route::resource('car', CarController::class);

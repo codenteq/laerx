@@ -23,4 +23,14 @@ class TestResult extends Model
     {
         return $this->hasOne(TestQuestion::class, 'testId','testId');
     }
+
+    public function test()
+    {
+        return $this->hasOne(Test::class, 'id', 'testId');
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class,'id','userId');
+    }
 }

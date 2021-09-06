@@ -5,7 +5,7 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Sınav Sonuçlarım</h2>
+                    <h2>Sınav Sonuç Detay</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -88,6 +88,12 @@
             </div>
         </section>
     </div>
+@endsection
+
+@section('meta')
+
+    <title>Sınav Sonuç Detay</title>
+
 @endsection
 
 @section('js')

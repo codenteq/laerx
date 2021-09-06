@@ -8,6 +8,9 @@ use App\Models\Group;
 use App\Models\Language;
 use App\Models\Month;
 use App\Models\Period;
+use App\Models\Test;
+use App\Models\TestResult;
+use App\Models\TestResultType;
 use App\Models\User;
 use App\Models\UserInfo;
 use App\Services\GlobalService;
@@ -123,6 +126,25 @@ class UserController extends Controller
 
     public function getManagerUserResults()
     {
-        return view('manager.users.user-results');
+        $test = Test::all();
+        $testResults = TestResult::selectRaw('*, count(*) as count')
+            ->selectRaw('sum(correct) as sum_correct')
+            ->selectRaw('sum(total_question) as sum_total_question')
+            ->groupBy('userId')->get();
+        return view('manager.users.user-results',compact('test','testResults'));
+    }
+
+    public function getManagerUserResultDetail($userId)
+    {
+        $resultTypes = TestResultType::where('userId',$userId)
+            ->selectRaw('*, sum(correct) as sum_correct')
+            ->selectRaw('sum(in_correct) as sum_in_correct')
+            ->selectRaw('sum(blank_question) as sum_blank_question')
+            ->selectRaw('sum(total_question) as sum_total_question')
+            ->groupBy('typeId')
+            ->with('type')
+            ->get();
+        $results =  TestResult::where('userId',$userId)->get();
+        return view('manager.users.user-result-detail',compact('resultTypes','results'));
     }
 }

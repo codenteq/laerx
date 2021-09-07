@@ -25,6 +25,7 @@
                         <thead>
                         <tr>
                             <th scope="col">Soru</th>
+                            <th scope="col">Soru Dili</th>
                             <th scope="col">Oluşturulma Tarihi</th>
                             <th scope="col">İşlemler</th>
                         </tr>
@@ -33,6 +34,7 @@
                         @foreach ($questions as $question)
                             <tr>
                                 <td>{{$question->title}}</td>
+                                <td>{{$question->language->title}}</td>
                                 <td>{{$question->created_at}}</td>
                                 <td>
                                     <a href="{{route('manager.question.edit',$question)}}"><i

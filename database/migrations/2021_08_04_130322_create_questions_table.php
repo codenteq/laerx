@@ -19,6 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->boolean('questionImage');
             $table->boolean('choiceImage');
             $table->string('imagePath')->nullable();
+            $table->foreignId('languageId');
             $table->foreignId('typeId');
             $table->foreignId('companyId');
             $table->timestamps();

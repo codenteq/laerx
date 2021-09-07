@@ -17,6 +17,7 @@ class QuestionService
         $question->title = $request->title;
         $question->questionImage = isset($request->questionImage) == "on" ? 1 : 0;
         $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
+        $question->languageId = $request->languageId;
         $question->typeId = $request->typeId;
         $question->companyId = companyId();
         if ($request->file('imagePath') && isset($request->questionImage)) {
@@ -78,6 +79,7 @@ class QuestionService
         $question->title = $request->title;
         $question->questionImage = isset($request->questionImage) == "on" ? 1 : 0;
         $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
+        $question->languageId = $request->languageId;
         $question->typeId = $request->typeId;
         if (request()->file('imagePath') && isset($request->questionImage)) {
             $path = request()->file('imagePath')->store('questions', 'public');
@@ -94,7 +96,7 @@ class QuestionService
 
     public function choiceUpdate($request)
     {
-        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage','imagePath']);
+        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage','imagePath','languageId']);
         foreach ($req as $key => $val) {
             QuestionChoice::find($key)->update([
                 'title' => $val,
@@ -113,7 +115,7 @@ class QuestionService
 
     public function choiceImageUpdate($request)
     {
-        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage','imagePath']);
+        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage','imagePath','languageId']);
         foreach ($req as $key => $val) {
             if ($request->hasFile($key)) {
                 $path = $request->file($key)->store('choices','public');

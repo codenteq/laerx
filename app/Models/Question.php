@@ -15,6 +15,7 @@ class Question extends Model
         'questionImage',
         'choiceImage',
         'imagePath',
+        'languageId',
         'typeId',
         'companyId'
     ];
@@ -39,5 +40,10 @@ class Question extends Model
     public function questionType()
     {
         return $this->hasOne(QuestionType::class,'typeId');
+    }
+
+    public function language()
+    {
+        return $this->hasOne(Language::class,'id','languageId');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\QuestionRequest;
+use App\Models\Language;
 use App\Models\Question;
 use App\Models\QuestionType;
 use App\Services\Manager\QuestionService;
@@ -37,7 +38,8 @@ class QuestionController extends Controller
     public function create()
     {
         $types = QuestionType::all();
-        return view('manager.question.question-add', compact('types'));
+        $languages = Language::all();
+        return view('manager.question.question-add', compact('types','languages'));
     }
 
     /**
@@ -52,8 +54,7 @@ class QuestionController extends Controller
             $this->questionService->store($request);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
-            echo $ex;
-            //return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage);
         }
     }
 
@@ -66,7 +67,8 @@ class QuestionController extends Controller
     public function edit(Question $question)
     {
         $types = QuestionType::all();
-        return view('manager.question.question-edit', compact('question', 'types'));
+        $languages = Language::all();
+        return view('manager.question.question-edit', compact('question', 'types','languages'));
     }
 
     /**

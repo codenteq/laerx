@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Services\Admin;
+
+use App\Models\LessonContent;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
+class LessonContentService
+{
+    public function store($request)
+    {
+        $request->hasFile('file') ? $path = $request->file('file')->store('lesson-voice','public') : $path = null;
+        LessonContent::create([
+            'title' => Str::title($request->title),
+            'content' => $request->content,
+            'languageId' => $request->languageId,
+            'typeId' => $request->typeId,
+            'file' => $path
+        ]);
+    }
+
+    public function update($request, $id)
+    {
+        $request->hasFile('file') ? $path = $request->file('file')->store('lesson-voice','public') : $path = null;
+        LessonContent::find($id)->update([
+            'title' => Str::title($request->title),
+            'content' => $request->content,
+            'languageId' => $request->languageId,
+            'typeId' => $request->typeId,
+            'file' => $path
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $lesson = LessonContent::find($id);
+        Storage::disk('public')->delete($lesson->file);
+        $lesson->delete();
+    }
+}

@@ -1,6 +1,7 @@
 const btn = document.querySelector(".btn-success");
 
 function createAndUpdateButton() {
+    CKEDITOR.instances['ckeditor'].updateElement();
     btn.disabled = true;
     btn.innerHTML = 'Kaydediliyor...';
     const formData = document.forms.namedItem('form-data');

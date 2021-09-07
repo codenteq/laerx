@@ -47,6 +47,11 @@
                     <i class="fas fa-users fa-2x"></i><br>
                     <span style="position: relative;">Kullanıcılar</span>
                 </a>
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/lesson-content*') ? 'active' : '' }}"
+                   href="{{route('admin.lesson-content.index')}}">
+                    <i class="fas fa-book fa-2x"></i><br>
+                    Dersler
+                </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/language*') ? 'active' : '' }}"
                    href="{{route('admin.language.index')}}">
                     <i class="fas fa-language fa-2x"></i><br>

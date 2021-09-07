@@ -10,6 +10,8 @@ use App\Models\LiveLesson;
 use App\Models\NotificationUser;
 use App\Models\Support;
 use App\Models\Test;
+use App\Models\TestResult;
+use App\Models\TestResultType;
 use App\Models\UserInfo;
 use App\Services\GlobalService;
 use Carbon\Carbon;
@@ -41,8 +43,17 @@ class HomeController extends Controller
 
     public function getResults()
     {
-        $tests = Test::where('userId', auth()->id())->latest()->get();
+        $tests = cache()->remember('test_result_users',60, function () {
+           return TestResult::where('userId',auth()->id())->withCount('testQuestion')->latest()->get();
+        });
         return view('user.results', compact('tests'));
+    }
+
+    public function getResultDetail($detailId)
+    {
+        $tests = TestResultType::where('resultId',$detailId)->get();
+        $result =  TestResult::findOrFail($detailId);
+        return view('user.result-detail',compact('tests','result'));
     }
 
     public function getLiveLessons()

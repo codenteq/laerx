@@ -27,11 +27,11 @@
     <!-- Sidebar-->
     <div class="border-end d-flex d-sm-flex" id="sidebar-wrapper">
         <div class="sidebar-heading border-bottom fw-bold">
-            <span style="font-family: MADE Tommy Soft; font-size: 38px;">Codente</span><span
-                style="font-family: MADE Tommy Soft Outline; font-size: 38px;">q</span><br>
-            <span style="font-weight: normal !important;"><small>v1.0.0-Beta</small></span>
             <div style="font-size: 1rem !important; width: 200px !important;"
                  class="list-group list-group-flush sidebar-menu">
+
+                <img src="{{asset('images/codenteq-logo.png')}}" class="mb-3" alt="logo">
+
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/dashboard') ? 'active' : '' }}"
                    href="{{route('user.dashboard')}}">
                     <i class="fa fa-home fa-2x"></i><br>

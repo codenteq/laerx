@@ -11,4 +11,9 @@ class Test extends Model
     use HasFactory;
 
     protected $fillable = ['title','userId'];
+
+    public function userInfo()
+    {
+        return $this->hasOne(UserInfo::class,'userId','userId');
+    }
 }

@@ -24,7 +24,7 @@
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
-                        <a href="{{route('user.lessons.index')}}">
+                        <a href="{{route('user.lesson.index')}}">
                             <i class="fa fa-book fa-4x"></i><br>
                             <span>Derslerim</span>
                         </a>

@@ -41,12 +41,12 @@ Route::get('/', function () {
 });
 
 Auth::routes([
-    'login'    => true,
-    'logout'   => false,
+    'login' => true,
+    'logout' => false,
     'register' => false,
-    'reset'    => true,  // for resetting passwords
-    'confirm'  => true,  // for additional password confirmations
-    'verify'   => true,  // for email verification
+    'reset' => true,  // for resetting passwords
+    'confirm' => true,  // for additional password confirmations
+    'verify' => true,  // for email verification
 ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -59,8 +59,11 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
     Route::get('class-exams', [HomeController::class, 'getClassExams'])->name('class-exams');
-    Route::get('results', [HomeController::class, 'getResults'])->name('results');
-    Route::resource('appointment',\App\Http\Controllers\User\AppointmentController::class);
+    Route::prefix('result')->group(function () {
+        Route::get('/', [HomeController::class, 'getResults'])->name('results');
+        Route::get('/details/{detailId}', [HomeController::class, 'getResultDetail'])->name('result.detail');
+    });
+    Route::resource('appointment', \App\Http\Controllers\User\AppointmentController::class);
     Route::resource('lesson', LessonController::class);
     Route::get('live-lessons', [HomeController::class, 'getLiveLessons'])->name('live-lessons');
     Route::get('profile', [HomeController::class, 'getProfile'])->name('profile');
@@ -75,6 +78,7 @@ Route::prefix('manager')->name('manager.')->middleware('auth')->group(function (
     Route::resource('user', UserController::class);
     Route::get('user-operations', [UserController::class, 'getManagerUserOperations'])->name('user-operations');
     Route::get('user-results', [UserController::class, 'getManagerUserResults'])->name('user-results');
+    Route::get('user-result-detail/{resultId}', [UserController::class, 'getManagerUserResultDetail'])->name('user-result-detail');
     Route::resource('live-lesson', LiveLessonController::class);
     Route::resource('course-teacher', CourseTeacherController::class);
     Route::resource('car', CarController::class);
@@ -82,8 +86,8 @@ Route::prefix('manager')->name('manager.')->middleware('auth')->group(function (
     Route::post('appointment/setting/create', [AppointmentController::class, 'postAppointmentSetting'])->name('appointment.setting.store');
     Route::get('appointment/setting', [AppointmentController::class, 'getAppointmentSetting'])->name('appointment.setting');
     Route::resource('appointment', AppointmentController::class);
-    Route::get('/support',[SupportController::class,'index'])->name('support.index');
-    Route::put('/support/{support}',[SupportController::class,'update'])->name('support.update');
+    Route::get('/support', [SupportController::class, 'index'])->name('support.index');
+    Route::put('/support/{support}', [SupportController::class, 'update'])->name('support.update');
     Route::resource('question', QuestionController::class);
     Route::resource('notification', NotificationController::class);
     Route::resource('invoice', SalesController::class);

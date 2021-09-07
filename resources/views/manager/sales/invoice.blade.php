@@ -29,11 +29,12 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach ($invoices as $invoice)
                                 <tr>
-                                    <th scope="row">0001</th>
-                                    <td>30/08/2021</td>
-                                    <td>1000 ₺</td>
-                                    <td class="text-danger fw-bold">Ödenmedi</td>
+                                    <th scope="row">{{$invoice->id}}</th>
+                                    <td>{{$invoice->created_at}}</td>
+                                    <td>{{$invoice->total_amount}}</td>
+                                    <td class="{{$invoice->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$invoice->status == 1 ? 'Ödendi' : 'Ödenmedi'}}</td>
                                     <td>
                                         <a href="#iyzico-callback">
                                             <i class="fas fa-credit-card"></i>
@@ -43,6 +44,7 @@
                                         </a>
                                     </td>
                                 </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

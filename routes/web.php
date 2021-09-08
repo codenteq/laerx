@@ -50,6 +50,7 @@ Auth::routes([
 ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/redirect', [App\Http\Controllers\HomeController::class, 'redirect'])->name('redirect');
 Route::get('/logout-user', [App\Http\Controllers\HomeController::class, 'logoutUser'])->name('logout-user');
 
 Route::get('/city/{countryId?}', [App\Http\Controllers\HomeController::class, 'getCity'])->name('city');

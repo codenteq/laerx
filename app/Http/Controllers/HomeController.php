@@ -28,6 +28,24 @@ class HomeController extends Controller
         return view('home');
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function redirect(): \Illuminate\Http\RedirectResponse
+    {
+        $type = Auth::user()->type;
+        switch($type) {
+            case 1:
+                return redirect()->route('admin.dashboard');
+            case 2:
+                return redirect()->route('manager.dashboard');
+            case 3:
+                return redirect()->route('user.dashboard');
+        }
+    }
+
     public function logoutUser()
     {
         Auth::logout();

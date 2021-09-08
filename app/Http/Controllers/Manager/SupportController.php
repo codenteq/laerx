@@ -16,7 +16,7 @@ class SupportController extends Controller
      */
     public function index()
     {
-        $supports = Support::where('status',0)->latest()->get();
+        $supports = Support::where('status',0)->with(['user','info'])->latest()->get();
         return view('manager.supports', compact('supports'));
     }
 

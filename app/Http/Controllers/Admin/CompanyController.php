@@ -30,7 +30,7 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = cache()->remember('companies', 60, function () {
-            return Company::with('companies')->get();
+            return Company::with(['companies','invoice'])->get();
         });
         return view('admin.company.company', compact('companies'));
     }

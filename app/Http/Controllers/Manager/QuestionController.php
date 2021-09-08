@@ -26,7 +26,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::latest()->get();
+        $questions = Question::with('language')->latest()->get();
         return view('manager.question.question', compact('questions'));
     }
 

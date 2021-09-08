@@ -19,6 +19,7 @@
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="form-control" name="form-data">
+                        @csrf
                         <div class="form-floating mb-3">
                             <select class="form-select" name="languageId" aria-label="Floating label select example">
                                 <option disabled selected>Seçiniz</option>

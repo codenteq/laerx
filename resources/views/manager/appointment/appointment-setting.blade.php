@@ -22,6 +22,7 @@
                         <h5 class="card-header"><i class="fas fa-calendar-alt"></i>&nbsp;Randevu Olmayan Günler</h5>
                         <div class="card-body">
                             <form name="form-data">
+                                @csrf
                                 <h5 class="card-title">Randevu için uygun olmayan tarihleri işaretleyiniz..</h5>
                                 <div class="row p-5x p-4">
                                     @foreach($months as $key => $val)

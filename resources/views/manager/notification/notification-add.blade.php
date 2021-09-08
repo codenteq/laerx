@@ -19,6 +19,7 @@
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="form-control" name="form-data">
+                        @csrf
                         @foreach($users as $user)
                             @if($user->info->companyId === companyId())
                                 <div class="form-check">

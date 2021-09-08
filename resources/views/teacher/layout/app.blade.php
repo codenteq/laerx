@@ -77,7 +77,6 @@
         @yield('content')
         <nav
             class="navbar fixed-bottom navbar-light bg-light bottom-navigation d-flex flex-row d-md-none d-lg-none d-xl-none d-xxl-none fs-1">
-            <a class="list-unstyled link-dark text-decoration-none" id="sidebarToggleM"><i class="fa fa-bars"></i></a>
             <a class="list-unstyled link-dark text-decoration-none" href="{{route('teacher.appointment.index')}}"><i
                     class="fas fa-calendar-check"></i></a>
             <a class="list-unstyled link-dark text-decoration-none" href="{{route('teacher.profile.index')}}"><i

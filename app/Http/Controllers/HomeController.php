@@ -42,6 +42,8 @@ class HomeController extends Controller
             case 2:
                 return redirect()->route('manager.dashboard');
             case 3:
+                return redirect()->route('teacher.appointment.index');
+            case 4:
                 return redirect()->route('user.dashboard');
         }
     }

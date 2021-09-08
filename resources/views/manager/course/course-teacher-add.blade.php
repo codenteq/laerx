@@ -55,6 +55,23 @@
                             <label for="floatingFirst">Telefon</label>
                         </div>
 
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingAddress" placeholder="Adres"
+                                   name="address">
+                            <label for="floatingAddress">Adres</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="floatingSelect" name="languageId"
+                                    aria-label="Floating label select example">
+                                @foreach ($languages as $language)
+                                    <option
+                                        value="{{$language->id}}">{{$language->title}}</option>
+                                @endforeach
+                            </select>
+                            <label for="floatingSelect">Dil Seçiniz...</label>
+                        </div>
+
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" checked>
                             <label class="form-check-label" for="flexSwitchCheckChecked">Eğitmen Aktif/Pasif</label>

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Manager;
+namespace App\Http\Requests\Teacher;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CourseTeacherRequest extends FormRequest
+class ProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,25 +23,14 @@ class CourseTeacherRequest extends FormRequest
      */
     public function rules()
     {
-        $id = null;
-        if ($this->course_teacher)
-            $id = $this->course_teacher->id;
         return [
-            'tc' => 'required|string|min:11|max:11|unique:users,tc,'.$id,
             'name' => 'required',
             'surname' => 'required',
             'email' => 'required|email',
             'phone' => 'required|numeric',
             'address' => 'required|string',
-            'languageId' => 'required|numeric',
-            'password' => 'confirmed'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'tc.unique' => 'Bu TCKN kullanılıyor.'
+            'password' => 'confirmed',
+            'photo' => 'file|mimes:jpeg,jpg,png',
         ];
     }
 }

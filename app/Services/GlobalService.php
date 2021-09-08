@@ -70,20 +70,20 @@ class GlobalService
     public function userInfoUpdate($request, $id): void
     {
         !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar','public');
-        if ($path != null)
-            ImageConvertJob::dispatch($id, 'user', $path);
-
         $user = UserInfo::where('userId', $id,'user')->first();
+        if ($path != null) {
+            ImageConvertJob::dispatch($id, 'user', $path);
+            $user->photo = $path;
+        }
 
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->languageId = $request->languageId;
-        if (auth()->user()->type == 1 || auth()->user()->type == 2) {
+        if (auth()->user()->type == User::Admin || auth()->user()->type == User::Manager) {
             $user->status = isset($request->status) == 'on' ? 1 : 0;
             $user->periodId = $request->periodId;
             $user->monthId = $request->monthId;
             $user->groupId = $request->groupId;
-            $user->photo = $path;
             $user->companyId = auth()->user()->type === 1 ? $request->companyId : companyId();
             $user->userId = $id;
         }

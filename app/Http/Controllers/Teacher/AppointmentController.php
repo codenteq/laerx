@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 
-class TeacherProfileController extends Controller
+class AppointmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class TeacherProfileController extends Controller
      */
     public function index()
     {
-        return view('teacher.profile');
+        $appointments = Appointment::where('teacherId',auth()->id())->where('companyId',companyId())->get();
+        return view('teacher.index',compact('appointments'));
     }
 
     /**

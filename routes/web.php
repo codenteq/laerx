@@ -54,7 +54,7 @@ Route::get('/logout-user', [App\Http\Controllers\HomeController::class, 'logoutU
 Route::get('/city/{countryId?}', [App\Http\Controllers\HomeController::class, 'getCity'])->name('city');
 Route::get('/state/{cityId?}', [App\Http\Controllers\HomeController::class, 'getState'])->name('state');
 
-Route::prefix('user')->name('user.')->group(function () {
+Route::prefix('user')->name('user.')->middleware(['auth','check.role'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
     Route::get('class-exams', [HomeController::class, 'getClassExams'])->name('class-exams');
@@ -73,7 +73,7 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::post('token', [HomeController::class, 'token'])->name('token');
 });
 
-Route::prefix('manager')->name('manager.')->middleware('auth')->group(function () {
+Route::prefix('manager')->name('manager.')->middleware(['auth','check.role'])->group(function () {
     Route::get('dashboard', [ManagerController::class, 'getManagerDashboard'])->name('dashboard');
     Route::resource('user', UserController::class);
     Route::get('user-operations', [UserController::class, 'getManagerUserOperations'])->name('user-operations');
@@ -93,12 +93,12 @@ Route::prefix('manager')->name('manager.')->middleware('auth')->group(function (
     Route::resource('invoice', SalesController::class);
 });
 
-Route::prefix('teacher')->name('teacher.')->middleware('auth')->group(function () {
+Route::prefix('teacher')->name('teacher.')->middleware(['auth','check.role'])->group(function () {
     Route::resource('appointment', \App\Http\Controllers\Teacher\AppointmentController::class);
     Route::resource('profile', ProfileController::class);
 });
 
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth','check.role'])->group(function () {
     Route::get('dashboard', [AdminController::class, 'getAdminDashboard'])->name('dashboard');
     Route::resource('language', LanguageController::class);
     Route::resource('company', CompanyController::class);

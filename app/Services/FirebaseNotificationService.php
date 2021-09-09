@@ -7,7 +7,6 @@ use App\Models\CompanyInfo;
 use App\Models\Notification;
 use App\Models\NotificationDeviceToken;
 use App\Models\NotificationUser;
-use Illuminate\Support\Facades\Log;
 use Kutia\Larafirebase\Facades\Larafirebase;
 
 

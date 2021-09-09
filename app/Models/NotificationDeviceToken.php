@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Model
+class NotificationDeviceToken extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['message','status','companyId'];
+    protected $fillable = ['userId', 'token'];
 }

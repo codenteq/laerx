@@ -23,7 +23,6 @@ use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\LessonController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,6 +70,7 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::get('support', [HomeController::class, 'getSupport'])->name('support');
     Route::post('support/create', [HomeController::class, 'postSupportStore'])->name('support.store');
     Route::get('notifications', [HomeController::class, 'getNotifications'])->name('notifications');
+    Route::post('token', [HomeController::class, 'token'])->name('token');
 });
 
 Route::prefix('manager')->name('manager.')->middleware('auth')->group(function () {

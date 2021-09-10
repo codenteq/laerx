@@ -80,6 +80,11 @@
                     <i class="fa fa-bell fa-2x"></i><br>
                     Bildirimler
                 </a>
+                <a class="list-group-item list-group-item-action text-center"
+                   href="{{route('logout-user')}}">
+                    <i class="fa fa-sign-out-alt fa-2x"></i><br>
+                    Çıkış Yap
+                </a>
             </div>
         </div>
     </div>
@@ -115,10 +120,7 @@
             </div>
         </nav>
 
-
         @yield('content')
-
-
 
         <nav class="navbar fixed-bottom bottom-navigation-mb d-flex justify-content-around  d-md-none d-lg-none d-xl-none d-xxl-none">
             <ul class="navbar-list mx-auto ">
@@ -129,14 +131,14 @@
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('user/dashboard') ? 'active' : '' }}" href="{{route('user.dashboard')}}">
-                        <i class="bi bi-house navbar-link-icon"></i>
+                    <a class="navbar-link {{ request()->is('user/exams*') ? 'active' : '' }}" href="{{route('user.exams')}}">
+                        <i class="bi bi-laptop navbar-link-icon"></i>
                     </a>
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('user/exams*') ? 'active' : '' }}" href="{{route('user.exams')}}">
-                        <i class="bi bi-laptop navbar-link-icon"></i>
+                    <a class="navbar-link {{ request()->is('user/dashboard') ? 'active' : '' }}" href="{{route('user.dashboard')}}">
+                        <i class="bi bi-house navbar-link-icon"></i>
                     </a>
                 </li>
 

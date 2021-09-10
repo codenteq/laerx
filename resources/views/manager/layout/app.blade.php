@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
           integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     @yield('css')
@@ -115,16 +117,44 @@
             </div>
         </nav>
         @yield('content')
-        <nav
-            class="navbar fixed-bottom navbar-light bg-light bottom-navigation d-flex flex-row d-md-none d-lg-none d-xl-none d-xxl-none fs-1">
-            <a class="list-unstyled link-dark text-decoration-none" id="sidebarToggleM"><i class="fa fa-bars"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('manager.dashboard')}}"><i
-                    class="fas fa-home"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('manager.user-operations')}}"><i
-                    class="fas fa-users-cog"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('manager.user-results')}}"><i
-                    class="fa fa-chart-pie"></i></a>
+
+        <nav class="navbar fixed-bottom bottom-navigation-mb d-flex justify-content-around  d-md-none d-lg-none d-xl-none d-xxl-none">
+            <ul class="navbar-list mx-auto ">
+                <li class="navbar-item">
+                    <a class="navbar-link" id="sidebarToggleM" >
+                        <i class="bi bi-list navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('user/user-operations*') ? 'active' : '' }}" href="{{route('manager.user-operations')}}">
+                        <i class="bi bi-people navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('manager/dashboard') ? 'active' : '' }}" href="{{route('manager.dashboard')}}">
+                        <i class="bi bi-house navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('manager/user-results*') ? 'active' : '' }}" href="{{route('manager.user-results')}}">
+                        <i class="bi bi-clipboard-data navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('manager/course-teacher*') ? 'active' : '' }}" href="{{route('manager.course-teacher.edit',auth()->id())}}">
+                        <i class="bi bi-person navbar-link-icon"></i>
+                    </a>
+                </li>
+
+
+                <div class="navbar-underscore"></div>
+            </ul>
         </nav>
+
     </div>
 </div>
 

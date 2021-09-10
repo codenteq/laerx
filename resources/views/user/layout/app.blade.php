@@ -17,8 +17,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
           integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+    </style>
     @yield('css')
 </head>
 <body>
@@ -53,7 +55,7 @@
                     <i class="fa fa-users fa-2x"></i><br>
                     Sınıf Sınavlarım
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('user/results') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('user/result') ? 'active' : '' }}"
                    href="{{route('user.results')}}">
                     <i class="fas fa-file-contract fa-2x"></i><br>
                     Sınav Sonuçlarım
@@ -116,17 +118,42 @@
 
         @yield('content')
 
-        <nav
-            class="navbar fixed-bottom navbar-light bg-light bottom-navigation d-flex flex-row d-md-none d-lg-none d-xl-none d-xxl-none">
-            <a class="btn btn-light" id="sidebarToggleM"><span class="fa fa-bars"></span></a>
 
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.dashboard')}}"><i
-                    class="fas fa-home"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.lesson.index')}}"><i
-                    class="fas fa-book"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('user.exams')}}"><i
-                    class="fas fa-laptop"></i></a>
 
+        <nav class="navbar fixed-bottom bottom-navigation-mb d-flex justify-content-around  d-md-none d-lg-none d-xl-none d-xxl-none">
+            <ul class="navbar-list mx-auto ">
+                <li class="navbar-item">
+                    <a class="navbar-link" id="sidebarToggleM" >
+                        <i class="bi bi-list navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('user/dashboard') ? 'active' : '' }}" href="{{route('user.dashboard')}}">
+                        <i class="bi bi-house navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('user/exams*') ? 'active' : '' }}" href="{{route('user.exams')}}">
+                        <i class="bi bi-laptop navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('user/notifications*') ? 'active' : '' }}" href="{{route('user.notifications')}}">
+                        <i class="bi bi-bell navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('user/profile*') ? 'active' : '' }}" href="{{route('user.profile')}}">
+                        <i class="bi bi-person navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <div class="navbar-underscore"></div>
+            </ul>
         </nav>
     </div>
 </div>

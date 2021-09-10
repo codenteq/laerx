@@ -23,6 +23,7 @@ use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\LessonController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,14 +55,12 @@ Route::get('/logout-user', [App\Http\Controllers\HomeController::class, 'logoutU
 Route::get('/city/{countryId?}', [App\Http\Controllers\HomeController::class, 'getCity'])->name('city');
 Route::get('/state/{cityId?}', [App\Http\Controllers\HomeController::class, 'getState'])->name('state');
 
-Route::prefix('user')->name('user.')->middleware(['auth','check.role'])->group(function () {
+Route::prefix('user')->name('user.')->middleware(['auth', 'check.role'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
     Route::get('class-exams', [HomeController::class, 'getClassExams'])->name('class-exams');
-    Route::prefix('result')->group(function () {
-        Route::get('/', [HomeController::class, 'getResults'])->name('results');
-        Route::get('/details/{detailId}', [HomeController::class, 'getResultDetail'])->name('result.detail');
-    });
+    Route::get('/result', [HomeController::class, 'getResults'])->name('results');
+    Route::get('/result/details/{detailId}', [HomeController::class, 'getResultDetail'])->name('result.detail');
     Route::resource('appointment', \App\Http\Controllers\User\AppointmentController::class);
     Route::resource('lesson', LessonController::class);
     Route::get('live-lessons', [HomeController::class, 'getLiveLessons'])->name('live-lessons');
@@ -73,7 +72,7 @@ Route::prefix('user')->name('user.')->middleware(['auth','check.role'])->group(f
     Route::post('token', [HomeController::class, 'token'])->name('token');
 });
 
-Route::prefix('manager')->name('manager.')->middleware(['auth','check.role'])->group(function () {
+Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role'])->group(function () {
     Route::get('dashboard', [ManagerController::class, 'getManagerDashboard'])->name('dashboard');
     Route::resource('user', UserController::class);
     Route::get('user-operations', [UserController::class, 'getManagerUserOperations'])->name('user-operations');
@@ -93,12 +92,12 @@ Route::prefix('manager')->name('manager.')->middleware(['auth','check.role'])->g
     Route::resource('invoice', SalesController::class);
 });
 
-Route::prefix('teacher')->name('teacher.')->middleware(['auth','check.role'])->group(function () {
+Route::prefix('teacher')->name('teacher.')->middleware(['auth', 'check.role'])->group(function () {
     Route::resource('appointment', \App\Http\Controllers\Teacher\AppointmentController::class);
     Route::resource('profile', ProfileController::class);
 });
 
-Route::prefix('admin')->name('admin.')->middleware(['auth','check.role'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.role'])->group(function () {
     Route::get('dashboard', [AdminController::class, 'getAdminDashboard'])->name('dashboard');
     Route::get('setting-dashboard', [AdminController::class, 'getSettingDashboard'])->name('setting.dashboard');
     Route::resource('language', LanguageController::class);
@@ -107,5 +106,5 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','check.role'])->group
     Route::resource('period', PeriodController::class);
     Route::resource('type', QuestionTypeController::class);
     Route::resource('manager-user', ManagerUserController::class);
-    Route::resource('lesson-content',LessonContentController::class);
+    Route::resource('lesson-content', LessonContentController::class);
 });

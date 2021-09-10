@@ -10,4 +10,9 @@ class AdminController extends Controller
     public function getAdminDashboard() {
         return view('admin.index');
     }
+
+    public function getSettingDashboard()
+    {
+        return view('admin.setting-dashboard');
+    }
 }

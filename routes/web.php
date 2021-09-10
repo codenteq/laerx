@@ -100,6 +100,7 @@ Route::prefix('teacher')->name('teacher.')->middleware(['auth','check.role'])->g
 
 Route::prefix('admin')->name('admin.')->middleware(['auth','check.role'])->group(function () {
     Route::get('dashboard', [AdminController::class, 'getAdminDashboard'])->name('dashboard');
+    Route::get('setting-dashboard', [AdminController::class, 'getSettingDashboard'])->name('setting.dashboard');
     Route::resource('language', LanguageController::class);
     Route::resource('company', CompanyController::class);
     Route::resource('group', GroupController::class);

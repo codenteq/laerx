@@ -52,25 +52,10 @@
                     <i class="fas fa-book fa-2x"></i><br>
                     Dersler
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/language*') ? 'active' : '' }}"
-                   href="{{route('admin.language.index')}}">
-                    <i class="fas fa-language fa-2x"></i><br>
-                    Diller
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/group*') ? 'active' : '' }}"
-                   href="{{route('admin.group.index')}}">
-                    <i class="fas fa-layer-group fa-2x"></i><br>
-                    Ehliyet Grupları
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/period*') ? 'active' : '' }}"
-                   href="{{route('admin.period.index')}}">
-                    <i class="fas fa-cloud-sun fa-2x"></i><br>
-                    Dönemler
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/type*') ? 'active' : '' }}"
-                   href="{{route('admin.type.index')}}">
-                    <i class="fas fa-file-alt fa-2x"></i><br>
-                    Soru Kategorileri
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/setting-dashboard*') ? 'active' : '' }}"
+                   href="{{route('admin.setting.dashboard')}}">
+                    <i class="fas fa-cogs fa-2x"></i><br>
+                    Sistem Ayarları
                 </a>
                 <a class="list-group-item list-group-item-action text-center mb-5" href="{{route('logout-user')}}">
                     <i class="fas fa-sign-out-alt fa-2x"></i><br>

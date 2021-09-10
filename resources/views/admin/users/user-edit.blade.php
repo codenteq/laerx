@@ -12,7 +12,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
                         <li class="breadcrumb-item"><a href="{{route('admin.manager-user.index')}}">Kullanıcı Listesi</a></li>
-                        <li class="breadcrumb-item">Kullanıcı Düzenle</li>
+                        <li class="breadcrumb-item active" aria-current="page">Kullanıcı Düzenle</li>
                     </ol>
                 </nav>
             </figure>

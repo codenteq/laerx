@@ -4860,9 +4860,8 @@ textarea.form-control-lg {
   color: #212529;
   text-decoration: none;
   background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-bottom: 5px solid #919191;
 }
+
 .list-group-item:first-child {
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
@@ -4879,8 +4878,8 @@ textarea.form-control-lg {
 .list-group-item.active {
   z-index: 2;
   color: #ffd338;
-  /*background-color: #ffd338 !important;*/
-  border-color: #ffd338 !important;
+  background: #030303 !important;
+  border-radius: 15px;
 }
 .list-group-item + .list-group-item {
   border-top-width: 0;

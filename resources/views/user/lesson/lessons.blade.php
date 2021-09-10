@@ -43,7 +43,7 @@
                                 <td>{{$lesson->title}}</td>
                                 <td>
                                     <a href="{{route('user.lesson.show',$lesson->id)}}">
-                                        <i class="fas fa-eye"></i>
+                                        <i class="bi bi-eye text-dark fs-5"></i>
                                     </a>
                                 </td>
                             </tr>

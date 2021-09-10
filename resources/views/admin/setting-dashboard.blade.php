@@ -19,25 +19,25 @@
                 <div class="row row-cols-2 d-flex justify-content-between">
                     <div class="col base p-5 mb-2">
                         <a href="{{route('admin.language.index')}}">
-                            <i class="fas fa-language fa-4x"></i><br>
+                            <i class="bi bi-translate fs-1"></i><br>
                             <span>Diller</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
                         <a href="{{route('admin.group.index')}}">
-                            <i class="fas fa-layer-group fa-4x"></i><br>
+                            <i class="bi bi-collection fs-1"></i><br>
                             <span>Ehliyet Grupları</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
                         <a href="{{route('admin.period.index')}}">
-                            <i class="fas fa-cloud-sun fa-4x"></i><br>
+                            <i class="bi bi-calendar3-range fs-1"></i><br>
                             <span>Dönemler</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
                         <a href="{{route('admin.type.index')}}">
-                            <i class="fas fa-file-alt fa-4x"></i><br>
+                            <i class="bi bi-tags fs-1"></i><br>
                             <span>Soru Kategorileri</span>
                         </a>
                     </div>

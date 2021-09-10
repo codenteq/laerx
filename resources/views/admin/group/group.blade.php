@@ -11,7 +11,7 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item">Ehliyet Grupları</li>
+                        <li class="breadcrumb-item active" aria-current="true">Ehliyet Grupları</li>
                     </ol>
                 </nav>
             </figure>
@@ -20,7 +20,7 @@
                 <div class="col-12 col-lg-12 mt-3">
                     <h4><a href="{{route('admin.group.create')}}" class="btn btn-success">Grup Oluştur</a></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
@@ -33,11 +33,12 @@
                             <tr>
                                 <td>{{$group->title}}</td>
                                 <td>
-                                    <a href="{{route('admin.group.edit',$group)}}"><i
-                                            class="fas fa-user-edit"></i></a>
+                                    <a href="{{route('admin.group.edit',$group)}}">
+                                        <i class="bi bi-pen text-dark"></i>
+                                    </a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('admin.group.destroy',$group)}}`)"><i
-                                            class="fas fa-trash-alt"></i></button>
+                                            class="bi bi-trash"></i></button>
                                 </td>
                             </tr>
                         @endforeach

@@ -20,7 +20,7 @@
                 <div class="col-12 col-lg-12 mt-3">
                     <h4><a href="{{route('manager.user.create')}}" class="btn btn-success">Kursiyer Oluştur</a></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
@@ -47,12 +47,13 @@
                                     <td>{{$user->group->title}}</td>
                                     <td>{{$user->status === 0 ? 'Pasif' : 'Aktif'}}</td>
                                     <td>
-                                        <a href="{{route('manager.user.edit',$user->userId)}}"><i
-                                                class="fas fa-user-edit"></i></a>
+                                        <a href="{{route('manager.user.edit',$user->userId)}}">
+                                            <i class="bi bi-pen text-dark"></i>
+                                        </a>
                                         <button class="btn"
                                                 onclick="deleteButton(this,`${{route('manager.user.destroy',$user->userId)}}`)">
-                                            <i
-                                                class="fas fa-trash-alt"></i></button>
+                                            <i class="bi bi-trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             @endif

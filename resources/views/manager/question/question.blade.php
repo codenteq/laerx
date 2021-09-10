@@ -20,7 +20,7 @@
                     <h4><a href="{{route('manager.question.create')}}" class="btn btn-success">Soru
                             Ekle</a></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
@@ -37,11 +37,12 @@
                                 <td>{{$question->language->title}}</td>
                                 <td>{{$question->created_at}}</td>
                                 <td>
-                                    <a href="{{route('manager.question.edit',$question)}}"><i
-                                            class="fas fa-edit"></i></a>
+                                    <a href="{{route('manager.question.edit',$question)}}">
+                                        <i class="bi bi-pen text-dark"></i>
+                                    </a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('manager.question.destroy',$question)}}`)">
-                                        <i class="fas fa-trash-alt"></i>
+                                        <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
                             </tr>

@@ -37,11 +37,11 @@
                                 <td>{{$lesson->language->title}}</td>
                                 <td>
                                     <a href="{{route('admin.lesson-content.edit',$lesson)}}">
-                                        <i class="fas fa-edit"></i>
+                                        <i class="bi bi-pen text-dark"></i>
                                     </a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('admin.lesson-content.destroy',$lesson)}}`)">
-                                        <i class="fas fa-trash-alt"></i>
+                                        <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
                             </tr>

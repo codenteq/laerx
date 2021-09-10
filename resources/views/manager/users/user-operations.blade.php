@@ -20,19 +20,19 @@
                 <div class="row row-cols-2 d-flex justify-content-between">
                     <div class="col base p-5 mb-2">
                         <a href="{{route('manager.user.create')}}">
-                            <i class="fas fa-user-plus fa-4x"></i><br>
+                            <i class="bi bi-person-plus fs-1"></i><br>
                             <span>Yeni Kursiyer Ekle</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
                         <a href="{{route('manager.user.index')}}">
-                            <i class="fas fa-user-check fa-4x"></i><br>
+                            <i class="bi bi-person-check fs-1"></i><br>
                             <span>Kursiyer Listesi</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-5">
                         <a href="{{route('manager.user-results')}}">
-                            <i class="fas fa-chart-pie fa-4x"></i><br>
+                            <i class="bi bi-clipboard-data fs-1"></i><br>
                             <span>Kursiyer Raporları</span>
                         </a>
                     </div>

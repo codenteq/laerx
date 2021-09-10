@@ -16,7 +16,7 @@
                 </nav>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 overflow-scroll">
+                <div class="col-12 col-lg-12 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
@@ -39,7 +39,7 @@
                                 <td>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                             data-bs-target="#supportShow{{$support->id}}">
-                                        <i class="fas fa-eye"></i>
+                                        <i class="bi bi-eye"></i>
                                     </button>
                                     <div class="modal fade" id="supportShow{{$support->id}}" data-bs-backdrop="static"
                                          data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"

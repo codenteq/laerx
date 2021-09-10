@@ -13,10 +13,8 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="icon" href="{{asset('images/c-icon.png')}}" type="image/x-icon"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
@@ -28,58 +26,57 @@
     <!-- Sidebar-->
     <div class="border-end d-flex d-sm-flex" id="sidebar-wrapper">
         <div class="sidebar-heading border-bottom fw-bold">
-            <span style="font-family: MADE Tommy Soft; font-size: 38px;">Codente</span><span
-                style="font-family: MADE Tommy Soft Outline; font-size: 38px;">q</span><br>
-            <span style="font-weight: normal !important;"><small>v1.0.0-Beta</small></span>
             <div style="font-size: 1rem !important; width: 200px !important;"
                  class="list-group list-group-flush sidebar-menu">
+                <img src="{{asset('images/codenteq-logo.png')}}" class="mb-3" alt="logo">
+
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/dashboard') ? 'active' : '' }}"
                    href="{{route('manager.dashboard')}}">
-                    <i class="fa fa-home fa-2x"></i><br>
+                    <i class="bi bi-house fs-1"></i><br>
                     <span style="position: relative;">Ana Sayfa</span>
                 </a>
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations*') ? 'active' : '' }} {{ request()->is('manager/user') ? 'active' : '' }} {{ request()->is('manager/user/create') ? 'active' : '' }}"
                    href="{{route('manager.user-operations')}}">
-                    <i class="fas fa-users-cog fa-2x"></i><br>
+                    <i class="bi bi-people fs-1"></i><br>
                     <span style="position: relative;">Kursiyer İşlemleri</span>
                 </a>
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-results*') ? 'active' : '' }}"
                    href="{{route('manager.user-results')}}">
-                    <i class="fa fa-chart-pie fa-2x"></i><br>
+                    <i class="bi bi-clipboard-data fs-1"></i><br>
                     Kursiyer Raporları
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/question*') ? 'active' : '' }}"
                    href="{{route('manager.question.index')}}">
-                    <i class="fas fa-question fa-2x"></i><br>
+                    <i class="bi bi-question-circle fs-1"></i><br>
                     Sorular
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lesson*') ? 'active' : '' }}"
                    href="{{route('manager.live-lesson.index')}}">
-                    <i class="fas fa-video fa-2x"></i><br>
+                    <i class="bi bi-camera-video fs-1"></i><br>
                     Canlı Ders
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teacher*') ? 'active' : '' }}"
                    href="{{route('manager.course-teacher.index')}}">
-                    <i class="fas fa-chalkboard-teacher fa-2x"></i><br>
+                    <i class="bi bi-person-plus fs-1"></i><br>
                     Eğitmenler
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment-car*') ? 'active' : '' }} {{ request()->is('manager/car*') ? 'active' : '' }}{{ request()->is('manager/appointment*') ? 'active' : '' }} {{ request()->is('manager/appointment-setting*') ? 'active' : '' }}"
                    href="{{route('manager.appointment-car')}}">
-                    <i class="fa fa-car fa-2x"></i><br>
+                    <i class="bi bi-calendar4-range fs-1"></i><br>
                     Araç & Randevu
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/notification*') ? 'active' : '' }}"
                    href="{{route('manager.notification.index')}}">
-                    <i class="fa fa-bell fa-2x"></i><br>
+                    <i class="bi bi-bell fs-1"></i><br>
                     Bildirimler
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/support*') ? 'active' : '' }}"
                    href="{{route('manager.support.index')}}">
-                    <i class="fas fa-headset fa-2x"></i><br>
+                    <i class="bi bi-info-circle fs-1"></i><br>
                     Destek
                 </a>
                 <a class="list-group-item list-group-item-action text-center mb-5" href="{{route('logout-user')}}">
-                    <i class="fas fa-sign-out-alt fa-2x"></i><br>
+                    <i class="bi bi-box-arrow-right fs-1"></i><br>
                     Çıkış Yap
                 </a>
             </div>
@@ -90,7 +87,7 @@
         <!-- Top navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom d-none d-md-block">
             <div class="container-fluid">
-                <button class="btn btn-light" id="sidebarToggle"><span class="navbar-toggler-icon"></span></button>
+                <button class="btn btn-light" id="sidebarToggle"><i class="bi bi-list fs-4"></i></button>
                 <button class="navbar-toggler d-none d-sm-block d-lg-none" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>

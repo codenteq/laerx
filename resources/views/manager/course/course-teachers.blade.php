@@ -21,7 +21,7 @@
                     <h4><a href="{{route('manager.course-teacher.create')}}" class="btn btn-success">Yeni Eğitmen
                             Ekle</a></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
@@ -42,11 +42,12 @@
                                 <td class="{{$user->status === 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$user->status === 1 ? 'Aktif' : 'Pasif'}}</td>
                                 <td>{{$user->created_at}}</td>
                                 <td>
-                                    <a href="{{route('manager.course-teacher.edit',$user->userId)}}"><i
-                                            class="fas fa-user-edit"></i></a>
+                                    <a href="{{route('manager.course-teacher.edit',$user->userId)}}">
+                                        <i class="bi bi-pen text-dark"></i>
+                                    </a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('manager.course-teacher.destroy',$user->userId)}}`)">
-                                        <i class="fas fa-trash-alt"></i>
+                                        <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
                             </tr>

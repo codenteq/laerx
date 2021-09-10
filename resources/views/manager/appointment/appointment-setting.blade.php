@@ -19,7 +19,7 @@
                 <div class="col-12 col-lg-12 mt-3">
 
                     <div class="card col-12 col-md-8">
-                        <h5 class="card-header"><i class="fas fa-calendar-alt"></i>&nbsp;Randevu Olmayan Günler</h5>
+                        <h5 class="card-header"><i class="bi bi-calendar4-range fs-5"></i>&nbsp;Randevu Olmayan Günler</h5>
                         <div class="card-body">
                             <form name="form-data">
                                 @csrf

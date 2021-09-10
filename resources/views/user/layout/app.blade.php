@@ -14,10 +14,7 @@
           type="text/css">
 
     <link rel="icon" href="{{asset('images/c-icon.png')}}" type="image/x-icon"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     </style>
@@ -28,7 +25,7 @@
 <div class="d-flex" id="wrapper">
     <!-- Sidebar-->
     <div class="border-end d-flex d-sm-flex" id="sidebar-wrapper">
-        <div class="sidebar-heading border-bottom fw-bold">
+        <div class="sidebar-heading border-bottom  fw-bold">
             <div style="font-size: 1rem !important; width: 200px !important;"
                  class="list-group list-group-flush sidebar-menu">
 
@@ -36,53 +33,53 @@
 
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/dashboard') ? 'active' : '' }}"
                    href="{{route('user.dashboard')}}">
-                    <i class="fa fa-home fa-2x"></i><br>
+                    <i class="bi bi-house fs-1"></i><br>
                     <span style="position: relative;">Ana Sayfa</span>
                 </a>
 
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/lesson*') ? 'active' : '' }}"
                    href="{{route('user.lesson.index')}}">
-                    <i class="fa fa-book fa-2x"></i><br>
+                    <i class="bi bi-book fs-1"></i><br>
                     <span style="position: relative;">Derslerim</span>
                 </a>
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/exams') ? 'active' : '' }}"
                    href="{{route('user.exams')}}">
-                    <i class="fa fa-laptop fa-2x"></i><br>
+                    <i class="bi bi-laptop fs-1"></i><br>
                     Online Sınavlarım
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/class-exams') ? 'active' : '' }}"
                    href="{{route('user.class-exams')}}">
-                    <i class="fa fa-users fa-2x"></i><br>
+                    <i class="bi bi-people fs-1"></i><br>
                     Sınıf Sınavlarım
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/result') ? 'active' : '' }}"
                    href="{{route('user.results')}}">
-                    <i class="fas fa-file-contract fa-2x"></i><br>
+                    <i class="bi bi-file-earmark-text fs-1"></i><br>
                     Sınav Sonuçlarım
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/appointment') ? 'active' : '' }}"
                    href="{{route('user.appointment.index')}}">
-                    <i class="fa fa-hourglass-start fa-2x"></i><br>
+                    <i class="bi bi-calendar4-range fs-1"></i><br>
                     Randevularım
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/live-lessons') ? 'active' : '' }}"
                    href="{{route('user.live-lessons')}}">
-                    <i class="fas fa-video fa-2x"></i><br>
+                    <i class="bi bi-camera-video fs-1"></i><br>
                     Canlı Ders
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/support') ? 'active' : '' }}"
                    href="{{route('user.support')}}">
-                    <i class="fa fa-question-circle fa-2x"></i><br>
+                    <i class="bi bi-info-circle fs-1"></i><br>
                     Destek
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/notifications') ? 'active' : '' }}"
                    href="{{route('user.notifications')}}">
-                    <i class="fa fa-bell fa-2x"></i><br>
+                    <i class="bi bi-bell fs-1"></i><br>
                     Bildirimler
                 </a>
                 <a class="list-group-item list-group-item-action text-center"
                    href="{{route('logout-user')}}">
-                    <i class="fa fa-sign-out-alt fa-2x"></i><br>
+                    <i class="bi bi-box-arrow-right fs-1"></i><br>
                     Çıkış Yap
                 </a>
             </div>
@@ -93,7 +90,7 @@
         <!-- Top navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom d-none d-md-block">
             <div class="container-fluid">
-                <button class="btn btn-light" id="sidebarToggle"><span class="navbar-toggler-icon"></span></button>
+                <button class="btn btn-light" id="sidebarToggle"><i class="bi bi-list fs-4"></i></button>
                 <button class="navbar-toggler d-none d-sm-block d-lg-none" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
@@ -120,36 +117,43 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="mb-5">
+            @yield('content')
+        </div>
 
-        <nav class="navbar fixed-bottom bottom-navigation-mb d-flex justify-content-around  d-md-none d-lg-none d-xl-none d-xxl-none">
+        <nav
+            class="navbar fixed-bottom bottom-navigation-mb d-flex justify-content-around  d-md-none d-lg-none d-xl-none d-xxl-none">
             <ul class="navbar-list mx-auto ">
                 <li class="navbar-item">
-                    <a class="navbar-link" id="sidebarToggleM" >
+                    <a class="navbar-link" id="sidebarToggleM">
                         <i class="bi bi-list navbar-link-icon"></i>
                     </a>
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('user/exams*') ? 'active' : '' }}" href="{{route('user.exams')}}">
+                    <a class="navbar-link {{ request()->is('user/exams*') ? 'active' : '' }}"
+                       href="{{route('user.exams')}}">
                         <i class="bi bi-laptop navbar-link-icon"></i>
                     </a>
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('user/dashboard') ? 'active' : '' }}" href="{{route('user.dashboard')}}">
+                    <a class="navbar-link {{ request()->is('user/dashboard') ? 'active' : '' }}"
+                       href="{{route('user.dashboard')}}">
                         <i class="bi bi-house navbar-link-icon"></i>
                     </a>
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('user/notifications*') ? 'active' : '' }}" href="{{route('user.notifications')}}">
+                    <a class="navbar-link {{ request()->is('user/notifications*') ? 'active' : '' }}"
+                       href="{{route('user.notifications')}}">
                         <i class="bi bi-bell navbar-link-icon"></i>
                     </a>
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('user/profile*') ? 'active' : '' }}" href="{{route('user.profile')}}">
+                    <a class="navbar-link {{ request()->is('user/profile*') ? 'active' : '' }}"
+                       href="{{route('user.profile')}}">
                         <i class="bi bi-person navbar-link-icon"></i>
                     </a>
                 </li>

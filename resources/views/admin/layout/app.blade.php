@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
           integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     @yield('css')
@@ -82,7 +84,7 @@
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
                                     class="fa fa-user-circle fa-lg"></i></a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('user.profile')}}">Profil</a>
+                                <a class="dropdown-item" href="#">Profil</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{route('logout-user')}}">Çıkış Yap</a>
                             </div>
@@ -92,18 +94,45 @@
             </div>
         </nav>
 
+        <div class="mb-5">
+            @yield('content')
+        </div>
 
-        @yield('content')
+        <nav class="navbar fixed-bottom bottom-navigation-mb d-flex justify-content-around  d-md-none d-lg-none d-xl-none d-xxl-none">
+            <ul class="navbar-list mx-auto ">
+                <li class="navbar-item">
+                    <a class="navbar-link" id="sidebarToggleM" >
+                        <i class="bi bi-list navbar-link-icon"></i>
+                    </a>
+                </li>
 
-        <nav
-            class="navbar fixed-bottom navbar-light bg-light bottom-navigation d-flex flex-row d-md-none d-lg-none d-xl-none d-xxl-none">
-            <a class="btn btn-light" id="sidebarToggleM"><span class="fa fa-bars"></span></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('admin.dashboard')}}"><i
-                    class="fas fa-home"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('admin.company.index')}}"><i
-                    class="fas fa-building"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('admin.manager-user.index')}}"><i
-                    class="fas fa-users"></i></a>
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('admin/company*') ? 'active' : '' }}" href="{{route('admin.company.index')}}">
+                        <i class="bi bi-building navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('manager/dashboard') ? 'active' : '' }}" href="{{route('admin.dashboard')}}">
+                        <i class="bi bi-house navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('manager/user-results*') ? 'active' : '' }}" href="{{route('admin.manager-user.index')}}">
+                        <i class="bi bi-people navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link" href="#">
+                        <i class="bi bi-person navbar-link-icon"></i>
+                    </a>
+                </li>
+
+
+                <div class="navbar-underscore"></div>
+            </ul>
         </nav>
     </div>
 </div>

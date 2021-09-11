@@ -31,9 +31,9 @@
                         </a>
                     </div>
                     <div class="col base p-5 mb-5">
-                        <a href="{{route('manager.user-results')}}">
-                            <i class="bi bi-clipboard-data fs-1"></i><br>
-                            <span>Kursiyer Raporları</span>
+                        <a href="{{route('manager.user.excel-import')}}">
+                            <i class="bi bi-file-earmark-spreadsheet fs-1"></i><br>
+                            <span>Excel ile Kursiyer Ekle</span>
                         </a>
                     </div>
                 </div>

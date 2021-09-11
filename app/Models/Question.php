@@ -16,8 +16,7 @@ class Question extends Model
         'choiceImage',
         'imagePath',
         'languageId',
-        'typeId',
-        'companyId'
+        'typeId'
     ];
 
     /**

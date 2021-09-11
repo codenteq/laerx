@@ -7,7 +7,7 @@ use App\Models\Test;
 use App\Models\TestQuestion;
 use App\Models\UserAnswer;
 
-class QuestionService
+class QuizService
 {
     public function testStore($questions)
     {

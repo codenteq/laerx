@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\QuestionRequest;
+use App\Models\CompanyQuestion;
 use App\Models\Language;
 use App\Models\Question;
 use App\Models\QuestionType;
@@ -26,7 +27,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::with('language')->latest()->get();
+        $questions = CompanyQuestion::where('companyId',companyId())->with('question')->orderByDesc('questionId')->get();
         return view('manager.question.question', compact('questions'));
     }
 

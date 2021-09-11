@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\QuestionResource;
 use App\Models\Question;
 use App\Models\UserAnswer;
-use App\Services\QuestionService;
+use App\Services\QuizService;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -16,7 +16,7 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(QuestionService $questionService)
+    public function index(QuizService $questionService)
     {
         $questions = Question::with('choice')->get();
         $questionService->testStore($questions);
@@ -29,7 +29,7 @@ class QuestionController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(QuestionService $questionService, Request $request)
+    public function store(QuizService $questionService, Request $request)
     {
         $questionService->userAnswerStore($request);
         return response()->json('success');

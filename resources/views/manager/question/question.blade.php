@@ -33,15 +33,15 @@
                         <tbody>
                         @foreach ($questions as $question)
                             <tr>
-                                <td>{{$question->title}}</td>
-                                <td>{{$question->language->title}}</td>
+                                <td>{{\Illuminate\Support\Str::limit($question->question->title, 50)}}</td>
+                                <td>{{$question->question->language->title}}</td>
                                 <td>{{$question->created_at}}</td>
                                 <td>
-                                    <a href="{{route('manager.question.edit',$question)}}">
+                                    <a href="{{route('manager.question.edit',$question->questionId)}}">
                                         <i class="bi bi-pen text-dark"></i>
                                     </a>
                                     <button class="btn"
-                                            onclick="deleteButton(this,`${{route('manager.question.destroy',$question)}}`)">
+                                            onclick="deleteButton(this,`${{route('manager.question.destroy',$question->questionId)}}`)">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </td>

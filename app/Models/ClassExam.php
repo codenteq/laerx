@@ -13,21 +13,12 @@ class ClassExam extends Model
     use HasFactory;
 
     protected $fillable = [
-        'testId',
         'companyId',
         'periodId',
         'monthId',
         'groupId',
         'status'
     ];
-
-    /**
-     * @return HasOne
-     */
-    public function test(): HasOne
-    {
-        return $this->hasOne(Test::class,'id');
-    }
 
     /**
      * @return HasMany

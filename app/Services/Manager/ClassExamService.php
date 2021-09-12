@@ -10,10 +10,8 @@ class ClassExamService
 {
     public function store($request): void
     {
-        $test = Test::create(['title' => rand(), 'userId' => auth()->id()]);
 
         $class = ClassExam::create([
-            'testId' => $test->id,
             'companyId' => companyId(),
             'periodId' => $request->periodId,
             'monthId' => $request->monthId,
@@ -38,9 +36,7 @@ class ClassExamService
 
     public function destroy($id): void
     {
-        $class = ClassExam::find($id);
-        Test::find($class->testId)->delete();
+        ClassExam::find($id);
         ClassExamQuestionType::where('classExamId', $id)->delete();
-        $class->delete();
     }
 }

@@ -15,7 +15,6 @@ class CreateClassExamsTable extends Migration
     {
         Schema::create('class_exams', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('testId')->index();
             $table->foreignId('companyId')->index();
             $table->foreignId('periodId')->index();
             $table->foreignId('monthId')->index();

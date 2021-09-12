@@ -36,7 +36,7 @@ class ClassExamService
 
     public function destroy($id): void
     {
-        ClassExam::find($id);
+        ClassExam::find($id)->delete();
         ClassExamQuestionType::where('classExamId', $id)->delete();
     }
 }

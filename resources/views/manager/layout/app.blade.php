@@ -50,6 +50,11 @@
                     <i class="bi bi-question-circle fs-1"></i><br>
                     Sorular
                 </a>
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/class-exam*') ? 'active' : '' }}"
+                   href="{{route('manager.class-exam.index')}}">
+                    <i class="bi bi-file-richtext fs-1"></i><br>
+                    Sınıf Sınavları
+                </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lesson*') ? 'active' : '' }}"
                    href="{{route('manager.live-lesson.index')}}">
                     <i class="bi bi-camera-video fs-1"></i><br>

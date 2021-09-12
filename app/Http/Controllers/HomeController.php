@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\State;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -54,13 +55,13 @@ class HomeController extends Controller
         return redirect('login');
     }
 
-    public function getCity($countryId)
+    public function getCity($countryId): JsonResponse
     {
         $cities =  City::where('countryId',$countryId)->get();
         return response()->json($cities);
     }
 
-    public function getState($cityId)
+    public function getState($cityId): JsonResponse
     {
         $states =  State::where('cityId',$cityId)->get();
         return response()->json($states);

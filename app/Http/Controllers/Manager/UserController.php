@@ -166,8 +166,7 @@ class UserController extends Controller
             Excel::import(new UserImport(), $request->excel);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
-            echo $ex;
-            //return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage);
         }
     }
 }

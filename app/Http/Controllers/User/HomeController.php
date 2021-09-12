@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserRequest;
+use App\Models\ClassExam;
 use App\Models\Language;
 use App\Models\LiveLesson;
 use App\Models\NotificationUser;
@@ -39,7 +40,15 @@ class HomeController extends Controller
 
     public function getClassExams()
     {
-        return view('user.class-exams');
+        $classExams = ClassExam::where('periodId',auth()->user()->info->periodId)
+            ->where('monthId',auth()->user()->info->monthId)
+            ->where('groupId',auth()->user()->info->groupId)
+            ->where('status',1)
+            ->where('companyId', companyId())
+            ->with('classExamQuestionType')
+            ->withSum('classExamQuestionType', 'length')
+            ->get();
+        return view('user.class-exams',compact('classExams'));
     }
 
     public function getResults()

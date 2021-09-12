@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PeriodController;
 use App\Http\Controllers\Admin\QuestionTypeController;
 use App\Http\Controllers\Manager\AppointmentController;
 use App\Http\Controllers\Manager\CarController;
+use App\Http\Controllers\Manager\ClassExamController;
 use App\Http\Controllers\Manager\CourseTeacherController;
 use App\Http\Controllers\Manager\LiveLessonController;
 use App\Http\Controllers\Manager\ManagerController;
@@ -92,6 +93,13 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role'])->
     Route::resource('question', QuestionController::class);
     Route::resource('notification', NotificationController::class);
     Route::resource('invoice', SalesController::class);
+    Route::name('class-exam.')->group(function () {
+        Route::get('/class-exam',[ClassExamController::class,'index'])->name('index');
+        Route::get('/class-exam/create',[ClassExamController::class,'create'])->name('create');
+        Route::get('/class-exam/{classId}/edit',[ClassExamController::class,'update'])->name('edit');
+        Route::post('/class-exam',[ClassExamController::class,'store'])->name('store');
+        Route::delete('/class-exam/{classId}',[ClassExamController::class,'destroy'])->name('destroy');
+    });
 });
 
 Route::prefix('teacher')->name('teacher.')->middleware(['auth', 'check.role'])->group(function () {

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Constants\NormalExam;
 use App\Jobs\TestResultJob;
 use App\Models\ClassExamQuestionType;
 use App\Models\Question;
@@ -67,6 +68,12 @@ class QuizService
 
     public function normalExam($request)
     {
-        //
+        $arr = [];
+        $types = NormalExam::QUIZ_EXAM_TYPE;
+        foreach ($types as $key => $val) {
+            array_push($arr, Question::where('typeId', $key)->with('choice')->take($val)->get());
+        }
+
+        return Arr::collapse($arr);
     }
 }

@@ -57,7 +57,7 @@ Route::get('/logout-user', [App\Http\Controllers\HomeController::class, 'logoutU
 Route::get('/city/{countryId?}', [App\Http\Controllers\HomeController::class, 'getCity'])->name('city');
 Route::get('/state/{cityId?}', [App\Http\Controllers\HomeController::class, 'getState'])->name('state');
 
-Route::prefix('user')->name('user.')->middleware(['auth', 'check.role'])->group(function () {
+Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
     Route::get('class-exams', [HomeController::class, 'getClassExams'])->name('class-exams');
@@ -80,7 +80,7 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role'])->group(
     });
 });
 
-Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role'])->group(function () {
+Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
     Route::get('dashboard', [ManagerController::class, 'getManagerDashboard'])->name('dashboard');
     Route::get('/user/excel-import', [UserController::class, 'getImportExcel'])->name('user.excel-import');
     Route::post('/user/excel-import/create', [UserController::class, 'postImportExcel'])->name('user.excel-import.create');
@@ -109,7 +109,7 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role'])->
     });
 });
 
-Route::prefix('teacher')->name('teacher.')->middleware(['auth', 'check.role'])->group(function () {
+Route::prefix('teacher')->name('teacher.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
     Route::resource('appointment', \App\Http\Controllers\Teacher\AppointmentController::class);
     Route::resource('profile', ProfileController::class);
 });

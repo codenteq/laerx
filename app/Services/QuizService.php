@@ -66,7 +66,7 @@ class QuizService
 
 
 
-    public function normalExam($request)
+    public function normalExam()
     {
         $arr = [];
         $types = NormalExam::QUIZ_EXAM_TYPE;

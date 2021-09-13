@@ -22,6 +22,7 @@ use App\Http\Controllers\Manager\UserController;
 use App\Http\Controllers\Teacher\ProfileController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\LessonController;
+use App\Http\Controllers\User\QuizController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -71,6 +72,12 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role'])->group(
     Route::post('support/create', [HomeController::class, 'postSupportStore'])->name('support.store');
     Route::get('notifications', [HomeController::class, 'getNotifications'])->name('notifications');
     Route::post('token', [HomeController::class, 'token'])->name('token');
+
+    Route::name('quiz.')->group(function () {
+        Route::get('/normal-exam/fetchQuestion', [QuizController::class, 'getNormalExam'])->name('normal');
+        Route::get('/custom-exam/fetchQuestion', [QuizController::class, 'getCustomExam'])->name('custom');
+        Route::get('/class-exam/fetchQuestion', [QuizController::class, 'getClassExam'])->name('class');
+    });
 });
 
 Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role'])->group(function () {

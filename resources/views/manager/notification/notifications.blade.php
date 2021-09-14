@@ -25,6 +25,7 @@
                         <thead>
                         <tr>
                             <th scope="col">Mesaj</th>
+                            <th scope="col">Durum</th>
                             <th scope="col">Tarih</th>
                         </tr>
                         </thead>
@@ -32,6 +33,7 @@
                         @foreach($notifications as $notification)
                             <tr>
                                 <td>{{$notification->message}}</td>
+                                <td class="{{$notification->status == 0 ? 'text-warning' : 'text-success'}} fw-bold">{{$notification->status == 0 ? 'Gönderiliyor' : 'Gönderildi'}}</td>
                                 <td>{{$notification->created_at}}</td>
                             </tr>
                         @endforeach

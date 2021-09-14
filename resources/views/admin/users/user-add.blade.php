@@ -12,14 +12,14 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
                         <li class="breadcrumb-item"><a href="{{route('admin.manager-user.index')}}">Kullanıcı Listesi</a></li>
-                        <li class="breadcrumb-item">Kullanıcı Oluştur</li>
+                        <li class="breadcrumb-item active" aria-current="page">Kullanıcı Oluştur</li>
                     </ol>
                 </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="form-control" name="form-data">
-
+                        @csrf
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="tc" placeholder="TCKN" maxlength="11">
                             <label for="floatingFirst">TC Kimlik No</label>

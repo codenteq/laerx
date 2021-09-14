@@ -21,7 +21,7 @@
                     <h4><a href="{{route('manager.appointment.create')}}" class="btn btn-success">Randevu Oluştur</a>
                     </h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
@@ -42,11 +42,12 @@
                                 <td>{{$appointment->date}}</td>
                                 <td class="{{$appointment->status === 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$appointment->status === 1 ? 'Aktif' : 'Pasif'}}</td>
                                 <td>
-                                    <a href="{{route('manager.appointment.edit',$appointment)}}"><i
-                                            class="fas fa-edit"></i></a>
+                                    <a href="{{route('manager.appointment.edit',$appointment)}}">
+                                        <i class="bi bi-pen text-dark"></i>
+                                    </a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('manager.appointment.destroy',$appointment)}}`)">
-                                        <i class="fas fa-trash-alt"></i>
+                                        <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
                             </tr>

@@ -11,7 +11,7 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item">Kullanıcı Listesi</li>
+                        <li class="breadcrumb-item active" aria-current="page">Kullanıcı Listesi</li>
                     </ol>
                 </nav>
             </figure>
@@ -20,7 +20,7 @@
                     <h4><a href="{{route('admin.manager-user.create')}}" class="btn btn-success">Kullanıcı Oluştur</a>
                     </h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
@@ -44,12 +44,13 @@
                                     <td>{{$user->language->title}}</td>
                                     <td>{{$user->status}}</td>
                                     <td>
-                                        <a href="{{route('admin.manager-user.edit',$user->userId)}}"><i
-                                                class="fas fa-user-edit"></i></a>
+                                        <a href="{{route('admin.manager-user.edit',$user->userId)}}">
+                                            <i class="bi bi-pen text-dark"></i>
+                                        </a>
                                         <button class="btn"
                                                 onclick="deleteButton(this,`${{route('admin.manager-user.destroy',$user->userId)}}`)">
-                                            <i
-                                                class="fas fa-trash-alt"></i></button>
+                                            <i class="bi bi-trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             @endif

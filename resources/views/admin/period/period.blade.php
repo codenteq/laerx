@@ -11,7 +11,7 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item">Dönemler</li>
+                        <li class="breadcrumb-item active" aria-current="true">Dönemler</li>
                     </ol>
                 </nav>
             </figure>
@@ -19,7 +19,7 @@
                 <div class="col-12 col-lg-12 mt-3">
                     <h4><a href="{{route('admin.period.create')}}" class="btn btn-success">Dönem Oluştur</a></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
@@ -32,11 +32,13 @@
                             <tr>
                                 <td>{{$period->title}}</td>
                                 <td>
-                                    <a href="{{route('admin.period.edit',$period)}}"><i
-                                            class="fas fa-user-edit"></i></a>
+                                    <a href="{{route('admin.period.edit',$period)}}">
+                                        <i class="bi bi-pen text-dark"></i>
+                                    </a>
                                     <button class="btn"
-                                            onclick="deleteButton(this,`${{route('admin.period.destroy',$period)}}`)"><i
-                                            class="fas fa-trash-alt"></i></button>
+                                            onclick="deleteButton(this,`${{route('admin.period.destroy',$period)}}`)">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach

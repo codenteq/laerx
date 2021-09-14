@@ -32,7 +32,9 @@ class CourseTeacherRequest extends FormRequest
             'surname' => 'required',
             'email' => 'required|email',
             'phone' => 'required|numeric',
-            'password' => 'confirmed|min:8'
+            'address' => 'required|string',
+            'languageId' => 'required|numeric',
+            'password' => 'confirmed'
         ];
     }
 

@@ -21,6 +21,14 @@
                     <form class="p-2" name="form-data">
                         @csrf
                         @method('PUT')
+                        <div class="form-floating mb-3">
+                            <select class="form-select" name="languageId" aria-label="Floating label select example">
+                                @foreach($languages as $language)
+                                    <option value="{{$language->id}}" {{$question->language->id === $language->id ? 'selected' : null}}>{{$language->title}}</option>
+                                @endforeach
+                            </select>
+                            <label for="floatingSelect">Soru Dilini Seçiniz</label>
+                        </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="questionImage"
                                    {{$question->questionImage == 1 ? 'checked' : null}} id="switchQuestionImageShow">

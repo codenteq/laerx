@@ -44,8 +44,8 @@ class AppointmentController extends Controller
     public function create()
     {
         return view('manager.appointment.appointment-add', [
-            'users' => User::where('type', 3)->get(),
-            'teachers' => User::where('type', 2)->get(),
+            'users' => User::where('type', User::Normal)->get(),
+            'teachers' => User::where('type', User::Teacher)->get(),
             'cars' => Car::where('status', 1)->get()
         ]);
     }
@@ -79,8 +79,8 @@ class AppointmentController extends Controller
     public function edit(Appointment $appointment)
     {
         return view('manager.appointment.appointment-edit', [
-            'users' => User::where('type', 3)->get(),
-            'teachers' => User::where('type', 2)->get(),
+            'users' => User::where('type', User::Normal)->get(),
+            'teachers' => User::where('type', User::Teacher)->get(),
             'cars' => Car::where('status', 1)->get(),
             'appointment' => $appointment
         ]);

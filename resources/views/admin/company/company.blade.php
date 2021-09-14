@@ -20,7 +20,7 @@
                 <div class="col-12 col-lg-12 mt-3">
                     <h4><a href="{{route('admin.company.create')}}" class="btn btn-success">Şirket Oluştur</a></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
@@ -45,11 +45,13 @@
                                 <td class="text-success fw-bold">Aktif</td>
                                 <td>{{$company->updated_at}}</td>
                                 <td>
-                                    <a href="{{route('admin.company.edit',$company->id)}}"><i
-                                            class="fas fa-user-edit"></i></a>
+                                    <a href="{{route('admin.company.edit',$company->id)}}">
+                                        <i class="bi bi-pen text-dark"></i>
+                                    </a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('admin.company.destroy',$company)}}`)"><i
-                                            class="fas fa-trash-alt"></i></button>
+                                            class="bi bi-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach

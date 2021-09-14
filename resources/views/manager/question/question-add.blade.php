@@ -19,6 +19,15 @@
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="p-2" name="form-data">
+                        @csrf
+                        <div class="form-floating mb-3">
+                            <select class="form-select" name="languageId" aria-label="Floating label select example">
+                                @foreach($languages as $language)
+                                    <option value="{{$language->id}}">{{$language->title}}</option>
+                                @endforeach
+                            </select>
+                            <label for="floatingSelect">Soru Dilini Seçiniz</label>
+                        </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="questionImage"
                                    id="switchQuestionImageShow">

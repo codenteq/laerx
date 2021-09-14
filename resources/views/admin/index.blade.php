@@ -10,7 +10,7 @@
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Ana Sayfa</li>
                     </ol>
                 </nav>
             </figure>
@@ -18,37 +18,37 @@
                 <div class="row row-cols-2 d-flex justify-content-between">
                     <div class="col base p-5 mb-2">
                         <a href="{{route('admin.company.index')}}">
-                            <i class="fas fa-building fa-4x"></i><br>
+                            <i class="bi bi-building fs-1"></i><br>
                             <span>Şirketler</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
                         <a href="{{route('admin.manager-user.index')}}">
-                            <i class="fas fa-users fa-4x"></i><br>
+                            <i class="bi bi-people fs-1"></i><br>
                             <span>Kullanıcı Listesi</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
                         <a href="{{route('admin.manager-user.create')}}">
-                            <i class="fas fa-user-plus fa-4x"></i><br>
+                            <i class="bi bi-person-plus fs-1"></i><br>
                             <span>Kullanıcı Ekle</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
                         <a href="{{route('admin.period.index')}}">
-                            <i class="fa fa-cloud-sun fa-4x"></i><br>
+                            <i class="bi bi-calendar3-range fs-1"></i><br>
                             <span>Dönemler</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
                         <a href="{{route('admin.language.index')}}">
-                            <i class="fa fa-language fa-4x"></i><br>
+                            <i class="bi bi-translate fs-1"></i><br>
                             <span>Diller</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-5">
                         <a href="{{route('admin.group.index')}}">
-                            <i class="fa fa-layer-group fa-4x"></i><br>
+                            <i class="bi bi-collection fs-1"></i><br>
                             <span>Ehliyet Grupları</span>
                         </a>
                     </div>

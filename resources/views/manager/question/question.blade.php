@@ -20,11 +20,12 @@
                     <h4><a href="{{route('manager.question.create')}}" class="btn btn-success">Soru
                             Ekle</a></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
                             <th scope="col">Soru</th>
+                            <th scope="col">Soru Dili</th>
                             <th scope="col">Oluşturulma Tarihi</th>
                             <th scope="col">İşlemler</th>
                         </tr>
@@ -32,14 +33,16 @@
                         <tbody>
                         @foreach ($questions as $question)
                             <tr>
-                                <td>{{$question->title}}</td>
+                                <td>{{\Illuminate\Support\Str::limit($question->question->title, 50)}}</td>
+                                <td>{{$question->question->language->title}}</td>
                                 <td>{{$question->created_at}}</td>
                                 <td>
-                                    <a href="{{route('manager.question.edit',$question)}}"><i
-                                            class="fas fa-edit"></i></a>
+                                    <a href="{{route('manager.question.edit',$question->questionId)}}">
+                                        <i class="bi bi-pen text-dark"></i>
+                                    </a>
                                     <button class="btn"
-                                            onclick="deleteButton(this,`${{route('manager.question.destroy',$question)}}`)">
-                                        <i class="fas fa-trash-alt"></i>
+                                            onclick="deleteButton(this,`${{route('manager.question.destroy',$question->questionId)}}`)">
+                                        <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
                             </tr>

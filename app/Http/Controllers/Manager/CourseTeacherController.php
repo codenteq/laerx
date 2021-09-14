@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\CourseTeacherRequest;
+use App\Models\Language;
 use App\Models\User;
 use App\Models\UserInfo;
 use App\Services\GlobalService;
@@ -26,7 +27,7 @@ class CourseTeacherController extends Controller
      */
     public function index()
     {
-        $users = UserInfo::where('companyId', companyId())->with('user')->latest()->get();
+        $users = UserInfo::where('companyId', companyId())->whereRelation('user', 'type', User::Teacher)->with('user')->latest()->get();
         return view('manager.course.course-teachers', compact('users'));
     }
 
@@ -37,7 +38,8 @@ class CourseTeacherController extends Controller
      */
     public function create()
     {
-        return view('manager.course.course-teacher-add');
+        $languages = Language::all();
+        return view('manager.course.course-teacher-add',compact('languages'));
     }
 
     /**
@@ -49,7 +51,7 @@ class CourseTeacherController extends Controller
     public function store(CourseTeacherRequest $request)
     {
         try {
-            $this->globalService->userStore($request,User::Manager);
+            $this->globalService->userStore($request, User::Teacher);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
@@ -63,8 +65,9 @@ class CourseTeacherController extends Controller
      */
     public function edit(User $course_teacher)
     {
-        $user = UserInfo::where('userId',$course_teacher->id)->with('user')->first();
-        return view('manager.course.course-teacher-edit',compact('user'));
+        $languages = Language::all();
+        $user = UserInfo::where('userId', $course_teacher->id)->with('user')->first();
+        return view('manager.course.course-teacher-edit', compact('user','languages'));
     }
 
     /**
@@ -77,7 +80,7 @@ class CourseTeacherController extends Controller
     public function update(CourseTeacherRequest $request, User $course_teacher)
     {
         try {
-            $this->globalService->userUpdate($request,$course_teacher->id);
+            $this->globalService->userUpdate($request, $course_teacher->id);
             return response(ResponseMessage::SuccessMessage);
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);

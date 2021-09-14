@@ -4,6 +4,7 @@ namespace App\Services\Manager;
 
 use App\Http\Requests\Manager\QuestionRequest;
 use App\Jobs\ImageConvertJob;
+use App\Models\CompanyQuestion;
 use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\QuestionChoiceKey;
@@ -11,28 +12,38 @@ use Illuminate\Support\Facades\Log;
 
 class QuestionService
 {
+    /**
+     * @param QuestionRequest $request
+     */
     public function store(QuestionRequest $request)
     {
         $question = new Question();
         $question->title = $request->title;
         $question->questionImage = isset($request->questionImage) == "on" ? 1 : 0;
         $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
+        $question->languageId = $request->languageId;
         $question->typeId = $request->typeId;
-        $question->companyId = companyId();
         if ($request->file('imagePath') && isset($request->questionImage)) {
             $path = request()->file('imagePath')->store('questions', 'public');
             $question->imagePath = $path;
         }
         $question->save();
+
+        self::companyQuestion($question->id);
         if ($request->file('imagePath') && isset($request->questionImage)) {
             ImageConvertJob::dispatch($question->id, 'question', $path);
         }
-        if (isset($request->choiceImage) == "on")
+        if (isset($request->choiceImage) == "on") {
             self::choiceImageStore($request, $question->id);
-        else
+        } else {
             self::choiceStore($request, $question->id);
+        }
     }
 
+    /**
+     * @param $request
+     * @param $id
+     */
     public function choiceStore($request, $id)
     {
         for ($i = 1; $i <= 4; $i++) {
@@ -48,9 +59,13 @@ class QuestionService
         }
     }
 
+    /**
+     * @param $request
+     * @param $id
+     */
     public function choiceImageStore($request, $id)
     {
-        $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'photo', 'choiceImage', 'questionImage','imagePath']);
+        $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'photo', 'choiceImage', 'questionImage', 'imagePath']);
         for ($i = 1; $i <= 4; $i++) {
             $choiceImage = 'choice_image_' . $i;
             $path = $request->file($choiceImage)->store('choices', 'public');
@@ -64,6 +79,10 @@ class QuestionService
         }
     }
 
+    /**
+     * @param $cId
+     * @param $qId
+     */
     public function choiceKeyStore($cId, $qId)
     {
         QuestionChoiceKey::create([
@@ -72,12 +91,17 @@ class QuestionService
         ]);
     }
 
+    /**
+     * @param QuestionRequest $request
+     * @param $id
+     */
     public function update(QuestionRequest $request, $id)
     {
         $question = Question::find($id);
         $question->title = $request->title;
         $question->questionImage = isset($request->questionImage) == "on" ? 1 : 0;
         $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
+        $question->languageId = $request->languageId;
         $question->typeId = $request->typeId;
         if (request()->file('imagePath') && isset($request->questionImage)) {
             $path = request()->file('imagePath')->store('questions', 'public');
@@ -85,6 +109,7 @@ class QuestionService
             ImageConvertJob::dispatch($id, 'question', $path);
         }
         $question->save();
+
         self::choiceKeyUpdate($request, $id);
         if (isset($request->choiceImage) == "on")
             self::choiceImageUpdate($request);
@@ -92,9 +117,12 @@ class QuestionService
             self::choiceUpdate($request);
     }
 
+    /**
+     * @param $request
+     */
     public function choiceUpdate($request)
     {
-        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage','imagePath']);
+        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage', 'imagePath', 'languageId']);
         foreach ($req as $key => $val) {
             QuestionChoice::find($key)->update([
                 'title' => $val,
@@ -103,6 +131,10 @@ class QuestionService
         }
     }
 
+    /**
+     * @param $request
+     * @param $id
+     */
     public function choiceKeyUpdate($request, $id)
     {
         QuestionChoiceKey::where('questionId', $id)->update([
@@ -111,12 +143,15 @@ class QuestionService
         ]);
     }
 
+    /**
+     * @param $request
+     */
     public function choiceImageUpdate($request)
     {
-        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage','imagePath']);
+        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage', 'imagePath', 'languageId']);
         foreach ($req as $key => $val) {
             if ($request->hasFile($key)) {
-                $path = $request->file($key)->store('choices','public');
+                $path = $request->file($key)->store('choices', 'public');
                 QuestionChoice::find($key)->update([
                     'title' => null,
                     'path' => $path,
@@ -126,10 +161,26 @@ class QuestionService
         }
     }
 
+    /**
+     * @param $id
+     */
     public function destroy($id)
     {
         Question::find($id)->delete();
         QuestionChoice::where('questionId', $id)->delete();
         QuestionChoiceKey::where('questionId', $id)->delete();
+        CompanyQuestion::where('questionId', $id)->delete();
+    }
+
+    /**
+     * @param $questionId
+     * @param $companyId
+     */
+    public function companyQuestion($questionId)
+    {
+        CompanyQuestion::create([
+            'questionId' => $questionId,
+            'companyId' => companyId()
+        ]);
     }
 }

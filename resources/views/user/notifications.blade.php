@@ -16,7 +16,7 @@
                 </nav>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 overflow-scroll">
+                <div class="col-12 col-lg-12 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>

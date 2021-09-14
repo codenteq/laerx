@@ -75,7 +75,7 @@
                                 <td>{{$result->user->tc}}</td>
                                 <td>{{$result->sum_correct}}</td>
                                 <th>{{totalPoint($result->sum_correct,$result->sum_total_question)}}</th>
-                                <td><a href="{{route('manager.user-result-detail',$result->userId)}}"><i class="fas fa-eye "></i></a></td>
+                                <td><a href="{{route('manager.user-result-detail',$result->userId)}}"><i class="bi bi-eye fs-5 text-dark"></i></a></td>
                             @endforeach
                         </tr>
                         </tbody>

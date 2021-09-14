@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\LessonContent;
+use App\Models\QuestionType;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -12,9 +14,11 @@ class LessonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('user.lesson.lessons');
+        $types = QuestionType::all();
+        $lessons = LessonContent::where('typeId',$request->type)->where('languageId',languageId())->get();
+        return view('user.lesson.lessons',compact('types','lessons'));
     }
 
     /**
@@ -24,7 +28,7 @@ class LessonController extends Controller
      */
     public function create()
     {
-        return view('user.lesson.lesson-view');
+
     }
 
     /**
@@ -41,12 +45,12 @@ class LessonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param \App\Models\LessonContent $lesson
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(LessonContent $lesson)
     {
-        //
+        return view('user.lesson.lesson-view',compact('lesson'));
     }
 
     /**

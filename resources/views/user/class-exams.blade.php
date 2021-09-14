@@ -16,27 +16,27 @@
                 </nav>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th scope="col">Soru Sayısı</th>
+                            <th scope="col">Süre</th>
+                            <th scope="col">İşlemler</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Donna Snider</td>
-                            <td>Customer Support</td>
-                            <td>New York</td>
-                            <td>27</td>
-                            <td>2011/01/25</td>
-                            <td>$112,000</td>
-                        </tr>
+                        @foreach($classExams as $exam)
+                            <tr>
+                                <td>{{$exam->class_exam_question_type_sum_length}}</td>
+                                <td></td>
+                                <td>
+                                    <a href="#" class="btn btn-primary">
+                                        Sınava Başla
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -60,7 +60,8 @@
 
 @section('js')
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     @include('layouts.script')
 
 @endsection

@@ -19,7 +19,7 @@
                 <div class="col-12 col-lg-12 mt-3">
                     <h4><a href="{{route('manager.live-lesson.create')}}" class="btn btn-success">Ders Oluştur</a></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
@@ -40,12 +40,13 @@
                                 <td>{{$live_lesson->type->title}}</td>
                                 <td>{{$live_lesson->live_date}}</td>
                                 <td>
-                                    <a href="{{route('manager.live-lesson.edit',$live_lesson)}}"><i
-                                            class="fas fa-edit"></i></a>
+                                    <a href="{{route('manager.live-lesson.edit',$live_lesson)}}">
+                                        <i class="bi bi-pen text-dark"></i>
+                                    </a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('manager.live-lesson.destroy',$live_lesson)}}`)">
                                         <i
-                                            class="fas fa-trash-alt "></i></button>
+                                            class="bi bi-trash"></i></button>
                                 </td>
                             </tr>
                         @endforeach

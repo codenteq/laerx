@@ -32,11 +32,12 @@
                             <tr>
                                 <td>{{$type->title}}</td>
                                 <td>
-                                    <a href="{{route('admin.type.edit',$type)}}"><i
-                                            class="fas fa-edit"></i></a>
+                                    <a href="{{route('admin.type.edit',$type)}}">
+                                        <i class="bi bi-pen text-dark"></i>
+                                    </a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('admin.type.destroy',$type)}}`)">
-                                        <i class="fas fa-trash-alt"></i>
+                                        <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
                             </tr>

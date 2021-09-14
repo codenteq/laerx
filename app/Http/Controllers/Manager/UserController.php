@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Manager;
 
+use App\Excel\Imports\UserImport;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Group;
@@ -16,6 +17,7 @@ use App\Models\UserInfo;
 use App\Services\GlobalService;
 use Illuminate\Http\Request;
 use App\Http\Requests\Manager\UserRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -33,7 +35,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = UserInfo::where('companyId', companyId())->with('company', 'user', 'language', 'period', 'month')->latest()->get();
+        $users = UserInfo::where('companyId', companyId())->whereRelation('user','type',User::Normal)->with('company', 'user', 'language', 'period', 'month')->latest()->get();
         return view('manager.users.user-list', compact('users'));
     }
 
@@ -151,5 +153,20 @@ class UserController extends Controller
             ->get();
         $results = TestResult::where('userId', $userId)->get();
         return view('manager.users.user-result-detail', compact('resultTypes', 'results'));
+    }
+
+    public function getImportExcel()
+    {
+        return view('manager.users.excel-import');
+    }
+
+    public function postImportExcel(Request $request)
+    {
+        try {
+            Excel::import(new UserImport(), $request->excel);
+            return response(ResponseMessage::SuccessMessage);
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage);
+        }
     }
 }

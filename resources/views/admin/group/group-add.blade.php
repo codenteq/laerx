@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <form class="form-control" name="form-data">
-
+                        @csrf
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="title" placeholder="Dil Kodu">
                             <label for="floatingFirst">Ehliyet Grubu</label>

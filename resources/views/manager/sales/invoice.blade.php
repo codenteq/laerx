@@ -17,7 +17,7 @@
             </figure>
 
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
@@ -29,20 +29,22 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach ($invoices as $invoice)
                                 <tr>
-                                    <th scope="row">0001</th>
-                                    <td>30/08/2021</td>
-                                    <td>1000 ₺</td>
-                                    <td class="text-danger fw-bold">Ödenmedi</td>
+                                    <th scope="row">{{$invoice->id}}</th>
+                                    <td>{{$invoice->created_at}}</td>
+                                    <td>{{$invoice->total_amount}}</td>
+                                    <td class="{{$invoice->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$invoice->status == 1 ? 'Ödendi' : 'Ödenmedi'}}</td>
                                     <td>
                                         <a href="#iyzico-callback">
-                                            <i class="fas fa-credit-card"></i>
+                                            <i class="bi bi-credit-card text-dark fs-5"></i>
                                         </a>
                                         <a href="#invoice.show">
-                                            <i class="fas fa-eye"></i>
+                                            <i class="bi bi-eye text-dark fs-5"></i>
                                         </a>
                                     </td>
                                 </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

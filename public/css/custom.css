@@ -2,10 +2,14 @@ body a{
     text-decoration: none;
 }
 
+.navbar-light {
+    background: #fff !important;
+}
+
 .sidebar-menu a,
 .sidebar-heading {
-    background-color: #1a1e21 !important;
-    color: white;
+    background-color: #F8F9FD !important;
+    color: #000000;
     padding: 16px;
 }
 
@@ -90,4 +94,64 @@ section .container .row .base:hover {
     color: #ffd338;
     width: 100%;
     background-color: #000000;
+}
+
+.bottom-navigation-mb {
+    padding: 0 40px 0;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 1px 10px -4px #7c7c7c;
+}
+
+.bottom-navigation-mb .navbar-list {
+    display: flex;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.bottom-navigation-mb .navbar-link {
+    display: inline-block;
+    justify-content: space-between;
+
+    padding: 20px;
+    text-decoration: none;
+    color: #1d1d1d;
+    transition: 0.3s;
+}
+
+.bottom-navigation-mb .navbar-link:hover, .navbar-link.active {
+    color: #ffd338;
+}
+
+.bottom-navigation-mb .navbar-link-icon {
+    font-size: 25px;
+}
+
+.bottom-navigation-mb .navbar-underscore {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: #ffd338;
+    transition: 0.3s;
+}
+@media only screen and (max-width: 600px) {
+    figure {
+        padding: 9px 5px 4px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0px 3px 9px -4px #7c7c7c;
+    }
+    figure h2 {
+        margin: auto;
+        text-align: center;
+    }
+    figure nav {
+        display: none;
+        visibility: hidden;
+    }
 }

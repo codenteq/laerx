@@ -27,17 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    public function redirectTo() {
-        $type = Auth::user()->type;
-        switch($type) {
-            case 1:
-                return route('admin.dashboard');
-            case 2:
-                return route('manager.dashboard');
-            case 3:
-                return route('user.dashboard');
-        }
-    }
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.

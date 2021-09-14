@@ -20,7 +20,7 @@
                 <div class="col-12 col-lg-12 mt-3">
                     <h4><a href="{{route('admin.language.create')}}" class="btn btn-success">Dil Oluştur</a></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
@@ -35,11 +35,12 @@
                                 <td>{{$language->code}}</td>
                                 <td>{{$language->title}}</td>
                                 <td>
-                                    <a href="{{route('admin.language.edit',$language)}}"><i
-                                            class="fas fa-user-edit"></i></a>
+                                    <a href="{{route('admin.language.edit',$language)}}">
+                                        <i class="bi bi-pen text-dark"></i>
+                                    </a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('admin.language.destroy',$language)}}`)">
-                                        <i class="fas fa-trash-alt"></i>
+                                        <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
                             </tr>

@@ -13,9 +13,7 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="icon" href="{{asset('images/c-icon.png')}}" type="image/x-icon"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     @yield('css')
@@ -26,19 +24,18 @@
     <!-- Sidebar-->
     <div class="border-end d-flex d-sm-flex" id="sidebar-wrapper">
         <div class="sidebar-heading border-bottom fw-bold">
-            <span style="font-family: MADE Tommy Soft; font-size: 38px;">Codente</span><span
-                style="font-family: MADE Tommy Soft Outline; font-size: 38px;">q</span><br>
-            <span style="font-weight: normal !important;"><small>v1.0.0-Beta</small></span>
             <div style="font-size: 1rem !important; width: 200px !important;"
                  class="list-group list-group-flush sidebar-menu">
+                <img src="{{asset('images/codenteq-logo.png')}}" class="mb-3" alt="logo">
+
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('teacher/appointment') ? 'active' : '' }}"
                    href="{{route('teacher.appointment.index')}}">
-                    <i class="fa fa-calendar-check fa-2x"></i><br>
+                    <i class="bi bi-calendar3 fs-1"></i><br>
                     <span style="position: relative;">Randevularım</span>
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('teacher/profile') ? 'active' : '' }}"
                    href="{{route('teacher.profile.index')}}">
-                    <i class="fa fa-user-edit fa-2x"></i><br>
+                    <i class="bi bi-person fs-1"></i><br>
                     Profil
                 </a>
             </div>
@@ -49,7 +46,7 @@
         <!-- Top navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom d-none d-md-block">
             <div class="container-fluid">
-                <button class="btn btn-light" id="sidebarToggle"><span class="navbar-toggler-icon"></span></button>
+                <button class="btn btn-light" id="sidebarToggle"><i class="bi bi-list fs-4"></i></button>
                 <button class="navbar-toggler d-none d-sm-block d-lg-none" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
@@ -75,16 +72,31 @@
             </div>
         </nav>
         @yield('content')
-        <nav
-            class="navbar fixed-bottom navbar-light bg-light bottom-navigation d-flex flex-row d-md-none d-lg-none d-xl-none d-xxl-none fs-1">
-            <a class="list-unstyled link-dark text-decoration-none" id="sidebarToggleM"><i class="fa fa-bars"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('teacher.appointment.index')}}"><i
-                    class="fas fa-calendar-check"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('teacher.profile.index')}}"><i
-                    class="fas fa-user-edit"></i></a>
-            <a class="list-unstyled link-dark text-decoration-none" href="{{route('logout-user')}}"><i
-                    class="fa fa-sign-out-alt"></i></a>
+
+        <nav class="navbar fixed-bottom bottom-navigation-mb d-flex justify-content-around  d-md-none d-lg-none d-xl-none d-xxl-none">
+            <ul class="navbar-list mx-auto ">
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('teacher/appointment') ? 'active' : '' }}" href="{{route('teacher.appointment.index')}}">
+                        <i class="bi bi-calendar3 navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link {{ request()->is('teacher/profile*') ? 'active' : '' }}" href="{{route('teacher.profile.index')}}">
+                        <i class="bi bi-person navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <li class="navbar-item">
+                    <a class="navbar-link " href="{{route('logout-user')}}">
+                        <i class="bi bi-box-arrow-right navbar-link-icon"></i>
+                    </a>
+                </li>
+
+                <div class="navbar-underscore"></div>
+            </ul>
         </nav>
+
     </div>
 </div>
 

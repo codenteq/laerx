@@ -19,7 +19,7 @@
                 <div class="col-12 col-lg-12 mt-3">
                     <h4><a href="{{route('manager.car.create')}}" class="btn btn-success">Araç Oluştur</a></h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-scroll">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
@@ -36,12 +36,13 @@
                                 <td>{{$car->type->title}}</td>
                                 <td class="{{$car->status === 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$car->status === 1 ? 'Aktif' : 'Pasif'}}</td>
                                 <td>
-                                    <a href="{{route('manager.car.edit',$car)}}"><i
-                                            class="fas fa-edit"></i></a>
+                                    <a href="{{route('manager.car.edit',$car)}}">
+                                        <i class="bi bi-pen text-dark"></i>
+                                    </a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('manager.car.destroy',$car)}}`)">
-                                        <i
-                                            class="fas fa-trash-alt"></i></button>
+                                        <i class="bi bi-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach

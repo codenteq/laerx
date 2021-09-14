@@ -16,6 +16,7 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

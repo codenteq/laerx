@@ -44,7 +44,7 @@ class GlobalService
             'groupId' => $request->groupId,
             'languageId' => $request->languageId,
             'photo' => $path,
-            'companyId' => auth()->user()->type === 1 ? $request->companyId : companyId(),
+            'companyId' => auth()->user()->type == User::Admin ? $request->companyId : companyId(),
             'userId' => $id
         ]);
     }
@@ -84,7 +84,7 @@ class GlobalService
             $user->periodId = $request->periodId;
             $user->monthId = $request->monthId;
             $user->groupId = $request->groupId;
-            $user->companyId = auth()->user()->type === 1 ? $request->companyId : companyId();
+            $user->companyId = auth()->user()->type == User::Admin ? $request->companyId : companyId();
             $user->userId = $id;
         }
         $user->save();

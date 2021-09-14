@@ -5,6 +5,7 @@ namespace App\Services\Manager;
 use App\Http\Requests\Manager\AppointmentRequest;
 use App\Models\Appointment;
 use App\Models\AppointmentSetting;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AppointmentService
@@ -15,7 +16,7 @@ class AppointmentService
     public function store(AppointmentRequest $request): void
     {
         Appointment::create([
-            'userId' => auth()->user()->type == 2 ? $request->userId : auth()->id(),
+            'userId' => auth()->user()->type == User::Manager ? $request->userId : auth()->id(),
             'teacherId' => $request->teacherId,
             'carId' => $request->carId,
             'companyId' => companyId(),
@@ -30,7 +31,7 @@ class AppointmentService
     public function update(AppointmentRequest $request, $id): void
     {
         Appointment::find($id)->update([
-            'userId' => auth()->user()->type == 2 ? $request->userId : auth()->id(),
+            'userId' => auth()->user()->type == User::Manager ? $request->userId : auth()->id(),
             'teacherId' => $request->teacherId,
             'carId' => $request->carId,
             'companyId' => companyId(),

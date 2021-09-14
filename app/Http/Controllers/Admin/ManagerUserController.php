@@ -30,7 +30,7 @@ class ManagerUserController extends Controller
      */
     public function index()
     {
-        $users = UserInfo::with('company', 'user', 'language')->latest()->get();
+        $users = UserInfo::with('company', 'user', 'language')->whereRelation('user','type',User::Manager)->latest()->get();
         return view('admin.users.users', compact('users'));
     }
 

@@ -36,7 +36,7 @@ class FirebaseNotificationService
         );
     }
 
-    public function deviceToken($notificationId)
+    public function deviceToken($notificationId): array
     {
         $notificationUser = NotificationUser::where('notificationId', $notificationId)->pluck('userId');
         $devices = NotificationDeviceToken::select('token')->whereIn('userId', $notificationUser)->get();
@@ -47,10 +47,11 @@ class FirebaseNotificationService
         return $deviceArr;
     }
 
-    public function company($companyId)
+    public function company($companyId): array
     {
         $company = Company::find($companyId);
         $info = CompanyInfo::where('companyId', $companyId)->first();
+        info($company->title);
         return [
             'title' => $company->title,
             'logo' => $info->logo

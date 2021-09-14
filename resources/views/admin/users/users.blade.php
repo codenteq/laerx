@@ -35,25 +35,23 @@
                         </thead>
                         <tbody>
                         @foreach($users as $user)
-                            @if($user->user->type === 2)
-                                <tr>
-                                    <td>{{$user->user->name .' '. $user->user->surname}}</td>
-                                    <td>{{$user->user->tc}}</td>
-                                    <td>{{$user->phone}}</td>
-                                    <td>{{$user->company->title}}</td>
-                                    <td>{{$user->language->title}}</td>
-                                    <td>{{$user->status}}</td>
-                                    <td>
-                                        <a href="{{route('admin.manager-user.edit',$user->userId)}}">
-                                            <i class="bi bi-pen text-dark"></i>
-                                        </a>
-                                        <button class="btn"
-                                                onclick="deleteButton(this,`${{route('admin.manager-user.destroy',$user->userId)}}`)">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            @endif
+                            <tr>
+                                <td>{{$user->user->name .' '. $user->user->surname}}</td>
+                                <td>{{$user->user->tc}}</td>
+                                <td>{{$user->phone}}</td>
+                                <td>{{$user->company->title}}</td>
+                                <td>{{$user->language->title}}</td>
+                                <td>{{$user->status}}</td>
+                                <td>
+                                    <a href="{{route('admin.manager-user.edit',$user->userId)}}">
+                                        <i class="bi bi-pen text-dark"></i>
+                                    </a>
+                                    <button class="btn"
+                                            onclick="deleteButton(this,`${{route('admin.manager-user.destroy',$user->userId)}}`)">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>

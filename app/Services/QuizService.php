@@ -16,7 +16,7 @@ class QuizService
     /**
      * @param $questions
      */
-    public function testStore($questions): void
+    public function testStore($questions)
     {
         $test = Test::create(['title' => rand(),'userId' => 3]);
         foreach ($questions as $question) {

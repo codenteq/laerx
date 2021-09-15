@@ -73,10 +73,18 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.us
     Route::get('notifications', [HomeController::class, 'getNotifications'])->name('notifications');
     Route::post('token', [HomeController::class, 'token'])->name('token');
 
+    Route::name('quiz.api.')->group(function () {
+        Route::get('/normal-exam/fetchQuestion', [QuizController::class, 'fetchNormalExam'])->name('normal');
+        Route::get('/custom-exam/fetchQuestion', [QuizController::class, 'fetchCustomExam'])->name('custom');
+        Route::get('/class-exam/fetchQuestion', [QuizController::class, 'fetchClassExam'])->name('class');
+        Route::get('/fetchUserAndTest', [QuizController::class, 'fetchUserAndTest']);
+        Route::post('/postUserAnswer', [QuizController::class, 'postUserAnswer'])->name('user-answer.store');
+    });
+
     Route::name('quiz.')->group(function () {
-        Route::get('/normal-exam/fetchQuestion', [QuizController::class, 'getNormalExam'])->name('normal');
-        Route::get('/custom-exam/fetchQuestion', [QuizController::class, 'getCustomExam'])->name('custom');
-        Route::get('/class-exam/fetchQuestion', [QuizController::class, 'getClassExam'])->name('class');
+        Route::get('/normal-exam', [QuizController::class, 'getNormalExam'])->name('normal');
+        Route::get('/custom-exam', [QuizController::class, 'getCustomExam'])->name('custom');
+        Route::get('/class-exam', [QuizController::class, 'getClassExam'])->name('class');
     });
 });
 

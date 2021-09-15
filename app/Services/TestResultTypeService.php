@@ -26,7 +26,7 @@ class TestResultTypeService
         $i = 0;
         $types = Question::groupBy('typeId')->whereIn('id', $ids)->get();
         foreach ($types as $type) {
-            array_push($resultType, array('correct' => $typeCorrects[$i]->count, 'typeId' => $type->typeId, 'in_correct' => $typeInCorrects[$i]->count, 'blank_question' => isset($typeBlankQuestion[$i]) ? $typeBlankQuestion[$i]->count : 0));
+            array_push($resultType, array('correct' => $typeCorrects[$i]->count ?? 0, 'typeId' => $type->typeId, 'in_correct' => $typeInCorrects[$i]->count ?? 0, 'blank_question' => isset($typeBlankQuestion[$i]) ? $typeBlankQuestion[$i]->count : 0));
             $i++;
         }
 

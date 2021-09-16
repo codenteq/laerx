@@ -57,12 +57,13 @@
                             </div>
                         </a>
                     </div>
-
                     <div class="col-4 exams">
-                        <div class="p-3 border bg-success text-light rounded-3">
-                            <h3>Özel Sınav</h3><br>
-                            <small>Hangi konudan kaç soru ile sınava gireceğini kendin seç</small>
-                        </div>
+                        <a href="{{route('user.custom-exam-setting')}}">
+                            <div class="p-3 border bg-success text-light rounded-3">
+                                <h3>Özel Sınav</h3><br>
+                                <small>Hangi konudan kaç soru ile sınava gireceğini kendin seç</small>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

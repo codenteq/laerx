@@ -9,6 +9,7 @@ use App\Models\ClassExam;
 use App\Models\Language;
 use App\Models\LiveLesson;
 use App\Models\NotificationUser;
+use App\Models\QuestionType;
 use App\Models\Support;
 use App\Models\Test;
 use App\Models\TestResult;
@@ -38,32 +39,46 @@ class HomeController extends Controller
         return view('user.exams');
     }
 
+    public function getCustomExamSetting()
+    {
+        if (request()->get('custom_exam')) {
+            $arr = [];
+            foreach (\request()->except('custom_exam') as $key => $val) {
+                $arr += [$key => $val];
+            }
+            session(['custom_exam_setting' => $arr]);
+            return redirect()->route('user.quiz.custom');
+        }
+        $types = QuestionType::all();
+        return view('user.custom-exam', compact('types'));
+    }
+
     public function getClassExams()
     {
-        $classExams = ClassExam::where('periodId',auth()->user()->info->periodId)
-            ->where('monthId',auth()->user()->info->monthId)
-            ->where('groupId',auth()->user()->info->groupId)
-            ->where('status',1)
+        $classExams = ClassExam::where('periodId', auth()->user()->info->periodId)
+            ->where('monthId', auth()->user()->info->monthId)
+            ->where('groupId', auth()->user()->info->groupId)
+            ->where('status', 1)
             ->where('companyId', companyId())
             ->with('classExamQuestionType')
             ->withSum('classExamQuestionType', 'length')
             ->get();
-        return view('user.class-exams',compact('classExams'));
+        return view('user.class-exams', compact('classExams'));
     }
 
     public function getResults()
     {
-        $tests = cache()->remember('test_result_users',60, function () {
-           return TestResult::where('userId',auth()->id())->withCount('testQuestion')->latest()->get();
+        $tests = cache()->remember('test_result_users', 60, function () {
+            return TestResult::where('userId', auth()->id())->withCount('testQuestion')->latest()->get();
         });
         return view('user.results', compact('tests'));
     }
 
     public function getResultDetail($detailId)
     {
-        $tests = TestResultType::where('resultId',$detailId)->get();
-        $result =  TestResult::findOrFail($detailId);
-        return view('user.result-detail',compact('tests','result'));
+        $tests = TestResultType::where('resultId', $detailId)->get();
+        $result = TestResult::findOrFail($detailId);
+        return view('user.result-detail', compact('tests', 'result'));
     }
 
     public function getLiveLessons()

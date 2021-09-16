@@ -59,8 +59,12 @@ Route::get('/state/{cityId?}', [App\Http\Controllers\HomeController::class, 'get
 
 Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
+
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
     Route::get('class-exams', [HomeController::class, 'getClassExams'])->name('class-exams');
+    Route::get('custom-exam-setting', [HomeController::class, 'getCustomExamSetting'])->name('custom-exam-setting');
+    Route::post('custom-exam-setting', [HomeController::class, 'posCustomExamSetting'])->name('custom-exam-setting.create');
+
     Route::get('/result', [HomeController::class, 'getResults'])->name('results');
     Route::get('/result/details/{detailId}', [HomeController::class, 'getResultDetail'])->name('result.detail');
     Route::resource('appointment', \App\Http\Controllers\User\AppointmentController::class);

@@ -7,6 +7,7 @@ use App\Http\Resources\QuestionResource;
 use App\Models\Test;
 use App\Services\QuizService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
@@ -29,10 +30,9 @@ class QuizController extends Controller
         return view('user.quiz');
     }
 
-    public function getClassExam()
+    public function getClassExam(): RedirectResponse
     {
-        session(['class_exam' => request()->get('class')]);
-        return view('user.quiz');
+        return redirect()->route('user.quiz.custom');
     }
 
     public function fetchNormalExam(): AnonymousResourceCollection
@@ -42,9 +42,11 @@ class QuizController extends Controller
         return QuestionResource::collection($questions);
     }
 
-    public function fetchCustomExam()
+    public function fetchCustomExam(): AnonymousResourceCollection
     {
-        return 'CustomExam';
+        $questions = $this->quizService->customExam();
+        $this->quizService->testStore($questions);
+        return QuestionResource::collection($questions);
     }
 
     public function fetchClassExam(): AnonymousResourceCollection

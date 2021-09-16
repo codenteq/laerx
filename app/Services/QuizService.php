@@ -59,9 +59,15 @@ class QuizService
     }
 
 
-    public function customExam($request)
+    public function customExam(): array
     {
-        //
+        $arr = [];
+        $types = session('custom_exam_setting');
+        foreach ($types as $key => $val) {
+            array_push($arr, Question::where('typeId', $key)->with('choice')->take($val)->get());
+        }
+
+        return Arr::collapse($arr);
     }
 
 

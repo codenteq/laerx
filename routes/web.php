@@ -59,8 +59,12 @@ Route::get('/state/{cityId?}', [App\Http\Controllers\HomeController::class, 'get
 
 Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
+
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
     Route::get('class-exams', [HomeController::class, 'getClassExams'])->name('class-exams');
+    Route::get('custom-exam-setting', [HomeController::class, 'getCustomExamSetting'])->name('custom-exam-setting');
+    Route::post('custom-exam-setting', [HomeController::class, 'posCustomExamSetting'])->name('custom-exam-setting.create');
+
     Route::get('/result', [HomeController::class, 'getResults'])->name('results');
     Route::get('/result/details/{detailId}', [HomeController::class, 'getResultDetail'])->name('result.detail');
     Route::resource('appointment', \App\Http\Controllers\User\AppointmentController::class);
@@ -73,10 +77,18 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.us
     Route::get('notifications', [HomeController::class, 'getNotifications'])->name('notifications');
     Route::post('token', [HomeController::class, 'token'])->name('token');
 
+    Route::name('quiz.api.')->group(function () {
+        Route::get('/normal-exam/fetchQuestion', [QuizController::class, 'fetchNormalExam'])->name('normal');
+        Route::get('/custom-exam/fetchQuestion', [QuizController::class, 'fetchCustomExam'])->name('custom');
+        Route::get('/class-exam/fetchQuestion', [QuizController::class, 'fetchClassExam'])->name('class');
+        Route::get('/fetchUserAndTest', [QuizController::class, 'fetchUserAndTest']);
+        Route::post('/postUserAnswer', [QuizController::class, 'postUserAnswer'])->name('user-answer.store');
+    });
+
     Route::name('quiz.')->group(function () {
-        Route::get('/normal-exam/fetchQuestion', [QuizController::class, 'getNormalExam'])->name('normal');
-        Route::get('/custom-exam/fetchQuestion', [QuizController::class, 'getCustomExam'])->name('custom');
-        Route::get('/class-exam/fetchQuestion', [QuizController::class, 'getClassExam'])->name('class');
+        Route::get('/normal-exam', [QuizController::class, 'getNormalExam'])->name('normal');
+        Route::get('/custom-exam', [QuizController::class, 'getCustomExam'])->name('custom');
+        Route::get('/class-exam', [QuizController::class, 'getClassExam'])->name('class');
     });
 });
 

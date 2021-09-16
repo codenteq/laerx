@@ -31,7 +31,7 @@
                                 <td>{{$exam->class_exam_question_type_sum_length}}</td>
                                 <td></td>
                                 <td>
-                                    <a href="#" class="btn btn-primary">
+                                    <a href="{{route('user.quiz.class')}}?class={{$exam->id}}" class="btn btn-primary">
                                         Sınava Başla
                                     </a>
                                 </td>

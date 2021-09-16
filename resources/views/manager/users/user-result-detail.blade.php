@@ -10,7 +10,8 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.user-results')}}">Kursiyer Raporları</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.user-results')}}">Kursiyer Raporları</a>
+                        </li>
                         <li class="breadcrumb-item active" aria-current="page">Kursiyer Raporlar Detay</li>
                     </ol>
                 </nav>
@@ -106,8 +107,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        @foreach($results as $result)
+                    @foreach($results as $result)
+                        <tr>
                             <td>{{$result->created_at}}</td>
                             <td>{{$result->total_question}}</td>
                             <td>{{$result->correct}}</td>
@@ -115,8 +116,8 @@
                             <td>{{$result->blank_question}}</td>
                             <td>{{$result->point}}</td>
                             <th class="{{resultStatus($result->point) == 'Başarılı' ? 'text-success' : 'text-danger'}}">{{resultStatus($result->point)}}</th>
-                        @endforeach
-                    </tr>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

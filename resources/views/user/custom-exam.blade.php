@@ -1,4 +1,4 @@
-@extends('manager.layout.app')
+@extends('user.layout.app')
 
 @section('content')
 
@@ -64,11 +64,6 @@
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
-    <script>
-        const actionUrl = '{{route('manager.class-exam.store')}}';
-        const backUrl = '{{route('manager.class-exam.index')}}';
-    </script>
-    <script src="{{asset('js/post.js')}}"></script>
     <script>
 
         let output = document.getElementsByTagName("output");

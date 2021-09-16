@@ -69,7 +69,7 @@
 
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="status"
-                                {{$user->status === 1 ? 'checked' : null}}>
+                                {{$user->status == 1 ? 'checked' : null}}>
                             <label class="form-check-label" for="flexSwitchCheckChecked">Kullanıcı Aktif/Pasif</label>
                         </div>
 

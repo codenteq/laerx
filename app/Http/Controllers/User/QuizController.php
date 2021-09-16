@@ -30,9 +30,10 @@ class QuizController extends Controller
         return view('user.quiz');
     }
 
-    public function getClassExam(): RedirectResponse
+    public function getClassExam()
     {
-        return redirect()->route('user.quiz.custom');
+        session(['class_exam' => request()->get('class')]);
+        return view('user.quiz');
     }
 
     public function fetchNormalExam(): AnonymousResourceCollection

@@ -63,7 +63,6 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.us
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
     Route::get('class-exams', [HomeController::class, 'getClassExams'])->name('class-exams');
     Route::get('custom-exam-setting', [HomeController::class, 'getCustomExamSetting'])->name('custom-exam-setting');
-    Route::post('custom-exam-setting', [HomeController::class, 'posCustomExamSetting'])->name('custom-exam-setting.create');
 
     Route::get('/result', [HomeController::class, 'getResults'])->name('results');
     Route::get('/result/details/{detailId}', [HomeController::class, 'getResultDetail'])->name('result.detail');

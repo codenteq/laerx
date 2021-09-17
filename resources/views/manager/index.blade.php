@@ -16,10 +16,23 @@
                 </nav>
             </figure>
 
+            <!-- pay modal -->
+            @if(session('invoice'))
+                @include('manager.modal-component.pay-method')
+            @endif
+            <!-- pay modal end -->
+
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
                     <div class="alert alert-info mb-3 w-100 text-start" role="alert">
-                        <i class="bi bi-info-square me-2"></i>Aktif paketinizden kalan süre: {{invoiceDiffDate(companyId())}} gün
+                        <i class="bi bi-info-square me-2"></i>Aktif paketinizden kalan
+                        süre: {{invoiceDiffDate(companyId())}} gün
+                        @if(session('invoice'))
+                            <button type="button" class="btn btn-success ms-3" data-bs-toggle="modal"
+                                    data-bs-target="#pay">
+                                Ödeme yap
+                            </button>
+                        @endif
                     </div>
                     <div class="col base p-5 mb-2">
                         <a href="{{route('manager.live-lesson.index')}}">

@@ -151,7 +151,7 @@ class UserController extends Controller
             ->groupBy('typeId')
             ->with('type')
             ->get();
-        $results = TestResult::where('userId', $userId)->get();
+        $results = TestResult::where('userId', $userId)->latest()->get();
         return view('manager.users.user-result-detail', compact('resultTypes', 'results'));
     }
 

@@ -22,7 +22,11 @@ class CheckInvoiceStatus
         session(['invoice' => false]);
         if (auth()->user()->type == User::Manager && $invoice->status != 1) {
             session(['invoice' => true]);
-            return $next($request);
+            $route = $request->route()->getName();
+            if ($route  == 'manager.dashboard' || $route == 'manager.invoice.index' || $route == 'manager.pay.online' || $route == 'manager.pay.callback' || $route == 'manager.coupon.code') {
+                return $next($request);
+            }
+            return back();
         } else if (auth()->user()->type == User::Normal && $invoice->status != 1) {
             return redirect()->route('logout-user');
         } else if (auth()->user()->type == User::Teacher && $invoice->status != 1) {

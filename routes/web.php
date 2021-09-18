@@ -91,8 +91,17 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.us
     });
 });
 
+// online pay callback
+
+
 Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
     Route::get('dashboard', [ManagerController::class, 'getManagerDashboard'])->name('dashboard');
+    Route::post('coupon-code', [SalesController::class, 'postCouponCode'])->name('coupon.code');
+
+    Route::post('pay-callback/{companyId}/{couponId?}',[SalesController::class,'payOnlineCallback'])->name('pay.callback');
+    Route::get('online-pay',[SalesController::class,'payOnline'])->name('pay.online');
+    Route::resource('invoice', SalesController::class);
+
     Route::get('/user/excel-import', [UserController::class, 'getImportExcel'])->name('user.excel-import');
     Route::post('/user/excel-import/create', [UserController::class, 'postImportExcel'])->name('user.excel-import.create');
     Route::get('user-operations', [UserController::class, 'getManagerUserOperations'])->name('user-operations');
@@ -110,7 +119,6 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role','ch
     Route::put('/support/{support}', [SupportController::class, 'update'])->name('support.update');
     Route::resource('question', QuestionController::class);
     Route::resource('notification', NotificationController::class);
-    Route::resource('invoice', SalesController::class);
     Route::name('class-exam.')->group(function () {
         Route::get('/class-exam',[ClassExamController::class,'index'])->name('index');
         Route::get('/class-exam/create',[ClassExamController::class,'create'])->name('create');

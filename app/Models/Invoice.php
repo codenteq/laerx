@@ -17,6 +17,7 @@ class Invoice extends Model
         'start_date',
         'end_date',
         'packageId',
+        'paymentId',
         'couponId',
         'status'
     ];

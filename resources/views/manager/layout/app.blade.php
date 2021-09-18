@@ -35,47 +35,47 @@
                     <i class="bi bi-house fs-1"></i><br>
                     <span style="position: relative;">Ana Sayfa</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations*') ? 'active' : '' }} {{ request()->is('manager/user') ? 'active' : '' }} {{ request()->is('manager/user/create') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations*') ? 'active' : '' }} {{ request()->is('manager/user*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.user-operations')}}">
                     <i class="bi bi-people fs-1"></i><br>
                     <span style="position: relative;">Kursiyer İşlemleri</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-results*') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-results*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.user-results')}}">
                     <i class="bi bi-clipboard-data fs-1"></i><br>
                     Kursiyer Raporları
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/question*') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/question*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.question.index')}}">
                     <i class="bi bi-question-circle fs-1"></i><br>
                     Sorular
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/class-exam*') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/class-exam*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.class-exam.index')}}">
                     <i class="bi bi-file-richtext fs-1"></i><br>
                     Sınıf Sınavları
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lesson*') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lesson*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.live-lesson.index')}}">
                     <i class="bi bi-camera-video fs-1"></i><br>
                     Canlı Ders
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teacher*') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teacher*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.course-teacher.index')}}">
                     <i class="bi bi-person-plus fs-1"></i><br>
                     Eğitmenler
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment-car*') ? 'active' : '' }} {{ request()->is('manager/car*') ? 'active' : '' }}{{ request()->is('manager/appointment*') ? 'active' : '' }} {{ request()->is('manager/appointment-setting*') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment-car*') ? 'active' : '' }} {{ request()->is('manager/car*') ? 'active' : '' }}{{ request()->is('manager/appointment*') ? 'active' : '' }} {{ request()->is('manager/appointment-setting*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.appointment-car')}}">
                     <i class="bi bi-calendar4-range fs-1"></i><br>
                     Araç & Randevu
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/notification*') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/notification*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.notification.index')}}">
                     <i class="bi bi-bell fs-1"></i><br>
                     Bildirimler
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/support*') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/support*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.support.index')}}">
                     <i class="bi bi-info-circle fs-1"></i><br>
                     Destek
@@ -129,7 +129,7 @@
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('user/user-operations*') ? 'active' : '' }}" href="{{route('manager.user-operations')}}">
+                    <a class="navbar-link text-secondary {{ request()->is('user/user-operations*') ? 'active' : '' }}" href="{{route('manager.user-operations')}}">
                         <i class="bi bi-people navbar-link-icon"></i>
                     </a>
                 </li>

@@ -45,6 +45,11 @@ function invoiceStatus($id): bool
     return $invoice->status == 0;
 }
 
+function companyLogo(): string
+{
+    return '/storage/' . auth()->user()->info->companyInfo->logo;
+}
+
 function imagePath($path): string
 {
     return '/storage/' . $path;

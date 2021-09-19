@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet"
           type="text/css">
 
-    <link rel="icon" href="{{asset('images/c-icon.png')}}" type="image/x-icon"/>
+    <link rel="icon" href="{{companyLogo()}}" type="image/x-icon"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
@@ -29,7 +29,7 @@
             <div style="font-size: 1rem !important; width: 200px !important;"
                  class="list-group list-group-flush sidebar-menu">
 
-                <img src="{{asset('images/codenteq-logo.png')}}" class="mb-3" alt="logo">
+                <img src="{{companyLogo()}}" class="mb-3" alt="logo">
 
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/dashboard') ? 'active' : '' }}"
                    href="{{route('user.dashboard')}}">

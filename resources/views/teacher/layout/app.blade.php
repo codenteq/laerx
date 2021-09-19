@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="icon" href="{{asset('images/c-icon.png')}}" type="image/x-icon"/>
+    <link rel="icon" href="{{companyLogo()}}" type="image/x-icon"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
@@ -26,7 +26,7 @@
         <div class="sidebar-heading border-bottom fw-bold">
             <div style="font-size: 1rem !important; width: 200px !important;"
                  class="list-group list-group-flush sidebar-menu">
-                <img src="{{asset('images/codenteq-logo.png')}}" class="mb-3" alt="logo">
+                <img src="{{companyLogo()}}" class="mb-3" alt="logo">
 
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('teacher/appointment') ? 'active' : '' }}"
                    href="{{route('teacher.appointment.index')}}">

@@ -1,4 +1,4 @@
-@extends('manager.layout.app')
+@extends('admin.layout.app')
 
 @section('content')
 
@@ -10,24 +10,19 @@
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.company.index')}}">Şirketler</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Faturalar</li>
                     </ol>
                 </nav>
             </figure>
-
-            <!-- pay modal -->
-        @if(session('invoice'))
-            @include('manager.modal-component.pay-method')
-        @endif
-        <!-- pay modal end -->
 
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Fatura Numarası</th>
+                            <th scope="col">Fatura İd</th>
                             <th scope="col">Fatura Tarihi</th>
                             <th scope="col">Genel Toplam</th>
                             <th scope="col">Durum</th>
@@ -42,14 +37,15 @@
                                 <td>{{$invoice->total_amount}}</td>
                                 <td class="{{$invoice->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$invoice->status == 1 ? 'Ödendi' : 'Ödenmedi'}}</td>
                                 <td>
-                                    @if(session('invoice'))
-                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#pay">
-                                            <i class="bi bi-credit-card text-dark fs-5"></i>
-                                        </button>
-                                    @endif
                                     <a href="#invoice.show">
                                         <i class="bi bi-eye text-dark fs-5"></i>
                                     </a>
+                                    @if($invoice->status == 0)
+                                        <button type="button" class="btn mb-2" data-bs-toggle="modal" data-bs-target="#pay{{$invoice->id}}">
+                                            <i class="bi bi-credit-card text-dark fs-5"></i>
+                                        </button>
+                                        @include('admin.company.invoice.pay')
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -69,15 +65,34 @@
 @endsection
 
 @section('css')
+    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
     @include('layouts.stylesheet')
 @endsection
 
 @section('js')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     @include('layouts.script')
     <script>
-        const actionUrl = '{{route('coupon.code')}}';
+        const actionUrl = '{{route('coupon.code',$companyId)}}';
+    </script>
+    <script>
+        function confirmPay() {
+            axios.post('{{route('admin.company.invoice.confirm.pay')}}',{
+                 companyId: {{$companyId}}
+            }).then(res => {
+                if (res.data.status == true) {
+                    toastr.success(res.data.message, res.data.title);
+                    setTimeout(() => {
+                        location.reload();
+                    }, 3500)
+                } else {
+                    toastr.error(res.data.message, res.data.title);
+                }
+            });
+        }
     </script>
     <script src="{{asset('js/payment.js')}}"></script>
 @endsection

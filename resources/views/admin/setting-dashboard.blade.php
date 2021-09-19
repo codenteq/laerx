@@ -37,11 +37,16 @@
                     </div>
                     <div class="col base p-5 mb-2">
                         <a href="{{route('admin.type.index')}}">
-                            <i class="bi bi-tags fs-1"></i><br>
+                            <i class="bi bi-signpost-split fs-1"></i><br>
                             <span>Soru Kategorileri</span>
                         </a>
                     </div>
-
+                    <div class="col base p-5 mb-2">
+                        <a href="{{route('admin.coupon.index')}}">
+                            <i class="bi bi-tags fs-1"></i><br>
+                            <span>Kuponlar</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 

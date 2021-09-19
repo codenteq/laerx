@@ -6,53 +6,42 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Şirketler</h2>
+                    <h2>Kuponlar</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item">Şirketler</li>
+                        <li class="breadcrumb-item">Kuponlar</li>
                     </ol>
                 </nav>
             </figure>
 
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <h4><a href="{{route('admin.company.create')}}" class="btn btn-success">Şirket Oluştur</a></h4>
+                    <h4><a href="{{route('admin.coupon.create')}}" class="btn btn-success">Kupon Oluştur</a></h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
-                            <th>İd</th>
-                            <th>Şirket Adı</th>
-                            <th>Kalan Gün</th>
-                            <th>Ödeme</th>
-                            <th>Durum</th>
-                            <th>Güncelleme Tarih</th>
+                            <th>Kupon kodu</th>
+                            <th>İndirim Oranı</th>
+                            <th>Başlangıç tarihi</th>
+                            <th>Bitiş tarihi</th>
                             <th>İşlemler</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($companies as $company)
+                        @foreach ($coupons as $coupon)
                             <tr>
-                                <td>{{$company->id}}</td>
-                                <td>{{$company->title}}</td>
-                                <td>{{invoiceDiffDate($company->id)}}</td>
-                                <td class="{{$company->invoice->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$company->invoice->status == 1 ? 'Ödeme Alındı' : 'Ödeme Alınmadı'}}</td>
-                                <td class="text-success fw-bold">Aktif</td>
-                                <td>{{$company->updated_at}}</td>
+                                <td>{{$coupon->code}}</td>
+                                <td>{{$coupon->discount}}</td>
+                                <td>{{$coupon->start_date}}</td>
+                                <td>{{$coupon->end_date}}</td>
                                 <td>
-                                    <a href="{{route('admin.company.edit',$company->id)}}" class="me-2">
+                                    <a href="{{route('admin.coupon.edit',$coupon->id)}}">
                                         <i class="bi bi-pen text-dark"></i>
                                     </a>
-                                    <a href="{{route('admin.company.invoice',$company->id)}}">
-                                        <i class="bi bi-receipt text-dark"></i>
-                                    </a>
-                                    <button class="btn"
-                                            onclick="deleteButton(this,`${{route('admin.company.destroy',$company)}}`)"><i
-                                            class="bi bi-trash"></i>
-                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -68,7 +57,7 @@
 
 @section('meta')
 
-    <title>Şirketler</title>
+    <title>Kuponlar</title>
 
 @endsection
 
@@ -83,7 +72,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const backUrl = '{{route('admin.company.index')}}';
+        const backUrl = '{{route('admin.coupon.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>
     @include('layouts.script')

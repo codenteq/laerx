@@ -51,25 +51,6 @@ class SalesController extends Controller
         }
     }
 
-    public function postCouponCode(Request $request)
-    {
-        $coupon = Coupon::where('code', $request->coupon_code)->where('start_date', '<=', now())->where('end_date', '>=', now())->first();
-        if ($coupon) {
-            $invoice = Invoice::where('companyId', companyId())->orderBy('id', 'desc')->first();
-            $discount = $invoice->price / 100 * $coupon->discount;
-            $data = [
-                'price' => $invoice->price,
-                'total_amount' => $invoice->price - $discount,
-                'discount' => $discount,
-                'couponId' => $coupon->id
-            ];
-            session(['cart' => $data]);
-            return response()->json($data);
-        }
-        return response(ResponseMessage::CouponMessage);
-    }
-
-
     /**
      * Display the specified resource.
      *

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Invoice extends Model
 {
@@ -21,4 +22,9 @@ class Invoice extends Model
         'couponId',
         'status'
     ];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class,'id','companyId');
+    }
 }

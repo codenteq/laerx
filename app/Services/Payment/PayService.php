@@ -16,7 +16,7 @@ class PayService
         $cart = session('cart');
         $user = auth()->user();
         $info = UserInfo::where('userId', auth()->id())->first();
-        $company = CompanyInfo::where('companyId', companyId(),$cart['couponId'])->first();
+        $company = CompanyInfo::where('companyId', companyId(), $cart['couponId'])->first();
 
         $requestIyzico->setLocale(\Iyzipay\Model\Locale::TR);
         $requestIyzico->setConversationId(rand());
@@ -85,16 +85,19 @@ class PayService
         return $options;
     }
 
-    public function paySuccess($id,$couponId)
+    public function paySuccess($id, $couponId, $paymentId = null)
     {
+        $cart = session('cart');
         $payment = PaymentMethod::where('code', 'online')->first();
         $invoice = Invoice::where('companyId', $id)->orderBy('id', 'desc')->first();
 
         $invoice->status = true;
+        $invoice->discount_amount = $cart['discount'];
+        $invoice->total_amount = $cart['total_amount'];
         $invoice->start_date = now();
         $invoice->end_date = now()->addYear();
         $invoice->couponId = $couponId;
-        $invoice->paymentId = $payment->id;
+        $invoice->paymentId = $paymentId ?? $payment->id;
         $invoice->save();
     }
 }

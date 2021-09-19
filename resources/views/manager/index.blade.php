@@ -99,7 +99,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const actionUrl = '{{route('manager.coupon.code')}}';
+        const actionUrl = '{{route('coupon.code')}}';
     </script>
     <script src="{{asset('js/payment.js')}}"></script>
 @endsection

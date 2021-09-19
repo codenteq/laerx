@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\GroupController;
+use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LessonContentController;
 use App\Http\Controllers\Admin\ManagerUserController;
@@ -57,6 +59,9 @@ Route::get('/logout-user', [App\Http\Controllers\HomeController::class, 'logoutU
 Route::get('/city/{countryId?}', [App\Http\Controllers\HomeController::class, 'getCity'])->name('city');
 Route::get('/state/{cityId?}', [App\Http\Controllers\HomeController::class, 'getState'])->name('state');
 
+Route::post('coupon-code/{companyId?}', [\App\Http\Controllers\HomeController::class, 'postCouponCode'])->middleware('auth')->name('coupon.code');
+
+
 Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
 
@@ -91,12 +96,8 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.us
     });
 });
 
-// online pay callback
-
-
 Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
     Route::get('dashboard', [ManagerController::class, 'getManagerDashboard'])->name('dashboard');
-    Route::post('coupon-code', [SalesController::class, 'postCouponCode'])->name('coupon.code');
 
     Route::post('pay-callback/{companyId}/{couponId?}',[SalesController::class,'payOnlineCallback'])->name('pay.callback');
     Route::get('online-pay',[SalesController::class,'payOnline'])->name('pay.online');
@@ -143,4 +144,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.role'])->grou
     Route::resource('type', QuestionTypeController::class);
     Route::resource('manager-user', ManagerUserController::class);
     Route::resource('lesson-content', LessonContentController::class);
+    Route::resource('coupon', CouponController::class);
+    Route::get('invoice/{companyId}', [InvoiceController::class, 'getInvoice'])->name('company.invoice');
+    Route::post('invoice/confirm-pay', [InvoiceController::class, 'postConfirmPay'])->name('company.invoice.confirm.pay');
 });

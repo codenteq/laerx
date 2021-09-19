@@ -6,6 +6,7 @@ use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Invoice;
 use App\Models\PaymentMethod;
+use App\Models\User;
 use App\Services\Payment\PayService;
 use Illuminate\Http\Request;
 
@@ -37,5 +38,12 @@ class InvoiceController extends Controller
         } catch (\Exception $ex) {
             return response(ResponseMessage::IgnoreDateMessage);
         }
+    }
+
+    public function getInvoiceShow($invoiceId)
+    {
+        $invoice = Invoice::find($invoiceId);
+        $user = User::where('type', User::Manager)->whereRelation('info', 'companyId', $invoice->companyId)->first();
+        return view('email.invoice', compact('invoice', 'user'));
     }
 }

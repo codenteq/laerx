@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
-use App\Models\Coupon;
 use App\Models\Invoice;
 use App\Models\PaymentMethod;
+use App\Models\User;
 use App\Services\Payment\PayService;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
+use PDF;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
 {
-    // TODO: İyzico payment method
-    // TODO: Invoice pdf template
 
     /**
      * Display a listing of the resource.
@@ -54,11 +49,12 @@ class SalesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param \App\Models\Invoice $invoice
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Invoice $invoice)
     {
-        return view('manager.sales.view');
+        $user = User::where('type', User::Manager)->whereRelation('info', 'companyId', $invoice->companyId)->first();
+        return view('email.invoice', compact('invoice', 'user'));
     }
 }

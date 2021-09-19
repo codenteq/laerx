@@ -37,7 +37,7 @@
                                 <td>{{$invoice->total_amount}}</td>
                                 <td class="{{$invoice->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$invoice->status == 1 ? 'Ödendi' : 'Ödenmedi'}}</td>
                                 <td>
-                                    <a href="#invoice.show">
+                                    <a href="{{route('admin.company.invoice.show',$invoice)}}" target="_blank">
                                         <i class="bi bi-eye text-dark fs-5"></i>
                                     </a>
                                     @if($invoice->status == 0)

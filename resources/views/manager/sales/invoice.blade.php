@@ -47,8 +47,8 @@
                                             <i class="bi bi-credit-card text-dark fs-5"></i>
                                         </button>
                                     @endif
-                                    <a href="#invoice.show">
-                                        <i class="bi bi-eye text-dark fs-5"></i>
+                                    <a href="{{route('manager.invoice.show',$invoice)}}" target="_blank">
+                                        <i class="bi bi-eye me-2 text-dark fs-5"></i>
                                     </a>
                                 </td>
                             </tr>

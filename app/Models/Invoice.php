@@ -25,6 +25,11 @@ class Invoice extends Model
 
     public function company()
     {
-        return $this->belongsTo(Company::class,'id','companyId');
+        return $this->hasOne(Company::class,'id','companyId');
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(PaymentMethod::class,'id','paymentId');
     }
 }

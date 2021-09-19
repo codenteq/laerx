@@ -38,7 +38,7 @@ class GlobalService
         UserInfo::create([
             'phone' => $request->phone,
             'address' => $request->address,
-            'status' => isset($request->status) == 'on' ? 1 : 0,
+            'status' => $request->status,
             'periodId' => $request->periodId,
             'monthId' => $request->monthId,
             'groupId' => $request->groupId,
@@ -80,7 +80,7 @@ class GlobalService
         $user->address = $request->address;
         $user->languageId = $request->languageId;
         if (auth()->user()->type == User::Admin || auth()->user()->type == User::Manager) {
-            $user->status = isset($request->status) == 'on' ? 1 : 0;
+            $user->status = $request->status ?? $user->status;
             $user->periodId = $request->periodId;
             $user->monthId = $request->monthId;
             $user->groupId = $request->groupId;

@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="status"
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="status" value="1"
                                    checked>
                             <label class="form-check-label" for="flexSwitchCheckChecked">Kullanıcı Aktif/Pasif</label>
                         </div>

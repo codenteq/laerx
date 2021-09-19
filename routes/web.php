@@ -62,7 +62,7 @@ Route::get('/state/{cityId?}', [App\Http\Controllers\HomeController::class, 'get
 Route::post('coupon-code/{companyId?}', [\App\Http\Controllers\HomeController::class, 'postCouponCode'])->middleware('auth')->name('coupon.code');
 
 
-Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
+Route::prefix('user')->name('user.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
 
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
@@ -96,11 +96,17 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.us
     });
 });
 
-Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
+Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status'])->group(function () {
     Route::get('dashboard', [ManagerController::class, 'getManagerDashboard'])->name('dashboard');
 
-    Route::post('pay-callback/{companyId}/{couponId?}',[SalesController::class,'payOnlineCallback'])->name('pay.callback');
-    Route::get('online-pay',[SalesController::class,'payOnline'])->name('pay.online');
+    Route::get('profile', [ManagerController::class, 'getProfile'])->name('profile.edit');
+    Route::put('profile/update', [ManagerController::class, 'updateProfile'])->name('profile.update');
+
+    Route::get('company', [ManagerController::class, 'getCompany'])->name('company.edit');
+    Route::put('company/update', [ManagerController::class, 'updateCompany'])->name('company.update');
+
+    Route::post('pay-callback/{companyId}/{couponId?}', [SalesController::class, 'payOnlineCallback'])->name('pay.callback');
+    Route::get('online-pay', [SalesController::class, 'payOnline'])->name('pay.online');
     Route::resource('invoice', SalesController::class);
 
     Route::get('/user/excel-export', [UserController::class, 'exportExcel'])->name('user.excel-export');
@@ -122,15 +128,15 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role','ch
     Route::resource('question', QuestionController::class);
     Route::resource('notification', NotificationController::class);
     Route::name('class-exam.')->group(function () {
-        Route::get('/class-exam',[ClassExamController::class,'index'])->name('index');
-        Route::get('/class-exam/create',[ClassExamController::class,'create'])->name('create');
-        Route::get('/class-exam/{classId}/edit',[ClassExamController::class,'update'])->name('edit');
-        Route::post('/class-exam',[ClassExamController::class,'store'])->name('store');
-        Route::delete('/class-exam/{classId}',[ClassExamController::class,'destroy'])->name('destroy');
+        Route::get('/class-exam', [ClassExamController::class, 'index'])->name('index');
+        Route::get('/class-exam/create', [ClassExamController::class, 'create'])->name('create');
+        Route::get('/class-exam/{classId}/edit', [ClassExamController::class, 'update'])->name('edit');
+        Route::post('/class-exam', [ClassExamController::class, 'store'])->name('store');
+        Route::delete('/class-exam/{classId}', [ClassExamController::class, 'destroy'])->name('destroy');
     });
 });
 
-Route::prefix('teacher')->name('teacher.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
+Route::prefix('teacher')->name('teacher.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status'])->group(function () {
     Route::resource('appointment', \App\Http\Controllers\Teacher\AppointmentController::class);
     Route::resource('profile', ProfileController::class);
 });
@@ -146,6 +152,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.role'])->grou
     Route::resource('manager-user', ManagerUserController::class);
     Route::resource('lesson-content', LessonContentController::class);
     Route::resource('coupon', CouponController::class);
+    Route::get('invoice/show/{invoiceId}', [InvoiceController::class, 'getInvoiceShow'])->name('company.invoice.show');
     Route::get('invoice/{companyId}', [InvoiceController::class, 'getInvoice'])->name('company.invoice');
     Route::post('invoice/confirm-pay', [InvoiceController::class, 'postConfirmPay'])->name('company.invoice.confirm.pay');
 });

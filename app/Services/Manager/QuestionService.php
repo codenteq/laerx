@@ -31,7 +31,7 @@ class QuestionService
 
         self::companyQuestion($question->id);
         if ($request->file('imagePath') && isset($request->questionImage)) {
-            ImageConvertJob::dispatch($question->id, 'question', $path);
+            ImageConvertJob::dispatch($question->id, 'question', $path)->onQueue('image');
         }
         if (isset($request->choiceImage) == "on") {
             self::choiceImageStore($request, $question->id);
@@ -74,7 +74,7 @@ class QuestionService
                 'path' => $path,
                 'questionId' => $id
             ]);
-            ImageConvertJob::dispatch($choice->id, 'questionChoice', $path);
+            ImageConvertJob::dispatch($choice->id, 'questionChoice', $path)->onQueue('image');
             self::choiceKeyStore($choice->id, $id);
         }
     }
@@ -106,7 +106,7 @@ class QuestionService
         if (request()->file('imagePath') && isset($request->questionImage)) {
             $path = request()->file('imagePath')->store('questions', 'public');
             $question->imagePath = $path;
-            ImageConvertJob::dispatch($id, 'question', $path);
+            ImageConvertJob::dispatch($id, 'question', $path)->onQueue('image');
         }
         $question->save();
 
@@ -156,7 +156,7 @@ class QuestionService
                     'title' => null,
                     'path' => $path,
                 ]);
-                ImageConvertJob::dispatch($key, 'questionChoice', $path);
+                ImageConvertJob::dispatch($key, 'questionChoice', $path)->onQueue('image');
             }
         }
     }

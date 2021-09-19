@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
+use App\Models\CompanyInfo;
 use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\UserInfo;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -26,6 +26,9 @@ class ImageConvertService
                 break;
             case "questionChoice":
                 QuestionChoice::find($id)->update(['path' => $image]);
+                break;
+            case "company":
+                CompanyInfo::where('companyId',$id)->update(['logo' => $image]);
                 break;
         }
     }

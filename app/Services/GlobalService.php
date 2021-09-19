@@ -34,7 +34,7 @@ class GlobalService
     {
         !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar','public');
         if ($path != null)
-            ImageConvertJob::dispatch($id, 'user', $path);
+            ImageConvertJob::dispatch($id, 'user', $path)->onQueue('image');
         UserInfo::create([
             'phone' => $request->phone,
             'address' => $request->address,
@@ -72,7 +72,7 @@ class GlobalService
         !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar','public');
         $user = UserInfo::where('userId', $id,'user')->first();
         if ($path != null) {
-            ImageConvertJob::dispatch($id, 'user', $path);
+            ImageConvertJob::dispatch($id, 'user', $path)->onQueue('image');
             $user->photo = $path;
         }
 

@@ -3,6 +3,7 @@
 namespace App\Services\Admin;
 
 use App\Http\Requests\Admin\CompanyRequest;
+use App\Jobs\ImageConvertJob;
 use App\Models\CompanyInfo;
 
 class CompanyInfoService
@@ -25,6 +26,9 @@ class CompanyInfoService
      */
     public function store(CompanyRequest $request, $id) : void
     {
+        !$request->file('logo') ? $path = null : $path = $request->file('logo')->store('companies','public');
+        if ($path != null)
+            ImageConvertJob::dispatch($id, 'company', $path)->onQueue('image');
         CompanyInfo::create([
             'tax_no' => $request->tax_no,
             'email' => $request->email,
@@ -36,6 +40,7 @@ class CompanyInfoService
             'address' => $request->address,
             'zip_code' => $request->zip_code,
             'packageId' => $request->packageId,
+            'logo' => $path,
             'companyId' => $id,
         ]);
         $this->invoiceService->store($request,$id);
@@ -47,6 +52,9 @@ class CompanyInfoService
      */
     public function update(CompanyRequest $request, $id) : void
     {
+        !$request->file('logo') ? $path = null : $path = $request->file('logo')->store('companies','public');
+        if ($path != null)
+            ImageConvertJob::dispatch($id, 'company', $path)->onQueue('image');
         CompanyInfo::where('companyId',$id)->update([
             'tax_no' => $request->tax_no,
             'email' => $request->email,
@@ -58,6 +66,7 @@ class CompanyInfoService
             'address' => $request->address,
             'zip_code' => $request->zip_code,
             'packageId' => $request->packageId,
+            'logo' => $path,
             'companyId' => $id,
         ]);
     }

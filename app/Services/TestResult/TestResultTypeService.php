@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\TestResult;
 
 use App\Models\Question;
 use App\Models\QuestionChoiceKey;

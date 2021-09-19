@@ -18,14 +18,16 @@
                 </nav>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
-                    <h4><a href="{{route('manager.user.create')}}" class="btn btn-success">Kursiyer Oluştur</a></h4>
+                <div class="col-12 col-lg-12 mt-3 row">
+                    <h4>
+                        <a href="{{route('manager.user.create')}}" class="btn btn-success">Kursiyer Oluştur</a>
+                        <a href="{{route('manager.user.excel-export')}}" class="btn btn-warning">Listeyi Yazdır</a>
+                    </h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
-                            <th>Seç</th>
                             <th>Adı Soyadı</th>
                             <th>TCKN</th>
                             <th>Dönem</th>
@@ -38,8 +40,6 @@
                         <tbody>
                         @foreach ($users as $user)
                             <tr>
-                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                </td>
                                 <td>{{$user->user->name .' '. $user->user->surname}}</td>
                                 <td>{{$user->user->tc}}</td>
                                 <td>{{$user->period->title}}</td>

@@ -103,6 +103,7 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role','ch
     Route::get('online-pay',[SalesController::class,'payOnline'])->name('pay.online');
     Route::resource('invoice', SalesController::class);
 
+    Route::get('/user/excel-export', [UserController::class, 'exportExcel'])->name('user.excel-export');
     Route::get('/user/excel-import', [UserController::class, 'getImportExcel'])->name('user.excel-import');
     Route::post('/user/excel-import/create', [UserController::class, 'postImportExcel'])->name('user.excel-import.create');
     Route::get('user-operations', [UserController::class, 'getManagerUserOperations'])->name('user-operations');

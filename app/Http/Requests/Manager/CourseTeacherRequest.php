@@ -31,7 +31,7 @@ class CourseTeacherRequest extends FormRequest
             'name' => 'required',
             'surname' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|numeric',
+            'phone' => 'required',
             'address' => 'required|string',
             'languageId' => 'required|numeric',
             'password' => 'confirmed'

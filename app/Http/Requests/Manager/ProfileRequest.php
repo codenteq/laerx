@@ -30,7 +30,7 @@ class ProfileRequest extends FormRequest
             'password' => 'confirmed',
             'address' => 'required|string',
             'languageId' => 'required|numeric',
-            'phone' => 'required|numeric',
+            'phone' => 'required',
         ];
     }
 }

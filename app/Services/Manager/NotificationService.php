@@ -23,9 +23,9 @@ class NotificationService
             'message' => ucfirst($request->message),
             'companyId' => companyId()
         ]);
+        self::storeUser($request, $notification->id);
         //NotificationJob::dispatch($notification->id,companyId())->onQueue('notification');
         $this->notificationService->execute($notification->id, companyId());
-        self::storeUser($request, $notification->id);
     }
 
     public function storeUser(Request $request, $id)

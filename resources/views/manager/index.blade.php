@@ -57,7 +57,7 @@
                             </a>
                         </div>
                         <div class="col base p-5 mb-2">
-                            <a href="{{route('manager.user-results')}}">
+                            <a href="{{route('manager.user.results')}}">
                                 <i class="bi bi-clipboard-data fs-1"></i><br>
                                 <span>Kursiyer Raporları</span>
                             </a>

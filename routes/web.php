@@ -112,9 +112,9 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role', 'c
     Route::get('/user/excel-export', [UserController::class, 'exportExcel'])->name('user.excel-export');
     Route::get('/user/excel-import', [UserController::class, 'getImportExcel'])->name('user.excel-import');
     Route::post('/user/excel-import/create', [UserController::class, 'postImportExcel'])->name('user.excel-import.create');
-    Route::get('user-operations', [UserController::class, 'getManagerUserOperations'])->name('user-operations');
-    Route::get('user-results', [UserController::class, 'getManagerUserResults'])->name('user-results');
-    Route::get('user-result-detail/{resultId}', [UserController::class, 'getManagerUserResultDetail'])->name('user-result-detail');
+    Route::get('user/operations', [UserController::class, 'getManagerUserOperations'])->name('user.operations');
+    Route::get('user/results', [UserController::class, 'getManagerUserResults'])->name('user.results');
+    Route::get('user/result/detail/{resultId}', [UserController::class, 'getManagerUserResultDetail'])->name('user.result.detail');
     Route::resource('user', UserController::class);
     Route::resource('live-lesson', LiveLessonController::class);
     Route::resource('course-teacher', CourseTeacherController::class);

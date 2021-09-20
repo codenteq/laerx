@@ -36,12 +36,12 @@
                     <span style="position: relative;">Ana Sayfa</span>
                 </a>
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations*') ? 'active' : '' }} {{ request()->is('manager/user*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                   href="{{route('manager.user-operations')}}">
+                   href="{{route('manager.user.operations')}}">
                     <i class="bi bi-people fs-1"></i><br>
                     <span style="position: relative;">Kursiyer İşlemleri</span>
                 </a>
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-results*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                   href="{{route('manager.user-results')}}">
+                   href="{{route('manager.user.results')}}">
                     <i class="bi bi-clipboard-data fs-1"></i><br>
                     Kursiyer Raporları
                 </a>
@@ -119,7 +119,10 @@
                 </div>
             </div>
         </nav>
-        @yield('content')
+
+        <div class="content-app">
+            @yield('content')
+        </div>
 
         <nav class="navbar fixed-bottom bottom-navigation-mb d-flex justify-content-around  d-md-none d-lg-none d-xl-none d-xxl-none">
             <ul class="navbar-list mx-auto ">
@@ -130,7 +133,7 @@
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link text-secondary {{ request()->is('user/user-operations*') ? 'active' : '' }}" href="{{route('manager.user-operations')}}">
+                    <a class="navbar-link text-secondary {{ request()->is('user/user-operations*') ? 'active' : '' }}" href="{{route('manager.user.operations')}}">
                         <i class="bi bi-people navbar-link-icon"></i>
                     </a>
                 </li>
@@ -142,13 +145,13 @@
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('manager/user-results*') ? 'active' : '' }}" href="{{route('manager.user-results')}}">
+                    <a class="navbar-link {{ request()->is('manager/user-results*') ? 'active' : '' }}" href="{{route('manager.user.results')}}">
                         <i class="bi bi-clipboard-data navbar-link-icon"></i>
                     </a>
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('manager/course-teacher*') ? 'active' : '' }}" href="{{route('manager.course-teacher.edit',auth()->id())}}">
+                    <a class="navbar-link {{ request()->is('manager/profile*') ? 'active' : '' }}" href="{{route('manager.profile.edit')}}">
                         <i class="bi bi-person navbar-link-icon"></i>
                     </a>
                 </li>

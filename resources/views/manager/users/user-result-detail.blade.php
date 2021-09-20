@@ -10,7 +10,7 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.user-results')}}">Kursiyer Raporları</a>
+                        <li class="breadcrumb-item"><a href="{{route('manager.user.results')}}">Kursiyer Raporları</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Kursiyer Raporlar Detay</li>
                     </ol>
@@ -121,9 +121,9 @@
                     </tbody>
                 </table>
             </div>
-            <div class="row">
+            <div class="row mx-auto">
                 @foreach($resultTypes as $type)
-                    <div class="col-md-3 mt-2">
+                    <div class="col-md-3 col-sm-12 mt-2">
                         <div class="card p-3 " style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">{{$type->type->title}}</h5>

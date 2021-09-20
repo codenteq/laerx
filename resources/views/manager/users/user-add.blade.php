@@ -11,7 +11,7 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.user-operations')}}">Kursiyer İşlemleri</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.user.operations')}}">Kursiyer İşlemleri</a></li>
                         <li class="breadcrumb-item"><a href="{{route('manager.user.index')}}">Kursiyer Listesi</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Kursiyer Ekle</li>
                     </ol>

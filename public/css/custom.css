@@ -154,4 +154,7 @@ section .container .row .base:hover {
         display: none;
         visibility: hidden;
     }
+    .content-app {
+        margin-bottom: calc(50vh - 100px);
+    }
 }

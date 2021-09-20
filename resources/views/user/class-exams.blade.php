@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Sınıf Sınavlarım</h2>
+                    <h2>{{__('user/menu.class_exam')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Sınıf Sınavlarım</li>
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('user/menu.class_exam')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -20,9 +20,9 @@
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
-                            <th scope="col">Soru Sayısı</th>
-                            <th scope="col">Süre</th>
-                            <th scope="col">İşlemler</th>
+                            <th scope="col">{{__('user/my-class-exam.question_length')}}</th>
+                            <th scope="col">{{__('user/my-class-exam.time')}}</th>
+                            <th scope="col">{{__('user/my-class-exam.transactions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,7 +32,7 @@
                                 <td></td>
                                 <td>
                                     <a href="{{route('user.quiz.class')}}?class={{$exam->id}}" class="btn btn-primary">
-                                        Sınava Başla
+                                        {{__('user/my-class-exam.start_exam')}}
                                     </a>
                                 </td>
                             </tr>
@@ -48,7 +48,7 @@
 
 @section('meta')
 
-    <title>Sınıf Sınavlarım</title>
+    <title>{{__('user/menu.class_exam')}}</title>
 
 @endsection
 

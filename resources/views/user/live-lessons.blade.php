@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Canlı Derslerim</h2>
+                    <h2>{{__('user/menu.live_lesson')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Canlı Derslerim</li>
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('user/menu.live_lesson')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -20,10 +20,10 @@
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Ders Adı</th>
-                            <th scope="col">Ders'e Katıl</th>
-                            <th scope="col">Ders Kategorisi</th>
-                            <th scope="col">Ders Tarihi</th>
+                            <th scope="col">{{__('user/my-live-lesson.lesson_name')}}</th>
+                            <th scope="col">{{__('user/my-live-lesson.join_lesson')}}</th>
+                            <th scope="col">{{__('user/my-live-lesson.lesson_category')}}</th>
+                            <th scope="col">{{__('user/my-live-lesson.lesson_date')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,7 +32,7 @@
                                 <td>{{$liveLesson->title}}</td>
                                 <td>
                                     <a class="btn btn-success" target="_blank"
-                                       href="{{url($liveLesson->url)}}">Katıl</a>
+                                       href="{{url($liveLesson->url)}}">{{__('user/my-live-lesson.join_btn')}}</a>
                                 </td>
                                 <td>{{$liveLesson->type->title}}</td>
                                 <td>{{$liveLesson->live_date}}</td>
@@ -49,7 +49,7 @@
 
 @section('meta')
 
-    <title>Canlı Derslerim</title>
+    <title>{{__('user/menu.live_lesson')}}</title>
 
 @endsection
 

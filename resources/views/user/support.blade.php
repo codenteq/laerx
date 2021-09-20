@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Destek</h2>
+                    <h2>{{__('user/menu.support')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Destek</li>
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('user/menu.support')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -19,17 +19,17 @@
                 <form class="form-control p-5" name="form-data">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingWhy" name="subject" placeholder="İletişim Nedeniniz?">
-                        <label for="floatingWhy">İletişim Nedeniniz?</label>
+                        <label for="floatingWhy">{{__('user/support.contact_why')}}</label>
                     </div>
 
                     <div class="form-floating">
                             <textarea class="form-control" placeholder="Mesajınız" name="message" id="floatingTextarea"
                                       style="height: 100px"></textarea>
-                        <label for="floatingTextarea">Mesajınız</label>
+                        <label for="floatingTextarea">{{__('user/support.message')}}</label>
                     </div>
 
                     <div class="mt-3">
-                        <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Gönder</button>
+                        <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('user/support.send_btn')}}</button>
                     </div>
                 </form>
             </div>
@@ -40,7 +40,7 @@
 
 @section('meta')
 
-    <title>Destek</title>
+    <title>{{__('user/menu.support')}}</title>
 
 @endsection
 

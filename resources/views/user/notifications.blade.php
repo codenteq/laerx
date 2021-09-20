@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Bildirimler</h2>
+                    <h2>{{__('user/menu.notification')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Bildirimler</li>
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('user/menu.notification')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -20,8 +20,8 @@
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Mesaj</th>
-                            <th scope="col">Tarih</th>
+                            <th scope="col">{{__('user/notification.message')}}</th>
+                            <th scope="col">{{__('user/notification.date')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,7 +42,7 @@
 
 @section('meta')
 
-    <title>Bildirimler</title>
+    <title>{{__('user/menu.notification')}}</title>
 
 @endsection
 

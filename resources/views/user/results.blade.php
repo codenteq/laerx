@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Sınav Sonuçlarım</h2>
+                    <h2>{{__('user/menu.exam_result')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Sınav Sonuçlarım</li>
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('user/menu.exam_result')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -19,31 +19,31 @@
                 <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
                     <div class="col">
                         <div class="p-3 border bg-light rounded-3">
-                            <small>Çözülen Test Sayısı</small>
+                            <small>{{__('user/my-exam-result.number_test_solved')}}</small>
                             <h4>{{$tests->count()}}</h4>
                         </div>
                     </div>
                     <div class="col">
                         <div class="p-3 border bg-light rounded-3">
-                            <small>Toplam Doğru Sayısı</small>
+                            <small>{{__('user/my-exam-result.total_correct_length')}}</small>
                             <h4>{{$tests->sum('correct')}}</h4>
                         </div>
                     </div>
                     <div class="col">
                         <div class="p-3 border bg-light rounded-3">
-                            <small>Toplam Yanlış Sayısı</small>
+                            <small>{{__('user/my-exam-result.total_incorrect_length')}}</small>
                             <h4>{{$tests->sum('in_correct')}}</h4>
                         </div>
                     </div>
                     <div class="col">
                         <div class="p-3 border bg-light rounded-3">
-                            <small>Toplam Boş Soru</small>
+                            <small>{{__('user/my-exam-result.total_blank_question_length')}}</small>
                             <h4>{{$tests->sum('blank_question')}}</h4>
                         </div>
                     </div>
                     <div class="col">
                         <div class="p-3 border bg-light rounded-3">
-                            <small>Ortalama Puan</small>
+                            <small>{{__('user/my-exam-result.average_point')}}</small>
                             <h4>{{totalPoint($tests->sum('correct'), $tests->sum('test_question_count'))}}</h4>
                         </div>
                     </div>
@@ -53,19 +53,19 @@
         <section>
             <div class="row mt-5">
                 <div class="col-6">
-                    <h4>Sınavlarım</h4>
+                    <h4>{{__('user/my-exam-result.my_exams')}}</h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
                             <th scope="col">id</th>
-                            <th scope="col">Soru Sayısı</th>
-                            <th scope="col">Süre</th>
-                            <th scope="col">Puan</th>
-                            <th scope="col">Sonuç</th>
-                            <th scope="col">Detay</th>
-                            <th scope="col">Tarih</th>
+                            <th scope="col">{{__('user/my-exam-result.question_length')}}</th>
+                            <th scope="col">{{__('user/my-exam-result.time')}}</th>
+                            <th scope="col">{{__('user/my-exam-result.point')}}</th>
+                            <th scope="col">{{__('user/my-exam-result.result')}}</th>
+                            <th scope="col">{{__('user/my-exam-result.detail')}}</th>
+                            <th scope="col">{{__('user/my-exam-result.date')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -77,7 +77,7 @@
                                 <th>{{$test->point}}</th>
                                 <td class="{{resultStatus($test->point) == 'Başarılı' ? 'text-success' : 'text-danger'}} fw-bold">{{resultStatus($test->point)}}</td>
                                 <td>
-                                    <a href="{{route('user.result.detail',$test->id)}}" class="btn btn-primary">Sınav Detay</a>
+                                    <a href="{{route('user.result.detail',$test->id)}}" class="btn btn-primary">{{__('user/my-exam-result.exam_detail_btn')}}</a>
                                 </td>
                                 <td>{{$test->created_at}}</td>
                             </tr>
@@ -93,7 +93,7 @@
 
 @section('meta')
 
-    <title>Sınav Sonuçlarım</title>
+    <title>{{__('user/menu.exam_result')}}</title>
 
 @endsection
 

@@ -7,7 +7,6 @@ use App\Models\Invoice;
 use App\Models\PaymentMethod;
 use App\Models\User;
 use App\Services\Payment\PayService;
-use PDF;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller

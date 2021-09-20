@@ -51,7 +51,6 @@ class FirebaseNotificationService
     {
         $company = Company::find($companyId);
         $info = CompanyInfo::where('companyId', $companyId)->first();
-        info($company->title);
         return [
             'title' => $company->title,
             'logo' => $info->logo

@@ -61,7 +61,9 @@ class GlobalService
         $user->email = $request->email;
         isset($request->password) ?? $user->password = Hash::make($request->password);
         $user->save();
-        self::userInfoUpdate($request,$id);
+        if ($user->type != User::Admin) {
+            self::userInfoUpdate($request,$id);
+        }
     }
 
     /**

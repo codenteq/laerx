@@ -155,4 +155,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.role'])->grou
     Route::get('invoice/show/{invoiceId}', [InvoiceController::class, 'getInvoiceShow'])->name('company.invoice.show');
     Route::get('invoice/{companyId}', [InvoiceController::class, 'getInvoice'])->name('company.invoice');
     Route::post('invoice/confirm-pay', [InvoiceController::class, 'postConfirmPay'])->name('company.invoice.confirm.pay');
+    Route::get('profile', [AdminController::class, 'getProfile'])->name('profile.edit');
+    Route::put('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
 });

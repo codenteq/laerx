@@ -80,7 +80,7 @@
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
                                     class="bi bi-person-circle fs-5"></i></a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Profil</a>
+                                <a class="dropdown-item" href="{{route('admin.profile.edit')}}">Profil</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{route('logout-user')}}">Çıkış Yap</a>
                             </div>
@@ -121,7 +121,7 @@
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link" href="#">
+                    <a class="navbar-link" href="{{route('admin.profile.edit')}}">
                         <i class="bi bi-person navbar-link-icon"></i>
                     </a>
                 </li>

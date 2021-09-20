@@ -40,11 +40,6 @@
                     <i class="bi bi-people fs-1"></i><br>
                     <span style="position: relative;">Kursiyer İşlemleri</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-results*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                   href="{{route('manager.user.results')}}">
-                    <i class="bi bi-clipboard-data fs-1"></i><br>
-                    Kursiyer Raporları
-                </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/question*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.question.index')}}">
                     <i class="bi bi-question-circle fs-1"></i><br>

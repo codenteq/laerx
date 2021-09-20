@@ -10,10 +10,17 @@ use Illuminate\Support\Str;
 
 class GlobalService
 {
+
+    protected $convertService;
+
+    public function __construct(ImageConvertService $convertService)
+    {
+        $this->convertService = $convertService;
+    }
+
     /**
      * @var array|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\Request|string|null
      */
-
     public function userStore($request, $type): void
     {
         $user = new User();
@@ -32,9 +39,11 @@ class GlobalService
      */
     public function userInfoStore($request, $id): void
     {
-        !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar','public');
-        if ($path != null)
-            ImageConvertJob::dispatch($id, 'user', $path)->onQueue('image');
+        !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar', 'public');
+        if ($path != null) {
+            //ImageConvertJob::dispatch($id, 'user', $path)->onQueue('image');
+            $this->convertService->execute($id, 'user', $path);
+        }
         UserInfo::create([
             'phone' => $request->phone,
             'address' => $request->address,
@@ -62,7 +71,7 @@ class GlobalService
         isset($request->password) ?? $user->password = Hash::make($request->password);
         $user->save();
         if ($user->type != User::Admin) {
-            self::userInfoUpdate($request,$id);
+            self::userInfoUpdate($request, $id);
         }
     }
 
@@ -71,10 +80,11 @@ class GlobalService
      */
     public function userInfoUpdate($request, $id): void
     {
-        !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar','public');
-        $user = UserInfo::where('userId', $id,'user')->first();
+        !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar', 'public');
+        $user = UserInfo::where('userId', $id, 'user')->first();
         if ($path != null) {
-            ImageConvertJob::dispatch($id, 'user', $path)->onQueue('image');
+            //ImageConvertJob::dispatch($id, 'user', $path)->onQueue('image');
+            $this->convertService->execute($id, 'user', $path);
             $user->photo = $path;
         }
 

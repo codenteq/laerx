@@ -8,10 +8,18 @@ use App\Models\CompanyQuestion;
 use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\QuestionChoiceKey;
+use App\Services\ImageConvertService;
 use Illuminate\Support\Facades\Log;
 
 class QuestionService
 {
+    protected $convertService;
+
+    public function __construct(ImageConvertService $convertService)
+    {
+        $this->convertService = $convertService;
+    }
+
     /**
      * @param QuestionRequest $request
      */
@@ -31,7 +39,8 @@ class QuestionService
 
         self::companyQuestion($question->id);
         if ($request->file('imagePath') && isset($request->questionImage)) {
-            ImageConvertJob::dispatch($question->id, 'question', $path)->onQueue('image');
+            //ImageConvertJob::dispatch($question->id, 'question', $path)->onQueue('image');
+            $this->convertService->execute($question->id, 'question', $path);
         }
         if (isset($request->choiceImage) == "on") {
             self::choiceImageStore($request, $question->id);
@@ -74,7 +83,8 @@ class QuestionService
                 'path' => $path,
                 'questionId' => $id
             ]);
-            ImageConvertJob::dispatch($choice->id, 'questionChoice', $path)->onQueue('image');
+            //ImageConvertJob::dispatch($choice->id, 'questionChoice', $path)->onQueue('image');
+            $this->convertService->execute($choice->id, 'questionChoice', $path);
             self::choiceKeyStore($choice->id, $id);
         }
     }
@@ -106,7 +116,8 @@ class QuestionService
         if (request()->file('imagePath') && isset($request->questionImage)) {
             $path = request()->file('imagePath')->store('questions', 'public');
             $question->imagePath = $path;
-            ImageConvertJob::dispatch($id, 'question', $path)->onQueue('image');
+            //ImageConvertJob::dispatch($id, 'question', $path)->onQueue('image');
+            $this->convertService->execute($id, 'question', $path);
         }
         $question->save();
 
@@ -156,7 +167,8 @@ class QuestionService
                     'title' => null,
                     'path' => $path,
                 ]);
-                ImageConvertJob::dispatch($key, 'questionChoice', $path)->onQueue('image');
+                //ImageConvertJob::dispatch($key, 'questionChoice', $path)->onQueue('image');
+                $this->convertService->execute($key, 'questionChoice', $path);
             }
         }
     }

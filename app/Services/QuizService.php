@@ -9,10 +9,18 @@ use App\Models\Question;
 use App\Models\Test;
 use App\Models\TestQuestion;
 use App\Models\UserAnswer;
+use App\Services\TestResult\TestResultService;
 use Illuminate\Support\Arr;
 
 class QuizService
 {
+    protected $testResultService;
+
+    public function __construct(TestResultService $testResultService)
+    {
+        $this->testResultService = $testResultService;
+    }
+
     /**
      * @param $questions
      */
@@ -40,7 +48,8 @@ class QuizService
                 'choiceId' => $val['choiceId']
             ]);
         }
-        TestResultJob::dispatch($request->userId ,$request->testId)->onQueue('result');
+        //TestResultJob::dispatch($request->userId ,$request->testId)->onQueue('result');
+        $this->testResultService->execute($request->userId ,$request->testId);
     }
 
     /**

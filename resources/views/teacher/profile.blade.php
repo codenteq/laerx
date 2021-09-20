@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Profil</h2>
+                    <h2>{{__('teacher/menu.profile')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment.index')}}">Öğretmen</a></li>
-                        <li class="breadcrumb-item">Profil</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.appointment.index')}}">{{__('teacher/menu.my_appointment')}}</a></li>
+                        <li class="breadcrumb-item">{{__('teacher/menu.profile')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -21,50 +21,50 @@
                         @csrf
                         @method('PUT')
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingFirst" placeholder="Üye Adı"
+                            <input type="text" class="form-control" id="floatingFirst"
                                    name="name"
                                    value="{{$user->user->name}}">
-                            <label for="floatingFirst">Üye Adı</label>
+                            <label for="floatingFirst">{{__('teacher/profile.name')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingLast" placeholder="Üye Soyadı"
+                            <input type="text" class="form-control" id="floatingLast"
                                    name="surname"
                                    value="{{$user->user->surname}}">
-                            <label for="floatingLast">Üye Soyadı</label>
+                            <label for="floatingLast">{{__('teacher/profile.surname')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingMail" placeholder="Eposta Adresi"
+                            <input type="email" class="form-control" id="floatingMail"
                                    name="email"
                                    value="{{$user->user->email}}">
-                            <label for="floatingMail">Eposta Adresi</label>
+                            <label for="floatingMail">{{__('teacher/profile.email')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingMail" placeholder="Yeni Şifre"
+                            <input type="password" class="form-control" id="floatingMail"
                                    name="password">
-                            <label for="floatingMail">Yeni Şifre</label>
+                            <label for="floatingMail">{{__('teacher/profile.new_password')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingMail" placeholder="Şifre Tekrar"
+                            <input type="password" class="form-control" id="floatingMail"
                                    name="password_confirmation">
-                            <label for="floatingMail">Şifre Tekrar</label>
+                            <label for="floatingMail">{{__('teacher/profile.new_password_repeat')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingPhone" placeholder="Telefon Numarası"
+                            <input type="text" class="form-control" id="floatingPhone"
                                    name="phone"
                                    value="{{$user->phone}}">
-                            <label for="floatingPhone">Telefon Numarası</label>
+                            <label for="floatingPhone">{{__('teacher/profile.phone')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingAddress" placeholder="Adres"
+                            <input type="text" class="form-control" id="floatingAddress"
                                    name="address"
                                    value="{{$user->address}}">
-                            <label for="floatingAddress">Adres</label>
+                            <label for="floatingAddress">{{__('teacher/profile.address')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
@@ -75,18 +75,18 @@
                                         value="{{$language->id}}" {{$language->id == $user->languageId ? 'selected' : null}}>{{$language->title}}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect">Dil Seçiniz...</label>
+                            <label for="floatingSelect">{{__('teacher/profile.language')}}.</label>
                         </div>
 
                         <div class="input-group mb-3">
                             <input type="file" class="form-control" name="photo">
-                            <label class="input-group-text" for="inputGroupFile02">Profil Resmi</label>
+                            <label class="input-group-text" for="inputGroupFile02">{{__('teacher/profile.profile_photo')}}</label>
                         </div>
 
                         <div class="mt-3 mb-5">
-                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('teacher/profile.save_btn')}}
                             </button>
-                            <button type="button" class="btn btn-danger">İptal</button>
+                            <button type="button" class="btn btn-danger">{{__('teacher/profile.close_btn')}}</button>
                         </div>
 
                     </form>
@@ -99,7 +99,7 @@
 
 @section('meta')
 
-    <title>Profil</title>
+    <title>{{__('teacher/menu.profile')}}</title>
 
 @endsection
 

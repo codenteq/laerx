@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\GroupController;
+use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LessonContentController;
 use App\Http\Controllers\Admin\ManagerUserController;
@@ -57,13 +59,15 @@ Route::get('/logout-user', [App\Http\Controllers\HomeController::class, 'logoutU
 Route::get('/city/{countryId?}', [App\Http\Controllers\HomeController::class, 'getCity'])->name('city');
 Route::get('/state/{cityId?}', [App\Http\Controllers\HomeController::class, 'getState'])->name('state');
 
-Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
+Route::post('coupon-code/{companyId?}', [\App\Http\Controllers\HomeController::class, 'postCouponCode'])->middleware('auth')->name('coupon.code');
+
+
+Route::prefix('user')->name('user.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
 
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
     Route::get('class-exams', [HomeController::class, 'getClassExams'])->name('class-exams');
     Route::get('custom-exam-setting', [HomeController::class, 'getCustomExamSetting'])->name('custom-exam-setting');
-    Route::post('custom-exam-setting', [HomeController::class, 'posCustomExamSetting'])->name('custom-exam-setting.create');
 
     Route::get('/result', [HomeController::class, 'getResults'])->name('results');
     Route::get('/result/details/{detailId}', [HomeController::class, 'getResultDetail'])->name('result.detail');
@@ -92,13 +96,25 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role','check.us
     });
 });
 
-Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
+Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status'])->group(function () {
     Route::get('dashboard', [ManagerController::class, 'getManagerDashboard'])->name('dashboard');
+
+    Route::get('profile', [ManagerController::class, 'getProfile'])->name('profile.edit');
+    Route::put('profile/update', [ManagerController::class, 'updateProfile'])->name('profile.update');
+
+    Route::get('company', [ManagerController::class, 'getCompany'])->name('company.edit');
+    Route::put('company/update', [ManagerController::class, 'updateCompany'])->name('company.update');
+
+    Route::post('pay-callback/{companyId}/{couponId?}', [SalesController::class, 'payOnlineCallback'])->name('pay.callback');
+    Route::get('online-pay', [SalesController::class, 'payOnline'])->name('pay.online');
+    Route::resource('invoice', SalesController::class);
+
+    Route::get('/user/excel-export', [UserController::class, 'exportExcel'])->name('user.excel-export');
     Route::get('/user/excel-import', [UserController::class, 'getImportExcel'])->name('user.excel-import');
     Route::post('/user/excel-import/create', [UserController::class, 'postImportExcel'])->name('user.excel-import.create');
-    Route::get('user-operations', [UserController::class, 'getManagerUserOperations'])->name('user-operations');
-    Route::get('user-results', [UserController::class, 'getManagerUserResults'])->name('user-results');
-    Route::get('user-result-detail/{resultId}', [UserController::class, 'getManagerUserResultDetail'])->name('user-result-detail');
+    Route::get('user/operations', [UserController::class, 'getManagerUserOperations'])->name('user.operations');
+    Route::get('user/results', [UserController::class, 'getManagerUserResults'])->name('user.results');
+    Route::get('user/result/detail/{resultId}', [UserController::class, 'getManagerUserResultDetail'])->name('user.result.detail');
     Route::resource('user', UserController::class);
     Route::resource('live-lesson', LiveLessonController::class);
     Route::resource('course-teacher', CourseTeacherController::class);
@@ -111,17 +127,16 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role','ch
     Route::put('/support/{support}', [SupportController::class, 'update'])->name('support.update');
     Route::resource('question', QuestionController::class);
     Route::resource('notification', NotificationController::class);
-    Route::resource('invoice', SalesController::class);
     Route::name('class-exam.')->group(function () {
-        Route::get('/class-exam',[ClassExamController::class,'index'])->name('index');
-        Route::get('/class-exam/create',[ClassExamController::class,'create'])->name('create');
-        Route::get('/class-exam/{classId}/edit',[ClassExamController::class,'update'])->name('edit');
-        Route::post('/class-exam',[ClassExamController::class,'store'])->name('store');
-        Route::delete('/class-exam/{classId}',[ClassExamController::class,'destroy'])->name('destroy');
+        Route::get('/class-exam', [ClassExamController::class, 'index'])->name('index');
+        Route::get('/class-exam/create', [ClassExamController::class, 'create'])->name('create');
+        Route::get('/class-exam/{classId}/edit', [ClassExamController::class, 'update'])->name('edit');
+        Route::post('/class-exam', [ClassExamController::class, 'store'])->name('store');
+        Route::delete('/class-exam/{classId}', [ClassExamController::class, 'destroy'])->name('destroy');
     });
 });
 
-Route::prefix('teacher')->name('teacher.')->middleware(['auth', 'check.role','check.user.status','check.invoice.status'])->group(function () {
+Route::prefix('teacher')->name('teacher.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status'])->group(function () {
     Route::resource('appointment', \App\Http\Controllers\Teacher\AppointmentController::class);
     Route::resource('profile', ProfileController::class);
 });
@@ -136,4 +151,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.role'])->grou
     Route::resource('type', QuestionTypeController::class);
     Route::resource('manager-user', ManagerUserController::class);
     Route::resource('lesson-content', LessonContentController::class);
+    Route::resource('coupon', CouponController::class);
+    Route::get('invoice/show/{invoiceId}', [InvoiceController::class, 'getInvoiceShow'])->name('company.invoice.show');
+    Route::get('invoice/{companyId}', [InvoiceController::class, 'getInvoice'])->name('company.invoice');
+    Route::post('invoice/confirm-pay', [InvoiceController::class, 'postConfirmPay'])->name('company.invoice.confirm.pay');
+    Route::get('profile', [AdminController::class, 'getProfile'])->name('profile.edit');
+    Route::put('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
 });

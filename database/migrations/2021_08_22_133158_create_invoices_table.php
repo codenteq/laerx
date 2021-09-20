@@ -22,6 +22,7 @@ class CreateInvoicesTable extends Migration
             $table->date('end_date');
             $table->foreignId('companyId');
             $table->foreignId('packageId');
+            $table->foreignId('paymentId')->nullable();
             $table->foreignId('couponId')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();

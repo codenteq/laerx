@@ -37,7 +37,7 @@
                         <br>
 
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" checked>
+                            <input class="form-check-input" type="checkbox" name="status" value="1" id="flexSwitchCheckChecked" checked>
                             <label class="form-check-label" for="flexSwitchCheckChecked">Araç Aktif/Pasif</label>
                         </div>
 

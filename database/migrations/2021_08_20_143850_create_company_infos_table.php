@@ -24,7 +24,7 @@ class CreateCompanyInfosTable extends Migration
             $table->foreignId('stateId');
             $table->string('address',600);
             $table->string('zip_code');
-            $table->string('logo')->default('/storage/companies/default.png');
+            $table->string('logo')->default('/companies/default.png');
             $table->foreignId('packageId');
             $table->foreignId('companyId');
             $table->timestamps();

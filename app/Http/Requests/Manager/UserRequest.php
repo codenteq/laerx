@@ -35,7 +35,7 @@ class UserRequest extends FormRequest
             'email' => 'required|email',
             'password' => 'confirmed',
             'photo' => 'file|mimes:jpeg,jpg,png',
-            'phone' => 'required|numeric',
+            'phone' => 'required',
             'address' => 'required|string',
             'periodId' => 'required|numeric',
             'monthId' => 'required|numeric',

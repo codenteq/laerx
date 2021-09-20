@@ -40,7 +40,7 @@
                         <br>
 
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked"
+                            <input class="form-check-input" type="checkbox" value="1" name="status" id="flexSwitchCheckChecked"
                                 {{$car->status === 1 ? 'checked' : null}}>
                             <label class="form-check-label" for="flexSwitchCheckChecked">Araç Aktif/Pasif</label>
                         </div>

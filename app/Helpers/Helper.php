@@ -39,6 +39,17 @@ function invoiceDiffDate($id): int
     return $end->diffInDays(Carbon::now());
 }
 
+function invoiceStatus($id): bool
+{
+    $invoice = Invoice::select('status')->where('companyId', $id)->orderBy('id', 'desc')->first();
+    return $invoice->status == 0;
+}
+
+function companyLogo(): string
+{
+    return '/storage/' . auth()->user()->info->companyInfo->logo;
+}
+
 function imagePath($path): string
 {
     return '/storage/' . $path;

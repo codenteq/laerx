@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Services\TestResultService;
+use App\Services\TestResult\TestResultService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;

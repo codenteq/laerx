@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Manager;
 
+use App\Excel\Exports\UsersExport;
 use App\Excel\Imports\UserImport;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
@@ -18,6 +19,7 @@ use App\Services\GlobalService;
 use Illuminate\Http\Request;
 use App\Http\Requests\Manager\UserRequest;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class UserController extends Controller
 {
@@ -151,7 +153,7 @@ class UserController extends Controller
             ->groupBy('typeId')
             ->with('type')
             ->get();
-        $results = TestResult::where('userId', $userId)->get();
+        $results = TestResult::where('userId', $userId)->latest()->get();
         return view('manager.users.user-result-detail', compact('resultTypes', 'results'));
     }
 
@@ -168,5 +170,10 @@ class UserController extends Controller
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage);
         }
+    }
+
+    public function exportExcel(): BinaryFileResponse
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }

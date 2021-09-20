@@ -50,7 +50,7 @@
                     <i class="bi bi-book fs-1"></i><br>
                     Dersler
                 </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/setting-dashboard*') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/setting-dashboard*') ? 'active' : '' }} {{ request()->is('admin/language*') ? 'active' : '' }} {{ request()->is('admin/group*') ? 'active' : '' }} {{ request()->is('admin/period*') ? 'active' : '' }} {{ request()->is('admin/type*') ? 'active' : '' }} {{ request()->is('admin/coupon*') ? 'active' : '' }}"
                    href="{{route('admin.setting.dashboard')}}">
                     <i class="bi bi-gear fs-1"></i><br>
                     Sistem Ayarları
@@ -80,7 +80,7 @@
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
                                     class="bi bi-person-circle fs-5"></i></a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Profil</a>
+                                <a class="dropdown-item" href="{{route('admin.profile.edit')}}">Profil</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{route('logout-user')}}">Çıkış Yap</a>
                             </div>
@@ -90,7 +90,7 @@
             </div>
         </nav>
 
-        <div class="mb-5">
+        <div class="content-app">
             @yield('content')
         </div>
 
@@ -121,7 +121,7 @@
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link" href="#">
+                    <a class="navbar-link" href="{{route('admin.profile.edit')}}">
                         <i class="bi bi-person navbar-link-icon"></i>
                     </a>
                 </li>
@@ -139,5 +139,9 @@
         crossorigin="anonymous"></script>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-masker@1.1.1/build/vanilla-masker.min.js"></script>
+<script>
+    VMasker(document.getElementsByName('phone')).maskPattern("(999) 999-9999");
+</script>
 @yield('js')
 </html>

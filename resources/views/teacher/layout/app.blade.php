@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="icon" href="{{asset('images/c-icon.png')}}" type="image/x-icon"/>
+    <link rel="icon" href="{{companyLogo()}}" type="image/x-icon"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
@@ -26,7 +26,7 @@
         <div class="sidebar-heading border-bottom fw-bold">
             <div style="font-size: 1rem !important; width: 200px !important;"
                  class="list-group list-group-flush sidebar-menu">
-                <img src="{{asset('images/codenteq-logo.png')}}" class="mb-3" alt="logo">
+                <img src="{{companyLogo()}}" class="mb-3" alt="logo">
 
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('teacher/appointment') ? 'active' : '' }}"
                    href="{{route('teacher.appointment.index')}}">
@@ -59,7 +59,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{imagePath(auth()->user()->info->photo)}}" class="rounded-circle" height="30" alt="">
+                                <img src="{{imagePath(auth()->user()->info->photo)}}" class="rounded-circle" height="30"
+                                     alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('teacher.profile.index')}}">Profil</a>
@@ -71,18 +72,24 @@
                 </div>
             </div>
         </nav>
-        @yield('content')
 
-        <nav class="navbar fixed-bottom bottom-navigation-mb d-flex justify-content-around  d-md-none d-lg-none d-xl-none d-xxl-none">
+        <div class="content-app">
+            @yield('content')
+        </div>
+
+        <nav
+            class="navbar fixed-bottom bottom-navigation-mb d-flex justify-content-around  d-md-none d-lg-none d-xl-none d-xxl-none">
             <ul class="navbar-list mx-auto ">
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('teacher/appointment') ? 'active' : '' }}" href="{{route('teacher.appointment.index')}}">
+                    <a class="navbar-link {{ request()->is('teacher/appointment') ? 'active' : '' }}"
+                       href="{{route('teacher.appointment.index')}}">
                         <i class="bi bi-calendar3 navbar-link-icon"></i>
                     </a>
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('teacher/profile*') ? 'active' : '' }}" href="{{route('teacher.profile.index')}}">
+                    <a class="navbar-link {{ request()->is('teacher/profile*') ? 'active' : '' }}"
+                       href="{{route('teacher.profile.index')}}">
                         <i class="bi bi-person navbar-link-icon"></i>
                     </a>
                 </li>
@@ -106,5 +113,9 @@
         crossorigin="anonymous"></script>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-masker@1.1.1/build/vanilla-masker.min.js"></script>
+<script>
+    VMasker(document.getElementsByName('phone')).maskPattern("(999) 999-9999");
+</script>
 @yield('js')
 </html>

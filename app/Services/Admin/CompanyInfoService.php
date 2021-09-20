@@ -3,7 +3,9 @@
 namespace App\Services\Admin;
 
 use App\Http\Requests\Admin\CompanyRequest;
+use App\Jobs\ImageConvertJob;
 use App\Models\CompanyInfo;
+use App\Services\ImageConvertService;
 
 class CompanyInfoService
 {
@@ -11,20 +13,29 @@ class CompanyInfoService
      * @var InvoiceService
      */
     private $invoiceService;
+    protected $convertService;
 
     /**
      * @param InvoiceService $invoiceService
+     * @param ImageConvertService $convertService
      */
-    public function __construct(InvoiceService $invoiceService) {
+    public function __construct(InvoiceService $invoiceService, ImageConvertService $convertService)
+    {
         $this->invoiceService = $invoiceService;
+        $this->convertService = $convertService;
     }
 
     /**
      * @param CompanyRequest $request
      * @param $id
      */
-    public function store(CompanyRequest $request, $id) : void
+    public function store(CompanyRequest $request, $id): void
     {
+        !$request->file('logo') ? $path = null : $path = $request->file('logo')->store('companies', 'public');
+        if ($path != null){
+            //ImageConvertJob::dispatch($id, 'company', $path)->onQueue('image');
+            $this->convertService->execute($id, 'company', $path);
+        }
         CompanyInfo::create([
             'tax_no' => $request->tax_no,
             'email' => $request->email,
@@ -36,18 +47,25 @@ class CompanyInfoService
             'address' => $request->address,
             'zip_code' => $request->zip_code,
             'packageId' => $request->packageId,
+            'logo' => $path,
             'companyId' => $id,
         ]);
-        $this->invoiceService->store($request,$id);
+        $this->invoiceService->store($request, $id);
     }
 
     /**
      * @param CompanyRequest $request
      * @param $id
      */
-    public function update(CompanyRequest $request, $id) : void
+    public function update(CompanyRequest $request, $id): void
     {
-        CompanyInfo::where('companyId',$id)->update([
+        !$request->file('logo') ? $path = null : $path = $request->file('logo')->store('companies', 'public');
+        if ($path != null){
+            //ImageConvertJob::dispatch($id, 'company', $path)->onQueue('image');
+            $this->convertService->execute($id, 'company', $path);
+        }
+
+        CompanyInfo::where('companyId', $id)->update([
             'tax_no' => $request->tax_no,
             'email' => $request->email,
             'website_url' => $request->website_url,
@@ -58,13 +76,14 @@ class CompanyInfoService
             'address' => $request->address,
             'zip_code' => $request->zip_code,
             'packageId' => $request->packageId,
+            'logo' => $path,
             'companyId' => $id,
         ]);
     }
 
-    public function destroy($id) : void
+    public function destroy($id): void
     {
-        CompanyInfo::where('companyId',$id)->delete();
+        CompanyInfo::where('companyId', $id)->delete();
         $this->invoiceService->destroy($id);
     }
 }

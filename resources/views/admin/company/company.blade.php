@@ -25,7 +25,6 @@
                         <thead>
                         <tr>
                             <th>İd</th>
-                            <th>Seç</th>
                             <th>Şirket Adı</th>
                             <th>Kalan Gün</th>
                             <th>Ödeme</th>
@@ -38,15 +37,17 @@
                         @foreach ($companies as $company)
                             <tr>
                                 <td>{{$company->id}}</td>
-                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></td>
                                 <td>{{$company->title}}</td>
                                 <td>{{invoiceDiffDate($company->id)}}</td>
                                 <td class="{{$company->invoice->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$company->invoice->status == 1 ? 'Ödeme Alındı' : 'Ödeme Alınmadı'}}</td>
                                 <td class="text-success fw-bold">Aktif</td>
                                 <td>{{$company->updated_at}}</td>
                                 <td>
-                                    <a href="{{route('admin.company.edit',$company->id)}}">
+                                    <a href="{{route('admin.company.edit',$company->id)}}" class="me-2">
                                         <i class="bi bi-pen text-dark"></i>
+                                    </a>
+                                    <a href="{{route('admin.company.invoice',$company->id)}}">
+                                        <i class="bi bi-receipt text-dark"></i>
                                     </a>
                                     <button class="btn"
                                             onclick="deleteButton(this,`${{route('admin.company.destroy',$company)}}`)"><i

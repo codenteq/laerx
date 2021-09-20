@@ -20,4 +20,10 @@ class ResponseMessage
         'title' => 'Başarısız',
         'message' => 'Bu randevu tarihi seçilemez. Lütfen yeni bir tarih seçiniz.'
     ];
+
+    const CouponMessage = [
+        'status' => false,
+        'title' => 'Başarısız',
+        'message' => 'Kupon kodu geçersiz.'
+    ];
 }

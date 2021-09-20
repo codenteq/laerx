@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use App\Models\Invoice;
+use App\Models\PaymentMethod;
+use App\Models\User;
+use App\Services\Payment\PayService;
+use PDF;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
 {
-    // TODO: İyzico payment method
-    // TODO: Invoice pdf template
 
     /**
      * Display a listing of the resource.
@@ -19,72 +21,40 @@ class SalesController extends Controller
     public function index()
     {
         $invoices = Invoice::where('companyId', companyId())->get();
-        return view('manager.sales.invoice',compact('invoices'));
+        $invoice = Invoice::where('companyId', companyId())->orderBy('id', 'desc')->first();
+        $payment_methods = session('invoice') ? PaymentMethod::where('status', 1)->get() : null;
+        return view('manager.sales.invoice', compact('invoices', 'payment_methods', 'invoice'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function payOnline(PayService $payService)
     {
-        //
+        $paymentForm = $payService->pay();
+        return view('manager.sales.online-payment', compact('paymentForm'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function payOnlineCallback(PayService $payService, Request $request, $companyId, $couponId = null)
     {
-        //
+        $requestIyzico = new \Iyzipay\Request\RetrieveCheckoutFormRequest();
+        $requestIyzico->setLocale(\Iyzipay\Model\Locale::TR);
+        $requestIyzico->setToken($request->token);
+        $checkoutForm = \Iyzipay\Model\CheckoutForm::retrieve($requestIyzico, $payService->options());
+        if ($checkoutForm->getPaymentStatus() == 'SUCCESS') {
+            $payService->paySuccess($companyId, $couponId);
+            return redirect()->route('manager.dashboard');
+        } else {
+            return redirect()->route('manager.sales.index');
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param \App\Models\Invoice $invoice
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Invoice $invoice)
     {
-        return view('manager.sales.view');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $user = User::where('type', User::Manager)->whereRelation('info', 'companyId', $invoice->companyId)->first();
+        return view('email.invoice', compact('invoice', 'user'));
     }
 }

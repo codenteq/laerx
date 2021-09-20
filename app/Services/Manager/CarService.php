@@ -13,7 +13,7 @@ class CarService
             'plate_code' => strtoupper($request->plate_code),
             'companyId' => companyId(),
             'typeId' => $request->typeId,
-            'status' => $request->status == "on" ? 1 : 0
+            'status' => $request->status
         ]);
     }
 
@@ -23,7 +23,7 @@ class CarService
             'plate_code' => strtoupper($request->plate_code),
             'companyId' => companyId(),
             'typeId' => $request->typeId,
-            'status' => $request->status == "on" ? 1 : 0
+            'status' => $request->status ?? 0
         ]);
     }
 

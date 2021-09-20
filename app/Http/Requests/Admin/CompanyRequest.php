@@ -27,7 +27,7 @@ class CompanyRequest extends FormRequest
             'title' => 'required',
             'tax_no' => 'required|string|min:11|max:11',
             'email' => 'required|email',
-            'phone' => 'required|numeric',
+            'phone' => 'required',
             'countryId' => 'required|numeric',
             'cityId' => 'required|numeric',
             'stateId' => 'required|numeric',

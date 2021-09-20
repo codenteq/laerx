@@ -35,7 +35,7 @@ class ManagerUserRequest extends FormRequest
             'address' => 'required|string',
             'languageId' => 'required|numeric',
             'companyId' => 'required|numeric',
-            'phone' => 'required|numeric',
+            'phone' => 'required',
         ];
     }
 

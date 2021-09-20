@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Constants\ResponseMessage;
 use App\Models\City;
+use App\Models\Coupon;
+use App\Models\Invoice;
 use App\Models\State;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -65,6 +70,25 @@ class HomeController extends Controller
     {
         $states =  State::where('cityId',$cityId)->get();
         return response()->json($states);
+    }
+
+    public function postCouponCode(Request $request, $companyId = null)
+    {
+        $coupon = Coupon::where('code', $request->coupon_code)->where('start_date', '<=', now())->where('end_date', '>=', now())->first();
+        if ($coupon) {
+            $id = auth()->user()->type == User::Admin ? $companyId : companyId();
+            $invoice = Invoice::where('companyId', $id)->orderBy('id', 'desc')->first();
+            $discount = $invoice->price / 100 * $coupon->discount;
+            $data = [
+                'price' => $invoice->price,
+                'total_amount' => $invoice->price - $discount,
+                'discount' => $discount,
+                'couponId' => $coupon->id
+            ];
+            session(['cart' => $data]);
+            return response()->json($data);
+        }
+        return response(ResponseMessage::CouponMessage);
     }
 
 }

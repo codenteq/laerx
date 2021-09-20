@@ -11,7 +11,7 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.user-operations')}}">Kursiyer İşlemleri</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.user.operations')}}">Kursiyer İşlemleri</a></li>
                         <li class="breadcrumb-item"><a href="{{route('manager.user.index')}}">Kursiyer Listesi</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Kursiyer Düzenle</li>
                     </ol>
@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="status"
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="status" value="1"
                                 {{$user->status === 1 ? 'checked' : null}}>
                             <label class="form-check-label" for="flexSwitchCheckChecked">Kullanıcı Aktif/Pasif</label>
                         </div>

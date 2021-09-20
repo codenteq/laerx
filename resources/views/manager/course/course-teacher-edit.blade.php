@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" {{$user->status === 1 ? 'checked' : null}}>
+                            <input class="form-check-input" type="checkbox" name="status" value="1" id="flexSwitchCheckChecked" {{$user->status === 1 ? 'checked' : null}}>
                             <label class="form-check-label" for="flexSwitchCheckChecked">Eğitmen Aktif/Pasif</label>
 
                         <div class="mt-3 mb-5">

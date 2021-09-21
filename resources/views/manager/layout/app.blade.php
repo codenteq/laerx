@@ -33,51 +33,51 @@
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/dashboard') ? 'active' : '' }}"
                    href="{{route('manager.dashboard')}}">
                     <i class="bi bi-house fs-1"></i><br>
-                    <span style="position: relative;">Ana Sayfa</span>
+                    <span style="position: relative;">{{__('manager/menu.home')}}</span>
                 </a>
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations*') ? 'active' : '' }} {{ request()->is('manager/user*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.user.operations')}}">
                     <i class="bi bi-people fs-1"></i><br>
-                    <span style="position: relative;">Kursiyer İşlemleri</span>
+                    <span style="position: relative;">{{__('manager/menu.trainee_transactions')}}</span>
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/question*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.question.index')}}">
                     <i class="bi bi-question-circle fs-1"></i><br>
-                    Sorular
+                    {{__('manager/menu.questions')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/class-exam*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.class-exam.index')}}">
                     <i class="bi bi-file-richtext fs-1"></i><br>
-                    Sınıf Sınavları
+                    {{__('manager/menu.class_exams')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lesson*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.live-lesson.index')}}">
                     <i class="bi bi-camera-video fs-1"></i><br>
-                    Canlı Ders
+                    {{__('manager/menu.live_lesson')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teacher*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.course-teacher.index')}}">
                     <i class="bi bi-person-plus fs-1"></i><br>
-                    Eğitmenler
+                    {{__('manager/menu.teachers')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment-car*') ? 'active' : '' }} {{ request()->is('manager/car*') ? 'active' : '' }}{{ request()->is('manager/appointment*') ? 'active' : '' }} {{ request()->is('manager/appointment-setting*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.appointment-car')}}">
                     <i class="bi bi-calendar4-range fs-1"></i><br>
-                    Araç & Randevu
+                    {{__('manager/menu.car_appointment')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/notification*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.notification.index')}}">
                     <i class="bi bi-bell fs-1"></i><br>
-                    Bildirimler
+                    {{__('manager/menu.notifications')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/support*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                    href="{{route('manager.support.index')}}">
                     <i class="bi bi-info-circle fs-1"></i><br>
-                    Destek
+                    {{__('manager/menu.support')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center mb-5" href="{{route('logout-user')}}">
                     <i class="bi bi-box-arrow-right fs-1"></i><br>
-                    Çıkış Yap
+                    {{__('manager/menu.logout')}}
                 </a>
             </div>
         </div>
@@ -95,7 +95,7 @@
                 <div class="collapse navbar-collapse d-none d-sm-block" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                         <li class="nav-item active"><a
-                                class="nav-link">Hoşgeldiniz, {{auth()->user()->name .' '. auth()->user()->surname}}</a>
+                                class="nav-link">{{__('manager/menu.welcome')}}, {{auth()->user()->name .' '. auth()->user()->surname}}</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
@@ -103,11 +103,11 @@
                                 <img src="{{imagePath(auth()->user()->info->photo)}}" class="rounded-circle" height="30" alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('manager.profile.edit')}}">Profil</a>
-                                <a class="dropdown-item" href="{{route('manager.company.edit')}}">Şirket</a>
-                                <a class="dropdown-item" href="{{route('manager.invoice.index')}}">Faturalar</a>
+                                <a class="dropdown-item" href="{{route('manager.profile.edit')}}">{{__('manager/menu.profile')}}</a>
+                                <a class="dropdown-item" href="{{route('manager.company.edit')}}">{{__('manager/menu.company')}}</a>
+                                <a class="dropdown-item" href="{{route('manager.invoice.index')}}">{{__('manager/menu.invoices')}}</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{route('logout-user')}}">Çıkış Yap</a>
+                                <a class="dropdown-item" href="{{route('logout-user')}}">{{__('manager/menu.logout')}}</a>
                             </div>
                         </li>
                     </ul>

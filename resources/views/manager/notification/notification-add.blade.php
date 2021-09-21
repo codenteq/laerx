@@ -6,13 +6,13 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Bildirim Oluştur</h2>
+                    <h2>{{__('manager/menu.notification_create')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.notification.index')}}">Bildirimler</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Bildirim Oluştur</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.notification.index')}}">{{__('manager/menu.notifications')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.notification_create')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -35,12 +35,12 @@
                         <br>
                         <div class="form-floating">
                                 <textarea class="form-control h-100" placeholder="Bildirim Mesajı" name="message" id="floatingTextarea2"></textarea>
-                            <label for="floatingTextarea2">Bildirim Mesajı</label>
+                            <label for="floatingTextarea2">{{__('manager/notification.message')}}</label>
                         </div>
 
                         <div class="mt-3 mb-5">
-                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet</button>
-                            <a href="{{route('manager.notification.index')}}" class="btn btn-danger">İptal</a>
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/notification.save_btn')}}</button>
+                            <a href="{{route('manager.notification.index')}}" class="btn btn-danger">{{__('manager/notification.cancel_btn')}}</a>
                         </div>
                     </form>
                 </div>
@@ -52,7 +52,7 @@
 
 @section('meta')
 
-    <title>Bildirim Oluştur</title>
+    <title>{{__('manager/menu.notification_create')}}</title>
 
 @endsection
 

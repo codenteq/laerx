@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Profil Düzenle</h2>
+                    <h2>{{__('manager/menu.profile_edit')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item">Profil Düzenle</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.profile_edit')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -23,62 +23,62 @@
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="name" placeholder="Üye Adı"
                                    value="{{$user->user->name}}">
-                            <label for="floatingFirst">Adı</label>
+                            <label for="floatingFirst">{{__('manager/profile.name')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="surname" placeholder="Üye Soyadı"
                                    value="{{$user->user->surname}}">
-                            <label for="floatingLast">Soyadı</label>
+                            <label for="floatingLast">{{__('manager/profile.surname')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control" name="password" placeholder="Yeni Şifre">
-                            <label for="floatingLast">Yeni Şifre</label>
+                            <label for="floatingLast">{{__('manager/profile.new_password')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control" name="password_confirmation" id="password-confirm" placeholder="Şifre">
-                            <label for="floatingLast">Yeni Şifre Tekrar</label>
+                            <label for="floatingLast">{{__('manager/profile.new_password_repeat')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" name="email" placeholder="Eposta Adresi"
                                    value="{{$user->user->email}}">
-                            <label for="floatingMail">Eposta Adresi</label>
+                            <label for="floatingMail">{{__('manager/profile.email_address')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="phone" placeholder="Telefon Numarası"
                                    value="{{$user->phone}}">
-                            <label for="floatingPhone">Telefon Numarası</label>
+                            <label for="floatingPhone">{{__('manager/profile.phone')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="address" placeholder="Adres"
                                    value="{{$user->address}}">
-                            <label for="floatingAddress">Adres</label>
+                            <label for="floatingAddress">{{__('manager/profile.address')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <select class="form-select" name="languageId" aria-label="Floating label select example">
                                 @foreach($languages as $language)
                                     <option
-                                        value="{{$language->id}}" {{$user->languageId === $language->id ? 'selected' : null}} >{{$language->title}}</option>
+                                        value="{{$language->id}}" {{$user->languageId == $language->id ? 'selected' : null}} >{{$language->title}}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect">Dil</label>
+                            <label for="floatingSelect">{{__('manager/profile.language')}}</label>
                         </div>
 
                         <div class="input-group mb-3">
                             <input type="file" class="form-control" name="photo">
-                            <label class="input-group-text" for="inputGroupFile02">Profil Resmi</label>
+                            <label class="input-group-text" for="inputGroupFile02">{{__('manager/profile.profile_photo')}}</label>
                         </div>
 
                         <div class="mt-3 mb-5">
-                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/profile.save_btn')}}
                             </button>
-                            <a href="{{route('manager.dashboard')}}" class="btn btn-danger">İptal</a>
+                            <a href="{{route('manager.dashboard')}}" class="btn btn-danger">{{__('manager/profile.cancel_btn')}}</a>
                         </div>
 
                     </form>
@@ -91,7 +91,7 @@
 
 @section('meta')
 
-    <title>Profil Düzenle</title>
+    <title>{{__('manager/menu.profile_edit')}}</title>
 
 @endsection
 

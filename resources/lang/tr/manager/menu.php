@@ -2,7 +2,14 @@
 
 return [
     'home' => 'Anasayfa',
+    'dashboard' => 'Gösterge Paneli',
+    'manager_panel' => 'Yönetici Paneli',
     'trainee_transactions' => 'Kursiyer İşlemleri',
+    'new_trainee' => 'Yeni Kursiyer Ekle',
+    'edit_trainee' => 'Kursiyer Düzenle',
+    'trainee_list' => 'Kursiyer Listesi',
+    'trainee_report' => 'Kursiyer Raporları',
+    'trainee_report_detail' => 'Kursiyer Rapor Detay',
     'questions' => 'Sorular',
     'class_exams' => 'Sınıf Sınavları',
     'live_lesson' => 'Canlı Ders',

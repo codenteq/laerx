@@ -2,7 +2,15 @@
 
 return [
     'home' => 'Home',
+    'dashboard' => 'Dashboard',
+    'manager_panel' => 'Manager Panel',
     'trainee_transactions' => 'Trainee Transactions',
+    'new_trainee' => 'New Trainee Create',
+    'edit_trainee' => 'Edit Trainee',
+    'new_trainee_excel' => 'Add Trainees with Excel',
+    'trainee_list' => 'Trainee List',
+    'trainee_report' => 'Trainee Reports',
+    'trainee_report_detail' => 'Trainee Report Detail',
     'questions' => 'Questions',
     'class_exams' => 'Class Exams',
     'live_lesson' => 'Live Lesson',

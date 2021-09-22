@@ -27,7 +27,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = CompanyQuestion::where('companyId',companyId())->with('question')->orderByDesc('questionId')->get();
+        $questions = CompanyQuestion::where('companyId',companyId())->with('question.language')->orderByDesc('questionId')->get();
         return view('manager.question.question', compact('questions'));
     }
 

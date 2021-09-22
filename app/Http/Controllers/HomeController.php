@@ -9,6 +9,7 @@ use App\Models\Invoice;
 use App\Models\State;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,9 +38,9 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function redirect(): \Illuminate\Http\RedirectResponse
+    public function redirect(): RedirectResponse
     {
         $type = Auth::user()->type;
         switch($type) {

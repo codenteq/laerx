@@ -62,7 +62,7 @@ Route::get('/state/{cityId?}', [App\Http\Controllers\HomeController::class, 'get
 Route::post('coupon-code/{companyId?}', [\App\Http\Controllers\HomeController::class, 'postCouponCode'])->middleware('auth')->name('coupon.code');
 
 
-Route::prefix('user')->name('user.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status'])->group(function () {
+Route::prefix('user')->name('user.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status','locale'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');
 
     Route::get('exams', [HomeController::class, 'getExams'])->name('exams');
@@ -96,7 +96,7 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role', 'check.u
     });
 });
 
-Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status'])->group(function () {
+Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status','locale'])->group(function () {
     Route::get('dashboard', [ManagerController::class, 'getManagerDashboard'])->name('dashboard');
 
     Route::get('profile', [ManagerController::class, 'getProfile'])->name('profile.edit');
@@ -136,7 +136,7 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role', 'c
     });
 });
 
-Route::prefix('teacher')->name('teacher.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status'])->group(function () {
+Route::prefix('teacher')->name('teacher.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status','locale'])->group(function () {
     Route::resource('appointment', \App\Http\Controllers\Teacher\AppointmentController::class);
     Route::resource('profile', ProfileController::class);
 });

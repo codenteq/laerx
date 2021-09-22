@@ -31,7 +31,7 @@
                             <th scope="col">{{__('manager/invoice.date')}}</th>
                             <th scope="col">{{__('manager/invoice.general_total')}}</th>
                             <th scope="col">{{__('manager/invoice.status')}}</th>
-                            <th scope="col">{{__('manager/invoice.translations')}}</th>
+                            <th scope="col">{{__('manager/invoice.transactions')}}</th>
                         </tr>
                         </thead>
                         <tbody>

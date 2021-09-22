@@ -57,9 +57,9 @@ class LiveLessonController extends Controller
     {
         try {
             $this->liveLessonService->store($request);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -91,9 +91,9 @@ class LiveLessonController extends Controller
     {
         try {
             $this->liveLessonService->update($request, $live_lesson->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -107,9 +107,9 @@ class LiveLessonController extends Controller
     {
         try {
             $this->liveLessonService->destroy($live_lesson->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 }

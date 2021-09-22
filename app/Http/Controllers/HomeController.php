@@ -88,7 +88,7 @@ class HomeController extends Controller
             session(['cart' => $data]);
             return response()->json($data);
         }
-        return response(ResponseMessage::CouponMessage);
+        return response(ResponseMessage::CouponMessage());
     }
 
 }

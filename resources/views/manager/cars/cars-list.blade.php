@@ -6,27 +6,27 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Araçlar</h2>
+                    <h2>{{__('manager/menu.car')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment-car')}}">Araç & Randevular</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Araçlar</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.appointment-car')}}">{{__('manager/menu.car_appointment')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.car')}}</li>
                     </ol>
                 </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <h4><a href="{{route('manager.car.create')}}" class="btn btn-success">Araç Oluştur</a></h4>
+                    <h4><a href="{{route('manager.car.create')}}" class="btn btn-success">{{__('manager/menu.car_create')}}</a></h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Plaka</th>
-                            <th scope="col">Türü</th>
-                            <th scope="col">Durum</th>
-                            <th scope="col">İşlemler</th>
+                            <th scope="col">{{__('manager/car-appointment/car.plate_code')}}</th>
+                            <th scope="col">{{__('manager/car-appointment/car.type')}}</th>
+                            <th scope="col">{{__('manager/car-appointment/car.status')}}</th>
+                            <th scope="col">{{__('manager/car-appointment/car.transactions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -57,7 +57,7 @@
 
 @section('meta')
 
-    <title>Araçlar</title>
+    <title>{{__('manager/menu.car')}}</title>
 
 @endsection
 

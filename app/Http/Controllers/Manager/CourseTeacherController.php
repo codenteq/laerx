@@ -52,9 +52,9 @@ class CourseTeacherController extends Controller
     {
         try {
             $this->globalService->userStore($request, User::Teacher);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -81,9 +81,9 @@ class CourseTeacherController extends Controller
     {
         try {
             $this->globalService->userUpdate($request, $course_teacher->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -97,9 +97,9 @@ class CourseTeacherController extends Controller
     {
         try {
             $this->globalService->userDestroy($course_teacher->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 }

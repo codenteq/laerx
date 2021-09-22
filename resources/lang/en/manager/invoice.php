@@ -5,5 +5,5 @@ return [
     'date' => 'Invoice Date',
     'general_total' => 'General Total',
     'status' => 'Status',
-    'translations' => 'Translations',
+    'transactions' => 'Transactions',
 ];

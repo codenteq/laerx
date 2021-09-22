@@ -6,13 +6,13 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Araç Ekle</h2>
+                    <h2>{{__('manager/menu.car_create')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment-car')}}">Araç & Randevular</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.car.index')}}">Araçlar</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Araç Ekle</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.appointment-car')}}">{{__('manager/menu.car_appointment')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.car.index')}}">{{__('manager/menu.car')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.car_create')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -22,7 +22,7 @@
                         @csrf
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="plate_code" placeholder="Araç Plaka">
-                            <label for="floatingFirst">Araç Plaka</label>
+                            <label for="floatingFirst">{{__('manager/car-appointment/car.plate_code')}}</label>
                         </div>
 
                         <div class="form-floating">
@@ -31,21 +31,21 @@
                                     <option value="{{$type->id}}">{{$type->title}}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect">Araç Türü</label>
+                            <label for="floatingSelect">{{__('manager/car-appointment/car.type')}}</label>
                         </div>
 
                         <br>
 
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="status" value="1" id="flexSwitchCheckChecked" checked>
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Araç Aktif/Pasif</label>
+                            <label class="form-check-label" for="flexSwitchCheckChecked">{{__('manager/car-appointment/car.car_checkbox')}}</label>
                         </div>
 
                         <br>
 
                         <div class="mt-3 mb-5">
-                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet</button>
-                            <a href="{{route('manager.car.index')}}" class="btn btn-danger">İptal</a>
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/car-appointment/car.save_btn')}}</button>
+                            <a href="{{route('manager.car.index')}}" class="btn btn-danger">{{__('manager/car-appointment/car.cancel_btn')}}</a>
                         </div>
 
                     </form>

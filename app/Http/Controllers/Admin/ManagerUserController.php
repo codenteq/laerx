@@ -55,9 +55,9 @@ class ManagerUserController extends Controller
     {
         try {
             $this->globalService->userStore($request,User::Manager);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -86,9 +86,9 @@ class ManagerUserController extends Controller
     {
         try {
             $this->globalService->userUpdate($request,$manager_user->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -102,9 +102,9 @@ class ManagerUserController extends Controller
     {
         try {
             $this->globalService->userDestroy($manager_user->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 }

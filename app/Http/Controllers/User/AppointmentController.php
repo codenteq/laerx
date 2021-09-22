@@ -38,12 +38,12 @@ class AppointmentController extends Controller
         try {
             if (!ignoreDateCheck($request->date)) {
                 $appointmentService->store($request);
-                return response(ResponseMessage::SuccessMessage);
+                return response(ResponseMessage::SuccessMessage());
             } else {
-                return response(ResponseMessage::IgnoreDateMessage);
+                return response(ResponseMessage::IgnoreDateMessage());
             }
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 }

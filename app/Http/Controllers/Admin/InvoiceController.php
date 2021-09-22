@@ -34,9 +34,9 @@ class InvoiceController extends Controller
         try {
             $payment = PaymentMethod::where('code', 'wire_transfer')->first();
             $payService->paySuccess($request->companyId, session('cart')['couponId'], $payment->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::IgnoreDateMessage);
+            return response(ResponseMessage::IgnoreDateMessage());
         }
     }
 

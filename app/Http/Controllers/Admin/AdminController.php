@@ -30,9 +30,9 @@ class AdminController extends Controller
     {
         try {
             $globalService->userUpdate($request, auth()->id());
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 }

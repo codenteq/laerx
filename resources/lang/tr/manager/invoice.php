@@ -5,5 +5,5 @@ return [
     'date' => 'Fatura Tarihi',
     'general_total' => 'Genel Toplam',
     'status' => 'Durum',
-    'translations' => 'İşlemler',
+    'transactions' => 'İşlemler',
 ];

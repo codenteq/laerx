@@ -6,31 +6,30 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Eğitmenler</h2>
+                    <h2>{{__('manager/menu.teachers')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Eğitmenler</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.teachers')}}</li>
                     </ol>
                 </nav>
             </figure>
 
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <h4><a href="{{route('manager.course-teacher.create')}}" class="btn btn-success">Yeni Eğitmen
-                            Ekle</a></h4>
+                    <h4><a href="{{route('manager.course-teacher.create')}}" class="btn btn-success">{{__('manager/menu.teacher_create')}}</a></h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Adı Soyadı</th>
-                            <th scope="col">Eposta</th>
-                            <th scope="col">Telefon</th>
-                            <th scope="col">Durum</th>
-                            <th scope="col">Kayıt Tarihi</th>
-                            <th scope="col">İşlemler</th>
+                            <th scope="col">{{__('manager/teacher/teacher-list.name_surname')}}</th>
+                            <th scope="col">{{__('manager/teacher/teacher-list.email_address')}}</th>
+                            <th scope="col">{{__('manager/teacher/teacher-list.phone_number')}}</th>
+                            <th scope="col">{{__('manager/teacher/teacher-list.status')}}</th>
+                            <th scope="col">{{__('manager/teacher/teacher-list.created_at')}}</th>
+                            <th scope="col">{{__('manager/teacher/teacher-list.transactions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -63,7 +62,7 @@
 
 @section('meta')
 
-    <title>Eğitmenler</title>
+    <title>{{__('manager/menu.teachers')}}</title>
 
 @endsection
 

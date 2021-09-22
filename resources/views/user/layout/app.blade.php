@@ -34,53 +34,53 @@
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/dashboard') ? 'active' : '' }}"
                    href="{{route('user.dashboard')}}">
                     <i class="bi bi-house fs-1"></i><br>
-                    <span style="position: relative;">Ana Sayfa</span>
+                    <span style="position: relative;">{{__('user/menu.home')}}</span>
                 </a>
 
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/lesson*') ? 'active' : '' }}"
                    href="{{route('user.lesson.index')}}">
                     <i class="bi bi-book fs-1"></i><br>
-                    <span style="position: relative;">Derslerim</span>
+                    <span style="position: relative;">{{__('user/menu.my_lesson')}}</span>
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/exams') ? 'active' : '' }}"
+                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('user/exams') ? 'active' : '' }} {{ request()->is('user/custom-exam-setting*') ? 'active' : '' }}"
                    href="{{route('user.exams')}}">
                     <i class="bi bi-laptop fs-1"></i><br>
-                    Online Sınavlarım
+                    {{__('user/menu.online_exam')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/class-exams') ? 'active' : '' }}"
                    href="{{route('user.class-exams')}}">
                     <i class="bi bi-people fs-1"></i><br>
-                    Sınıf Sınavlarım
+                    {{__('user/menu.class_exam')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/result') ? 'active' : '' }}"
                    href="{{route('user.results')}}">
                     <i class="bi bi-file-earmark-text fs-1"></i><br>
-                    Sınav Sonuçlarım
+                    {{__('user/menu.exam_result')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/appointment') ? 'active' : '' }}"
                    href="{{route('user.appointment.index')}}">
                     <i class="bi bi-calendar4-range fs-1"></i><br>
-                    Randevularım
+                    {{__('user/menu.my_appointment')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/live-lessons') ? 'active' : '' }}"
                    href="{{route('user.live-lessons')}}">
                     <i class="bi bi-camera-video fs-1"></i><br>
-                    Canlı Ders
+                    {{__('user/menu.live_lesson')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/support') ? 'active' : '' }}"
                    href="{{route('user.support')}}">
                     <i class="bi bi-info-circle fs-1"></i><br>
-                    Destek
+                    {{__('user/menu.support')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('user/notifications') ? 'active' : '' }}"
                    href="{{route('user.notifications')}}">
                     <i class="bi bi-bell fs-1"></i><br>
-                    Bildirimler
+                    {{__('user/menu.notification')}}
                 </a>
                 <a class="list-group-item list-group-item-action text-center"
                    href="{{route('logout-user')}}">
                     <i class="bi bi-box-arrow-right fs-1"></i><br>
-                    Çıkış Yap
+                    {{__('user/menu.logout')}}
                 </a>
             </div>
         </div>
@@ -98,7 +98,7 @@
                 <div class="collapse navbar-collapse d-none d-sm-block" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                         <li class="nav-item active"><a
-                                class="nav-link">Hoşgeldiniz, {{auth()->user()->name .' '. auth()->user()->surname}}</a>
+                                class="nav-link">{{__('user/menu.welcome')}}, {{auth()->user()->name .' '. auth()->user()->surname}}</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
@@ -107,9 +107,9 @@
                                      alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('user.profile')}}">Profil</a>
+                                <a class="dropdown-item" href="{{route('user.profile')}}">{{__('user/menu.profile')}}</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{route('logout-user')}}">Çıkış Yap</a>
+                                <a class="dropdown-item" href="{{route('logout-user')}}">{{__('user/menu.logout')}}</a>
                             </div>
                         </li>
                     </ul>

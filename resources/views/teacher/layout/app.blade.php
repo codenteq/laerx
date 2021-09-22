@@ -31,12 +31,12 @@
                 <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('teacher/appointment') ? 'active' : '' }}"
                    href="{{route('teacher.appointment.index')}}">
                     <i class="bi bi-calendar3 fs-1"></i><br>
-                    <span style="position: relative;">Randevularım</span>
+                    <span style="position: relative;">{{__('teacher/appointment.my_appointment')}}</span>
                 </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('teacher/profile') ? 'active' : '' }}"
                    href="{{route('teacher.profile.index')}}">
                     <i class="bi bi-person fs-1"></i><br>
-                    Profil
+                    {{__('teacher/profile.profile')}}
                 </a>
             </div>
         </div>
@@ -54,7 +54,7 @@
                 <div class="collapse navbar-collapse d-none d-sm-block" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                         <li class="nav-item active"><a
-                                class="nav-link">Hoşgeldiniz, {{auth()->user()->name .' '. auth()->user()->surname}}</a>
+                                class="nav-link">{{__('teacher/menu.welcome')}}, {{auth()->user()->name .' '. auth()->user()->surname}}</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
@@ -63,9 +63,9 @@
                                      alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('teacher.profile.index')}}">Profil</a>
+                                <a class="dropdown-item" href="{{route('teacher.profile.index')}}">{{__('teacher/menu.profile')}}</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{route('logout-user')}}">Çıkış Yap</a>
+                                <a class="dropdown-item" href="{{route('logout-user')}}">{{__('teacher/menu.logout')}}</a>
                             </div>
                         </li>
                     </ul>

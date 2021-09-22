@@ -6,13 +6,13 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Özel Sınav Oluştur</h2>
+                    <h2>{{__('user/menu.custom_exam_add')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Anasayfa</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('user.exams')}}">Online Sınavlarım</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Özel Sınav Oluştur</li>
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('user.exams')}}">{{__('user/menu.online_exam')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('user/menu.custom_exam_add')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -31,13 +31,13 @@
 
                         <div class="col-md-3 rounded mb-5">
                             <label class="fw-bold text-danger">
-                                Toplam Soru : <span id="total"></span>
+                                {{__('user/my-class-exam.question_length')}} : <span id="total"></span>
                             </label>
                         </div>
 
                         <div class="mt-3 mb-5">
-                            <button type="submit" class="btn btn-success">Kaydet</button>
-                            <a href="{{route('user.exams')}}" class="btn btn-danger">İptal</a>
+                            <button type="submit" class="btn btn-success">{{__('user/my-class-exam.save_btn')}}</button>
+                            <a href="{{route('user.exams')}}" class="btn btn-danger">{{__('user/my-class-exam.cancel_btn')}}</a>
                         </div>
 
                     </form>

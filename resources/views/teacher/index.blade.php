@@ -6,11 +6,11 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Randevularım</h2>
+                    <h2>{{__('teacher/menu.my_appointment')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment.index')}}">Randevularım</a>
+                        <li class="breadcrumb-item"><a href="{{route('manager.appointment.index')}}">{{__('teacher/menu.my_appointment')}}</a>
                         </li>
                     </ol>
                 </nav>
@@ -21,10 +21,10 @@
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Kursiyer</th>
-                            <th scope="col">Araç</th>
-                            <th scope="col">Tarih</th>
-                            <th scope="col">Durum</th>
+                            <th scope="col">{{__('teacher/appointment.trainee')}}</th>
+                            <th scope="col">{{__('teacher/appointment.car')}}</th>
+                            <th scope="col">{{__('teacher/appointment.date')}}</th>
+                            <th scope="col">{{__('teacher/appointment.status')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,7 +47,7 @@
 
 @section('meta')
 
-    <title>Randevularım</title>
+    <title>{{__('teacher/menu.my_appointment')}}</title>
 
 @endsection
 

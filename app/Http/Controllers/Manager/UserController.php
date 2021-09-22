@@ -66,9 +66,9 @@ class UserController extends Controller
     {
         try {
             $this->globalService->userStore($request, User::Normal);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -101,9 +101,9 @@ class UserController extends Controller
     {
         try {
             $this->globalService->userUpdate($request, $user->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -117,9 +117,9 @@ class UserController extends Controller
     {
         try {
             $this->globalService->userDestroy($user->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -166,9 +166,9 @@ class UserController extends Controller
     {
         try {
             Excel::import(new UserImport(), $request->excel);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 

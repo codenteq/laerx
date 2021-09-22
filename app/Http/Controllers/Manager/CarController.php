@@ -51,9 +51,9 @@ class CarController extends Controller
     {
         try {
             $this->carService->store($request);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -82,9 +82,9 @@ class CarController extends Controller
     {
         try {
             $this->carService->update($request,$car->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -98,9 +98,9 @@ class CarController extends Controller
     {
         try {
             $this->carService->destroy($car->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 }

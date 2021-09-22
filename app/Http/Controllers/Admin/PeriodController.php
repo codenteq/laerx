@@ -50,9 +50,9 @@ class PeriodController extends Controller
     {
         try {
             $this->periodService->store($request);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -78,9 +78,9 @@ class PeriodController extends Controller
     {
         try {
             $this->periodService->update($request,$period->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -94,9 +94,9 @@ class PeriodController extends Controller
     {
         try {
             $this->periodService->destroy($period->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 }

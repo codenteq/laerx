@@ -51,9 +51,9 @@ class NotificationController extends Controller
     {
         try {
             $this->notificationService->store($request);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 

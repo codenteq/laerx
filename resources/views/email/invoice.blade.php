@@ -152,7 +152,7 @@
         <tr class="heading">
             <td>Ürün</td>
 
-            <td>Price</td>
+            <td>Fiyat</td>
         </tr>
 
         <tr class="item">

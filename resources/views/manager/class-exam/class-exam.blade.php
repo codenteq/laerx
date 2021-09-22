@@ -6,27 +6,27 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Sınıf Sınavları</h2>
+                    <h2>{{__('manager/menu.class_exams')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Anasayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Sınıf Sınavları</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.class_exams')}}</li>
                     </ol>
                 </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
-                    <h4><a href="{{route('manager.class-exam.create')}}" class="btn btn-success">Sınıf Sınavı Oluştur</a></h4>
+                    <h4><a href="{{route('manager.class-exam.create')}}" class="btn btn-success">{{__('manager/menu.class_exam_create')}}</a></h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Soru Sayısı</th>
-                            <th scope="col">Süre</th>
-                            <th scope="col">Durum</th>
-                            <th scope="col">İşlemler</th>
+                            <th scope="col">{{__('manager/class_exam.question_length')}}</th>
+                            <th scope="col">{{__('manager/class_exam.time')}}</th>
+                            <th scope="col">{{__('manager/class_exam.status')}}</th>
+                            <th scope="col">{{__('manager/class_exam.transactions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -57,7 +57,7 @@
 
 @section('meta')
 
-    <title>Sınıf Sınavları</title>
+    <title>{{__('manager/menu.class_exams')}}</title>
 
 @endsection
 

@@ -6,13 +6,13 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Sınıf Sınavı Oluştur</h2>
+                    <h2>{{__('manager/menu.class_exam_create')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Anasayfa</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.class-exam.index')}}">Sınıf Sınavları</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Sınıf Sınavı Oluştur</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.class-exam.index')}}">{{__('manager/menu.class_exams')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.class_exam_create')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -23,32 +23,32 @@
                         <div class="form-floating col-md-12 mb-3">
                             <select class="form-select" id="floatingSelect1" name="periodId"
                                     aria-label="Floating label select example">
-                                <option disabled selected>Seçiniz</option>
+                                <option disabled selected>{{__('manager/class_exam.select')}}</option>
                                 @foreach($periods as $period)
                                     <option value="{{$period->id}}">{{$period->title}}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect1">Dönem</label>
+                            <label for="floatingSelect1">{{__('manager/class_exam.period')}}</label>
                         </div>
                         <div class="form-floating col-md-12 mb-3">
                             <select class="form-select" id="floatingSelect2" name="monthId"
                                     aria-label="Floating label select example">
-                                <option disabled selected>Seçiniz</option>
+                                <option disabled selected>{{__('manager/class_exam.select')}}</option>
                                 @foreach($months as $month)
                                     <option value="{{$month->id}}">{{$month->title}}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect2">Ay</label>
+                            <label for="floatingSelect2">{{__('manager/class_exam.month')}}</label>
                         </div>
                         <div class="form-floating col-md-12 mb-3">
                             <select class="form-select" id="floatingSelect3" name="groupId"
                                     aria-label="Floating label select example">
-                                <option disabled selected>Seçiniz</option>
+                                <option disabled selected>{{__('manager/class_exam.select')}}</option>
                                 @foreach($groups as $group)
                                     <option value="{{$group->id}}">{{$group->title}}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect3">Sınıf</label>
+                            <label for="floatingSelect3">{{__('manager/class_exam.class')}}</label>
                         </div>
 
                         @foreach($types as $type)
@@ -62,14 +62,14 @@
 
                         <div class="col-md-3 rounded mb-5">
                             <label class="fw-bold text-danger">
-                                Toplam Soru : <span id="total"></span>
+                                {{__('manager/class_exam.question_length')}} : <span id="total"></span>
                             </label>
                         </div>
 
                         <div class="mt-3 mb-5">
-                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/class_exam.save_btn')}}
                             </button>
-                            <a href="{{route('manager.car.index')}}" class="btn btn-danger">İptal</a>
+                            <a href="{{route('manager.car.index')}}" class="btn btn-danger">{{__('manager/class_exam.cancel_btn')}}</a>
                         </div>
 
                     </form>
@@ -82,7 +82,7 @@
 
 @section('meta')
 
-    <title>Sınıf Sınavı Oluştur</title>
+    <title>{{__('manager/menu.class_exam_create')}}</title>
 
 @endsection
 

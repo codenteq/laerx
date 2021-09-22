@@ -52,9 +52,9 @@ class LessonContentController extends Controller
     {
         try {
             $this->lessonContentService->store($request);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -93,9 +93,9 @@ class LessonContentController extends Controller
     {
         try {
             $this->lessonContentService->update($request,$lessonContent->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -109,9 +109,9 @@ class LessonContentController extends Controller
     {
         try {
             $this->lessonContentService->destroy($lessonContent->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 }

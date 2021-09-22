@@ -61,12 +61,12 @@ class AppointmentController extends Controller
         try {
             if (!ignoreDateCheck($request->date)) {
                 $this->appointmentService->store($request);
-                return response(ResponseMessage::SuccessMessage);
+                return response(ResponseMessage::SuccessMessage());
             } else {
-                return response(ResponseMessage::IgnoreDateMessage);
+                return response(ResponseMessage::IgnoreDateMessage());
             }
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -98,12 +98,12 @@ class AppointmentController extends Controller
         try {
             if (!ignoreDateCheck($request->date)) {
                 $this->appointmentService->update($request, $appointment->id);
-                return response(ResponseMessage::SuccessMessage);
+                return response(ResponseMessage::SuccessMessage());
             } else {
-                return response(ResponseMessage::IgnoreDateMessage);
+                return response(ResponseMessage::IgnoreDateMessage());
             }
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -117,9 +117,9 @@ class AppointmentController extends Controller
     {
         try {
             $this->appointmentService->destroy($appointment->id);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -138,9 +138,9 @@ class AppointmentController extends Controller
     {
         try {
             $this->appointmentService->settingStoreAndUpdate($request);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 }

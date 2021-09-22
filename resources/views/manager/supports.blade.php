@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Destek</h2>
+                    <h2>{{__('manager/menu.support')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Destek</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.support')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -20,12 +20,12 @@
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">TCKN</th>
-                            <th scope="col">Adı Soyadı</th>
-                            <th scope="col">Destek Nedeni</th>
-                            <th scope="col">İletişim Telefon</th>
-                            <th scope="col">Oluşturulma Tarihi</th>
-                            <th scope="col">İşlemler</th>
+                            <th scope="col">{{__('manager/support.tc')}}</th>
+                            <th scope="col">{{__('manager/support.name_surname')}}</th>
+                            <th scope="col">{{__('manager/support.why')}}</th>
+                            <th scope="col">{{__('manager/support.contact_phone')}}</th>
+                            <th scope="col">{{__('manager/support.created_at')}}</th>
+                            <th scope="col">{{__('manager/support.transactions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -59,7 +59,7 @@
                                                         @csrf
                                                         @method('PUT')
                                                         <input type="hidden" name="status" value="1">
-                                                        <button type="button" onclick="modalCreateAndUpdateButton(`${{route('manager.support.update',$support)}}`)" class="btn btn-primary">Tamamlandı</button>
+                                                        <button type="button" onclick="modalCreateAndUpdateButton(`${{route('manager.support.update',$support)}}`)" class="btn btn-primary">{{__('manager/support.done_btn')}}</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -79,7 +79,7 @@
 
 @section('meta')
 
-    <title>Destek</title>
+    <title>{{__('manager/menu.support')}}</title>
 
 @endsection
 

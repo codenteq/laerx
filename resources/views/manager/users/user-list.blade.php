@@ -6,35 +6,34 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Kursiyer Listesi</h2>
+                    <h2>{{__('manager/menu.trainee_list')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.user.operations')}}">Kursiyer
-                                İşlemleri</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Kursiyer Listesi</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.user.operations')}}">{{__('manager/menu.trainee_transactions')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.trainee_list')}}</li>
                     </ol>
                 </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3 row">
                     <h4>
-                        <a href="{{route('manager.user.create')}}" class="btn btn-success">Kursiyer Oluştur</a>
-                        <a href="{{route('manager.user.excel-export')}}" class="btn btn-warning">Listeyi Yazdır</a>
+                        <a href="{{route('manager.user.create')}}" class="btn btn-success">{{__('manager/menu.new_trainee')}}</a>
+                        <a href="{{route('manager.user.excel-export')}}" class="btn btn-warning">{{__('manager/user/trainee-list.list_print')}}</a>
                     </h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
-                            <th>Adı Soyadı</th>
-                            <th>TCKN</th>
-                            <th>Dönem</th>
-                            <th>Ay</th>
-                            <th>Grup</th>
-                            <th>Durum</th>
-                            <th>İşlemler</th>
+                            <th>{{__('manager/user/trainee-list.name_surname')}}</th>
+                            <th>{{__('manager/user/trainee-list.tc')}}</th>
+                            <th>{{__('manager/user/trainee-list.period')}}</th>
+                            <th>{{__('manager/user/trainee-list.month')}}</th>
+                            <th>{{__('manager/user/trainee-list.group')}}</th>
+                            <th>{{__('manager/user/trainee-list.status')}}</th>
+                            <th>{{__('manager/user/trainee-list.transactions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -68,7 +67,7 @@
 
 @section('meta')
 
-    <title>Kursiyer Listesi</title>
+    <title>{{__('manager/menu.trainee_list')}}</title>
 
 @endsection
 

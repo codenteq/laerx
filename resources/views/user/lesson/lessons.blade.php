@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Derslerim</h2>
+                    <h2>{{__('user/menu.my_lesson')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Derslerim</li>
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('user/menu.my_lesson')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -20,12 +20,12 @@
                     <div class="form-floating mb-3">
                         <select class="form-select" onchange="this.form.submit()" name="type"
                                 aria-label="Floating label select example">
-                            <option disabled selected>Seçiniz</option>
+                            <option disabled selected>{{__('user/my-lesson.select')}}</option>
                             @foreach($types as $type)
                                 <option value="{{$type->id}}" {{$type->id == request()->get('type') ? 'selected' : null}}>{{$type->title}}</option>
                             @endforeach
                         </select>
-                        <label for="floatingSelect">Ders Kategori</label>
+                        <label for="floatingSelect">{{__('user/my-lesson.lesson_category')}}</label>
                     </div>
                 </form>
 
@@ -33,8 +33,8 @@
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Başlık</th>
-                            <th scope="col">Derse Gir</th>
+                            <th scope="col">{{__('user/my-lesson.title')}}</th>
+                            <th scope="col">{{__('user/my-lesson.attend_class')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -59,7 +59,7 @@
 
 @section('meta')
 
-    <title>Derslerim</title>
+    <title>{{__('user/menu.my_lesson')}}</title>
 
 @endsection
 

@@ -6,13 +6,13 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Soru Ekle</h2>
+                    <h2>{{__('manager/menu.question_create')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.question.index')}}">Sorular</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Soru Ekle</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.question.index')}}">{{__('manager/menu.questions')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.question_create')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -26,21 +26,21 @@
                                     <option value="{{$language->id}}">{{$language->title}}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect">Soru Dilini Seçiniz</label>
+                            <label for="floatingSelect">{{__('manager/question/question-add-edit.language_select')}}</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="questionImage"
                                    id="switchQuestionImageShow">
-                            <label class="form-check-label" for="switchQuestionImageShow">Soru Resim</label>
+                            <label class="form-check-label" for="switchQuestionImageShow">{{__('manager/question/question-add-edit.question_photo_checkbox')}}</label>
                         </div>
                         <br>
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="title" placeholder="Başlık">
-                            <label for="floatingFirst">Soru</label>
+                            <label for="floatingFirst">{{__('manager/question/question-add-edit.question')}}</label>
                         </div>
                         <div class="input-group mb-3 d-none question-image">
                             <input type="file" class="form-control" name="imagePath">
-                            <label class="input-group-text" for="inputGroupFile02">Soru Resmi</label>
+                            <label class="input-group-text" for="inputGroupFile02">{{__('manager/question/question-add-edit.question_photo_checkbox')}}</label>
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-select" name="typeId" aria-label="Floating label select example">
@@ -48,17 +48,17 @@
                                     <option value="{{$type->id}}">{{$type->title}}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect">Soru Tipi</label>
+                            <label for="floatingSelect">{{__('manager/question/question-add-edit.type')}}</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input " type="checkbox" name="choiceImage" id="switchImageShow">
-                            <label class="form-check-label" for="switchImageShow">Şık Resim</label>
+                            <label class="form-check-label" for="switchImageShow">{{__('manager/question/question-add-edit.choice_photo_checkbox')}}</label>
                         </div>
                         <br>
                         <div class="row mb-3 text-choice">
                             <div class="form-floating ps-1 col-11">
                                 <input type="text" class="form-control " name="choice_text_1" placeholder="Cevap 01">
-                                <label class="" for="floatingFirst">Cevap 01</label>
+                                <label class="" for="floatingFirst">{{__('manager/question/question-add-edit.choice_input')}} 01</label>
                             </div>
                             <div class="col-1">
                                 <input class="form-check-input p-3" type="checkbox"
@@ -67,13 +67,13 @@
                                        name="correct_choice"
                                        value="1"
                                        onclick="correctChoice(this)"
-                                       title="Doğru Cevabı İşaretleyin.">
+                                       title="{{__('manager/question/question-add-edit.correct_choice_checkbox')}}">
                             </div>
                         </div>
                         <div class="row mb-3 text-choice">
                             <div class="form-floating ps-1 col-11">
                                 <input type="text" class="form-control " name="choice_text_2" placeholder="Cevap 02">
-                                <label class="" for="floatingFirst">Cevap 02</label>
+                                <label class="" for="floatingFirst">{{__('manager/question/question-add-edit.choice_input')}} 02</label>
                             </div>
                             <div class="col-1">
                                 <input class="form-check-input p-3" type="checkbox"
@@ -82,13 +82,13 @@
                                        name="correct_choice"
                                        value="2"
                                        onclick="correctChoice(this)"
-                                       title="Doğru Cevabı İşaretleyin.">
+                                       title="{{__('manager/question/question-add-edit.correct_choice_checkbox')}}">
                             </div>
                         </div>
                         <div class="row mb-3 text-choice">
                             <div class="form-floating ps-1 col-11">
                                 <input type="text" class="form-control " name="choice_text_3" placeholder="Cevap 0">
-                                <label class="" for="floatingFirst">Cevap 03</label>
+                                <label class="" for="floatingFirst">{{__('manager/question/question-add-edit.choice_input')}} 03</label>
                             </div>
                             <div class="col-1">
                                 <input class="form-check-input p-3" type="checkbox"
@@ -97,13 +97,13 @@
                                        name="correct_choice"
                                        value="3"
                                        onclick="correctChoice(this)"
-                                       title="Doğru Cevabı İşaretleyin.">
+                                       title="{{__('manager/question/question-add-edit.correct_choice_checkbox')}}">
                             </div>
                         </div>
                         <div class="row mb-3 text-choice">
                             <div class="form-floating ps-1 col-11">
                                 <input type="text" class="form-control " name="choice_text_4" placeholder="Cevap 04">
-                                <label class="" for="floatingFirst">Cevap 04</label>
+                                <label class="" for="floatingFirst">{{__('manager/question/question-add-edit.choice_input')}} 04</label>
                             </div>
                             <div class="col-1">
                                 <input class="form-check-input p-3" type="checkbox"
@@ -112,7 +112,7 @@
                                        name="correct_choice"
                                        value="4"
                                        onclick="correctChoice(this)"
-                                       title="Doğru Cevabı İşaretleyin.">
+                                       title="{{__('manager/question/question-add-edit.correct_choice_checkbox')}}">
                             </div>
                         </div>
 
@@ -127,7 +127,7 @@
                                        value="1"
                                        onclick="correctChoice(this)"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="Doğru Cevabı İşaretleyin.">
+                                       title="{{__('manager/question/question-add-edit.correct_choice_checkbox')}}">
                             </div>
                         </div>
                         <div class="row mb-3 image-choice d-none">
@@ -142,7 +142,7 @@
                                        value="2"
                                        onclick="correctChoice(this)"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="Doğru Cevabı İşaretleyin.">
+                                       title="{{__('manager/question/question-add-edit.correct_choice_checkbox')}}">
                             </div>
                         </div>
                         <div class="row mb-3 image-choice d-none">
@@ -156,7 +156,7 @@
                                        value="3"
                                        onclick="correctChoice(this)"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="Doğru Cevabı İşaretleyin.">
+                                       title="{{__('manager/question/question-add-edit.correct_choice_checkbox')}}">
                             </div>
                         </div>
                         <div class="row mb-3 image-choice d-none">
@@ -170,14 +170,14 @@
                                        value="4"
                                        onclick="correctChoice(this)"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       title="Doğru Cevabı İşaretleyin.">
+                                       title="{{__('manager/question/question-add-edit.correct_choice_checkbox')}}">
                             </div>
                         </div>
 
                         <div class="mt-3 mb-5">
-                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/question/question-add-edit.save_btn')}}
                             </button>
-                            <a href="{{route('manager.question.index')}}" class="btn btn-danger">İptal</a>
+                            <a href="{{route('manager.question.index')}}" class="btn btn-danger">{{__('manager/question/question-add-edit.cancel_btn')}}</a>
                         </div>
                     </form>
                 </div>
@@ -189,7 +189,7 @@
 
 @section('meta')
 
-    <title>Soru Ekle</title>
+    <title>{{__('manager/menu.question_create')}}</title>
 
 @endsection
 

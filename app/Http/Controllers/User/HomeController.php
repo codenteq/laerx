@@ -103,9 +103,9 @@ class HomeController extends Controller
     {
         try {
             $this->globalService->userUpdate($request, auth()->id());
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 
@@ -122,9 +122,9 @@ class HomeController extends Controller
                 'message' => $request->input('message'),
                 'userId' => auth()->id(),
             ]);
-            return response(ResponseMessage::SuccessMessage);
+            return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            return response(ResponseMessage::ErrorMessage);
+            return response(ResponseMessage::ErrorMessage());
         }
     }
 

@@ -6,62 +6,54 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Online Sınavlarım</h2>
+                    <h2>{{__('user/menu.online_exam')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Online Sınavlarım</li>
+                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('user/menu.online_exam')}}</li>
                     </ol>
                 </nav>
             </figure>
             <div class="container align-content-center">
                 <div class="row">
                     <div class="col-9">
-                        <h4 class="text-start">Kullanım Kılavuzu</h4>
+                        <h4 class="text-start">{{__('user/my-online-exam.user_guide')}}</h4>
                         <hr>
                         <ul>
                             <li>
-                                Lütfen kimlik bilgilerinizi yukarıdan kontrol ediniz.
+                                {{__('user/my-online-exam.guaide_1')}}
                             </li>
                             <li>
-                                Elektronik ehliyet sınavlarına gireceklere: 12 İlk yardım sorusu, 23 Trafik sorusu, 9
-                                Motor sorusu ve 6 Trafik adabı sorusu olmak üzere 50 soru sorulmaktadır.
+                                {{__('user/my-online-exam.guaide_2')}}
                             </li>
                             <li>
-                                Elektronik ehliyet sınavı 45 dakikadır.
+                                {{__('user/my-online-exam.guaide_3')}}
                             </li>
                             <li>
-                                4 yanlış bir doğruyu götürmemektedir ve tüm ehliyet sınıfları için sorular aynıdır.
+                                {{__('user/my-online-exam.guaide_4')}}
                             </li>
                             <li>
-                                Adayların başarılı olabilmesi için toplam 50 sorudan oluşan yeni müfredat ehliyet
-                                sınavından 35 soruyu doğru cevaplaması ve toplam 70 puan almaları gerekmektedir.
+                                {{__('user/my-online-exam.guaide_5')}}
                             </li>
                             <li>
-                                Sınavı bitir butonuna tıklamadan sınav salonundan ayrılmayınız.
+                                {{__('user/my-online-exam.guaide_6')}}
                             </li>
-                            <div class="form-check">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Kılavuzu okudum ve anladım.<br>
-                                    <small class="text-danger">Normal sınava girmek için kutucuğu işaretleyiniz!</small>
-                                </label>
-                            </div>
                         </ul>
                     </div>
                     <div class="col-4 exams">
                         <a href="{{route('user.quiz.normal')}}" target="_blank">
                             <div class="p-3 border bg-primary text-light rounded-3">
-                                <h3>Normal Sınav</h3><br>
-                                <small>Meb sınavına uygun soru ve kategoriler için</small>
+                                <h3>{{__('user/my-online-exam.normal_exam')}}</h3><br>
+                                <small>{{__('user/my-online-exam.normal_exam_detail')}}</small>
                             </div>
                         </a>
                     </div>
                     <div class="col-4 exams">
                         <a href="{{route('user.custom-exam-setting')}}">
                             <div class="p-3 border bg-success text-light rounded-3">
-                                <h3>Özel Sınav</h3><br>
-                                <small>Hangi konudan kaç soru ile sınava gireceğini kendin seç</small>
+                                <h3>{{__('user/my-online-exam.custom_exam')}}</h3><br>
+                                <small>{{__('user/my-online-exam.custom_exam_detail')}}</small>
                             </div>
                         </a>
                     </div>
@@ -74,7 +66,7 @@
 
 @section('meta')
 
-    <title>Online Sınavlarım</title>
+    <title>{{__('user/menu.online_exam')}}</title>
 
 @endsection
 

@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Faturalar</h2>
+                    <h2>{{__('manager/menu.invoices')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Faturalar</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.invoices')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -27,11 +27,11 @@
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Fatura Numarası</th>
-                            <th scope="col">Fatura Tarihi</th>
-                            <th scope="col">Genel Toplam</th>
-                            <th scope="col">Durum</th>
-                            <th scope="col">İşlemler</th>
+                            <th scope="col">{{__('manager/invoice.number')}}</th>
+                            <th scope="col">{{__('manager/invoice.date')}}</th>
+                            <th scope="col">{{__('manager/invoice.general_total')}}</th>
+                            <th scope="col">{{__('manager/invoice.status')}}</th>
+                            <th scope="col">{{__('manager/invoice.transactions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -64,7 +64,7 @@
 
 @section('meta')
 
-    <title>Faturalar</title>
+    <title>{{__('manager/menu.invoices')}}</title>
 
 @endsection
 

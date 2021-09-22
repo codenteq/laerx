@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Canlı Dersler</h2>
+                    <h2>{{__('manager/menu.live_lesson')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Canlı Dersler</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.live_lesson')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -23,11 +23,11 @@
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Ders Adı</th>
-                            <th scope="col">Ders'e Katıl</th>
-                            <th scope="col">Ders Kategorisi</th>
-                            <th scope="col">Ders Tarihi</th>
-                            <th scope="col">İşlemler</th>
+                            <th scope="col">{{__('manager/live-lesson/live-lesson-list.name')}}</th>
+                            <th scope="col">{{__('manager/live-lesson/live-lesson-list.join')}}</th>
+                            <th scope="col">{{__('manager/live-lesson/live-lesson-list.type')}}</th>
+                            <th scope="col">{{__('manager/live-lesson/live-lesson-list.date')}}</th>
+                            <th scope="col">{{__('manager/live-lesson/live-lesson-list.transactions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -35,7 +35,7 @@
                             <tr>
                                 <td>{{$live_lesson->title}}</td>
                                 <td>
-                                    <a href="{{url($live_lesson->url)}}" target="_blank" class="btn btn-light">Katıl</a>
+                                    <a href="{{url($live_lesson->url)}}" target="_blank" class="btn btn-light">{{__('manager/live-lesson/live-lesson-list.join_btn')}}</a>
                                 </td>
                                 <td>{{$live_lesson->type->title}}</td>
                                 <td>{{$live_lesson->live_date}}</td>
@@ -61,7 +61,7 @@
 
 @section('meta')
 
-    <title>Canlı Dersler</title>
+    <title>{{__('manager/menu.live_lesson')}}</title>
 
 @endsection
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\QuestionResource;
 use App\Models\Test;
+use App\Models\TestQuestion;
 use App\Services\QuizService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -74,6 +75,14 @@ class QuizController extends Controller
     public function postUserAnswer(QuizService $questionService, Request $request): JsonResponse
     {
         $questionService->userAnswerStore($request);
+        return response()->json('success');
+    }
+
+    // TODO: code refactor
+    public function postCloseExam(Request $request): JsonResponse
+    {
+        Test::find($request->testId)->delete();
+        TestQuestion::where('testId',$request->testId)->delete();
         return response()->json('success');
     }
 }

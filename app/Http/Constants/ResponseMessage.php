@@ -19,7 +19,7 @@ class ResponseMessage
         return [
             'status' => false,
             'title' => __('response-message.error_title'),
-            'message' => __('response-message.error_title')
+            'message' => __('response-message.error_message')
         ];
     }
 

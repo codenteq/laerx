@@ -73,7 +73,7 @@
                             <tr>
                                 <th scope="row">{{$test->testId}}</th>
                                 <td>{{$test->test_question_count}}</td>
-                                <td>45dk</td>
+                                <td>{{examTime($test->test_question_count)}}</td>
                                 <th>{{$test->point}}</th>
                                 <td class="{{resultStatus($test->point) == 'Başarılı' ? 'text-success' : 'text-danger'}} fw-bold">{{resultStatus($test->point)}}</td>
                                 <td>

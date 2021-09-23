@@ -29,7 +29,7 @@
                         @foreach($classExams as $exam)
                             <tr>
                                 <td>{{$exam->class_exam_question_type_sum_length}}</td>
-                                <td></td>
+                                <td>{{examTime($exam->class_exam_question_type_sum_length)}}</td>
                                 <td>
                                     <a href="{{route('user.quiz.class')}}?class={{$exam->id}}" class="btn btn-primary">
                                         {{__('user/my-class-exam.start_exam')}}

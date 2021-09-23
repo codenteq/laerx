@@ -33,7 +33,7 @@
                         @foreach($classExams as $exam)
                             <tr>
                                 <td>{{$exam->class_exam_question_type_sum_length}}</td>
-                                <td></td>
+                                <td>{{examTime($exam->class_exam_question_type_sum_length)}}</td>
                                 <td class="{{$exam->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$exam->status == 1 ? 'Aktif' : 'Pasif'}}</td>
                                 <td>
                                     <a href="{{route('manager.class-exam.edit',$exam->id)}}">

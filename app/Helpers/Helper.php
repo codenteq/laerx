@@ -6,6 +6,7 @@ use App\Models\QuestionChoiceKey;
 use App\Models\TestQuestion;
 use App\Models\UserAnswer;
 use Carbon\Carbon;
+use Carbon\CarbonInterval;
 use Carbon\CarbonPeriod;
 
 function ignoreDateCheck($date): bool
@@ -69,5 +70,12 @@ function resultStatus($point): string
         return $point >= 70 ? 'Başarılı' : 'Başarısız';
     }
     return 0;
+}
+
+function examTime($questionLength) {
+    if ($questionLength == 50) {
+        return 45 . ' dakika';
+    }
+    return CarbonInterval::seconds($questionLength * 60)->cascade()->forHumans();
 }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CarTypeController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\GroupController;
@@ -151,6 +152,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.role'])->grou
     Route::resource('period', PeriodController::class);
     Route::resource('type', QuestionTypeController::class);
     Route::resource('manager-user', ManagerUserController::class);
+    Route::resource('car-type', CarTypeController::class);
     Route::resource('lesson-content', LessonContentController::class);
     Route::resource('coupon', CouponController::class);
     Route::get('invoice/show/{invoiceId}', [InvoiceController::class, 'getInvoiceShow'])->name('company.invoice.show');

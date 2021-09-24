@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CarTypeController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\GroupController;
@@ -87,6 +88,7 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role', 'check.u
         Route::get('/class-exam/fetchQuestion', [QuizController::class, 'fetchClassExam'])->name('class');
         Route::get('/fetchUserAndTest', [QuizController::class, 'fetchUserAndTest']);
         Route::post('/postUserAnswer', [QuizController::class, 'postUserAnswer'])->name('user-answer.store');
+        Route::post('/postCloseExam', [QuizController::class, 'postCloseExam'])->name('close.exam');
     });
 
     Route::name('quiz.')->group(function () {
@@ -150,6 +152,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.role'])->grou
     Route::resource('period', PeriodController::class);
     Route::resource('type', QuestionTypeController::class);
     Route::resource('manager-user', ManagerUserController::class);
+    Route::resource('car-type', CarTypeController::class);
     Route::resource('lesson-content', LessonContentController::class);
     Route::resource('coupon', CouponController::class);
     Route::get('invoice/show/{invoiceId}', [InvoiceController::class, 'getInvoiceShow'])->name('company.invoice.show');

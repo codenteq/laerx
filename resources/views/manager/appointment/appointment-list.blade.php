@@ -40,7 +40,7 @@
                                 <td>{{$appointment->teacher->name .' '. $appointment->teacher->surname}}</td>
                                 <td>{{$appointment->car->plate_code}}</td>
                                 <td>{{$appointment->date}}</td>
-                                <td class="{{$appointment->status === 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$appointment->status === 1 ? 'Aktif' : 'Pasif'}}</td>
+                                <td class="{{$appointment->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$appointment->status === 1 ? 'Aktif' : 'Pasif'}}</td>
                                 <td>
                                     <a href="{{route('manager.appointment.edit',$appointment)}}">
                                         <i class="bi bi-pen text-dark"></i>

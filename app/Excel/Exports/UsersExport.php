@@ -11,7 +11,7 @@ class UsersExport implements FromView
     public function view(): View
     {
         return view('exports.users', [
-            'users' => User::where('type', User::Normal)->get()
+            'users' => User::where('type', User::Normal)->with('info')->whereRelation('info','companyId',companyId())->get()
         ]);
     }
 }

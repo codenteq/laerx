@@ -73,20 +73,18 @@ class QuizService
         $arr = [];
         $types = session('custom_exam_setting');
         foreach ($types as $key => $val) {
-            array_push($arr, Question::where('typeId', $key)->with('choice')->take($val)->get());
+            array_push($arr, Question::where('typeId', $key)->where('languageId',languageId())->with('choice')->inRandomOrder()->take($val)->get());
         }
 
         return Arr::collapse($arr);
     }
 
-
-
-    public function normalExam()
+    public function normalExam(): array
     {
         $arr = [];
         $types = NormalExam::QUIZ_EXAM_TYPE;
         foreach ($types as $key => $val) {
-            array_push($arr, Question::where('typeId', $key)->with('choice')->take($val)->get());
+            array_push($arr, Question::where('typeId', $key)->where('languageId',languageId())->with('choice')->inRandomOrder()->take($val)->get());
         }
 
         return Arr::collapse($arr);

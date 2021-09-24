@@ -28,7 +28,7 @@ class LiveLessonController extends Controller
      */
     public function index()
     {
-        $live_lessons = LiveLesson::with('type')->latest()->get();
+        $live_lessons = LiveLesson::with('type')->where('companyId',companyId())->latest()->get();
         return view('manager.live.live-lessons', compact('live_lessons'));
     }
 

@@ -52,11 +52,14 @@ class AppointmentService
      */
     public function settingStoreAndUpdate(Request $request): void
     {
+        $arr = [];
         foreach ($request->except('_token') as $key => $val) {
+            array_push($arr,$val);
             AppointmentSetting::updateOrCreate([
                 'ignore_date' => $val,
                 'companyId' => companyId()
             ]);
         }
+        AppointmentSetting::whereNotIn('ignore_date', $arr)->delete();
     }
 }

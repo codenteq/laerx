@@ -84,7 +84,7 @@
 
                         <div class="mt-3">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('user/profile.save_btn')}}</button>
-                            <button type="button" class="btn btn-danger">{{__('user/profile.cancel_btn')}}</button>
+                            <a href="{{route('user.dashboard')}}" class="btn btn-danger">{{__('user/profile.cancel_btn')}}</a>
                         </div>
 
                     </form>

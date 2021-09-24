@@ -1,22 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Manager;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Manager\CarRequest;
-use App\Models\Car;
 use App\Models\CarType;
-use App\Services\Manager\CarService;
+use App\Services\Admin\CarTypeService;
 use Illuminate\Http\Request;
 
-class CarController extends Controller
+class CarTypeController extends Controller
 {
-    private $carService;
+    protected $carTypeService;
 
-    public function __construct(CarService $carService)
+    public function __construct(CarTypeService $carTypeService)
     {
-        $this->carService = $carService;
+        $this->carTypeService = $carTypeService;
     }
 
     /**
@@ -26,8 +24,8 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::with('type')->where('companyId',companyId())->latest()->get();
-        return view('manager.cars.cars-list', compact('cars'));
+        $types = CarType::all();
+        return view('admin.car-type.car-type', compact('types'));
     }
 
     /**
@@ -37,20 +35,19 @@ class CarController extends Controller
      */
     public function create()
     {
-        $cartypes = CarType::all();
-        return view('manager.cars.cars-add', compact('cartypes'));
+        return view('admin.car-type.car-type-add');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Manager\CarRequest $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CarRequest $request)
+    public function store(Request $request)
     {
         try {
-            $this->carService->store($request);
+            $this->carTypeService->store($request);
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -60,28 +57,25 @@ class CarController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Car $car
+     * @param \App\Models\CarType $car_type
      * @return \Illuminate\Http\Response
      */
-    public function edit(Car $car)
+    public function edit(CarType $car_type)
     {
-        return view('manager.cars.cars-edit', [
-            'car' => $car,
-            'cartypes' => CarType::all()
-        ]);
+        return view('admin.car-type.car-type-edit', compact('car_type'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Manager\CarRequest $request
-     * @param \App\Models\Car $car
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\CarType $car_type
      * @return \Illuminate\Http\Response
      */
-    public function update(CarRequest $request, Car $car)
+    public function update(Request $request, CarType $car_type)
     {
         try {
-            $this->carService->update($request,$car->id);
+            $this->carTypeService->update($car_type->id, $request);
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -91,13 +85,13 @@ class CarController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Car $car
+     * @param \App\Models\CarType $car_type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Car $car)
+    public function destroy(CarType $car_type)
     {
         try {
-            $this->carService->destroy($car->id);
+            $this->carTypeService->destroy($car_type->id);
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

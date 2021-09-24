@@ -42,6 +42,12 @@
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
+                        <a href="{{route('admin.car-type.index')}}">
+                            <i class="bi bi-minecart-loaded fs-1"></i><br>
+                            <span>Araç Türleri</span>
+                        </a>
+                    </div>
+                    <div class="col base p-5 mb-2">
                         <a href="{{route('admin.coupon.index')}}">
                             <i class="bi bi-tags fs-1"></i><br>
                             <span>Kuponlar</span>

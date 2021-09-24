@@ -40,7 +40,7 @@
                                 <td>{{$company->title}}</td>
                                 <td>{{invoiceDiffDate($company->id)}}</td>
                                 <td class="{{$company->invoice->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$company->invoice->status == 1 ? 'Ödeme Alındı' : 'Ödeme Alınmadı'}}</td>
-                                <td class="text-success fw-bold">Aktif</td>
+                                <td class="{{$company->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$company->status == 1 ? 'Aktif' : 'Pasif'}}</td>
                                 <td>{{$company->updated_at}}</td>
                                 <td>
                                     <a href="{{route('admin.company.edit',$company->id)}}" class="me-2">

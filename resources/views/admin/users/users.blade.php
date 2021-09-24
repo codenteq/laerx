@@ -41,7 +41,7 @@
                                 <td>{{$user->phone}}</td>
                                 <td>{{$user->company->title}}</td>
                                 <td>{{$user->language->title}}</td>
-                                <td>{{$user->status}}</td>
+                                <td class="{{$user->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$user->status == 1 ? 'Aktif' : 'Pasif'}}</td>
                                 <td>
                                     <a href="{{route('admin.manager-user.edit',$user->userId)}}">
                                         <i class="bi bi-pen text-dark"></i>

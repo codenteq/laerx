@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
 
 class CheckRole
 {
@@ -20,8 +20,14 @@ class CheckRole
     {
         $user = auth()->user()->type;
         $currentRoutePrefix = explode('/', $request->route()->getPrefix());
-        if (in_array($user, $this->userAccessRole()[$currentRoutePrefix[1]])) {
-            return $next($request);
+        if (App::routesAreCached() == true) {
+            if (in_array($user, $this->userAccessRole()[$currentRoutePrefix[0]])) {
+                return $next($request);
+            }
+        } else {
+            if (in_array($user, $this->userAccessRole()[$currentRoutePrefix[1]])) {
+                return $next($request);
+            }
         }
         abort(401);
     }

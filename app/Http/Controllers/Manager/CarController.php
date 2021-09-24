@@ -26,7 +26,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::with('type')->latest()->get();
+        $cars = Car::with('type')->where('companyId',companyId())->latest()->get();
         return view('manager.cars.cars-list', compact('cars'));
     }
 

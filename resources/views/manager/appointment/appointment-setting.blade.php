@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Randevu Ayarları</h2>
+                    <h2>{{__('manager/menu.appointment_setting')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment-car')}}">Araç & Randevular</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Randevu Ayarları</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.appointment-car')}}">{{__('manager/menu.car_appointment')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.appointment_setting')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -19,11 +19,11 @@
                 <div class="col-12 col-lg-12 mt-3">
 
                     <div class="card col-12 col-md-8">
-                        <h5 class="card-header"><i class="bi bi-calendar4-range fs-5"></i>&nbsp;Randevu Olmayan Günler</h5>
+                        <h5 class="card-header"><i class="bi bi-calendar4-range fs-5"></i>&nbsp;{{__('manager/car-appointment/appointment-setting.appointment_day')}}</h5>
                         <div class="card-body">
                             <form name="form-data">
                                 @csrf
-                                <h5 class="card-title">Randevu için uygun olmayan tarihleri işaretleyiniz..</h5>
+                                <h5 class="card-title">{{__('manager/car-appointment/appointment-setting.appointment_day_info')}}</h5>
                                 <div class="row p-5x p-4">
                                     @foreach($months as $key => $val)
                                         @foreach ($val as $keys => $value)
@@ -40,9 +40,9 @@
                                 </div>
                                 <div class="mt-3">
                                     <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">
-                                        Kaydet
+                                        {{__('manager/car-appointment/appointment-setting.save_btn')}}
                                     </button>
-                                    <a href="{{route('manager.appointment-car')}}" class="btn btn-danger">İptal</a>
+                                    <a href="{{route('manager.appointment-car')}}" class="btn btn-danger">{{__('manager/car-appointment/appointment-setting.cancel_btn')}}</a>
                                 </div>
                             </form>
                         </div>
@@ -57,7 +57,7 @@
 
 @section('meta')
 
-    <title>Randevu Ayarları</title>
+    <title>{{__('manager/menu.appointment_setting')}}</title>
 
 @endsection
 

@@ -51,6 +51,8 @@
 
                         <textarea id="ckeditor" name="content"></textarea>
 
+                        <input type="hidden" name="ck_editor" value="1">
+
                         <div class="mt-3 mb-5">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
                             </button>
@@ -79,7 +81,6 @@
 @section('js')
     <script>
         CKEDITOR.replace('ckeditor');
-        CKEDITOR.instances['ckeditor'].updateElement();
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -89,5 +90,7 @@
         const actionUrl = '{{route('admin.lesson-content.store')}}';
         const backUrl = '{{route('admin.lesson-content.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    <script src="{{asset('js/post.js')}}">
+        CKEDITOR.instances['ckeditor'].updateElement();
+    </script>
 @endsection

@@ -6,12 +6,12 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Araç & Randevular</h2>
+                    <h2>{{__('manager/menu.car_appointment')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Araç & Randevular</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.car_appointment')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -21,19 +21,19 @@
                     <div class="col base p-5 mb-2">
                         <a href="{{route('manager.car.index')}}">
                             <i class="bi bi-minecart-loaded fs-1"></i><br>
-                            <span>Araçlar</span>
+                            <span>{{__('manager/menu.car')}}</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-2">
                         <a href="{{route('manager.appointment.index')}}">
                             <i class="bi bi-calendar4-range fs-1"></i><br>
-                            <span>Randevular</span>
+                            <span>{{__('manager/menu.appointment')}}</span>
                         </a>
                     </div>
                     <div class="col base p-5 mb-5">
                         <a href="{{route('manager.appointment.setting')}}">
                             <i class="bi bi-sliders fs-1"></i><br>
-                            <span>Randevu Ayarları</span>
+                            <span>{{__('manager/menu.appointment_setting')}}</span>
                         </a>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
 
 @section('meta')
 
-    <title>Araç & Randevular</title>
+    <title>{{__('manager/menu.car_appointment')}}</title>
 
 @endsection
 

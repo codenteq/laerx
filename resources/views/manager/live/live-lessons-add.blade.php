@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="title" >
+                            <input type="text" class="form-control" name="title" placeholder="Ders Adı">
                             <label for="floatingFirst">{{__('manager/live-lesson/live-lesson-add-edit.name')}}</label>
                         </div>
 
@@ -49,6 +49,7 @@
 
                         <div class="form-floating">
                             <select class="form-select" name="periodId" aria-label="Floating label select example">
+                                <option selected disabled>{{__('manager/live-lesson/live-lesson-add-edit.select')}}</option>
                                 @foreach($periods as $period)
                                     <option value="{{$period->id}}">{{$period->title}}</option>
                                 @endforeach
@@ -60,6 +61,7 @@
 
                         <div class="form-floating">
                             <select class="form-select" name="monthId" aria-label="Floating label select example">
+                                <option selected disabled>{{__('manager/live-lesson/live-lesson-add-edit.select')}}</option>
                                 @foreach($months as $month)
                                     <option value="{{$month->id}}">{{$month->title}}</option>
                                 @endforeach
@@ -71,6 +73,7 @@
 
                         <div class="form-floating">
                             <select class="form-select" name="groupId" aria-label="Floating label select example">
+                                <option selected disabled>{{__('manager/live-lesson/live-lesson-add-edit.select')}}</option>
                                 @foreach($groups as $group)
                                     <option value="{{$group->id}}">{{$group->title}}</option>
                                 @endforeach
@@ -80,13 +83,13 @@
 
                         <br>
 
-                        <div class="form-check form-switch">
+{{--                        <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" value="1" name="status" id="flexSwitchCheckChecked"
                                    checked>
                             <label class="form-check-label" for="flexSwitchCheckChecked">{{__('manager/live-lesson/live-lesson-add-edit.trainee_checkbox')}}</label>
                         </div>
 
-                        <br>
+                        <br>--}}
 
                         <div class="mt-3 mb-5">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/live-lesson/live-lesson-add-edit.save_btn')}}

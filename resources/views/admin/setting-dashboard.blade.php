@@ -53,6 +53,12 @@
                             <span>Kuponlar</span>
                         </a>
                     </div>
+                    <div class="col base p-5 mb-2">
+                        <a href="{{route('admin.package.index')}}">
+                            <i class="bi bi-archive fs-1"></i><br>
+                            <span>Paketler</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 

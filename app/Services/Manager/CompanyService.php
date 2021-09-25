@@ -39,13 +39,12 @@ class CompanyService
         $info->stateId = $request->stateId;
         $info->address = $request->address;
         $info->zip_code = $request->zip_code;
-
+        $info->save();
+        
         if ($path != null) {
             //ImageConvertJob::dispatch($id, 'company', $path)->onQueue('image');
             $this->convertService->execute($id, 'company', $path);
-            $info->logo = $path;
+            //$info->logo = $path;
         }
-
-        $info->save();
     }
 }

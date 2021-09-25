@@ -6,13 +6,13 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Randevu Düzenle</h2>
+                    <h2>{{__('manager/menu.appointment_edit')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment-car')}}">Araç & Randevular</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment.index')}}">Randevular</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Randevu Düzenle</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.appointment-car')}}">{{__('manager/menu.car_appointment')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.appointment.index')}}">{{__('manager/menu.appointment')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.appointment_edit')}}</li>
                     </ol>
                 </nav>
             </figure>
@@ -23,39 +23,39 @@
                         @method('PUT')
                         <div class="form-floating">
                             <select class="form-select" name="userId" aria-label="Floating label select example">
-                                <option disabled selected>Seçiniz</option>
+                                <option disabled selected>{{__('manager/car-appointment/appointment-add-edit.select')}}</option>
                                 @foreach($users as $user)
                                     <option
                                         value="{{$user->id}}" {{$appointment->userId === $user->id ? 'selected' : null}}>{{$user->name .' '. $user->surname}}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect">Kursiyer</label>
+                            <label for="floatingSelect">{{__('manager/car-appointment/appointment-add-edit.trainee')}}</label>
                         </div>
 
                         <br>
 
                         <div class="form-floating">
                             <select class="form-select" name="teacherId" aria-label="Floating label select example">
-                                <option disabled selected>Seçiniz</option>
+                                <option disabled selected>{{__('manager/car-appointment/appointment-add-edit.select')}}</option>
                                 @foreach($teachers as $teacher)
                                     <option
                                         value="{{$teacher->id}}" {{$appointment->teacherId === $teacher->id ? 'selected' : null}}>{{$teacher->name .' '. $teacher->surname}}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect">Eğitmen</label>
+                            <label for="floatingSelect">{{__('manager/car-appointment/appointment-add-edit.teacher')}}</label>
                         </div>
 
                         <br>
 
                         <div class="form-floating">
                             <select class="form-select" name="carId" aria-label="Floating label select example">
-                                <option disabled selected>Seçiniz</option>
+                                <option disabled selected>{{__('manager/car-appointment/appointment-add-edit.select')}}</option>
                                 @foreach($cars as $car)
                                     <option
                                         value="{{$car->id}}" {{$appointment->carId === $car->id ? 'selected' : null}}>{{$car->plate_code}}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect">Araç</label>
+                            <label for="floatingSelect">{{__('manager/car-appointment/appointment-add-edit.car')}}</label>
                         </div>
 
                         <br>
@@ -64,13 +64,13 @@
                             <input type="date" class="form-control" name="date" placeholder="Tarih"
                                    min="{{\Carbon\Carbon::now()->toDateString()}}"
                                    value="{{$appointment->date}}">
-                            <label for="floatingAddress">Tarih</label>
+                            <label for="floatingAddress">{{__('manager/car-appointment/appointment-add-edit.date')}}</label>
                         </div>
 
                         <div class="mt-3 mb-5">
-                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/car-appointment/appointment-add-edit.save_btn')}}
                             </button>
-                            <a href="{{route('manager.appointment.index')}}" class="btn btn-danger">İptal</a>
+                            <a href="{{route('manager.appointment.index')}}" class="btn btn-danger">{{__('manager/car-appointment/appointment-add-edit.cancel_btn')}}</a>
                         </div>
 
                     </form>
@@ -83,7 +83,7 @@
 
 @section('meta')
 
-    <title>Randevu Düzenle</title>
+    <title>{{__('manager/menu.appointment_edit')}}</title>
 
 @endsection
 

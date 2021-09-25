@@ -41,6 +41,7 @@
 
                         <div class="form-floating">
                             <select class="form-select" name="typeId" aria-label="Floating label select example">
+                                <option selected disabled>{{__('manager/live-lesson/live-lesson-add-edit.select')}}</option>
                                 @foreach($types as $type)
                                     <option
                                         value="{{$type->id}}" {{$live_lesson->typeId == $type->id ? 'selected' : null}}>{{$type->title}}</option>
@@ -53,6 +54,7 @@
 
                         <div class="form-floating">
                             <select class="form-select" name="periodId" aria-label="Floating label select example">
+                                <option selected disabled>{{__('manager/live-lesson/live-lesson-add-edit.select')}}</option>
                                 @foreach($periods as $period)
                                     <option
                                         value="{{$period->id}}" {{$live_lesson->periodId == $period->id ? 'selected' : null}}>{{$period->title}}</option>
@@ -65,6 +67,7 @@
 
                         <div class="form-floating">
                             <select class="form-select" name="monthId" aria-label="Floating label select example">
+                                <option selected disabled>{{__('manager/live-lesson/live-lesson-add-edit.select')}}</option>
                                 @foreach($months as $month)
                                     <option
                                         value="{{$month->id}}" {{$live_lesson->monthId == $month->id ? 'selected' : null}}>{{$month->title}}</option>
@@ -77,6 +80,7 @@
 
                         <div class="form-floating">
                             <select class="form-select" name="groupId" aria-label="Floating label select example">
+                                <option selected disabled>{{__('manager/live-lesson/live-lesson-add-edit.select')}}</option>
                                 @foreach($groups as $group)
                                     <option
                                         value="{{$group->id}}" {{$live_lesson->groupId == $group->id ? 'selected' : null}}>{{$group->title}}</option>
@@ -87,13 +91,13 @@
 
                         <br>
 
-                        <div class="form-check form-switch">
+{{--                        <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="status" value="1" id="flexSwitchCheckChecked"
                                    checked>
                             <label class="form-check-label" for="flexSwitchCheckChecked">{{__('manager/live-lesson/live-lesson-add-edit.trainee_checkbox')}}</label>
                         </div>
 
-                        <br>
+                        <br>--}}
 
                         <div class="mt-3 mb-5">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/live-lesson/live-lesson-add-edit.save_btn')}}

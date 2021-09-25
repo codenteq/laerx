@@ -40,10 +40,6 @@ class GlobalService
     public function userInfoStore($request, $id): void
     {
         !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar', 'public');
-        if ($path != null) {
-            //ImageConvertJob::dispatch($id, 'user', $path)->onQueue('image');
-            $this->convertService->execute($id, 'user', $path);
-        }
         UserInfo::create([
             'phone' => $request->phone,
             'address' => $request->address,
@@ -56,6 +52,10 @@ class GlobalService
             'companyId' => auth()->user()->type == User::Admin ? $request->companyId : companyId(),
             'userId' => $id
         ]);
+        if ($path != null) {
+            //ImageConvertJob::dispatch($id, 'user', $path)->onQueue('image');
+            $this->convertService->execute($id, 'user', $path);
+        }
     }
 
     /**
@@ -84,8 +84,8 @@ class GlobalService
         $user = UserInfo::where('userId', $id, 'user')->first();
         if ($path != null) {
             //ImageConvertJob::dispatch($id, 'user', $path)->onQueue('image');
+            //$user->photo = $path;
             $this->convertService->execute($id, 'user', $path);
-            $user->photo = $path;
         }
 
         $user->phone = $request->phone;

@@ -87,13 +87,13 @@
 
                         <br>
 
-                        <div class="form-check form-switch">
+{{--                        <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="status" value="1" id="flexSwitchCheckChecked"
                                    checked>
                             <label class="form-check-label" for="flexSwitchCheckChecked">{{__('manager/live-lesson/live-lesson-add-edit.trainee_checkbox')}}</label>
                         </div>
 
-                        <br>
+                        <br>--}}
 
                         <div class="mt-3 mb-5">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/live-lesson/live-lesson-add-edit.save_btn')}}

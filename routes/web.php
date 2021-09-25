@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LessonContentController;
 use App\Http\Controllers\Admin\ManagerUserController;
+use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PeriodController;
 use App\Http\Controllers\Admin\QuestionTypeController;
 use App\Http\Controllers\Manager\AppointmentController;
@@ -154,6 +155,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.role'])->grou
     Route::resource('car-type', CarTypeController::class);
     Route::resource('lesson-content', LessonContentController::class);
     Route::resource('coupon', CouponController::class);
+    Route::resource('package', PackageController::class);
     Route::get('invoice/show/{invoiceId}', [InvoiceController::class, 'getInvoiceShow'])->name('company.invoice.show');
     Route::get('invoice/{companyId}', [InvoiceController::class, 'getInvoice'])->name('company.invoice');
     Route::post('invoice/confirm-pay', [InvoiceController::class, 'postConfirmPay'])->name('company.invoice.confirm.pay');

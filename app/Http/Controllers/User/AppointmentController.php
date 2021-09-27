@@ -20,7 +20,7 @@ class AppointmentController extends Controller
     public function index()
     {
         return view('user.appointments.appointment',[
-            'teachers' => User::where('type', User::Teacher)->get(),
+            'teachers' => User::where('type', User::Teacher)->whereRelation('info','companyId',companyId())->get(),
             'cars' => Car::where('status', 1)->get(),
             'appointments' => Appointment::where('userId', auth()->id())->where('companyId', companyId())->with('user')->get()
         ]);

@@ -7,6 +7,7 @@ return [
     'trainee_transactions' => 'Kursiyer İşlemleri',
     'new_trainee' => 'Yeni Kursiyer Ekle',
     'edit_trainee' => 'Kursiyer Düzenle',
+    'new_trainee_excel' => 'Excel ile Kursiyer Ekle',
     'trainee_list' => 'Kursiyer Listesi',
     'trainee_report' => 'Kursiyer Raporları',
     'trainee_report_detail' => 'Kursiyer Rapor Detay',

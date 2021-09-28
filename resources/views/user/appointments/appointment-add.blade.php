@@ -34,7 +34,7 @@
                     <br>
 
                     <div class="form-floating mb-3">
-                        <input type="date" class="form-control" name="date"
+                        <input type="date" class="form-control" id="date" name="date"
                                min="{{\Carbon\Carbon::now()->toDateString()}}">
                         <label for="floatingAddress">{{__('user/my-appointment.date')}}</label>
                     </div>

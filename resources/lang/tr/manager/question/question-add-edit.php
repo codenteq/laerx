@@ -4,6 +4,7 @@ return [
     'language_select' => 'Soru Dilini Seçin',
     'question_photo_checkbox' => 'Soru Resim',
     'question' => 'Soru',
+    'description' => 'Açıklama',
     'type' => 'Soru Tipi',
     'choice_photo_checkbox' => 'Cevap Resim',
     'correct_choice_checkbox' => 'Doğru Cevabı Seçin',

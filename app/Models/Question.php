@@ -11,6 +11,7 @@ class Question extends Model
 
     protected $fillable = [
         'title',
+        'description',
         'typeId',
         'questionImage',
         'choiceImage',

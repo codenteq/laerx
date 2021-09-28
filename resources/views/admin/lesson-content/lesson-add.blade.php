@@ -75,10 +75,10 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
-    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 @endsection
 
 @section('js')
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('ckeditor');
     </script>
@@ -90,7 +90,5 @@
         const actionUrl = '{{route('admin.lesson-content.store')}}';
         const backUrl = '{{route('admin.lesson-content.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}">
-        CKEDITOR.instances['ckeditor'].updateElement();
-    </script>
+    <script src="{{asset('js/post.js')}}"></script>
 @endsection

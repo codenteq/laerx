@@ -16,6 +16,7 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->mediumText('description')->nullable();
             $table->boolean('questionImage');
             $table->boolean('choiceImage');
             $table->string('imagePath')->nullable();

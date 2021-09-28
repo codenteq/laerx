@@ -72,7 +72,8 @@
         const dateInput = document.querySelector("#date");
         const fp = flatpickr(dateInput, {
             locale: "tr",
-            minDate: "today"
+            minDate: "today",
+            disableMobile: "true"
         });  // flatpickr
     </script>
     <script>

@@ -18,6 +18,7 @@ class CreateTestQuestionsTable extends Migration
             $table->foreignId('questionId');
             $table->foreignId('testId');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -21,6 +21,7 @@ class CreateClassExamsTable extends Migration
             $table->foreignId('groupId')->index();
             $table->boolean('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

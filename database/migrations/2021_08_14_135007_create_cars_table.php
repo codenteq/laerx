@@ -20,6 +20,7 @@ class CreateCarsTable extends Migration
             $table->foreignId('typeId');
             $table->boolean('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

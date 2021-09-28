@@ -24,6 +24,7 @@ class CreateTestResultTypesTable extends Migration
             $table->foreignId('resultId');
             $table->foreignId('userId');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

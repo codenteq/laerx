@@ -18,6 +18,7 @@ class CreateQuestionChoiceKeysTable extends Migration
             $table->foreignId('questionId');
             $table->foreignId('choiceId');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

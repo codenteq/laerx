@@ -22,6 +22,7 @@ class CreateAppointmentsTable extends Migration
             $table->foreignId('carId');
             $table->foreignId('companyId');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -19,6 +19,7 @@ class CreateQuestionChoicesTable extends Migration
             $table->string('path')->nullable();
             $table->foreignId('questionId');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

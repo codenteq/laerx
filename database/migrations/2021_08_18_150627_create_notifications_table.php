@@ -19,6 +19,7 @@ class CreateNotificationsTable extends Migration
             $table->boolean('status')->default(0);
             $table->foreignId('companyId')->index();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

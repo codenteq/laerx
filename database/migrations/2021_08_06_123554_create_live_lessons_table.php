@@ -24,6 +24,7 @@ class CreateLiveLessonsTable extends Migration
             $table->foreignId('typeId');
             $table->foreignId('companyId');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

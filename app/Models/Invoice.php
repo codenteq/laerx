@@ -24,13 +24,18 @@ class Invoice extends Model
         'status'
     ];
 
-    public function company()
+    public function company(): HasOne
     {
         return $this->hasOne(Company::class,'id','companyId');
     }
 
-    public function payment()
+    public function payment(): HasOne
     {
         return $this->hasOne(PaymentMethod::class,'id','paymentId');
+    }
+
+    public function package(): HasOne
+    {
+        return $this->hasOne(Package::class,'id','packageId');
     }
 }

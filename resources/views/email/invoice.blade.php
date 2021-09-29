@@ -156,7 +156,7 @@
         </tr>
 
         <tr class="item">
-            <td>Motorlu Taşıtlar Sürücü Kurs Sistemi</td>
+            <td>{{$invoice->package->title}}</td>
 
             <td>{{$invoice->price}}</td>
         </tr>

@@ -32,10 +32,6 @@ class CompanyInfoService
     public function store(CompanyRequest $request, $id): void
     {
         !$request->file('logo') ? $path = null : $path = $request->file('logo')->store('companies', 'public');
-        if ($path != null){
-            //ImageConvertJob::dispatch($id, 'company', $path)->onQueue('image');
-            $this->convertService->execute($id, 'company', $path);
-        }
         CompanyInfo::create([
             'tax_no' => $request->tax_no,
             'email' => $request->email,
@@ -50,6 +46,12 @@ class CompanyInfoService
             'logo' => $path,
             'companyId' => $id,
         ]);
+
+        if ($path != null){
+            //ImageConvertJob::dispatch($id, 'company', $path)->onQueue('image');
+            $this->convertService->execute($id, 'company', $path);
+        }
+
         $this->invoiceService->store($request, $id);
     }
 
@@ -60,10 +62,6 @@ class CompanyInfoService
     public function update(CompanyRequest $request, $id): void
     {
         !$request->file('logo') ? $path = null : $path = $request->file('logo')->store('companies', 'public');
-        if ($path != null){
-            //ImageConvertJob::dispatch($id, 'company', $path)->onQueue('image');
-            $this->convertService->execute($id, 'company', $path);
-        }
 
         CompanyInfo::where('companyId', $id)->update([
             'tax_no' => $request->tax_no,
@@ -79,6 +77,11 @@ class CompanyInfoService
             'logo' => $path,
             'companyId' => $id,
         ]);
+
+        if ($path != null){
+            //ImageConvertJob::dispatch($id, 'company', $path)->onQueue('image');
+            $this->convertService->execute($id, 'company', $path);
+        }
     }
 
     public function destroy($id): void

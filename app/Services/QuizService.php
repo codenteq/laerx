@@ -26,7 +26,7 @@ class QuizService
      */
     public function testStore($questions)
     {
-        $test = Test::create(['title' => rand(),'userId' => 3]);
+        $test = Test::create(['title' => rand(),'userId' => auth()->id()]);
         foreach ($questions as $question) {
             TestQuestion::create([
                 'questionId' => $question->id,

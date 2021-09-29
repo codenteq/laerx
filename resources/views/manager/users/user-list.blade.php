@@ -44,7 +44,7 @@
                                 <td>{{$user->period->title}}</td>
                                 <td>{{$user->month->title}}</td>
                                 <td>{{$user->group->title}}</td>
-                                <td>{{$user->status === 0 ? 'Pasif' : 'Aktif'}}</td>
+                                <td>{{$user->status == 0 ? 'Pasif' : 'Aktif'}}</td>
                                 <td>
                                     <a href="{{route('manager.user.edit',$user->userId)}}">
                                         <i class="bi bi-pen text-dark"></i>

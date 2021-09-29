@@ -232,7 +232,7 @@
         const questionImageInput = document.querySelector('.question-image');
 
         choiceImage.addEventListener('click', () => {
-            if (choiceImage.checked === true) {
+            if (choiceImage.checked == true) {
                 textInput.forEach((input, index) => {
                     textInput[index].classList.add('d-none');
                     imageInput[index].classList.remove('d-none');
@@ -246,7 +246,7 @@
         });
 
         questionImageChoice.addEventListener('click', () => {
-            if (questionImageChoice.checked === true)
+            if (questionImageChoice.checked == true)
                 questionImageInput.classList.remove('d-none')
             else
                 questionImageInput.classList.add('d-none')

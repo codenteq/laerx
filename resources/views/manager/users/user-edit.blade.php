@@ -70,7 +70,7 @@
 
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="status" value="1"
-                                {{$user->status === 1 ? 'checked' : null}}>
+                                {{$user->status == 1 ? 'checked' : null}}>
                             <label class="form-check-label" for="flexSwitchCheckChecked">{{__('manager/user/trainee-add-edit.status')}}</label>
                         </div>
 
@@ -80,7 +80,7 @@
                             <select class="form-select" id="floatingSelect" name="periodId"
                                     aria-label="Floating label select example">
                                 @foreach($periods as $period)
-                                    <option value="{{$period->id}}">{{$period->title}}</option>
+                                    <option value="{{$period->id}}" {{$user->periodId == $period->id ? 'selected' : null}}>{{$period->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">{{__('manager/user/trainee-add-edit.period')}}</label>
@@ -92,7 +92,7 @@
                             <select class="form-select" name="monthId" aria-label="Floating label select example">
                                 @foreach($months as $month)
                                     <option
-                                        value="{{$month->id}}" {{$user->monthId === $month->id ? 'selected' : null}}>{{$month->title}}</option>
+                                        value="{{$month->id}}" {{$user->monthId == $month->id ? 'selected' : null}}>{{$month->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">{{__('manager/user/trainee-add-edit.month')}}</label>
@@ -103,7 +103,7 @@
                         <div class="form-floating">
                             <select class="form-select" name="groupId" aria-label="Floating label select example">
                                 @foreach($groups as $group)
-                                    <option value="{{$group->id}}">{{$group->title}}</option>
+                                    <option value="{{$group->id}}" {{$user->groupId == $group->id ? 'selected' : null}}>{{$group->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">{{__('manager/user/trainee-add-edit.group')}}</label>
@@ -114,7 +114,7 @@
                         <div class="form-floating">
                             <select class="form-select" name="languageId" aria-label="Floating label select example">
                                 @foreach($languages as $language)
-                                    <option value="{{$language->id}}">{{$language->title}}</option>
+                                    <option value="{{$language->id}}" {{$user->languageId == $language->id ? 'selected' : null}}>{{$language->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">{{__('manager/user/trainee-add-edit.language')}}</label>

@@ -31,7 +31,7 @@
                             <select class="form-select" name="typeId" aria-label="Floating label select example">
                                 @foreach($cartypes as $type)
                                     <option
-                                        value="{{$type->id}}" {{$car->typeId === $type->id ? 'selected' : null}}>{{$type->title}}</option>
+                                        value="{{$type->id}}" {{$car->typeId == $type->id ? 'selected' : null}}>{{$type->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">{{__('manager/car-appointment/car.type')}}</label>
@@ -41,7 +41,7 @@
 
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" value="1" name="status" id="flexSwitchCheckChecked"
-                                {{$car->status === 1 ? 'checked' : null}}>
+                                {{$car->status == 1 ? 'checked' : null}}>
                             <label class="form-check-label" for="flexSwitchCheckChecked">{{__('manager/car-appointment/car.car_checkbox')}}</label>
                         </div>
 

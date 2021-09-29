@@ -79,7 +79,7 @@
                             <select class="form-select" name="languageId" aria-label="Floating label select example">
                                 @foreach($languages as $language)
                                     <option
-                                        value="{{$language->id}}" {{$user->language === $language->id ? 'selected' : null}} >{{$language->title}}</option>
+                                        value="{{$language->id}}" {{$user->language == $language->id ? 'selected' : null}} >{{$language->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Dil</label>
@@ -89,7 +89,7 @@
                             <select class="form-select" name="companyId" aria-label="Floating label select example">
                                 @foreach($companies as $company)
                                     <option
-                                        value="{{$company->id}}" {{$user->companyId === $company->id ? 'selected' : null}}>{{$company->title}}</option>
+                                        value="{{$company->id}}" {{$user->companyId == $company->id ? 'selected' : null}}>{{$company->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Şirket</label>

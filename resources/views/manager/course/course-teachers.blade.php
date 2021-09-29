@@ -38,7 +38,7 @@
                                 <th scope="row">{{$user->user->name .' '. $user->user->surname}}</th>
                                 <td>{{$user->user->email}}</td>
                                 <td>{{$user->phone}}</td>
-                                <td class="{{$user->status === 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$user->status === 1 ? 'Aktif' : 'Pasif'}}</td>
+                                <td class="{{$user->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$user->status == 1 ? 'Aktif' : 'Pasif'}}</td>
                                 <td>{{$user->created_at}}</td>
                                 <td>
                                     <a href="{{route('manager.course-teacher.edit',$user->userId)}}">

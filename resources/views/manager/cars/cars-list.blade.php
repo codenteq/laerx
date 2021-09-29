@@ -34,7 +34,7 @@
                             <tr>
                                 <th scope="row">{{$car->plate_code}}</th>
                                 <td>{{$car->type->title}}</td>
-                                <td class="{{$car->status === 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$car->status === 1 ? 'Aktif' : 'Pasif'}}</td>
+                                <td class="{{$car->status == 1 ? 'text-success' : 'text-danger'}} fw-bold">{{$car->status == 1 ? 'Aktif' : 'Pasif'}}</td>
                                 <td>
                                     <a href="{{route('manager.car.edit',$car)}}">
                                         <i class="bi bi-pen text-dark"></i>

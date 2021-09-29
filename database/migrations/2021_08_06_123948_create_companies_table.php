@@ -18,6 +18,7 @@ class CreateCompaniesTable extends Migration
             $table->string('title');
             $table->boolean('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

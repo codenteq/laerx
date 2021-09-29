@@ -18,6 +18,7 @@ class CreateTestsTable extends Migration
             $table->string('title');
             $table->foreignId('userId');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

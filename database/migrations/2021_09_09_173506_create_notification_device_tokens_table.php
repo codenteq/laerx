@@ -18,6 +18,7 @@ class CreateNotificationDeviceTokensTable extends Migration
             $table->foreignId('userId')->index();
             $table->string('token');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

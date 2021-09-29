@@ -16,25 +16,21 @@ class QuestionTypeSeeder extends Seeder
     {
         DB::table('question_types')->insert([
             [
-                'id' => 1,
                 'title' => 'İlk Yardım',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'id' => 2,
                 'title' => 'Trafik Çevre',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'id' => 3,
                 'title' => 'Araç Tekniği',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'id' => 3,
                 'title' => 'Trafik Adabı',
                 'created_at' => now(),
                 'updated_at' => now(),

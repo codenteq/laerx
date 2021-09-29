@@ -26,6 +26,7 @@ class CreateUserInfosTable extends Migration
             $table->foreignId('companyId')->nullable();
             $table->foreignId('userId')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

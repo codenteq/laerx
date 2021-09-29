@@ -21,6 +21,7 @@ class CreateLessonContentsTable extends Migration
             $table->foreignId('languageId');
             $table->foreignId('typeId');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

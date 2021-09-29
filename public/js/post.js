@@ -3,7 +3,11 @@ const btn = document.querySelector(".btn-success");
 function createAndUpdateButton() {
     btn.disabled = true;
     btn.innerHTML = 'Kaydediliyor...';
+
     const formData = document.forms.namedItem('form-data');
+    if (formData.ck_editor) {
+        CKEDITOR.instances['ckeditor'].updateElement();
+    }
     const form = new FormData(formData);
     axios.post(actionUrl, form).then(res => {
         if (res.data.status === true) {

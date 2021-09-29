@@ -42,6 +42,12 @@
                             <input type="file" class="form-control" name="imagePath">
                             <label class="input-group-text" for="inputGroupFile02">{{__('manager/question/question-add-edit.question_photo_checkbox')}}</label>
                         </div>
+                        <div class="mb-3">
+                            <label class="mb-2">{{__('manager/question/question-add-edit.description')}}</label>
+                            <textarea id="ckeditor" name="description"></textarea>
+                            <input type="hidden" name="ck_editor" value="1">
+                        </div>
+
                         <div class="form-floating mb-3">
                             <select class="form-select" name="typeId" aria-label="Floating label select example">
                                 @foreach($types as $type)
@@ -198,6 +204,10 @@
 @endsection
 
 @section('js')
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('ckeditor');
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>

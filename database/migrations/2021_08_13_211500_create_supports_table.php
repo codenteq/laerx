@@ -20,6 +20,7 @@ class CreateSupportsTable extends Migration
             $table->boolean('status')->default(0);
             $table->foreignId('userId');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

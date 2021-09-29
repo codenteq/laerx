@@ -9,7 +9,6 @@ use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\QuestionChoiceKey;
 use App\Services\ImageConvertService;
-use Illuminate\Support\Facades\Log;
 
 class QuestionService
 {
@@ -27,6 +26,7 @@ class QuestionService
     {
         $question = new Question();
         $question->title = $request->title;
+        $question->description = $request->description;
         $question->questionImage = isset($request->questionImage) == "on" ? 1 : 0;
         $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
         $question->languageId = $request->languageId;
@@ -74,7 +74,7 @@ class QuestionService
      */
     public function choiceImageStore($request, $id)
     {
-        $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'photo', 'choiceImage', 'questionImage', 'imagePath']);
+        $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'description', 'ck_editor', 'statusChoiceImage', 'photo', 'choiceImage', 'questionImage', 'imagePath']);
         for ($i = 1; $i <= 4; $i++) {
             $choiceImage = 'choice_image_' . $i;
             $path = $request->file($choiceImage)->store('choices', 'public');
@@ -109,6 +109,7 @@ class QuestionService
     {
         $question = Question::find($id);
         $question->title = $request->title;
+        $question->description = $request->description;
         $question->questionImage = isset($request->questionImage) == "on" ? 1 : 0;
         $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
         $question->languageId = $request->languageId;
@@ -133,7 +134,7 @@ class QuestionService
      */
     public function choiceUpdate($request)
     {
-        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage', 'imagePath', 'languageId']);
+        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'description', 'ck_editor', 'statusChoiceImage', 'choiceImage', 'questionImage', 'imagePath', 'languageId']);
         foreach ($req as $key => $val) {
             QuestionChoice::find($key)->update([
                 'title' => $val,
@@ -159,7 +160,7 @@ class QuestionService
      */
     public function choiceImageUpdate($request)
     {
-        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'statusChoiceImage', 'choiceImage', 'questionImage', 'imagePath', 'languageId']);
+        $req = $request->except(['_token', '_method', 'typeId', 'correct_choice', 'title', 'description', 'ck_editor', 'statusChoiceImage', 'choiceImage', 'questionImage', 'imagePath', 'languageId']);
         foreach ($req as $key => $val) {
             if ($request->hasFile($key)) {
                 $path = $request->file($key)->store('choices', 'public');

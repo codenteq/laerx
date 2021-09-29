@@ -28,6 +28,7 @@ class CreateCompanyInfosTable extends Migration
             $table->foreignId('packageId');
             $table->foreignId('companyId');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

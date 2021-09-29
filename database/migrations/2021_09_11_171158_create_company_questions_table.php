@@ -18,6 +18,7 @@ class CreateCompanyQuestionsTable extends Migration
             $table->foreignId('questionId')->index();
             $table->foreignId('companyId')->index();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

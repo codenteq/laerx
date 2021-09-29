@@ -19,6 +19,7 @@ class CreateClassExamQuestionTypesTable extends Migration
             $table->foreignId('typeId')->index();
             $table->integer('length');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

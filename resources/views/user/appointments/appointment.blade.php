@@ -56,6 +56,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     @include('layouts.stylesheet')
 @endsection
 
@@ -65,6 +66,16 @@
     @include('layouts.script')
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/tr.js"></script>
+    <script>
+        const dateInput = document.querySelector("#date");
+        const fp = flatpickr(dateInput, {
+            locale: "tr",
+            minDate: "today",
+            disableMobile: "true"
+        });  // flatpickr
+    </script>
     <script>
         const actionUrl = '{{route('user.appointment.store')}}';
         const backUrl = '{{route('user.appointment.index')}}';

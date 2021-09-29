@@ -17,6 +17,7 @@ class QuestionResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'description' => $this->description,
             'choices' => QuestionChoiceResource::collection($this->whenLoaded('choice')),
             'questionImage' => $this->questionImage,
             'choiceImage' => $this->choiceImage,

@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Company;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,5 +17,7 @@ class DatabaseSeeder extends Seeder
         //Company::factory(30)->create();
         $this->call(MonthSeeder::class);
         $this->call(PaymentMethodSeeder::class);
+        $this->call(QuestionTypeSeeder::class);
+        $this->call(AdminSeeder::class);
     }
 }

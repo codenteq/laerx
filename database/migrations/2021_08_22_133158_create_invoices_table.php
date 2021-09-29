@@ -26,6 +26,7 @@ class CreateInvoicesTable extends Migration
             $table->foreignId('couponId')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

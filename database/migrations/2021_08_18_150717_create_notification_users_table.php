@@ -18,6 +18,7 @@ class CreateNotificationUsersTable extends Migration
             $table->foreignId('userId');
             $table->foreignId('notificationId');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

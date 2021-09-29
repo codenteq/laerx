@@ -24,7 +24,7 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" name="languageId" aria-label="Floating label select example">
                                 @foreach($languages as $language)
-                                    <option value="{{$language->id}}" {{$question->language->id === $language->id ? 'selected' : null}}>{{$language->title}}</option>
+                                    <option value="{{$language->id}}" {{$question->language->id == $language->id ? 'selected' : null}}>{{$language->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">{{__('manager/question/question-add-edit.language_select')}}</label>
@@ -47,11 +47,18 @@
                             <input type="file" class="form-control" name="imagePath">
                             <label class="input-group-text" for="inputGroupFile02">{{__('manager/question/question-add-edit.question_photo_checkbox')}}</label>
                         </div>
+
+                        <div class="mb-3">
+                            <label class="mb-2">{{__('manager/question/question-add-edit.description')}}</label>
+                            <textarea id="ckeditor" name="description">{!! $question->description !!}</textarea>
+                            <input type="hidden" name="ck_editor" value="1">
+                        </div>
+
                         <div class="form-floating mb-3">
                             <select class="form-select" name="typeId" aria-label="Floating label select example">
                                 @foreach($types as $type)
                                     <option
-                                        value="{{$type->id}}" {{$question->typeId === $type->id ? 'selected' : null}}>{{$type->title}}</option>
+                                        value="{{$type->id}}" {{$question->typeId == $type->id ? 'selected' : null}}>{{$type->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">{{__('manager/question/question-add-edit.type')}}</label>
@@ -74,7 +81,7 @@
                                 <div class="col-2 col-md-1">
                                     <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                           @if($choice->path == null){{$choice->id === $choice->choiceKey->choiceId ? 'checked' : null}} @endif
+                                           @if($choice->path == null){{$choice->id == $choice->choiceKey->choiceId ? 'checked' : null}} @endif
                                            name="correct_choice"
                                            value="{{$choice->id}}"
                                            onclick="correctChoice(this)"
@@ -95,7 +102,7 @@
                                            name="correct_choice"
                                            data-bs-toggle="tooltip" data-bs-placement="top"
                                            onclick="correctChoice(this)"
-                                           @if($choice->path != null){{$choice->id === $choice->choiceKey->choiceId ? 'checked' : null}} @endif
+                                           @if($choice->path != null){{$choice->id == $choice->choiceKey->choiceId ? 'checked' : null}} @endif
                                            title="{{__('manager/question/question-add-edit.correct_choice_checkbox')}}">
                                 </div>
                             </div>
@@ -126,6 +133,10 @@
 @endsection
 
 @section('js')
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('ckeditor');
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
@@ -150,7 +161,7 @@
         const questionImageInput = document.querySelector('.question-image');
 
         choiceImage.addEventListener('click', () => {
-            if (choiceImage.checked === true) {
+            if (choiceImage.checked == true) {
                 textInput.forEach((input, index) => {
                     textInput[index].classList.add('d-none');
                     imageInput[index].classList.remove('d-none');
@@ -163,7 +174,7 @@
             }
         });
 
-        if (choiceImage.checked === true) {
+        if (choiceImage.checked == true) {
             textInput.forEach((input, index) => {
                 textInput[index].classList.add('d-none');
                 imageInput[index].classList.remove('d-none');
@@ -176,13 +187,13 @@
         }
 
         questionImageChoice.addEventListener('click', () => {
-            if (questionImageChoice.checked === true)
+            if (questionImageChoice.checked == true)
                 questionImageInput.classList.remove('d-none')
             else
                 questionImageInput.classList.add('d-none')
         });
 
-        if (questionImageChoice.checked === true)
+        if (questionImageChoice.checked == true)
             questionImageInput.classList.remove('d-none')
         else
             questionImageInput.classList.add('d-none')

@@ -4,11 +4,11 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\AppointmentRequest;
 use App\Models\Appointment;
 use App\Models\Car;
 use App\Models\User;
 use App\Services\User\AppointmentService;
-use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
@@ -29,11 +29,11 @@ class AppointmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\User\AppointmentRequest  $request
      * @param AppointmentService $appointmentService
      * @return \Illuminate\Http\Response
      */
-    public function store(AppointmentService $appointmentService, Request $request)
+    public function store(AppointmentService $appointmentService, AppointmentRequest $request)
     {
         try {
             if (!ignoreDateCheck($request->date)) {

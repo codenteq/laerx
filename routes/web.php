@@ -61,7 +61,7 @@ Route::get('/city/{countryId?}', [App\Http\Controllers\HomeController::class, 'g
 Route::get('/state/{cityId?}', [App\Http\Controllers\HomeController::class, 'getState'])->name('state');
 
 Route::post('coupon-code/{companyId?}', [\App\Http\Controllers\HomeController::class, 'postCouponCode'])->middleware('auth')->name('coupon.code');
-
+Route::post('mobile/token', [HomeController::class, 'token'])->name('token');
 
 Route::prefix('user')->name('user.')->middleware(['auth', 'check.role', 'check.user.status', 'check.invoice.status','locale'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'getDashboard'])->name('dashboard');

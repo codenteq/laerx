@@ -30,9 +30,6 @@
                     "sortDescending": ": sütunu azalan sıralamak için etkinleştir"
                 },
             },
-            rowReorder: {
-                selector: 'td:nth-child(2)'
-            },
             responsive: true
         });
     });

@@ -20,7 +20,6 @@
     </style>
     @yield('css')
 
-    @laravelPWA
 </head>
 <body>
 

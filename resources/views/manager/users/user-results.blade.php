@@ -73,7 +73,7 @@
                                 <th scope="row">{{$result->userId}}</th>
                                 <td>{{$result->user->name .' '. $result->user->surname}}</td>
                                 <td>{{$result->user->tc}}</td>
-                                <td>{{$result->sum_correct}}</td>
+                                <td>{{$result->count}}</td>
                                 <th>{{totalPoint($result->sum_correct,$result->sum_total_question)}}</th>
                                 <td><a href="{{route('manager.user.result.detail',$result->userId)}}"><i class="bi bi-eye fs-5 text-dark"></i></a></td>
                             @endforeach

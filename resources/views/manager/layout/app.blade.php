@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     @yield('css')
 
-    @laravelPWA
 </head>
 <body>
 

@@ -114,13 +114,13 @@ class QuestionService
         $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
         $question->languageId = $request->languageId;
         $question->typeId = $request->typeId;
+        $question->save();
+
         if (request()->file('imagePath') && isset($request->questionImage)) {
             $path = request()->file('imagePath')->store('questions', 'public');
-            $question->imagePath = $path;
             //ImageConvertJob::dispatch($id, 'question', $path)->onQueue('image');
             $this->convertService->execute($id, 'question', $path);
         }
-        $question->save();
 
         self::choiceKeyUpdate($request, $id);
         if (isset($request->choiceImage) == "on")

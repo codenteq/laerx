@@ -10,8 +10,10 @@
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.question.index')}}">{{__('manager/menu.questions')}}</a></li>
+                        <li class="breadcrumb-item"><a
+                                href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item"><a
+                                href="{{route('manager.question.index')}}">{{__('manager/menu.questions')}}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.question_edit')}}</li>
                     </ol>
                 </nav>
@@ -24,19 +26,24 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" name="languageId" aria-label="Floating label select example">
                                 @foreach($languages as $language)
-                                    <option value="{{$language->id}}" {{$question->language->id == $language->id ? 'selected' : null}}>{{$language->title}}</option>
+                                    <option
+                                        value="{{$language->id}}" {{$question->language->id == $language->id ? 'selected' : null}}>{{$language->title}}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect">{{__('manager/question/question-add-edit.language_select')}}</label>
+                            <label
+                                for="floatingSelect">{{__('manager/question/question-add-edit.language_select')}}</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="questionImage"
                                    {{$question->questionImage == 1 ? 'checked' : null}} id="switchQuestionImageShow">
-                            <label class="form-check-label" for="switchQuestionImageShow">{{__('manager/question/question-add-edit.question_photo_checkbox')}}</label>
+                            <label class="form-check-label"
+                                   for="switchQuestionImageShow">{{__('manager/question/question-add-edit.question_photo_checkbox')}}</label>
                         </div>
                         <br>
                         @if($question->imagePath)
-                            <img src="{{imagePath($question->imagePath)}}" height="100" class="mb-3 w-auto" alt="">
+                            <div class="col-md-12">
+                                <img src="{{imagePath($question->imagePath)}}" height="100" class="mb-3 w-auto" alt="">
+                            </div>
                         @endif
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="title" placeholder="Başlık"
@@ -45,7 +52,8 @@
                         </div>
                         <div class="input-group mb-3 d-none question-image">
                             <input type="file" class="form-control" name="imagePath">
-                            <label class="input-group-text" for="inputGroupFile02">{{__('manager/question/question-add-edit.question_photo_checkbox')}}</label>
+                            <label class="input-group-text"
+                                   for="inputGroupFile02">{{__('manager/question/question-add-edit.question_photo_checkbox')}}</label>
                         </div>
 
                         <div class="mb-3">
@@ -66,7 +74,8 @@
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="choiceImage"
                                    {{$question->choiceImage == 1 ? 'checked' : null}} id="switchImageShow">
-                            <label class="form-check-label" for="switchImageShow">{{__('manager/question/question-add-edit.choice_photo_checkbox')}}</label>
+                            <label class="form-check-label"
+                                   for="switchImageShow">{{__('manager/question/question-add-edit.choice_photo_checkbox')}}</label>
                         </div>
                         <br>
                         @foreach($question->choice as $key => $choice)
@@ -76,7 +85,9 @@
                                     <input type="text" class="form-control " name="{{$choice->id}}"
                                            placeholder="Cevap 0{{$key + 1}}"
                                            value="{{$choice->title}}">
-                                    <label class="" for="floatingFirst">{{__('manager/question/question-add-edit.choice_input')}} 0{{$key + 1}}</label>
+                                    <label class=""
+                                           for="floatingFirst">{{__('manager/question/question-add-edit.choice_input')}}
+                                        0{{$key + 1}}</label>
                                 </div>
                                 <div class="col-2 col-md-1">
                                     <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
@@ -91,7 +102,9 @@
                             <!-- image choice -->
                             <div class="row mb-3 image-choice d-none">
                                 @if($choice->path)
-                                    <img src="{{imagePath($choice->path)}}" height="100" class="mb-3 w-auto" alt="">
+                                    <div class="col-md-12">
+                                        <img src="{{imagePath($choice->path)}}" height="100" class="mb-3 w-auto" alt="">
+                                    </div>
                                 @endif
                                 <div class="mb-3 col-10 col-md-11">
                                     <input type="file" class="form-control" name="{{$choice->id}}">
@@ -110,9 +123,11 @@
 
 
                         <div class="mt-3 mb-5">
-                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/question/question-add-edit.save_btn')}}
+                            <button type="button" onclick="createAndUpdateButton()"
+                                    class="btn btn-success">{{__('manager/question/question-add-edit.save_btn')}}
                             </button>
-                            <a href="{{route('manager.question.index')}}" class="btn btn-danger">{{__('manager/question/question-add-edit.cancel_btn')}}</a>
+                            <a href="{{route('manager.question.index')}}"
+                               class="btn btn-danger">{{__('manager/question/question-add-edit.cancel_btn')}}</a>
                         </div>
                     </form>
                 </div>

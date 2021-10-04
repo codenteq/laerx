@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Crypt;
 
 class UserInfo extends Model
 {
@@ -23,6 +24,40 @@ class UserInfo extends Model
         'companyId',
         'userId'
     ];
+
+    /**
+     * @param $value
+     * @return mixed
+     */
+    public function getPhoneAttribute($value)
+    {
+        return decrypt($value);
+    }
+
+    /**
+     * @param $value
+     */
+    public function setPhoneAttribute($value)
+    {
+        $this->attributes['phone'] = encrypt($value);
+    }
+
+    /**
+     * @param $value
+     * @return mixed
+     */
+    public function getAddressAttribute($value)
+    {
+        return decrypt($value);
+    }
+
+    /**
+     * @param $value
+     */
+    public function setAddressAttribute($value)
+    {
+        $this->attributes['address'] = encrypt($value);
+    }
 
     /**
      * @return HasOne

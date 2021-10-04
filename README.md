@@ -6,7 +6,7 @@
 ## Visit our live [Demo](https://driving-licence-course-app.karabayyazilim.com/)
 
 
-## Kullanılan Teknolojiler
+## Used technologies
 
 **İstemci:** Laravel Blade, Vue.js
 

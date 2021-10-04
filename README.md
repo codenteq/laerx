@@ -3,8 +3,15 @@
 
 
 
-
 ## Visit our live [Demo](https://driving-licence-course-app.karabayyazilim.com/)
+
+
+## Kullanılan Teknolojiler
+
+**İstemci:** Laravel Blade, Vue.js
+
+**Sunucu:** Laravel
+
 
 ## Feature
 
@@ -35,7 +42,7 @@
 - Appointment Module
 - Profile Edit Module
 
-### User : 
+### User
 - Lesson Module
 - Online Exam Module
 - Quiz Report Module

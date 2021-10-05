@@ -62,7 +62,7 @@ class QuizService
         $arr = [];
         $questions = ClassExamQuestionType::where('classExamId',$classId)->get();
         foreach ($questions as $question) {
-            array_push($arr, Question::where('typeId', $question->typeId)->with('choice')->take($question->length)->get());
+            array_push($arr, Question::where('typeId', $question->typeId)->with('choice','types')->take($question->length)->get());
         }
 
         return Arr::collapse($arr);
@@ -74,7 +74,7 @@ class QuizService
         $arr = [];
         $types = session('custom_exam_setting');
         foreach ($types as $key => $val) {
-            array_push($arr, Question::where('typeId', $key)->where('languageId',languageId())->with('choice')->inRandomOrder()->take($val)->get());
+            array_push($arr, Question::where('typeId', $key)->where('languageId',languageId())->with('choice','types')->inRandomOrder()->take($val)->get());
         }
 
         return Arr::collapse($arr);
@@ -85,7 +85,7 @@ class QuizService
         $arr = [];
         $types = NormalExam::QUIZ_EXAM_TYPE;
         foreach ($types as $key => $val) {
-            array_push($arr, Question::where('typeId', $key)->where('languageId',languageId())->with('choice')->inRandomOrder()->take($val)->get());
+            array_push($arr, Question::where('typeId', $key)->where('languageId',languageId())->with('choice','types')->inRandomOrder()->take($val)->get());
         }
 
         return Arr::collapse($arr);

@@ -89,6 +89,7 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role', 'check.u
         Route::get('/fetchUserAndTest', [QuizController::class, 'fetchUserAndTest']);
         Route::post('/postUserAnswer', [QuizController::class, 'postUserAnswer'])->name('user-answer.store');
         Route::post('/postCloseExam', [QuizController::class, 'postCloseExam'])->name('close.exam');
+        Route::post('/postBugQuestion', [QuizController::class, 'postBugQuestion'])->name('bug.question');
     });
 
     Route::name('quiz.')->group(function () {

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Http\Constants\NormalExam;
 use App\Jobs\TestResultJob;
+use App\Models\BugQuestion;
 use App\Models\ClassExamQuestionType;
 use App\Models\Question;
 use App\Models\Test;
@@ -88,5 +89,15 @@ class QuizService
         }
 
         return Arr::collapse($arr);
+    }
+
+    /**
+     * @param $questions
+     */
+    public function bugQuestionStore($request)
+    {
+        BugQuestion::create([
+            'questionId' => $request->questionId,
+        ]);
     }
 }

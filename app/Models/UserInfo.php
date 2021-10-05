@@ -31,7 +31,11 @@ class UserInfo extends Model
      */
     public function getPhoneAttribute($value)
     {
-        return decrypt($value);
+        try {
+            return decrypt($value);
+        } catch (\Exception $ex) {
+            return $value;
+        }
     }
 
     /**
@@ -48,7 +52,11 @@ class UserInfo extends Model
      */
     public function getAddressAttribute($value)
     {
-        return decrypt($value);
+        try {
+            return decrypt($value);
+        } catch (\Exception $ex) {
+            return $value;
+        }
     }
 
     /**

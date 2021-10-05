@@ -18,8 +18,10 @@ class QuestionResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
+            'category' => QuestionTypeResource::collection($this->whenLoaded('types')),
             'choices' => QuestionChoiceResource::collection($this->whenLoaded('choice')),
             'questionImage' => $this->questionImage,
+            'imagePath' => $this->imagePath,
             'choiceImage' => $this->choiceImage,
         ];
     }

@@ -56,7 +56,7 @@
 
 
 
-## Yazarlar ve Teşekkür
+## Author
 
 - [@karabayyazilim](https://www.github.com/karabayyazilim)
 - [@arsivpro](https://www.github.com/arsivpro)

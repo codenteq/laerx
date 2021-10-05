@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Models\BugQuestion;
 use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\QuestionChoiceKey;
@@ -177,6 +178,11 @@ class QuestionService
         Question::find($id)->delete();
         QuestionChoice::where('questionId', $id)->delete();
         QuestionChoiceKey::where('questionId', $id)->delete();
+    }
+
+    public function bugDestroy($id)
+    {
+        BugQuestion::find($id)->delete();
     }
 
 }

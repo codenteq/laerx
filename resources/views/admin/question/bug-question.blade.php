@@ -6,23 +6,18 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>Sorular</h2>
+                    <h2>Hatalı Sorular</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Anasayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Sorular</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.question.index')}}">Sorular</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Hatalı Sorular</li>
                     </ol>
                 </nav>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
-                    <h4>
-                        <a href="{{route('admin.question.create')}}" class="btn btn-success">Soru Oluştur</a>
-                        <a href="{{route('admin.question.bug')}}" class="btn btn-danger">Hatalı Sorular</a>
-                    </h4>
-                </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-auto mb-5">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
@@ -35,15 +30,15 @@
                         <tbody>
                         @foreach ($questions as $question)
                             <tr>
-                                <td>{{\Illuminate\Support\Str::limit($question->title, 50)}}</td>
-                                <td>{{$question->language->title}}</td>
+                                <td>{{\Illuminate\Support\Str::limit($question->question->title, 50)}}</td>
+                                <td>{{$question->question->language->title}}</td>
                                 <td>{{$question->created_at}}</td>
                                 <td>
-                                    <a href="{{route('admin.question.edit',$question)}}">
+                                    <a href="{{route('admin.question.edit',$question->questionId)}}">
                                         <i class="bi bi-pen text-dark"></i>
                                     </a>
                                     <button class="btn"
-                                            onclick="deleteButton(this,`${{route('admin.question.destroy',$question)}}`)">
+                                            onclick="deleteButton(this,`${{route('admin.question.bug.destroy',$question->id)}}`)">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
@@ -60,7 +55,7 @@
 
 @section('meta')
 
-    <title>Sorular</title>
+    <title>Hatalı Sorular</title>
 
 @endsection
 
@@ -77,7 +72,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const backUrl = '{{route('admin.question.index')}}';
+        const backUrl = '{{route('admin.question.bug')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>
 @endsection

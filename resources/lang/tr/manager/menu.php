@@ -12,6 +12,7 @@ return [
     'trainee_report' => 'Kursiyer Raporları',
     'trainee_report_detail' => 'Kursiyer Rapor Detay',
     'questions' => 'Sorular',
+    'question_bug' => 'Hatalı Sorular',
     'question_create' => 'Soru Ekle',
     'question_edit' => 'Soru Düzenle',
     'class_exams' => 'Sınıf Sınavları',

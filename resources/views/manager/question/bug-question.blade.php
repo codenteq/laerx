@@ -6,22 +6,17 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>{{__('manager/menu.questions')}}</h2>
+                    <h2>{{__('manager/menu.question_bug')}}</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.questions')}}</li>
+                        <li class="breadcrumb-item"><a href="{{route('manager.question.index')}}">{{__('manager/menu.questions')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.question_bug')}}</li>
                     </ol>
                 </nav>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
-                    <h4>
-                        <a href="{{route('manager.question.create')}}" class="btn btn-success">{{__('manager/question/question-list.question_create')}}</a>
-                        <a href="{{route('manager.question.bug')}}" class="btn btn-danger">{{__('manager/question/question-list.question_bugs')}}</a>
-                    </h4>
-                </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
@@ -43,7 +38,7 @@
                                         <i class="bi bi-pen text-dark"></i>
                                     </a>
                                     <button class="btn"
-                                            onclick="deleteButton(this,`${{route('manager.question.destroy',$question->questionId)}}`)">
+                                            onclick="deleteButton(this,`${{route('manager.question.bug.destroy',$question->id)}}`)">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
@@ -60,7 +55,7 @@
 
 @section('meta')
 
-    <title>{{__('manager/menu.questions')}}</title>
+    <title>{{__('manager/menu.question_bug')}}</title>
 
 @endsection
 
@@ -77,7 +72,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const backUrl = '{{route('manager.question.index')}}';
+        const backUrl = '{{route('manager.question.bug')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>
 @endsection

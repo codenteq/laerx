@@ -128,7 +128,11 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role', 'c
     Route::resource('appointment', AppointmentController::class);
     Route::get('/support', [SupportController::class, 'index'])->name('support.index');
     Route::put('/support/{support}', [SupportController::class, 'update'])->name('support.update');
+
+    Route::delete('/question/bug/{bugId}', [QuestionController::class, 'destroyQuestionBug'])->name('question.bug.destroy');
+    Route::get('/question/bug', [QuestionController::class, 'getQuestionBug'])->name('question.bug');
     Route::resource('question', QuestionController::class);
+
     Route::resource('notification', NotificationController::class);
     Route::name('class-exam.')->group(function () {
         Route::get('/class-exam', [ClassExamController::class, 'index'])->name('index');

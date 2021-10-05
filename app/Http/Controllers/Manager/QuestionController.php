@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\QuestionRequest;
+use App\Models\BugQuestion;
 use App\Models\CompanyQuestion;
 use App\Models\Language;
 use App\Models\Question;
@@ -99,6 +100,22 @@ class QuestionController extends Controller
     {
         try {
             $this->questionService->destroy($question->id);
+            return response(ResponseMessage::SuccessMessage());
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage());
+        }
+    }
+
+    public function getQuestionBug()
+    {
+        $questions = BugQuestion::with('question')->whereRelation('companyQuestion','companyId',companyId())->get();
+        return view('manager.question.bug-question',compact('questions'));
+    }
+
+    public function destroyQuestionBug($bugId)
+    {
+        try {
+            $this->questionService->bugDestroy($bugId);
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

@@ -4,6 +4,7 @@ namespace App\Services\Manager;
 
 use App\Http\Requests\Manager\QuestionRequest;
 use App\Jobs\ImageConvertJob;
+use App\Models\BugQuestion;
 use App\Models\CompanyQuestion;
 use App\Models\Question;
 use App\Models\QuestionChoice;
@@ -195,5 +196,10 @@ class QuestionService
             'questionId' => $questionId,
             'companyId' => companyId()
         ]);
+    }
+
+    public function bugDestroy($id)
+    {
+        BugQuestion::find($id)->delete();
     }
 }

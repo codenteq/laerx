@@ -89,6 +89,7 @@ Route::prefix('user')->name('user.')->middleware(['auth', 'check.role', 'check.u
         Route::get('/fetchUserAndTest', [QuizController::class, 'fetchUserAndTest']);
         Route::post('/postUserAnswer', [QuizController::class, 'postUserAnswer'])->name('user-answer.store');
         Route::post('/postCloseExam', [QuizController::class, 'postCloseExam'])->name('close.exam');
+        Route::post('/postBugQuestion', [QuizController::class, 'postBugQuestion'])->name('bug.question');
     });
 
     Route::name('quiz.')->group(function () {
@@ -127,7 +128,11 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role', 'c
     Route::resource('appointment', AppointmentController::class);
     Route::get('/support', [SupportController::class, 'index'])->name('support.index');
     Route::put('/support/{support}', [SupportController::class, 'update'])->name('support.update');
+
+    Route::delete('/question/bug/{bugId}', [QuestionController::class, 'destroyQuestionBug'])->name('question.bug.destroy');
+    Route::get('/question/bug', [QuestionController::class, 'getQuestionBug'])->name('question.bug');
     Route::resource('question', QuestionController::class);
+
     Route::resource('notification', NotificationController::class);
     Route::name('class-exam.')->group(function () {
         Route::get('/class-exam', [ClassExamController::class, 'index'])->name('index');
@@ -150,6 +155,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.role'])->grou
     Route::resource('company', CompanyController::class);
     Route::resource('group', GroupController::class);
     Route::resource('period', PeriodController::class);
+    Route::delete('/question/bug/{bugId}', [\App\Http\Controllers\Admin\QuestionController::class, 'destroyQuestionBug'])->name('question.bug.destroy');
+    Route::get('/question/bug', [\App\Http\Controllers\Admin\QuestionController::class, 'getQuestionBug'])->name('question.bug');
+    Route::resource('question', \App\Http\Controllers\Admin\QuestionController::class);
     Route::resource('type', QuestionTypeController::class);
     Route::resource('manager-user', ManagerUserController::class);
     Route::resource('car-type', CarTypeController::class);

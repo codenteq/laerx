@@ -1,7 +1,4 @@
-<script defer src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script defer src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js" type="text/javascript"></script>
-<script defer src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js" type="text/javascript"></script>
-<script defer src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/r-2.2.9/sb-1.2.2/sp-1.4.0/datatables.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#data-table').DataTable({

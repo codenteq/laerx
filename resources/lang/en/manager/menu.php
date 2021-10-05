@@ -12,6 +12,7 @@ return [
     'trainee_report' => 'Trainee Reports',
     'trainee_report_detail' => 'Trainee Report Detail',
     'questions' => 'Questions',
+    'question_bug' => 'Bug Questions',
     'question_create' => 'Question Create',
     'question_edit' => 'Question Edit',
     'class_exams' => 'Class Exams',

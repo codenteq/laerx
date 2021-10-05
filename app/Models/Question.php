@@ -33,6 +33,10 @@ class Question extends Model
         return $this->hasMany(QuestionChoice::class,'questionId','id');
     }
 
+    public function types() {
+        return $this->hasMany(QuestionType::class,'id','typeId');
+    }
+
     public function company()
     {
         return $this->hasOne(Company::class,'companyId');

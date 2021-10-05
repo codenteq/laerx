@@ -50,6 +50,11 @@
                     <i class="bi bi-book fs-1"></i><br>
                     Dersler
                 </a>
+                <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/question*') ? 'active' : '' }}"
+                   href="{{route('admin.question.index')}}">
+                    <i class="bi bi-question-circle fs-1"></i><br>
+                    Sorular
+                </a>
                 <a class="list-group-item list-group-item-action text-center {{ request()->is('admin/setting-dashboard*') ? 'active' : '' }} {{ request()->is('admin/language*') ? 'active' : '' }} {{ request()->is('admin/group*') ? 'active' : '' }} {{ request()->is('admin/period*') ? 'active' : '' }} {{ request()->is('admin/type*') ? 'active' : '' }} {{ request()->is('admin/coupon*') ? 'active' : '' }} {{ request()->is('admin/car-type*') ? 'active' : '' }} {{ request()->is('admin/package*') ? 'active' : '' }}"
                    href="{{route('admin.setting.dashboard')}}">
                     <i class="bi bi-gear fs-1"></i><br>

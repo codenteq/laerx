@@ -80,10 +80,10 @@
                                      aria-labelledby="type-{{$type->id}}">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item bg-light">{{__('manager/user/trainee-report.question_length')}}
-                                            : {{$type->total_question}}</li>
-                                        <li class="list-group-item bg-light">{{__('manager/user/trainee-report.correct_length')}} : {{$type->correct}}</li>
-                                        <li class="list-group-item bg-light">{{__('manager/user/trainee-report.incorrect_length')}} : {{$type->in_correct}}</li>
-                                        <li class="list-group-item bg-light">{{__('manager/user/trainee-report.blank_length')}} : {{$type->blank_question}}</li>
+                                            : {{$type->sum_total_question}}</li>
+                                        <li class="list-group-item bg-light">{{__('manager/user/trainee-report.correct_length')}} : {{$type->sum_correct}}</li>
+                                        <li class="list-group-item bg-light">{{__('manager/user/trainee-report.incorrect_length')}} : {{$type->sum_in_correct}}</li>
+                                        <li class="list-group-item bg-light">{{__('manager/user/trainee-report.blank_length')}} : {{$type->sum_blank_question}}</li>
                                     </ul>
                                 </div>
                             @endforeach

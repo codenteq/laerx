@@ -85,4 +85,10 @@ class QuizController extends Controller
         TestQuestion::where('testId',$request->testId)->delete();
         return response()->json('success');
     }
+
+    public function postBugQuestion(QuizService $questionService, Request $request): JsonResponse
+    {
+        $questionService->bugQuestionStore($request);
+        return response()->json('success');
+    }
 }

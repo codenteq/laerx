@@ -1,4 +1,4 @@
-@extends('manager.layout.app')
+@extends('admin.layout.app')
 
 @section('content')
 
@@ -6,44 +6,44 @@
         <section class="content">
             <figure>
                 <blockquote class="blockquote">
-                    <h2>{{__('manager/menu.questions')}}</h2>
+                    <h2>Sorular</h2>
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.questions')}}</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Anasayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sorular</li>
                     </ol>
                 </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">
                     <h4>
-                        <a href="{{route('manager.question.create')}}" class="btn btn-success">{{__('manager/question/question-list.question_create')}}</a>
-                        <a href="{{route('manager.question.bug')}}" class="btn btn-danger">{{__('manager/question/question-list.question_bugs')}}</a>
+                        <a href="{{route('admin.question.create')}}" class="btn btn-success">Soru Oluştur</a>
+                        <a href="{{route('admin.question.bug')}}" class="btn btn-danger">Hatalı Sorular</a>
                     </h4>
                 </div>
-                <div class="col-12 col-lg-12 mt-3 overflow-auto">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto mb-5">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">{{__('manager/question/question-list.question')}}</th>
-                            <th scope="col">{{__('manager/question/question-list.question_language')}}</th>
-                            <th scope="col">{{__('manager/question/question-list.created_at')}}</th>
-                            <th scope="col">{{__('manager/question/question-list.transactions')}}</th>
+                            <th scope="col">Soru</th>
+                            <th scope="col">Soru Dili</th>
+                            <th scope="col">Oluşturulma Tarihi</th>
+                            <th scope="col">İşlemler</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach ($questions as $question)
                             <tr>
-                                <td>{{\Illuminate\Support\Str::limit($question->question->title, 50)}}</td>
-                                <td>{{$question->question->language->title}}</td>
+                                <td>{{\Illuminate\Support\Str::limit($question->title, 50)}}</td>
+                                <td>{{$question->language->title}}</td>
                                 <td>{{$question->created_at}}</td>
                                 <td>
-                                    <a href="{{route('manager.question.edit',$question->questionId)}}">
+                                    <a href="{{route('admin.question.edit',$question)}}">
                                         <i class="bi bi-pen text-dark"></i>
                                     </a>
                                     <button class="btn"
-                                            onclick="deleteButton(this,`${{route('manager.question.destroy',$question->questionId)}}`)">
+                                            onclick="deleteButton(this,`${{route('admin.question.destroy',$question)}}`)">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
@@ -60,7 +60,7 @@
 
 @section('meta')
 
-    <title>{{__('manager/menu.questions')}}</title>
+    <title>Sorular</title>
 
 @endsection
 
@@ -77,7 +77,7 @@
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
-        const backUrl = '{{route('manager.question.index')}}';
+        const backUrl = '{{route('admin.question.index')}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>
 @endsection

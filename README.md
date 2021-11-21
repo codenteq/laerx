@@ -3,7 +3,7 @@
 
 
 
-## Visit our live [Demo](https://driving-licence-course-app.karabayyazilim.com/)
+## Visit our live [Demo](https://drive-course-app.karabayyazilim.com/login)
 
 
 ## Used technologies

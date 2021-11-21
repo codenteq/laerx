@@ -45,7 +45,7 @@ class AppointmentController extends Controller
     {
         return view('manager.appointment.appointment-add', [
             'users' => User::where('type', User::Normal)->whereRelation('info','companyId',companyId())->get(),
-            'teachers' => User::where('type', User::Teacher)->get(),
+            'teachers' => User::where('type', User::Teacher)->whereRelation('info','companyId',companyId())->get(),
             'cars' => Car::where('status', 1)->where('companyId',companyId())->get()
         ]);
     }

@@ -170,7 +170,7 @@
         <tr class="Fiyat">
             <td></td>
 
-            <td>Toplam: {{$invoice->total_amount}}</td>
+            <td>Toplam: {{$invoice->total_amount}} TL</td>
         </tr>
     </table>
 </div>

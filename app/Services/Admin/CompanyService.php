@@ -27,7 +27,8 @@ class CompanyService
     public function store(CompanyRequest $request): void
     {
         $company = Company::create([
-            'title' => Str::title($request->title)
+            'title' => Str::title($request->title),
+            'subdomain' => Str::slug($request->subdomain)
         ]);
         $this->companyInfoService->store($request, $company->id);
     }
@@ -39,7 +40,8 @@ class CompanyService
     public function update(CompanyRequest $request, $id): void
     {
         Company::find($id)->update([
-            'title' => Str::title($request->title)
+            'title' => Str::title($request->title),
+            'subdomain' => Str::slug($request->subdomain)
         ]);
         $this->companyInfoService->update($request, $id);
     }

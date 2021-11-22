@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\AppointmentSetting;
+use App\Models\Company;
 use App\Models\Invoice;
 use App\Models\QuestionChoiceKey;
 use App\Models\TestQuestion;
@@ -77,5 +78,13 @@ function examTime($questionLength) {
         return 45 . ' dakika';
     }
     return CarbonInterval::seconds($questionLength * 60)->cascade()->forHumans();
+}
+
+function getSubdomainLogo()
+{
+    $url = \request()->getHttpHost();
+    $subdomain = explode('.', $url)[0];
+    $companyLogo = Company::where('subdomain', $subdomain)->with('info')->first();
+    return $companyLogo->info->logo ?? null;
 }
 

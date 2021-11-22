@@ -12,6 +12,7 @@ class Company extends Model
 
     protected $fillable = [
         'title',
+        'subdomain',
     ];
 
     public function companies()

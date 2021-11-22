@@ -25,6 +25,7 @@ class CompanyRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'subdomain' => 'required',
             'tax_no' => 'required|string|min:11|max:11',
             'email' => 'required|email',
             'phone' => 'required',

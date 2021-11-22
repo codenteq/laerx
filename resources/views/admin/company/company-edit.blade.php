@@ -30,6 +30,11 @@
                                 </div>
 
                                 <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="subdomain" value="{{$company->subdomain}}" placeholder="Subdomain">
+                                    <label for="floatingFirst">Subdomain</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="tax_no" maxlength="11"
                                            placeholder="Vergi No" value="{{$company->info->tax_no}}">
                                     <label for="floatingFirst">Vergi No</label>
@@ -64,6 +69,9 @@
                                     </select>
                                     <label for="floatingSelect">Ülke</label>
                                 </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12">
 
                                 <div class="form-floating mb-3">
                                     <select class="form-select" onchange="cityChange()" id="city" name="cityId"
@@ -75,9 +83,6 @@
                                     </select>
                                     <label for="floatingSelect">İl</label>
                                 </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-12">
 
                                 <div class="form-floating mb-3">
                                     <select class="form-select" name="stateId" id="state"

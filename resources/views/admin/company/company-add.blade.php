@@ -28,6 +28,11 @@
                                 </div>
 
                                 <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="subdomain" placeholder="Subdomain">
+                                    <label for="floatingFirst">Subdomain</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="tax_no" maxlength="11"
                                            placeholder="Vergi No">
                                     <label for="floatingFirst">Vergi No</label>
@@ -59,6 +64,10 @@
                                     <label for="floatingSelect">Ülke</label>
                                 </div>
 
+                            </div>
+
+                            <div class="col-md-6 col-sm-12">
+
                                 <div class="form-floating mb-3">
                                     <select class="form-select" onchange="cityChange()" id="city" name="cityId"
                                             aria-label="Floating label select example">
@@ -66,9 +75,6 @@
                                     </select>
                                     <label for="floatingSelect">İl</label>
                                 </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-12">
 
                                 <div class="form-floating mb-3">
                                     <select class="form-select" name="stateId" id="state"

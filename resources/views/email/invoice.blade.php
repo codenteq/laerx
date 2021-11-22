@@ -158,19 +158,19 @@
         <tr class="item">
             <td>{{$invoice->package->title}}</td>
 
-            <td>{{$invoice->price}}</td>
+            <td>₺{{$invoice->price}}</td>
         </tr>
 
         <tr class="item">
             <td>İndirim Tutarı</td>
 
-            <td>{{$invoice->discount_amount ?? 0}}</td>
+            <td>- ₺{{$invoice->discount_amount ?? 0}}</td>
         </tr>
 
         <tr class="Fiyat">
             <td></td>
 
-            <td>Toplam: {{$invoice->total_amount}} TL</td>
+            <td>Toplam: ₺{{$invoice->total_amount}}</td>
         </tr>
     </table>
 </div>

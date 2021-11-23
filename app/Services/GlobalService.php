@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Jobs\ImageConvertJob;
 use App\Models\User;
 use App\Models\UserInfo;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -23,15 +24,17 @@ class GlobalService
      */
     public function userStore($request, $type): void
     {
-        $user = new User();
-        $user->tc = $request->tc;
-        $user->name = Str::title($request->name);
-        $user->surname = Str::title($request->surname);
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->type = $type;
-        $user->save();
-        self::userInfoStore($request, $user->id);
+        DB::transaction(function () use ($request, $type) {
+            $user = new User();
+            $user->tc = $request->tc;
+            $user->name = Str::title($request->name);
+            $user->surname = Str::title($request->surname);
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->type = $type;
+            $user->save();
+            self::userInfoStore($request, $user->id);
+        });
     }
 
     /**

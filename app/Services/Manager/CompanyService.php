@@ -6,6 +6,7 @@ use App\Jobs\ImageConvertJob;
 use App\Models\Company;
 use App\Models\CompanyInfo;
 use App\Services\ImageConvertService;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class CompanyService
@@ -19,10 +20,12 @@ class CompanyService
 
     public function update($request)
     {
-        Company::find(companyId())->update([
-            'title' => Str::title($request->title)
-        ]);
-        self::InfoUpdate($request, companyId());
+        DB::transaction(function () use ($request) {
+            Company::find(companyId())->update([
+                'title' => Str::title($request->title)
+            ]);
+            self::InfoUpdate($request, companyId());
+        });
     }
 
     public function InfoUpdate($request, $id): void
@@ -40,7 +43,7 @@ class CompanyService
         $info->address = $request->address;
         $info->zip_code = $request->zip_code;
         $info->save();
-        
+
         if ($path != null) {
             //ImageConvertJob::dispatch($id, 'company', $path)->onQueue('image');
             $this->convertService->execute($id, 'company', $path);

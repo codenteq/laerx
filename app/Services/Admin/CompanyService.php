@@ -4,6 +4,7 @@ namespace App\Services\Admin;
 
 use App\Http\Requests\Admin\CompanyRequest;
 use App\Models\Company;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class CompanyService
@@ -26,11 +27,13 @@ class CompanyService
      */
     public function store(CompanyRequest $request): void
     {
-        $company = Company::create([
-            'title' => Str::title($request->title),
-            'subdomain' => Str::slug($request->subdomain)
-        ]);
-        $this->companyInfoService->store($request, $company->id);
+        DB::transaction(function () use ($request) {
+            $company = Company::create([
+                'title' => Str::title($request->title),
+                'subdomain' => Str::slug($request->subdomain)
+            ]);
+            $this->companyInfoService->store($request, $company->id);
+        });
     }
 
     /**
@@ -39,11 +42,13 @@ class CompanyService
      */
     public function update(CompanyRequest $request, $id): void
     {
-        Company::find($id)->update([
-            'title' => Str::title($request->title),
-            'subdomain' => Str::slug($request->subdomain)
-        ]);
-        $this->companyInfoService->update($request, $id);
+        DB::transaction(function () use ($id, $request) {
+            Company::find($id)->update([
+                'title' => Str::title($request->title),
+                'subdomain' => Str::slug($request->subdomain)
+            ]);
+            $this->companyInfoService->update($request, $id);
+        });
     }
 
     public function destroy($id): void

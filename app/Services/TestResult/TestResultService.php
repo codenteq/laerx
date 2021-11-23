@@ -5,6 +5,7 @@ namespace App\Services\TestResult;
 use App\Models\QuestionChoiceKey;
 use App\Models\TestResult;
 use App\Models\UserAnswer;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class TestResultService
@@ -23,24 +24,26 @@ class TestResultService
      */
     public function execute($userId, $testId): void
     {
-        $userAnswers = UserAnswer::where('userId', $userId)->where('testId', $testId)->get();
+        DB::transaction(function () use ($userId, $testId) {
+            $userAnswers = UserAnswer::where('userId', $userId)->where('testId', $testId)->get();
 
-        $point = self::point($userAnswers);
-        $correct = self::correct($userAnswers);
-        $inCorrect = self::inCorrect($userAnswers);
-        $blankQuestion = self::blankQuestion($userAnswers);
+            $point = self::point($userAnswers);
+            $correct = self::correct($userAnswers);
+            $inCorrect = self::inCorrect($userAnswers);
+            $blankQuestion = self::blankQuestion($userAnswers);
 
-        $result = TestResult::create([
-            'total_question' => $correct + $inCorrect + $blankQuestion,
-            'point' => $point,
-            'correct' => $correct,
-            'in_correct' => $inCorrect,
-            'blank_question' => $blankQuestion,
-            'testId' => $testId,
-            'userId' => $userId
-        ]);
+            $result = TestResult::create([
+                'total_question' => $correct + $inCorrect + $blankQuestion,
+                'point' => $point,
+                'correct' => $correct,
+                'in_correct' => $inCorrect,
+                'blank_question' => $blankQuestion,
+                'testId' => $testId,
+                'userId' => $userId
+            ]);
 
-        $this->testResultTypeService->execute($userId, $testId, $result->id, $userAnswers);
+            $this->testResultTypeService->execute($userId, $testId, $result->id, $userAnswers);
+        });
     }
 
 

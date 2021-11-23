@@ -10,6 +10,7 @@ use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\QuestionChoiceKey;
 use App\Services\ImageConvertService;
+use Illuminate\Support\Facades\DB;
 
 class QuestionService
 {
@@ -25,29 +26,31 @@ class QuestionService
      */
     public function store(QuestionRequest $request)
     {
-        $question = new Question();
-        $question->title = $request->title;
-        $question->description = $request->description;
-        $question->questionImage = isset($request->questionImage) == "on" ? 1 : 0;
-        $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
-        $question->languageId = $request->languageId;
-        $question->typeId = $request->typeId;
-        if ($request->file('imagePath') && isset($request->questionImage)) {
-            $path = request()->file('imagePath')->store('questions', 'public');
-            $question->imagePath = $path;
-        }
-        $question->save();
+        DB::transaction(function () use ($request) {
+            $question = new Question();
+            $question->title = $request->title;
+            $question->description = $request->description;
+            $question->questionImage = isset($request->questionImage) == "on" ? 1 : 0;
+            $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
+            $question->languageId = $request->languageId;
+            $question->typeId = $request->typeId;
+            if ($request->file('imagePath') && isset($request->questionImage)) {
+                $path = request()->file('imagePath')->store('questions', 'public');
+                $question->imagePath = $path;
+            }
+            $question->save();
 
-        self::companyQuestion($question->id);
-        if ($request->file('imagePath') && isset($request->questionImage)) {
-            //ImageConvertJob::dispatch($question->id, 'question', $path)->onQueue('image');
-            $this->convertService->execute($question->id, 'question', $path);
-        }
-        if (isset($request->choiceImage) == "on") {
-            self::choiceImageStore($request, $question->id);
-        } else {
-            self::choiceStore($request, $question->id);
-        }
+            self::companyQuestion($question->id);
+            if ($request->file('imagePath') && isset($request->questionImage)) {
+                //ImageConvertJob::dispatch($question->id, 'question', $path)->onQueue('image');
+                $this->convertService->execute($question->id, 'question', $path);
+            }
+            if (isset($request->choiceImage) == "on") {
+                self::choiceImageStore($request, $question->id);
+            } else {
+                self::choiceStore($request, $question->id);
+            }
+        });
     }
 
     /**
@@ -108,26 +111,28 @@ class QuestionService
      */
     public function update(QuestionRequest $request, $id)
     {
-        $question = Question::find($id);
-        $question->title = $request->title;
-        $question->description = $request->description;
-        $question->questionImage = isset($request->questionImage) == "on" ? 1 : 0;
-        $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
-        $question->languageId = $request->languageId;
-        $question->typeId = $request->typeId;
-        $question->save();
+        DB::transaction(function () use ($request, $id) {
+            $question = Question::find($id);
+            $question->title = $request->title;
+            $question->description = $request->description;
+            $question->questionImage = isset($request->questionImage) == "on" ? 1 : 0;
+            $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
+            $question->languageId = $request->languageId;
+            $question->typeId = $request->typeId;
+            $question->save();
 
-        if (request()->file('imagePath') && isset($request->questionImage)) {
-            $path = request()->file('imagePath')->store('questions', 'public');
-            //ImageConvertJob::dispatch($id, 'question', $path)->onQueue('image');
-            $this->convertService->execute($id, 'question', $path);
-        }
+            if (request()->file('imagePath') && isset($request->questionImage)) {
+                $path = request()->file('imagePath')->store('questions', 'public');
+                //ImageConvertJob::dispatch($id, 'question', $path)->onQueue('image');
+                $this->convertService->execute($id, 'question', $path);
+            }
 
-        self::choiceKeyUpdate($request, $id);
-        if (isset($request->choiceImage) == "on")
-            self::choiceImageUpdate($request);
-        else
-            self::choiceUpdate($request);
+            self::choiceKeyUpdate($request, $id);
+            if (isset($request->choiceImage) == "on")
+                self::choiceImageUpdate($request);
+            else
+                self::choiceUpdate($request);
+        });
     }
 
     /**

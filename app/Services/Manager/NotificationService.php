@@ -7,6 +7,7 @@ use App\Models\Notification;
 use App\Models\NotificationUser;
 use App\Services\FirebaseNotificationService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NotificationService
 {
@@ -19,13 +20,15 @@ class NotificationService
 
     public function store(Request $request)
     {
-        $notification = Notification::create([
-            'message' => ucfirst($request->message),
-            'companyId' => companyId()
-        ]);
-        self::storeUser($request, $notification->id);
-        //NotificationJob::dispatch($notification->id,companyId())->onQueue('notification');
-        $this->notificationService->execute($notification->id, companyId());
+        DB::transaction(function () use ($request) {
+            $notification = Notification::create([
+                'message' => ucfirst($request->message),
+                'companyId' => companyId()
+            ]);
+            self::storeUser($request, $notification->id);
+            //NotificationJob::dispatch($notification->id,companyId())->onQueue('notification');
+            $this->notificationService->execute($notification->id, companyId());
+        });
     }
 
     public function storeUser(Request $request, $id)

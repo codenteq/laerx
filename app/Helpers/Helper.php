@@ -85,6 +85,6 @@ function getSubdomainLogo()
     $url = \request()->getHttpHost();
     $subdomain = explode('.', $url)[0];
     $companyLogo = Company::where('subdomain', $subdomain)->with('info')->first();
-    return '/storage'. $companyLogo->info->logo ?? null;
+    return $companyLogo->info->logo ?? null;
 }
 

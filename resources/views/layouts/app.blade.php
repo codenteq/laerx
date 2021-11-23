@@ -22,7 +22,7 @@
 
 <div class="columns container-fluid">
     <div class="login-box ">
-        <img style="width: 50%; margin-bottom: 20px;" src="{{getSubdomainLogo()}}" alt="">
+        <img style="width: 50%; margin-bottom: 20px;" src="/storage/{{getSubdomainLogo()}}" alt="">
         @yield('content')
     </div>
 </div>

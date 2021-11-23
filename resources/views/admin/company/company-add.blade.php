@@ -111,11 +111,6 @@
                                     <label for="floatingFirst">Başlangıç Tarihi</label>
                                 </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="date" class="form-control" name="end_date" placeholder="Bitiş Tarihi">
-                                    <label for="floatingFirst">Bitiş Tarihi</label>
-                                </div>
-
                                 <div class="input-group mb-3">
                                     <input type="file" class="form-control" name="logo">
                                     <label class="input-group-text" for="inputGroupFile02">Logo</label>

@@ -73,7 +73,8 @@ function resultStatus($point): string
     return 0;
 }
 
-function examTime($questionLength) {
+function examTime($questionLength): string
+{
     if ($questionLength == 50) {
         return 45 . ' dakika';
     }
@@ -86,5 +87,13 @@ function getSubdomainLogo()
     $subdomain = explode('.', $url)[0];
     $companyLogo = Company::where('subdomain', $subdomain)->with('info')->first();
     return $companyLogo->info->logo ?? null;
+}
+
+function getSubdomainCompanyName()
+{
+    $url = \request()->getHttpHost();
+    $subdomain = explode('.', $url)[0];
+    $company = Company::where('subdomain', $subdomain)->first();
+    return $company->title ?? null;
 }
 

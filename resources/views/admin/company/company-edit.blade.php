@@ -120,7 +120,7 @@
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="date" class="form-control" name="start_date" disabled
+                                    <input type="date" class="form-control" name="start_date"
                                            placeholder="Başlangıç Tarihi" value="{{$invoice->start_date}}">
                                     <label for="floatingFirst">Başlangıç Tarihi</label>
                                 </div>

@@ -5,6 +5,7 @@ namespace App\Services\Admin;
 use App\Http\Requests\Admin\CompanyRequest;
 use App\Models\Invoice;
 use App\Models\Package;
+use Carbon\Carbon;
 
 class InvoiceService
 {
@@ -30,7 +31,7 @@ class InvoiceService
         Invoice::create([
             'price' => $this->price,
             'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
+            'end_date' => Carbon::create($request->start_date)->addYear(),
             'packageId' => $request->packageId,
             'companyId' => $id,
         ]);

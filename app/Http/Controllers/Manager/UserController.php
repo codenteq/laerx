@@ -37,8 +37,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = UserInfo::where('companyId', companyId())->whereRelation('user','type',User::Normal)->with('company', 'user', 'language', 'period', 'month')->latest()->get();
-        return view('manager.users.user-list', compact('users'));
+        $periods = Period::all();
+        $groups = Group::all();
+        $months = Month::all();
+        $users = UserInfo::filter(\request()->all())->where('companyId', companyId())
+            ->whereRelation('user', 'type', User::Normal)
+            ->with('company', 'user', 'language', 'period', 'month')->latest()->get();
+        return view('manager.users.user-list', compact('users', 'periods', 'groups', 'months'));
     }
 
     /**
@@ -133,7 +138,7 @@ class UserController extends Controller
         $test = cache()->remember('test', 60, function () {
             return Test::whereRelation('userInfo', 'companyId', companyId())->get();
         });
-        $testResults = cache()->remember('testResults',60, function () {
+        $testResults = cache()->remember('testResults', 60, function () {
             return TestResult::selectRaw('*, count(*) as count')
                 ->selectRaw('sum(correct) as sum_correct')
                 ->selectRaw('sum(total_question) as sum_total_question')

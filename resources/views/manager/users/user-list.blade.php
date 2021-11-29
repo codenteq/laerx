@@ -10,8 +10,11 @@
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.user.operations')}}">{{__('manager/menu.trainee_transactions')}}</a></li>
+                        <li class="breadcrumb-item"><a
+                                href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item"><a
+                                href="{{route('manager.user.operations')}}">{{__('manager/menu.trainee_transactions')}}</a>
+                        </li>
                         <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.trainee_list')}}</li>
                     </ol>
                 </nav>
@@ -19,9 +22,47 @@
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3 row">
                     <h4>
-                        <a href="{{route('manager.user.create')}}" class="btn btn-success">{{__('manager/menu.new_trainee')}}</a>
-                        <a href="{{route('manager.user.excel-export')}}" class="btn btn-warning">{{__('manager/user/trainee-list.list_print')}}</a>
+                        <a href="{{route('manager.user.create')}}"
+                           class="btn btn-success">{{__('manager/menu.new_trainee')}}</a>
+                        <a href="{{route('manager.user.excel-export')}}"
+                           class="btn btn-warning">{{__('manager/user/trainee-list.list_print')}}</a>
                     </h4>
+                </div>
+                <div class="mt-3 justify-content-around">
+                    <form class="row g-2" method="get">
+                        <div class="form-floating col-md-4">
+                            <select class="form-select" id="floatingSelect1" name="period"
+                                    onchange="this.form.submit()">
+                                <option value="0">Hepsi</option>
+                                @foreach($periods as $period)
+                                    <option
+                                        value="{{$period->id}}" {{$period->id == request()->get('period') ? 'selected' : null}}>{{$period->title}}</option>
+                                @endforeach
+                            </select>
+                            <label for="floatingSelect1">{{__('manager/user/trainee-add-edit.period')}}</label>
+                        </div>
+                        <div class="form-floating col-md-4">
+                            <select class="form-select" id="floatingSelect2" name="month" onchange="this.form.submit()">
+                                <option value="0">Hepsi</option>
+                                @foreach($months as $month)
+                                    <option
+                                        value="{{$month->id}}" {{$month->id == request()->get('month') ? 'selected' : null}}>{{$month->title}}</option>
+                                @endforeach
+                            </select>
+                            <label for="floatingSelect2">{{__('manager/user/trainee-add-edit.month')}}</label>
+                        </div>
+                        <div class="form-floating col-md-4">
+                            <select class="form-select" id="floatingSelect3"
+                                    id="floatingSelect3" name="group" onchange="this.form.submit()">>
+                                <option value="0">Hepsi</option>
+                                @foreach($groups as $group)
+                                    <option
+                                        value="{{$group->id}}" {{$group->id == request()->get('group') ? 'selected' : null}}>{{$group->title}}</option>
+                                @endforeach
+                            </select>
+                            <label for="floatingSelect3">{{__('manager/user/trainee-add-edit.group')}}</label>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">

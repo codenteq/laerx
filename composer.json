@@ -15,7 +15,8 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "maatwebsite/excel": "^3.1"
+        "maatwebsite/excel": "^3.1",
+        "tucker-eric/eloquentfilter": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

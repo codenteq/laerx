@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'profile' => 'Profil',
-    'my_appointment' => 'Randevularım',
-    'welcome' => 'Hoşgeldiniz',
-    'logout' => 'Çıkış yap'
+    'profile' => 'مشخصات',
+    'my_appointment' => 'قرارهای من',
+    'welcome' => 'خوش آمدی',
+    'logout' => 'خروج'
 ];

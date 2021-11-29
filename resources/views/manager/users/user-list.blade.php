@@ -26,6 +26,7 @@
                            class="btn btn-success">{{__('manager/menu.new_trainee')}}</a>
                         <a href="{{route('manager.user.excel-export')}}"
                            class="btn btn-warning">{{__('manager/user/trainee-list.list_print')}}</a>
+                        <button class="btn btn-danger" onclick="multipleDeleteButton(`${{route('manager.user.multiple.destroy')}}`)">Seçilenleri Sil</button>
                     </h4>
                 </div>
                 <div class="mt-3 justify-content-around">
@@ -68,6 +69,7 @@
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
+                            <th><input type="checkbox" onclick="checkAll()" id="checkAll"></th>
                             <th>{{__('manager/user/trainee-list.name_surname')}}</th>
                             <th>{{__('manager/user/trainee-list.tc')}}</th>
                             <th>{{__('manager/user/trainee-list.period')}}</th>
@@ -80,6 +82,7 @@
                         <tbody>
                         @foreach ($users as $user)
                             <tr>
+                                <td><input type="checkbox" name="_check" value="{{$user->userId}}"></td>
                                 <td>{{$user->user->name .' '. $user->user->surname}}</td>
                                 <td>{{$user->user->tc}}</td>
                                 <td>{{$user->period->title}}</td>
@@ -122,8 +125,10 @@
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
+    <script src="{{asset('js/utils.js')}}"></script>
     <script>
         const backUrl = '{{route('manager.user.index')}}';
+        const __token = '{{csrf_token()}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>
     @include('layouts.script')

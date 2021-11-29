@@ -7,6 +7,7 @@ use App\Models\Month;
 use App\Models\Period;
 use App\Models\User;
 use App\Models\UserInfo;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -25,16 +26,18 @@ class UserImport implements ToModel, WithHeadingRow
 
     public function userStore($row): void
     {
-        $user = new User();
-        $user->tc = $row['tc'];
-        $user->name = $row['adi'];
-        $user->surname = $row['soyadi'];
-        $user->email = $row['eposta'];
-        $user->password = Hash::make('12345678');
-        $user->type = User::Normal;
-        $user->save();
+        DB::transaction(function () use ($row) {
+            $user = new User();
+            $user->tc = $row['tc'];
+            $user->name = $row['adi'];
+            $user->surname = $row['soyadi'];
+            $user->email = $row['eposta'];
+            $user->password = Hash::make($row['tc']);
+            $user->type = User::Normal;
+            $user->save();
 
-        self::userInfoStore($row,$user->id);
+            self::userInfoStore($row, $user->id);
+        });
     }
 
     public function userInfoStore($row, $id): void
@@ -44,7 +47,7 @@ class UserImport implements ToModel, WithHeadingRow
         $group = Group::where('title',$row['sinif'])->first();
 
         $info = new UserInfo();
-        $info->status = true;
+        $info->status = 1;
         $info->phone = $row['telefon'];
         $info->address = $row['adres'];
         $info->periodId = $period['id'];

@@ -18,6 +18,7 @@ use App\Models\UserInfo;
 use App\Services\GlobalService;
 use Illuminate\Http\Request;
 use App\Http\Requests\Manager\UserRequest;
+use Illuminate\Http\Response;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
@@ -33,7 +34,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -49,7 +50,7 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -65,7 +66,7 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\Manager\UserRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(UserRequest $request)
     {
@@ -82,7 +83,7 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(User $user)
     {
@@ -100,7 +101,7 @@ class UserController extends Controller
      *
      * @param \App\Http\Requests\Manager\UserRequest $request
      * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UserRequest $request, User $user)
     {
@@ -116,7 +117,7 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(User $user)
     {
@@ -124,6 +125,18 @@ class UserController extends Controller
             $this->globalService->userDestroy($user->id);
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage());
+        }
+    }
+
+    public function postMultipleDestroy(Request $request)
+    {
+        try {
+            $ids = $request->ids;
+            $this->globalService->userMultipleDestroy($ids);
+            return response(ResponseMessage::SuccessMessage());
+        } catch (\Exception $ex) {
+            dd($ex);
             return response(ResponseMessage::ErrorMessage());
         }
     }
@@ -173,6 +186,7 @@ class UserController extends Controller
             Excel::import(new UserImport(), $request->excel);
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
+            echo $ex;
             return response(ResponseMessage::ErrorMessage());
         }
     }

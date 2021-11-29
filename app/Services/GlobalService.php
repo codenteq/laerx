@@ -115,10 +115,28 @@ class GlobalService
     }
 
     /**
+     * @param $ids
+     */
+    public function userMultipleDestroy($ids): void
+    {
+        info($ids);
+        User::whereIn('id', $ids)->delete();
+        self::userInfoMultipleDestroy($ids);
+    }
+
+    /**
      * @param $id
      */
     public function userInfoDestroy($id): void
     {
         UserInfo::where('userId', $id)->delete();
+    }
+
+    /**
+     * @param $ids
+     */
+    public function userInfoMultipleDestroy($ids): void
+    {
+        UserInfo::whereIn('userId', $ids)->delete();
     }
 }

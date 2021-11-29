@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'reset' => 'Şifreniz sıfırlandı!',
-    'sent' => 'Şifre sıfırlama bağlantınızı e-posta ile gönderdik!',
-    'throttled' => 'Lütfen yeniden denemeden önce bekleyin.',
-    'token' => 'Bu parola sıfırlama belirteci geçersiz.',
-    'user' => "Bu e-posta adresine sahip bir kullanıcı bulamıyoruz.",
+    'reset' => 'رمز عبور شما بازنشانی شده است!',
+    'sent' => 'پیوند بازنشانی رمز عبور شما را ایمیل کرده ایم!',
+    'throttled' => 'لطفا قبل از تلاش مجدد صبر کنید.',
+    'token' => 'این رمز بازنشانی رمز عبور نامعتبر است.',
+    'user' => "ما نمی توانیم کاربری با این آدرس ایمیل پیدا کنیم.",
 
 ];

@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'Bu kimlik bilgileri kayıtlarımızla eşleşmiyor.',
-    'password' => 'Sağlanan şifre yanlış.',
-    'throttle' => 'Çok fazla giriş denemesi. Lütfen :seconds içinde tekrar deneyin.',
+    'failed' => 'این اعتبارنامه ها با سوابق ما مطابقت ندارد.',
+    'password' => 'رمز عبور ارائه شده نادرست است.',
+    'throttle' => 'تلاش های زیادی برای ورود به سیستم لطفا در : ثانیه دوباره امتحان کنید.',
 
 ];

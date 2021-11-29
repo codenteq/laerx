@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'success_title' => 'Başarılı',
-    'success_message' => 'İşleminiz başarılı bir şekilde gerçekleştirildi.',
+    'success_title' => 'موفقیت آمیز',
+    'success_message' => 'تراکنش شما با موفقیت انجام شد.',
 
-    'error_title' => 'Başarısız',
-    'error_message' => 'İşleminiz gerçekleştirilirken bir hata ile karşılaşıldı. Lütfen tekrar deneyiniz.',
+    'error_title' => 'ناموفق',
+    'error_message' => 'هنگام انجام عملیات شما خطایی روی داد. لطفا دوباره تلاش کنید.',
 
-    'ignore_date_title' => 'Başarısız',
-    'ignore_date_message' => 'Bu randevu tarihi seçilemez. Lütfen yeni bir tarih seçiniz.',
+    'ignore_date_title' => 'ناموفق',
+    'ignore_date_message' => 'این تاریخ قرار را نمی توان انتخاب کرد. لطفا تاریخ جدیدی را انتخاب کنید',
 
-    'coupon_title' => 'Başarısız',
-    'coupon_message' => 'Kupon kodu geçersiz.',
+    'coupon_title' => 'ناموفق',
+    'coupon_message' => 'کد کوپن نامعتبر است.',
 ];

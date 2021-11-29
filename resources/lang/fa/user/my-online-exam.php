@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'user_guide' => 'Kullanım Kılavuzu',
-    'guaide_1' => 'Lütfen kimlik bilgilerinizi yukarıdan kontrol ediniz.',
-    'guaide_2' => 'Elektronik ehliyet sınavlarına gireceklere: 12 İlk yardım sorusu, 23 Trafik sorusu, 9 Motor sorusu ve 6 Trafik adabı sorusu olmak üzere 50 soru sorulmaktadır.',
-    'guaide_3' => 'Elektronik ehliyet sınavı 45 dakikadır.',
-    'guaide_4' => '4 yanlış bir doğruyu götürmemektedir ve tüm ehliyet sınıfları için sorular aynıdır.',
-    'guaide_5' => 'Adayların başarılı olabilmesi için toplam 50 sorudan oluşan yeni müfredat ehliyet sınavından 35 soruyu doğru cevaplaması ve toplam 70 puan almaları gerekmektedir.',
-    'guaide_6' => 'Sınavı bitir butonuna tıklamadan sınav salonundan ayrılmayınız.',
-    'normal_exam' => 'Normal Sınav',
-    'normal_exam_detail' => 'Meb sınavına uygun soru ve kategoriler için',
-    'custom_exam' => 'Özel Sınav',
-    'custom_exam_detail' => 'Hangi konudan kaç soru ile sınava gireceğini kendin seç',
+    'user_guide' => 'راهنمای کاربر',
+    'guaide_1' => 'لطفا اعتبار خود را در بالا بررسی کنید.',
+    'guaide_2' => 'از کسانی که در آزمون های الکترونیکی گواهینامه رانندگی شرکت خواهند کرد 50 سوال شامل 12 سوال کمک های اولیه، 23 سوال راهنمایی و رانندگی، 9 سوال موتور و 6 سوال آداب راهنمایی و رانندگی پرسیده می شود.',
+    'guaide_3' => 'آزمون الکترونیکی گواهینامه رانندگی 45 دقیقه است.',
+    'guaide_4' => '4 غلط یک حق را نمی سازد و سوالات برای همه کلاس های مجوز یکسان است.',
+    'guaide_5' => 'داوطلبان برای موفقیت باید به 35 سوال پاسخ صحیح داده و از آزمون گواهینامه رانندگی برنامه درسی جدید شامل 50 سوال در مجموع 70 امتیاز کسب کنند.',
+    'guaide_6' => 'بدون کلیک بر روی دکمه پایان امتحان سالن امتحان را ترک نکنید.',
+    'normal_exam' => 'امتحان منظم',
+    'normal_exam_detail' => 'برای سوالات و دسته بندی های مناسب برای آزمون MEB',
+    'custom_exam' => 'آزمون ویژه',
+    'custom_exam_detail' => 'خودتان انتخاب کنید که چند سوال از کدام درس در آزمون شرکت می کنید.',
 ];

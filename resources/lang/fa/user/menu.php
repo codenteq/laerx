@@ -1,18 +1,18 @@
 <?php
 
 return [
-    'home' => 'Anasayfa',
-    'my_lesson' => 'Derslerim',
-    'online_exam' => 'Online Sınavlarım',
-    'custom_exam_add' => 'Özel Sınav Oluştur',
-    'class_exam' => 'Sınıf Sınavlarım',
-    'exam_result' => 'Sınav Sonuçlarım',
-    'my_appointment' => 'Randevularım',
-    'live_lesson' => 'Canlı Derslerim',
-    'support' => 'Destek',
-    'notification' => 'Bildirimler',
-    'welcome' => 'Hoşgeldiniz',
-    'profile' => 'Profil',
-    'panel' => 'Panel',
-    'logout' => 'Çıkış yap'
+    'home' => 'صفحه نخست',
+    'my_lesson' => 'درس های من',
+    'online_exam' => 'امتحانات آنلاین من',
+    'custom_exam_add' => 'امتحان خصوصی ایجاد کنید',
+    'class_exam' => 'امتحانات کلاس من',
+    'exam_result' => 'امتحانات کلاس من',
+    'my_appointment' => 'قرارهای من',
+    'live_lesson' => 'درس های زنده من',
+    'support' => 'پشتیبانی',
+    'notification' => 'اطلاعیه',
+    'welcome' => 'خوش آمدی',
+    'profile' => 'مشخصات',
+    'panel' => 'پانل',
+    'logout' => 'خروج'
 ];

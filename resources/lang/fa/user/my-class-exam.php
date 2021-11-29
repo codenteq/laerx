@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'question_length' => 'Soru Sayısı',
-    'time' => 'Süre',
-    'transactions' => 'İşlemler',
-    'start_exam' => 'Sınava Başla',
-    'save_btn' => 'Kaydet',
-    'cancel_btn' => 'İptal',
+    'question_length' => 'تعداد سوالات',
+    'time' => 'مدت زمان',
+    'transactions' => 'معاملات',
+    'start_exam' => 'شروع امتحان',
+    'save_btn' => 'صرفه جویی',
+    'cancel_btn' => 'لغو کنید',
 ];

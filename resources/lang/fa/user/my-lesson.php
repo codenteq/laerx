@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'lesson_category' => 'Ders Kategori',
-    'select' => 'Seçiniz',
-    'title' => 'Başlık',
-    'attend_class' => 'Derse gir',
+    'lesson_category' => 'دسته دوره',
+    'select' => 'انتخاب کنید',
+    'title' => 'عنوان',
+    'attend_class' => 'وارد درس شوید',
 ];

@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'message' => 'Mesaj',
-    'date' => 'Tarih'
+    'message' => 'پیام',
+    'date' => 'تاریخ'
 ];

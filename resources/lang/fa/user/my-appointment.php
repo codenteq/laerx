@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'appointment_form' => 'Randevu Alma Formu',
-    'create_appontment' => 'Yeni Randevu Al',
-    'create_appontment_btn' => 'Randevu Oluştur',
-    'cancel_btn' => 'İptal',
-    'select' => 'Seçiniz',
-    'car' => 'Araç',
-    'teacher' => 'Eğitmen',
-    'date' => 'Tarih',
-    'status' => 'Durum',
+    'appointment_form' => 'فرم قرار ملاقات',
+    'create_appontment' => 'قرار جدید بگذارید',
+    'create_appontment_btn' => 'یک قرار ملاقات ایجاد کنید',
+    'cancel_btn' => 'لغو کنید',
+    'select' => 'انتخاب کنید',
+    'car' => 'وسیله نقلیه',
+    'teacher' => 'مربی',
+    'date' => 'تاریخ',
+    'status' => 'وضعیت',
 ];

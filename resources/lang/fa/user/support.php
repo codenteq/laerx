@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'contact_why' => 'İletişim Nedeniniz?',
-    'message' => 'Mesajınız',
-    'send_btn' => 'Gönder'
+    'contact_why' => 'تماس چرا؟',
+    'message' => 'پیغام تو',
+    'send_btn' => 'ارسال'
 ];

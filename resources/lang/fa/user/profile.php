@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'name' => 'Adınız',
-    'surname' => 'Soyadınız',
-    'email_address' => 'Eposta Adresi',
-    'new_password' => 'Yeni Şifre',
-    'new_password_repeat' => 'Yeni Şifre Tekrar',
-    'phone' => 'Telefon',
-    'address' => 'Adres',
-    'language' => 'Dil Seçiniz',
-    'profile_photo' => 'Profil Resmi',
-    'save_btn' => 'Kaydet',
-    'cancel_btn' => 'İptal',
+    'name' => 'اسم شما',
+    'surname' => 'نام خانوادگی شما',
+    'email_address' => 'آدرس ایمیل',
+    'new_password' => 'رمز عبور جدید',
+    'new_password_repeat' => 'تکرار کلمه عبور جدید',
+    'phone' => 'تلفن',
+    'address' => 'نشانی',
+    'language' => 'زبان را انتخاب کنید',
+    'profile_photo' => 'عکس پروفایل',
+    'save_btn' => 'صرفه جویی',
+    'cancel_btn' => 'لغو کنید',
 ];

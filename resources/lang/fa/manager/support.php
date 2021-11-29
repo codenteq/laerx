@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'tc' => 'TCKN',
-    'name_surname' => 'Adı Soyadı',
-    'why' => 'Destek Nedeni',
-    'contact_phone' => 'İletişim Numarası',
-    'created_at' => 'Oluşturulma Tarihi',
-    'transactions' => 'İşlemler',
-    'done_btn' => 'Tamamlandı'
+    'tc' => 'شماره شناسایی جمهوری ترکیه',
+    'name_surname' => 'نام و نام خانوادگی',
+    'why' => 'دلیل پشتیبانی',
+    'contact_phone' => 'شماره تماس',
+    'created_at' => 'تاریخ ایجاد',
+    'transactions' => 'معاملات',
+    'done_btn' => 'تکمیل شد'
 ];

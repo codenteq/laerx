@@ -1,20 +1,20 @@
 <?php
 
 return [
-    'info_title' => 'Excel dosyanız belirli bir standartta olmalıdır. Lütfen dosya daki kolonlara uygun verileri giriniz Gerekli alanlar :',
-    'info_required_fields' => 'Required fields: ',
-    'info_1' => 'A Kolonu: TC Kimlik Numarası (ZORUNLU)',
-    'info_2' => 'B Kolonu: Kursiyerin Adı (ZORUNLU)',
-    'info_3' => 'C Kolonu: Kursiyerin Soyadı (ZORUNLU)',
-    'info_4' => 'D Kolonu: Kursiyerin E-Posta Adresi (İSTEĞE BAĞLI)',
-    'info_5' => 'E Kolonu: Kursiyerin Telefon Numarası (İSTEĞE BAĞLI)',
-    'info_6' => 'F Kolonu: Kursiyerin Adresi (İSTEĞE BAĞLI)',
-    'info_7' => 'G Kolonu: Kursiyerin Kayıt Dönemi (ZORUNLU)',
-    'info_8' => 'H Kolonu: Kursiyerin Kayıt Ayı (ZORUNLU)',
-    'info_9' => 'I Kolonu: Kursiyerin Kayıt Sınıfı (ZORUNLU)',
-    'info_note' => 'Aşağıdan şablonu indirebilirsiniz ve örnek kayıt verisini silmeyi unutmayınız.',
-    'download_template_btn' => 'Şablon İndir',
-    'upload_excel_list_file_input' => 'Excel Listesi Yükleyiniz',
-    'save_btn' => 'Kaydet',
-    'cancel_btn' => 'İptal'
+    'info_title' => 'فایل اکسل شما باید از استاندارد خاصی برخوردار باشد. لطفاً داده های مناسب را در ستون های فایل وارد کنید. فیلدهای مورد نیاز:',
+    'info_required_fields' => 'فیلدهای مورد نیاز: ',
+    'info_1' => 'ستون A: شماره شناسه TR (اجباری)',
+    'info_2' => 'ستون B: نام کارآموز (اجباری)',
+    'info_3' => 'ستون C: نام خانوادگی کارآموز (اجباری)',
+    'info_4' => 'ستون D: آدرس پست الکترونیکی کارآموز (اختیاری)',
+    'info_5' => 'ستون E: شماره تلفن کارآموز (اختیاری)',
+    'info_6' => 'ستون F: آدرس کارآموز (اختیاری)',
+    'info_7' => 'ستون G: دوره ثبت نام کارآموز (اجباری)',
+    'info_8' => 'ستون H: ماه ثبت نام کارآموز (اجباری)',
+    'info_9' => 'ستون I: کلاس ثبت نام کارآموز (اجباری)',
+    'info_note' => 'می توانید قالب زیر را دانلود کنید و فراموش نکنید که داده های ثبت نام نمونه را حذف کنید.',
+    'download_template_btn' => 'دانلود قالب',
+    'upload_excel_list_file_input' => 'فهرست اکسل را آپلود کنید',
+    'save_btn' => 'صرفه جویی',
+    'cancel_btn' => 'لغو کنید'
 ];

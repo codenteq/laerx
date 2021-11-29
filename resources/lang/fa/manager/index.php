@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'info_payment_success' => 'Aktif paketinizden kalan gün: ',
-    'info_payment_error' => 'Paketinizin süresi doldu. Ödeme yaptığınızda sisteminiz aktif olacaktır.',
-    'pay_btn' => 'Öde'
+    'info_payment_success' => 'روزهای باقی مانده از بسته فعال شما: ',
+    'info_payment_error' => 'بسته شما منقضی شده است. سیستم شما هنگام پرداخت فعال خواهد بود.',
+    'pay_btn' => 'پرداخت'
 ];

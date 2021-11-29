@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'date' => 'Tarih',
-    'name' => 'Ders Adı',
-    'link' => 'Ders Link',
-    'type' => 'Kategori',
-    'period' => 'Dönem',
-    'month' => 'Ay',
-    'group' => 'Grup',
-    'select' => 'Seçiniz',
-    'trainee_checkbox' => 'Kursiyere bildirim Aktif/Pasif',
-    'save_btn' => 'Kaydet',
-    'cancel_btn' => 'İptal',
+    'date' => 'تاریخ',
+    'name' => 'نام دوره',
+    'link' => 'لینک دوره',
+    'type' => 'دسته بندی',
+    'period' => 'عادت زنانه',
+    'month' => 'ماه',
+    'group' => 'گروه',
+    'select' => 'انتخاب کنید',
+    'trainee_checkbox' => 'اطلاع رسانی به کارآموز فعال/غیرفعال',
+    'save_btn' => 'صرفه جویی',
+    'cancel_btn' => 'لغو کنید',
 ];

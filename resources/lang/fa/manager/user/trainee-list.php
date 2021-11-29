@@ -1,12 +1,12 @@
 <?php
 
 return [
-  'list_print' => 'Listeyi Yazdır',
-  'name_surname' => 'Adı Soyadı',
-  'tc' => 'TCKN',
-  'period' => 'Dönem',
-  'month' => 'Ay',
-  'group' => 'Grup',
-  'status' => 'Durum',
-  'transactions' => 'İşlemler',
+  'list_print' => 'چاپ لیست',
+  'name_surname' => 'نام و نام خانوادگی',
+  'tc' => 'شماره شناسایی جمهوری ترکیه',
+  'period' => 'عادت زنانه',
+  'month' => 'ماه',
+  'group' => 'گروه',
+  'status' => 'وضعیت',
+  'transactions' => 'معاملات',
 ];

@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'trainee' => 'Kursiyer',
-    'teacher' => 'Eğitmen',
-    'car' => 'Araç',
-    'date' => 'Tarih',
-    'status' => 'Durum',
-    'transactions' => 'İşlemler',
+    'trainee' => 'کارآموز',
+    'teacher' => 'مربی',
+    'car' => 'وسیله نقلیه',
+    'date' => 'تاریخ',
+    'status' => 'وضعیت',
+    'transactions' => 'معاملات',
 ];

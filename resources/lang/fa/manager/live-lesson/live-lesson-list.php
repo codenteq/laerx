@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'name' => 'Ders Adı',
-    'join' => 'Derse Katıl',
-    'join_btn' => 'Katıl',
-    'type' => 'Ders Kategorisi',
-    'date' => 'Ders Tarihi',
-    'transactions' => 'İşlemler',
+    'name' => 'نام دوره',
+    'join' => 'در کلاس شرکت کنید',
+    'join_btn' => 'پیوستن',
+    'type' => 'دسته دوره',
+    'date' => 'تاریخچه دوره',
+    'transactions' => 'معاملات',
 ];

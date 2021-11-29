@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'question_create' => 'Soru Ekle',
-    'question_bugs' => 'Hatalı Sorular',
-    'question' => 'Soru',
-    'question_language' => 'Soru Dili',
-    'created_at' => 'Oluşturulma Tarihi',
-    'transactions' => 'İşlemler',
+    'question_create' => 'اضافه کردن سوال',
+    'question_bugs' => 'سوالات اشتباه',
+    'question' => 'سوال',
+    'question_language' => 'زبان سوال',
+    'created_at' => 'تاریخ ایجاد',
+    'transactions' => 'معاملات',
 ];

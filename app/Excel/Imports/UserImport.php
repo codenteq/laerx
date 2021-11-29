@@ -24,6 +24,9 @@ class UserImport implements ToModel, WithHeadingRow
         return self::userStore($row);
     }
 
+    /**
+     * @param $row
+     */
     public function userStore($row): void
     {
         DB::transaction(function () use ($row) {
@@ -40,6 +43,10 @@ class UserImport implements ToModel, WithHeadingRow
         });
     }
 
+    /**
+     * @param $row
+     * @param $id
+     */
     public function userInfoStore($row, $id): void
     {
         $period = Period::where('title',$row['donem'])->first();

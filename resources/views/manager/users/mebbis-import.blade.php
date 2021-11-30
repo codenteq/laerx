@@ -53,7 +53,7 @@
                                             value="{{$group->id}}">{{$group->title}}</option>
                                     @endforeach
                                 </select>
-                                <label for="floatingSelectd">{{__('manager/user/trainee-add-edit.language')}}</label>
+                                <label for="floatingSelectd">{{__('manager/user/trainee-add-edit.group')}}</label>
                             </div>
                             <div class="form-floating col-md-3">
                                 <select class="form-select" name="languageId"

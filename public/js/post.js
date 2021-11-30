@@ -37,13 +37,38 @@ const table = document.querySelector('#data-table');
 
 function deleteButton(r, actionUrl) {
     const list = r.parentNode.parentNode.rowIndex;
-    if (confirm('Silmek İstediğinize eminmisiniz ?') === true) {
+    if (confirm('Silmek istediğinize emin misiniz ?') === true) {
         axios.delete(actionUrl.replace('$', ''), {
             _method: 'DELETE',
         }).then(res => {
             if (res.data.status === true) {
                 toastr.success(res.data.message, res.data.title);
                 table.deleteRow(list);
+            } else {
+                toastr.error(res.data.message, res.data.title);
+            }
+        })
+    }
+}
+
+function multipleDeleteButton(actionUrl) {
+    let ArrCheck = [];
+    let check_inputs = document.querySelectorAll("input[name='_check']");
+    check_inputs.forEach((input) => {
+        input.checked === true ? ArrCheck.push(input.value) : null;
+    })
+    if (confirm('Silmek istediğinize emin misiniz ?') === true) {
+        axios.delete(actionUrl.replace('$', ''), {
+            data: {
+                _token: __token,
+                ids: ArrCheck
+            }
+        }).then(res => {
+            if (res.data.status === true) {
+                toastr.success(res.data.message, res.data.title);
+                setTimeout(() => {
+                    location.reload()
+                }, 3000)
             } else {
                 toastr.error(res.data.message, res.data.title);
             }

@@ -18,6 +18,8 @@ use App\Models\UserInfo;
 use App\Services\GlobalService;
 use Illuminate\Http\Request;
 use App\Http\Requests\Manager\UserRequest;
+use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
@@ -33,18 +35,23 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        $users = UserInfo::where('companyId', companyId())->whereRelation('user','type',User::Normal)->with('company', 'user', 'language', 'period', 'month')->latest()->get();
-        return view('manager.users.user-list', compact('users'));
+        $periods = Period::all();
+        $groups = Group::all();
+        $months = Month::all();
+        $users = UserInfo::filter(\request()->all())->where('companyId', companyId())
+            ->whereRelation('user', 'type', User::Normal)
+            ->with('company', 'user', 'language', 'period', 'month')->latest()->get();
+        return view('manager.users.user-list', compact('users', 'periods', 'groups', 'months'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -60,7 +67,7 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\Manager\UserRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(UserRequest $request)
     {
@@ -77,7 +84,7 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(User $user)
     {
@@ -90,12 +97,22 @@ class UserController extends Controller
         ]);
     }
 
+    public function getImportMebbis()
+    {
+        return view('manager.users.mebbis-import', [
+            'periods' => Period::all(),
+            'groups' => Group::all(),
+            'months' => Month::all(),
+            'languages' => Language::all(),
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
      * @param \App\Http\Requests\Manager\UserRequest $request
      * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UserRequest $request, User $user)
     {
@@ -111,12 +128,23 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(User $user)
     {
         try {
             $this->globalService->userDestroy($user->id);
+            return response(ResponseMessage::SuccessMessage());
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage());
+        }
+    }
+
+    public function postMultipleDestroy(Request $request)
+    {
+        try {
+            $ids = $request->ids;
+            $this->globalService->userMultipleDestroy($ids);
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -133,7 +161,7 @@ class UserController extends Controller
         $test = cache()->remember('test', 60, function () {
             return Test::whereRelation('userInfo', 'companyId', companyId())->get();
         });
-        $testResults = cache()->remember('testResults',60, function () {
+        $testResults = cache()->remember('testResults', 60, function () {
             return TestResult::selectRaw('*, count(*) as count')
                 ->selectRaw('sum(correct) as sum_correct')
                 ->selectRaw('sum(total_question) as sum_total_question')
@@ -175,5 +203,21 @@ class UserController extends Controller
     public function exportExcel(): BinaryFileResponse
     {
         return Excel::download(new UsersExport, 'users.xlsx');
+    }
+
+    public function postMebbisStore(Request $request)
+    {
+        $arr = htmlTagFragmentation($request);
+        $request->merge(['tc' => $arr[0]['tc']]);
+        $request->merge(['name' => $arr[0]['name']]);
+        $request->merge(['surname' => $arr[0]['surname']]);
+        $request->merge(['password' => $arr[0]['password']]);
+        $request->merge(['status' => $arr[0]['status']]);
+        try {
+            $this->globalService->userStore($request, User::Normal);
+            return response(ResponseMessage::SuccessMessage());
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage());
+        }
     }
 }

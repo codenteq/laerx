@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Jobs\ImageConvertJob;
 use App\Models\User;
 use App\Models\UserInfo;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -102,6 +103,7 @@ class GlobalService
             $user->companyId = auth()->user()->type == User::Admin ? $request->companyId : companyId();
             $user->userId = $id;
         }
+        Artisan::call('cache:clear');
         $user->save();
     }
 
@@ -115,10 +117,28 @@ class GlobalService
     }
 
     /**
+     * @param $ids
+     */
+    public function userMultipleDestroy($ids): void
+    {
+        info($ids);
+        User::whereIn('id', $ids)->delete();
+        self::userInfoMultipleDestroy($ids);
+    }
+
+    /**
      * @param $id
      */
     public function userInfoDestroy($id): void
     {
         UserInfo::where('userId', $id)->delete();
+    }
+
+    /**
+     * @param $ids
+     */
+    public function userInfoMultipleDestroy($ids): void
+    {
+        UserInfo::whereIn('userId', $ids)->delete();
     }
 }

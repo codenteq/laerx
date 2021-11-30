@@ -10,8 +10,11 @@
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.user.operations')}}">{{__('manager/menu.trainee_transactions')}}</a></li>
+                        <li class="breadcrumb-item"><a
+                                href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
+                        <li class="breadcrumb-item"><a
+                                href="{{route('manager.user.operations')}}">{{__('manager/menu.trainee_transactions')}}</a>
+                        </li>
                         <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.trainee_list')}}</li>
                     </ol>
                 </nav>
@@ -19,14 +22,54 @@
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3 row">
                     <h4>
-                        <a href="{{route('manager.user.create')}}" class="btn btn-success">{{__('manager/menu.new_trainee')}}</a>
-                        <a href="{{route('manager.user.excel-export')}}" class="btn btn-warning">{{__('manager/user/trainee-list.list_print')}}</a>
+                        <a href="{{route('manager.user.create')}}"
+                           class="btn btn-success">{{__('manager/menu.new_trainee')}}</a>
+                        <a href="{{route('manager.user.excel-export')}}"
+                           class="btn btn-warning">{{__('manager/user/trainee-list.list_print')}}</a>
+                        <button class="btn btn-danger" onclick="multipleDeleteButton(`${{route('manager.user.multiple.destroy')}}`)">Seçilenleri Sil</button>
                     </h4>
+                </div>
+                <div class="mt-3 justify-content-around">
+                    <form class="row g-2" method="get">
+                        <div class="form-floating col-md-4">
+                            <select class="form-select" id="floatingSelect1" name="period"
+                                    onchange="this.form.submit()">
+                                <option value="0">Hepsi</option>
+                                @foreach($periods as $period)
+                                    <option
+                                        value="{{$period->id}}" {{$period->id == request()->get('period') ? 'selected' : null}}>{{$period->title}}</option>
+                                @endforeach
+                            </select>
+                            <label for="floatingSelect1">{{__('manager/user/trainee-add-edit.period')}}</label>
+                        </div>
+                        <div class="form-floating col-md-4">
+                            <select class="form-select" id="floatingSelect2" name="month" onchange="this.form.submit()">
+                                <option value="0">Hepsi</option>
+                                @foreach($months as $month)
+                                    <option
+                                        value="{{$month->id}}" {{$month->id == request()->get('month') ? 'selected' : null}}>{{$month->title}}</option>
+                                @endforeach
+                            </select>
+                            <label for="floatingSelect2">{{__('manager/user/trainee-add-edit.month')}}</label>
+                        </div>
+                        <div class="form-floating col-md-4">
+                            <select class="form-select" id="floatingSelect3"
+                                    id="floatingSelect3" name="group" onchange="this.form.submit()">>
+                                <option value="0">Hepsi</option>
+                                @foreach($groups as $group)
+                                    <option
+                                        value="{{$group->id}}" {{$group->id == request()->get('group') ? 'selected' : null}}>{{$group->title}}</option>
+                                @endforeach
+                            </select>
+                            <label for="floatingSelect3">{{__('manager/user/trainee-add-edit.group')}}</label>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
+                            <th><input type="checkbox" onclick="checkAll()" id="checkAll"></th>
                             <th>{{__('manager/user/trainee-list.name_surname')}}</th>
                             <th>{{__('manager/user/trainee-list.tc')}}</th>
                             <th>{{__('manager/user/trainee-list.period')}}</th>
@@ -39,6 +82,7 @@
                         <tbody>
                         @foreach ($users as $user)
                             <tr>
+                                <td><input type="checkbox" name="_check" value="{{$user->userId}}"></td>
                                 <td>{{$user->user->name .' '. $user->user->surname}}</td>
                                 <td>{{$user->user->tc}}</td>
                                 <td>{{$user->period->title}}</td>
@@ -81,8 +125,10 @@
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
+    <script src="{{asset('js/utils.js')}}"></script>
     <script>
         const backUrl = '{{route('manager.user.index')}}';
+        const __token = '{{csrf_token()}}';
     </script>
     <script src="{{asset('js/post.js')}}"></script>
     @include('layouts.script')

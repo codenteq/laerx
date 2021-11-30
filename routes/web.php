@@ -119,6 +119,8 @@ Route::prefix('manager')->name('manager.')->middleware(['auth', 'check.role', 'c
     Route::get('user/results', [UserController::class, 'getManagerUserResults'])->name('user.results');
     Route::get('user/result/detail/{resultId}', [UserController::class, 'getManagerUserResultDetail'])->name('user.result.detail');
     Route::delete('user/multiple-destroy', [UserController::class, 'postMultipleDestroy'])->name('user.multiple.destroy');
+    Route::get('/user/mebbis-import', [UserController::class, 'getImportMebbis'])->name('user.mebbis.import');
+    Route::post('/user/mebbis/store', [UserController::class, 'postMebbisStore'])->name('user.mebbis.store');
     Route::resource('user', UserController::class);
     Route::resource('live-lesson', LiveLessonController::class);
     Route::resource('course-teacher', CourseTeacherController::class);

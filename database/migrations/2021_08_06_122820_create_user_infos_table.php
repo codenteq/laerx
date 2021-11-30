@@ -17,7 +17,7 @@ class CreateUserInfosTable extends Migration
             $table->id();
             $table->string('phone',300)->nullable();
             $table->string('address',600)->nullable();
-            $table->boolean('status')->nullable();
+            $table->boolean('status')->default(1);
             $table->foreignId('periodId')->nullable();
             $table->foreignId('monthId')->nullable();
             $table->foreignId('groupId')->nullable();

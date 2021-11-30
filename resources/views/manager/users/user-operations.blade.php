@@ -36,6 +36,12 @@
                             <span>{{__('manager/menu.new_trainee_excel')}}</span>
                         </a>
                     </div>
+                    <div class="col base p-5 mb-2">
+                        <a href="{{route('manager.user.mebbis.import')}}">
+                            <i class="bi bi-person-plus fs-1"></i><br>
+                            <span>Mebbis {{__('manager/menu.new_trainee')}}</span>
+                        </a>
+                    </div>
                     <div class="col base p-5 mb-5">
                         <a href="{{route('manager.user.results')}}">
                             <i class="bi bi-clipboard-data fs-1"></i><br>

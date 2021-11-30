@@ -9,6 +9,7 @@ use App\Models\UserAnswer;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Carbon\CarbonPeriod;
+use Illuminate\Support\Str;
 
 function ignoreDateCheck($date): bool
 {
@@ -97,3 +98,22 @@ function getSubdomainCompanyName()
     return $company->title ?? null;
 }
 
+function htmlTagFragmentation($request): array
+{
+    $data = strip_tags($request->content, '<strong>');
+    $domdoc = new \DOMDocument();
+    $domdoc->loadHTML('<?xml encoding="utf-8" ?>'. $data);
+    $books = $domdoc->getElementsByTagName('strong');
+    $tc = $books[2]->nodeValue;
+    $fullName = $books[3]->nodeValue;
+    $surname = Str::afterLast($fullName, ' ');
+    $name = Str::replaceLast($surname, '', $fullName);
+
+    return array([
+        'tc' => $tc,
+        'name' => $name,
+        'surname' => $surname,
+        'password' => $tc,
+        'status' => 1
+    ]);
+}

@@ -19,6 +19,7 @@ use App\Services\GlobalService;
 use Illuminate\Http\Request;
 use App\Http\Requests\Manager\UserRequest;
 use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
@@ -96,6 +97,16 @@ class UserController extends Controller
         ]);
     }
 
+    public function getImportMebbis()
+    {
+        return view('manager.users.mebbis-import', [
+            'periods' => Period::all(),
+            'groups' => Group::all(),
+            'months' => Month::all(),
+            'languages' => Language::all(),
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -136,7 +147,6 @@ class UserController extends Controller
             $this->globalService->userMultipleDestroy($ids);
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            dd($ex);
             return response(ResponseMessage::ErrorMessage());
         }
     }
@@ -186,7 +196,6 @@ class UserController extends Controller
             Excel::import(new UserImport(), $request->excel);
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
-            echo $ex;
             return response(ResponseMessage::ErrorMessage());
         }
     }
@@ -194,5 +203,21 @@ class UserController extends Controller
     public function exportExcel(): BinaryFileResponse
     {
         return Excel::download(new UsersExport, 'users.xlsx');
+    }
+
+    public function postMebbisStore(Request $request)
+    {
+        $arr = htmlTagFragmentation($request);
+        $request->merge(['tc' => $arr[0]['tc']]);
+        $request->merge(['name' => $arr[0]['name']]);
+        $request->merge(['surname' => $arr[0]['surname']]);
+        $request->merge(['password' => $arr[0]['password']]);
+        $request->merge(['status' => $arr[0]['status']]);
+        try {
+            $this->globalService->userStore($request, User::Normal);
+            return response(ResponseMessage::SuccessMessage());
+        } catch (\Exception $ex) {
+            return response(ResponseMessage::ErrorMessage());
+        }
     }
 }

@@ -22,102 +22,93 @@
                     <form class="form-control" name="form-data">
                         @csrf
 
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="tc" placeholder="TCKN" maxlength="11">
-                            <label for="floatingFirst">{{__('manager/user/trainee-add-edit.tc')}}</label>
-                        </div>
+                       <div class="row g-2 col-md-12">
+                           <div class="form-floating mb-3 col-md-6">
+                               <input type="text" class="form-control" name="tc" placeholder="TCKN" maxlength="11">
+                               <label for="floatingFirst">{{__('manager/user/trainee-add-edit.tc')}}</label>
+                           </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="name" placeholder="Üye Adı">
-                            <label for="floatingFirst">{{__('manager/user/trainee-add-edit.name')}}</label>
-                        </div>
+                           <div class="form-floating mb-3 col-md-6">
+                               <input type="text" class="form-control" name="name" placeholder="Üye Adı">
+                               <label for="floatingFirst">{{__('manager/user/trainee-add-edit.name')}}</label>
+                           </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="surname" placeholder="Üye Soyadı">
-                            <label for="floatingLast">{{__('manager/user/trainee-add-edit.surname')}}</label>
-                        </div>
+                           <div class="form-floating mb-3 col-md-6">
+                               <input type="text" class="form-control" name="surname" placeholder="Üye Soyadı">
+                               <label for="floatingLast">{{__('manager/user/trainee-add-edit.surname')}}</label>
+                           </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" name="email" placeholder="Eposta Adresi">
-                            <label for="floatingMail">{{__('manager/user/trainee-add-edit.email_address')}}</label>
-                        </div>
+                           <div class="form-floating mb-3 col-md-6">
+                               <input type="email" class="form-control" name="email" placeholder="Eposta Adresi">
+                               <label for="floatingMail">{{__('manager/user/trainee-add-edit.email_address')}}</label>
+                           </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="password" placeholder="Şifre">
-                            <label>{{__('manager/user/trainee-add-edit.password')}}</label>
-                        </div>
+                           <div class="form-floating mb-3 col-md-6">
+                               <input type="password" class="form-control" name="password" placeholder="Şifre">
+                               <label>{{__('manager/user/trainee-add-edit.password')}}</label>
+                           </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="password_confirmation" id="password-confirm" placeholder="Şifre">
-                            <label for="floatingLast">{{__('manager/user/trainee-add-edit.password_repeat')}}</label>
-                        </div>
+                           <div class="form-floating mb-3 col-md-6">
+                               <input type="password" class="form-control" name="password_confirmation" id="password-confirm" placeholder="Şifre">
+                               <label for="floatingLast">{{__('manager/user/trainee-add-edit.password_repeat')}}</label>
+                           </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="phone" placeholder="Telefon Numarası">
-                            <label for="floatingPhone">{{__('manager/user/trainee-add-edit.phone')}}</label>
-                        </div>
+                           <div class="form-floating mb-3 col-md-6">
+                               <input type="text" class="form-control" name="phone" placeholder="Telefon Numarası">
+                               <label for="floatingPhone">{{__('manager/user/trainee-add-edit.phone')}}</label>
+                           </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="address" placeholder="Adres">
-                            <label for="floatingAddress">{{__('manager/user/trainee-add-edit.address')}}</label>
-                        </div>
+                            <div class="form-floating mb-3 col-md-6">
+                                <input type="text" class="form-control" name="address" placeholder="Adres">
+                                <label for="floatingAddress">{{__('manager/user/trainee-add-edit.address')}}</label>
+                            </div>
 
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="status" value="1"
-                                   checked>
-                            <label class="form-check-label" for="flexSwitchCheckChecked">{{__('manager/user/trainee-add-edit.status')}}</label>
-                        </div>
+                            <div class="form-floating mb-3 col-md-6">
+                                <select class="form-select" id="floatingSelect" name="periodId"
+                                        aria-label="Floating label select example">
+                                    @foreach($periods as $period)
+                                        <option value="{{$period->id}}">{{$period->title}}</option>
+                                    @endforeach
+                                </select>
+                                <label for="floatingSelect">{{__('manager/user/trainee-add-edit.period')}}</label>
+                            </div>
 
-                        <br>
+                            <div class="form-floating mb-3 col-md-6">
+                                <select class="form-select" name="monthId" aria-label="Floating label select example">
+                                    @foreach($months as $month)
+                                        <option value="{{$month->id}}">{{$month->title}}</option>
+                                    @endforeach
+                                </select>
+                                <label for="floatingSelect">{{__('manager/user/trainee-add-edit.month')}}</label>
+                            </div>
 
-                        <div class="form-floating">
-                            <select class="form-select" id="floatingSelect" name="periodId"
-                                    aria-label="Floating label select example">
-                                @foreach($periods as $period)
-                                    <option value="{{$period->id}}">{{$period->title}}</option>
-                                @endforeach
-                            </select>
-                            <label for="floatingSelect">{{__('manager/user/trainee-add-edit.period')}}</label>
-                        </div>
 
-                        <br>
+                            <div class="form-floating mb-3 col-md-6">
+                                <select class="form-select" name="groupId" aria-label="Floating label select example">
+                                    @foreach($groups as $group)
+                                        <option value="{{$group->id}}">{{$group->title}}</option>
+                                    @endforeach
+                                </select>
+                                <label for="floatingSelect">{{__('manager/user/trainee-add-edit.group')}}</label>
+                            </div>
 
-                        <div class="form-floating">
-                            <select class="form-select" name="monthId" aria-label="Floating label select example">
-                                @foreach($months as $month)
-                                    <option value="{{$month->id}}">{{$month->title}}</option>
-                                @endforeach
-                            </select>
-                            <label for="floatingSelect">{{__('manager/user/trainee-add-edit.month')}}</label>
-                        </div>
-
-                        <br>
-
-                        <div class="form-floating">
-                            <select class="form-select" name="groupId" aria-label="Floating label select example">
-                                @foreach($groups as $group)
-                                    <option value="{{$group->id}}">{{$group->title}}</option>
-                                @endforeach
-                            </select>
-                            <label for="floatingSelect">{{__('manager/user/trainee-add-edit.group')}}</label>
-                        </div>
-
-                        <br>
-
-                        <div class="form-floating">
-                            <select class="form-select" name="languageId" aria-label="Floating label select example">
-                                @foreach($languages as $language)
-                                    <option value="{{$language->id}}">{{$language->title}}</option>
-                                @endforeach
-                            </select>
-                            <label for="floatingSelect">{{__('manager/user/trainee-add-edit.language')}}</label>
-                        </div>
-
-                        <br>
-
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" name="photo">
-                            <label class="input-group-text" for="inputGroupFile02">{{__('manager/user/trainee-add-edit.profile_photo')}}</label>
+                            <div class="form-floating mb-3 col-md-6">
+                                <select class="form-select" name="languageId" aria-label="Floating label select example">
+                                    @foreach($languages as $language)
+                                        <option value="{{$language->id}}">{{$language->title}}</option>
+                                    @endforeach
+                                </select>
+                                <label for="floatingSelect">{{__('manager/user/trainee-add-edit.language')}}</label>
+                            </div>
+                            <div class="input-group mb-3 col-md-6">
+                                <input type="file" class="form-control" name="photo">
+                                <label class="input-group-text" for="inputGroupFile02">{{__('manager/user/trainee-add-edit.profile_photo')}}</label>
+                            </div>
+                           <div class="form-check form-switch col-md-6">
+                               <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="status" value="1"
+                                      checked>
+                               <label class="form-check-label" for="flexSwitchCheckChecked">{{__('manager/user/trainee-add-edit.status')}}</label>
+                           </div>
                         </div>
 
                         <div class="mt-3 mb-5">

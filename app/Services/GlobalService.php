@@ -96,7 +96,12 @@ class GlobalService
         $user->address = $request->address;
         $user->languageId = $request->languageId;
         if (auth()->user()->type == User::Admin || auth()->user()->type == User::Manager) {
-            $user->status = $request->status ?? 0;
+            if (auth()->user()->type == User::Admin) {
+                $user->status = $request->status ?? 0;
+            }
+            else if (auth()->user()->type == User::Manager) {
+                $user->status = $request->status ?? $user->status;
+            }
             $user->periodId = $request->periodId;
             $user->monthId = $request->monthId;
             $user->groupId = $request->groupId;

@@ -207,14 +207,16 @@ class UserController extends Controller
 
     public function postMebbisStore(Request $request)
     {
-        $arr = htmlTagFragmentation($request);
-        $request->merge(['tc' => $arr[0]['tc']]);
-        $request->merge(['name' => $arr[0]['name']]);
-        $request->merge(['surname' => $arr[0]['surname']]);
-        $request->merge(['password' => $arr[0]['password']]);
-        $request->merge(['status' => $arr[0]['status']]);
+        $users = htmlTagFragmentation($request);
         try {
-            $this->globalService->userStore($request, User::Normal);
+            foreach ($users as $user) {
+                $request->merge(['tc' => $user['tc']]);
+                $request->merge(['name' => $user['name']]);
+                $request->merge(['surname' => $user['surname']]);
+                $request->merge(['password' => $user['tc']]);
+                $request->merge(['status' => 1]);
+                $this->globalService->userStore($request, User::Normal);
+            }
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

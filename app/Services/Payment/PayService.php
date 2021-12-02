@@ -5,6 +5,7 @@ namespace App\Services\Payment;
 use App\Models\CompanyInfo;
 use App\Models\Invoice;
 use App\Models\PaymentMethod;
+use App\Models\PaymentPlan;
 use App\Models\UserInfo;
 
 class PayService
@@ -90,12 +91,13 @@ class PayService
         $cart = session('cart');
         $payment = PaymentMethod::where('code', 'online')->first();
         $invoice = Invoice::where('companyId', $id)->orderBy('id', 'desc')->first();
+        $paymentPlan = PaymentPlan::where('companyId', $id)->first();
 
         $invoice->status = true;
         $invoice->discount_amount = $cart['discount'];
         $invoice->total_amount = $cart['total_amount'];
         $invoice->start_date = now();
-        $invoice->end_date = now()->addYear();
+        $invoice->end_date = now()->addMonths($paymentPlan->month);
         $invoice->couponId = $couponId;
         $invoice->paymentId = $paymentId ?? $payment->id;
         $invoice->save();

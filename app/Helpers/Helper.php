@@ -100,20 +100,32 @@ function getSubdomainCompanyName()
 
 function htmlTagFragmentation($request): array
 {
-    $data = strip_tags($request->content, '<strong>');
+    $data = strip_tags($request->content, '<td>');
     $domdoc = new \DOMDocument();
     $domdoc->loadHTML('<?xml encoding="utf-8" ?>'. $data);
-    $books = $domdoc->getElementsByTagName('strong');
-    $tc = $books[2]->nodeValue;
-    $fullName = $books[3]->nodeValue;
-    $surname = Str::afterLast($fullName, ' ');
-    $name = Str::replaceLast($surname, '', $fullName);
+    $users = $domdoc->getElementsByTagName('td');
+    $arr = array();
+    foreach ($users as $user) {
+        array_push($arr, $user->nodeValue);
+    }
+    $index = 0;
+    $arrIndex = 0;
+    $userArr = [];
+    foreach ($arr as $user) {
+        if ($index == 2) {
+            $userArr[$arrIndex]['tc'] = $user;
+        }
+        else if ($index == 3) {
+            $surname = Str::afterLast($user, ' ');
+            $name = Str::replaceLast($surname, '', $user);
+            $userArr[$arrIndex]['name'] = $name;
+            $userArr[$arrIndex]['surname'] = $surname;
+            $arrIndex++;
+        }
+        else if ($index == 16)
+            $index = 0;
+        $index++;
+    }
 
-    return array([
-        'tc' => $tc,
-        'name' => $name,
-        'surname' => $surname,
-        'password' => $tc,
-        'status' => 1
-    ]);
+    return $userArr;
 }

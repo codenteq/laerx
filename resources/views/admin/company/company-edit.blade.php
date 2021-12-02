@@ -108,15 +108,15 @@
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" name="packageId"
+                                    <select class="form-select" name="planId"
                                             aria-label="Floating label select example">
                                         <option disabled selected>Seçiniz</option>
-                                        @foreach($packages as $package)
+                                        @foreach($paymentPlans as $paymentPlan)
                                             <option
-                                                value="{{$package->id}}" {{$company->info->packageId == $package->id ? 'selected' : null}}>{{$package->title}}</option>
+                                                value="{{$paymentPlan->id}}" {{$company->info->planId == $paymentPlan->id ? 'selected' : null}}>{{$paymentPlan->description}}</option>
                                         @endforeach
                                     </select>
-                                    <label for="floatingSelect">Paket</label>
+                                    <label for="floatingSelect">Ödeme Planı</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
@@ -130,11 +130,10 @@
                                            value="{{$invoice->end_date}}">
                                     <label for="floatingFirst">Bitiş Tarihi</label>
                                 </div>
-
-                                <div class="input-group mb-3">
-                                    <input type="file" class="form-control" name="logo">
-                                    <label class="input-group-text" for="inputGroupFile02">Logo</label>
-                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="file" class="form-control" name="logo">
+                                <label class="input-group-text" for="inputGroupFile02">Logo</label>
                             </div>
                         </div>
                         <div class="mt-3 mb-5">

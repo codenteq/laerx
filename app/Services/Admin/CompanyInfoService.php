@@ -42,7 +42,7 @@ class CompanyInfoService
             'stateId' => $request->stateId,
             'address' => $request->address,
             'zip_code' => $request->zip_code,
-            'packageId' => $request->packageId,
+            'planId' => $request->planId,
             'logo' => $path,
             'companyId' => $id,
         ]);
@@ -73,7 +73,7 @@ class CompanyInfoService
             'stateId' => $request->stateId,
             'address' => $request->address,
             'zip_code' => $request->zip_code,
-            'packageId' => $request->packageId,
+            'planId' => $request->planId,
             'logo' => $path,
             'companyId' => $id,
         ]);

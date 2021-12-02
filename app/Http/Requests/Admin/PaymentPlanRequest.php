@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PackageRequest extends FormRequest
+class PaymentPlanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class PackageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
+            'month' => 'required|numeric',
             'description' => 'required|string',
-            'price' => 'required|numeric',
-            'planId' => 'required|numeric',
         ];
     }
 }

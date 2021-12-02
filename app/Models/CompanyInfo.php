@@ -21,7 +21,7 @@ class CompanyInfo extends Model
         'address',
         'zip_code',
         'logo',
-        'packageId',
+        'planId',
         'companyId',
     ];
 }

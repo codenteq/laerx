@@ -26,13 +26,26 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" name="description" placeholder="Paket Açıklaması" id="floatingTextarea2" style="height: 100px"></textarea>
+                            <textarea class="form-control" name="description" placeholder="Paket Açıklaması"
+                                      id="floatingTextarea2" style="height: 100px"></textarea>
                             <label for="floatingTextarea2">Paket Açıklaması</label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <input type="number" class="form-control" name="price" id="floatingPrice">
                             <label for="floatingPrice">Fiyat</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <select class="form-select" name="planId"
+                                    aria-label="Floating label select example">
+                                <option disabled selected>Seçiniz</option>
+                                @foreach($paymentPlans as $paymentPlan)
+                                    <option
+                                        value="{{$paymentPlan->id}}">{{$paymentPlan->description}}</option>
+                                @endforeach
+                            </select>
+                            <label for="floatingSelect">Ödeme Planı</label>
                         </div>
 
                         <div class="mt-3 mb-5">

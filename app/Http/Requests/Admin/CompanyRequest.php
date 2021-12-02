@@ -34,7 +34,7 @@ class CompanyRequest extends FormRequest
             'stateId' => 'required|numeric',
             'address' => 'required|string',
             'zip_code' => 'required',
-            'packageId' => 'required|numeric',
+            'planId' => 'required|numeric',
             'website_url' => 'required',
             'start_date' => 'required|date',
         ];

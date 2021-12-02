@@ -4,18 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\PackageRequest;
-use App\Models\Package;
+use App\Http\Requests\Admin\PaymentPlanRequest;
 use App\Models\PaymentPlan;
-use App\Services\Admin\PackageService;
+use App\Services\Admin\PaymentPlanService;
 
-class PackageController extends Controller
+class PaymentPlanController extends Controller
 {
-    protected $packageService;
+    private $paymentPlanService;
 
-    public function __construct(PackageService $packageService)
+    public function __construct(PaymentPlanService $paymentPlanService)
     {
-        $this->packageService = $packageService;
+        $this->paymentPlanService = $paymentPlanService;
     }
 
     /**
@@ -25,8 +24,8 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $packages = Package::all();
-        return view('admin.package.package', compact('packages'));
+        $paymentPlans = PaymentPlan::latest()->get();
+        return view('admin.payment-plan.payment-plan', compact('paymentPlans'));
     }
 
     /**
@@ -36,20 +35,19 @@ class PackageController extends Controller
      */
     public function create()
     {
-        $paymentPlans = PaymentPlan::all();
-        return view('admin.package.package-add', compact('paymentPlans'));
+        return view('admin.payment-plan.payment-plan-add');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Admin\PackageRequest $request
+     * @param  \App\Http\Requests\Admin\PaymentPlanRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PackageRequest $request)
+    public function store(PaymentPlanRequest $request)
     {
         try {
-            $this->packageService->store($request);
+            $this->paymentPlanService->store($request);
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -59,10 +57,10 @@ class PackageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Package $package
+     * @param  \App\Models\PaymentPlan  $paymentPlan
      * @return \Illuminate\Http\Response
      */
-    public function show(Package $package)
+    public function show(PaymentPlan $paymentPlan)
     {
         //
     }
@@ -70,26 +68,25 @@ class PackageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Package $package
+     * @param  \App\Models\PaymentPlan  $paymentPlan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Package $package)
+    public function edit(PaymentPlan $paymentPlan)
     {
-        $paymentPlans = PaymentPlan::all();
-        return view('admin.package.package-edit', compact('package', 'paymentPlans'));
+        return view('admin.payment-plan.payment-plan-edit', compact('paymentPlan'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Admin\PackageRequest $request
-     * @param \App\Models\Package $package
+     * @param  \App\Http\Requests\Admin\PaymentPlanRequest  $request
+     * @param  \App\Models\PaymentPlan  $paymentPlan
      * @return \Illuminate\Http\Response
      */
-    public function update(PackageRequest $request, Package $package)
+    public function update(PaymentPlanRequest $request, PaymentPlan $paymentPlan)
     {
         try {
-            $this->packageService->update($package->id, $request);
+            $this->paymentPlanService->update($paymentPlan->id, $request);
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -99,13 +96,13 @@ class PackageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Package $package
+     * @param  \App\Models\PaymentPlan  $paymentPlan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Package $package)
+    public function destroy(PaymentPlan $paymentPlan)
     {
         try {
-            $this->packageService->destroy($package->id);
+            $this->paymentPlanService->destroy($paymentPlan->id);
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

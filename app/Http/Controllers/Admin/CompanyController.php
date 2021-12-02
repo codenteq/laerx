@@ -10,6 +10,7 @@ use App\Models\Company;
 use App\Models\Country;
 use App\Models\Invoice;
 use App\Models\Package;
+use App\Models\PaymentPlan;
 use App\Models\State;
 use App\Services\Admin\CompanyService;
 
@@ -44,6 +45,7 @@ class CompanyController extends Controller
     {
         return view('admin.company.company-add', [
             'packages' => Package::all(),
+            'paymentPlans' => PaymentPlan::all(),
             'countries' => Country::all()
         ]);
     }
@@ -77,7 +79,7 @@ class CompanyController extends Controller
             'cities' => City::all(),
             'states' => State::all(),
             'invoice' => Invoice::select('start_date','end_date')->where('companyId', $company->id)->orderBy('id', 'desc')->first(),
-            'packages' => Package::all(),
+            'paymentPlans' => PaymentPlan::all(),
             'countries' => Country::all()
         ]);
     }

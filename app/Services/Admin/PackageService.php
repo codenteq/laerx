@@ -13,6 +13,7 @@ class PackageService
             'title' => Str::title($request->title),
             'description' => Str::title($request->description),
             'price' => $request->price,
+            'planId' => $request->planId,
         ]);
     }
 
@@ -22,6 +23,7 @@ class PackageService
             'title' => Str::title($request->title),
             'description' => Str::title($request->description),
             'price' => $request->price,
+            'planId' => $request->planId,
         ]);
     }
 

@@ -9,7 +9,6 @@ class PaymentPlanService
 {
     public function store($request)
     {
-        info($request);
         PaymentPlan::create([
             'month' => $request->month,
             'description' => Str::title($request->description),

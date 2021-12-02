@@ -95,14 +95,14 @@
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" name="packageId"
+                                    <select class="form-select" name="planId"
                                             aria-label="Floating label select example">
                                         <option disabled selected>Seçiniz</option>
-                                        @foreach($packages as $package)
-                                            <option value="{{$package->id}}">{{$package->title}}</option>
+                                        @foreach($paymentPlans as $paymentPlan)
+                                            <option value="{{$paymentPlan->id}}">{{$paymentPlan->description}}</option>
                                         @endforeach
                                     </select>
-                                    <label for="floatingSelect">Paket</label>
+                                    <label for="floatingSelect">Ödeme Planı</label>
                                 </div>
 
                                 <div class="form-floating mb-3">

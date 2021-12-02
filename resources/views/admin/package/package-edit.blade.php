@@ -38,6 +38,18 @@
                             <label for="floatingPrice">Fiyat</label>
                         </div>
 
+                        <div class="form-floating mb-3">
+                            <select class="form-select" name="planId"
+                                    aria-label="Floating label select example">
+                                <option disabled selected>Seçiniz</option>
+                                @foreach($paymentPlans as $paymentPlan)
+                                    <option
+                                        value="{{$paymentPlan->id}}" {{$package->planId == $paymentPlan->id ? 'selected' : null}}>{{$paymentPlan->description}}</option>
+                                @endforeach
+                            </select>
+                            <label for="floatingSelect">Ödeme Planı</label>
+                        </div>
+
                         <div class="mt-3 mb-5">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
                             </button>

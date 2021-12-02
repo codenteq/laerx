@@ -59,6 +59,12 @@
                             <span>Paketler</span>
                         </a>
                     </div>
+                    <div class="col base p-5 mb-2">
+                        <a href="{{route('admin.payment-plan.index')}}">
+                            <i class="bi bi-subtract fs-1"></i><br>
+                            <span>Ödeme Planları</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 

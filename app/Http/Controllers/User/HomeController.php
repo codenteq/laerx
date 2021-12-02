@@ -130,7 +130,7 @@ class HomeController extends Controller
 
     public function getNotifications()
     {
-        $notifications = NotificationUser::where('userId', auth()->id())->get();
+        $notifications = NotificationUser::where('userId', auth()->id())->latest()->get();
         return view('user.notifications', compact('notifications'));
     }
 

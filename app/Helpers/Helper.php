@@ -106,7 +106,7 @@ function htmlTagFragmentation($request): array
     $users = $domdoc->getElementsByTagName('td');
     $arr = array();
     foreach ($users as $user) {
-        array_push($arr,$user->nodeValue);
+        array_push($arr, $user->nodeValue);
     }
     $index = 0;
     $arrIndex = 0;
@@ -122,7 +122,7 @@ function htmlTagFragmentation($request): array
             $userArr[$arrIndex]['surname'] = $surname;
             $arrIndex++;
         }
-        if ($index == 16)
+        else if ($index == 16)
             $index = 0;
         $index++;
     }

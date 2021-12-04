@@ -91,7 +91,8 @@ class PayService
         $cart = session('cart');
         $payment = PaymentMethod::where('code', 'online')->first();
         $invoice = Invoice::where('companyId', $id)->orderBy('id', 'desc')->first();
-        $paymentPlan = PaymentPlan::where('companyId', $id)->first();
+        $company = CompanyInfo::where('companyId', $id)->first();
+        $paymentPlan = PaymentPlan::find($company->planId);
 
         $invoice->status = true;
         $invoice->discount_amount = $cart['discount'];

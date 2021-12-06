@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Jobs\ImageConvertJob;
 use App\Models\User;
 use App\Models\UserInfo;
+use App\Services\ThirdPartyService\SendPortalService;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -14,10 +15,12 @@ class GlobalService
 {
 
     protected $convertService;
+    protected $sendPortalService;
 
-    public function __construct(ImageConvertService $convertService)
+    public function __construct(ImageConvertService $convertService, SendPortalService $sendPortalService)
     {
         $this->convertService = $convertService;
+        $this->sendPortalService = $sendPortalService;
     }
 
     /**
@@ -35,6 +38,7 @@ class GlobalService
             $user->type = $type;
             $user->save();
             self::userInfoStore($request, $user->id);
+            $type == User::Manager ? $this->sendPortalService->subscribeUserStore($request) : null;
         });
     }
 

@@ -11,6 +11,11 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2.3.2
 
+    - name: Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          args: --optimize-autoloader --no-dev
+
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:

@@ -175,4 +175,3 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.role'])->grou
     Route::get('profile', [AdminController::class, 'getProfile'])->name('profile.edit');
     Route::put('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
 });
-

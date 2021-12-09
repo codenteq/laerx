@@ -24,7 +24,7 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" name="languageId" aria-label="Floating label select example">
                                 @foreach($languages as $language)
-                                    <option value="{{$language->id}}" {{$lessonContent->languageId == $language->id ?? 'selected'}}>{{$language->title}}</option>
+                                    <option value="{{$language->id}}" {{$lessonContent->languageId == $language->id ? 'selected' : null}}>{{$language->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Dil</label>
@@ -42,7 +42,7 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" name="typeId" aria-label="Floating label select example">
                                 @foreach($types as $type)
-                                    <option value="{{$type->id}}" {{$lessonContent->typeId == $type->id ?? 'selected'}}>{{$type->title}}</option>
+                                    <option value="{{$type->id}}" {{$lessonContent->typeId == $type->id ? 'selected' : null}}>{{$type->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Kategori</label>

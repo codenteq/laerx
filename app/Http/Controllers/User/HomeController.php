@@ -136,6 +136,10 @@ class HomeController extends Controller
 
     public function token(FirebaseNotificationService $notificationService, Request $request)
     {
-        $notificationService->setToken($request);
+        if ($request->userId != null && isset($request->token))
+        {
+            return $notificationService->setToken($request);
+        }
+        return response(ResponseMessage::ErrorMessage());
     }
 }

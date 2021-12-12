@@ -44,7 +44,7 @@ class Question extends Model
 
     public function questionType()
     {
-        return $this->hasOne(QuestionType::class,'typeId');
+        return $this->hasOne(QuestionType::class,'id', 'typeId');
     }
 
     public function language()

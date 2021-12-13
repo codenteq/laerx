@@ -72,11 +72,11 @@ class GlobalService
     public function userUpdate($request, $id): void
     {
         $user = User::find($id);
-        isset($request->tc) ?? $user->tc = $request->tc;
+        isset($request->tc) ? $user->tc = $request->tc : null;
         $user->name = Str::title($request->name);
         $user->surname = Str::title($request->surname);
         $user->email = $request->email;
-        isset($request->password) ?? $user->password = Hash::make($request->password);
+        isset($request->password) ? $user->password = Hash::make($request->password) : null;
         $user->save();
         if ($user->type != User::Admin) {
             self::userInfoUpdate($request, $id);

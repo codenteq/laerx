@@ -175,3 +175,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'check.role'])->grou
     Route::get('profile', [AdminController::class, 'getProfile'])->name('profile.edit');
     Route::put('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
 });
+
+Route::prefix('static-page')->name('static.page.')->group(function () {
+    Route::view('/privacy-policy', 'static-pages.privacy-policy')->name('privacy-policy');
+});

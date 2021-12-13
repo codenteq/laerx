@@ -28,7 +28,7 @@
                         <tr>
                             <th scope="col">Soru</th>
                             <th scope="col">Soru Dili</th>
-                            <th scope="col">Oluşturulma Tarihi</th>
+                            <th scope="col">Soru Kategorisi</th>
                             <th scope="col">İşlemler</th>
                         </tr>
                         </thead>
@@ -37,7 +37,7 @@
                             <tr>
                                 <td>{{\Illuminate\Support\Str::limit($question->title, 50)}}</td>
                                 <td>{{$question->language->title}}</td>
-                                <td>{{$question->created_at}}</td>
+                                <td>{{$question->questionType->title}}</td>
                                 <td>
                                     <a href="{{route('admin.question.edit',$question)}}">
                                         <i class="bi bi-pen text-dark"></i>

@@ -1,3 +1,21 @@
+<p align="center">
+    <a href="https://codenteq.com"><img width="300" src="https://codenteq.com/assets/img/codenteq.png" alt="Codenteq"></a>
+</p>
+<p align="center">
+    <a href="https://github.com/karabayyazilim/drive-course-app/blob/master/LICENSE"><img src="https://poser.pugx.org/bagisto/bagisto/license.svg" alt="License"></a>
+</p>
+
+<p align="center">
+    <a href="https://twitter.com/intent/follow?screen_name=codenteq"><img src="https://img.shields.io/twitter/follow/codenteq?style=social"></a>
+</p>
+
+<p align="center">
+    ➡️ <a href="https://www.codenteq.com/">Website</a> | <a href="https://www.facebook.com/codenteq/">Community</a> ⬅️
+</p>
+
+<p align="center" style="display: inline;">
+    <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/tr.svg" alt="Turkish" width="24" height="24">
+</p>
 
 # Drive Course App
 

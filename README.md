@@ -6,14 +6,17 @@ This project offers you a special course management panel for motor vehicle driv
 
 ## Table of Contents
 
-- [Demo](#demo)
+1. [Demo](#demo)
 
-- [Features](#features)
+2. [Features](#features)
 
-- [Installation](#installation)
+3. [Installation](#installation)
 
-- [Author](#author)
+4. [Author](#author)
 
+5. [Licence](#licence)
+
+6. [Sponsor](#sponsor)
   
 ### Demo
 [Visit or live](https://drive-course.app.codenteq.com)
@@ -124,5 +127,15 @@ Or:
 
 - [@karabayyazilim](https://www.github.com/karabayyazilim)
 - [@arsivpro](https://www.github.com/arsivpro)
+
+  
+## Licence
+
+[MIT Licence](https://github.com/karabayyazilim/drive-course-app/blob/master/LICENSE)
+
+  
+### Sponsor
+
+[Sponsor this project](https://opencollective.com/codenteq).
 
   

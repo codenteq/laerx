@@ -70,7 +70,7 @@ This project offers you a special course management panel for motor vehicle driv
   
 ### Installation
 
-If you are using Docker run the following command
+> If you are using Docker run the following command
 
 ```bash
   docker run --rm \
@@ -81,25 +81,25 @@ If you are using Docker run the following command
     composer install --ignore-platform-reqs
 ```
 
-Or:
+> Or
 
 ```bash
     composer install
 ```
 
-Run the following command for the file system and If you are using Docker 
+> Run the following command for the file system and If you are using Docker 
 
 ```bash
     ./vendor/sail/bin artisan storage link
 ```
 
-Or:
+> Or
 
 ```bash
     php artisan storage link
 ```
 
-Configure the database connection is going to be using in .env :
+> Configure the database connection is going to be using in .env
 
 ```bash
     DB_CONNECTION=mysql
@@ -110,13 +110,13 @@ Configure the database connection is going to be using in .env :
     DB_PASSWORD=
 ```
 
-If you are using Docker and run this:
+> If you are using Docker and run this:
 
 ```bash
     ./vendor/bin/sail artisan migrate --seed
 ```
 
-Or: 
+> Or 
 
 ```bash
     php artisan migrate --seed

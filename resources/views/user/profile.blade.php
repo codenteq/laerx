@@ -50,7 +50,7 @@
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control" id="floatingMail"
                                    name="password_confirmation">
-                            <label for="floatingMail">{{__('user/profile.new_password_repeat')}}</label>
+                            <label for="floatingMail">Y{{__('user/profile.new_password_repeat')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">

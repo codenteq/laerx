@@ -109,7 +109,7 @@
                         <div class="mt-3 mb-5">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/company.save_btn')}}
                             </button>
-                            <a href="{{route('admin.company.index')}}" class="btn btn-danger">{{__('manager/company.cancel_btn')}}</a>
+                            <a href="{{route('manager.dashboard')}}" class="btn btn-danger">{{__('manager/company.cancel_btn')}}</a>
                         </div>
 
                     </form>

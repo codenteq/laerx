@@ -10,7 +10,7 @@
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment.index')}}">{{__('teacher/menu.my_appointment')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('teacher.appointment.index')}}">{{__('teacher/menu.my_appointment')}}</a></li>
                         <li class="breadcrumb-item">{{__('teacher/menu.profile')}}</li>
                     </ol>
                 </nav>
@@ -86,7 +86,7 @@
                         <div class="mt-3 mb-5">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('teacher/profile.save_btn')}}
                             </button>
-                            <button type="button" class="btn btn-danger">{{__('teacher/profile.close_btn')}}</button>
+                            <a href="{{route('teacher.appointment.index')}}" class="btn btn-danger">{{__('teacher/profile.close_btn')}}</a>
                         </div>
 
                     </form>

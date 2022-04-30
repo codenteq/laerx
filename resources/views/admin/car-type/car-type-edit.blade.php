@@ -11,7 +11,7 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('admin.group.index')}}">Araç Türleri</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.car-type.index')}}">Araç Türleri</a></li>
                         <li class="breadcrumb-item">Araç Tipi Güncelle</li>
                     </ol>
                 </nav>

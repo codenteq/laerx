@@ -10,7 +10,7 @@
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment.index')}}">{{__('teacher/menu.my_appointment')}}</a>
+                        <li class="breadcrumb-item"><a href="{{route('teacher.appointment.index')}}">{{__('teacher/menu.my_appointment')}}</a>
                         </li>
                     </ol>
                 </nav>

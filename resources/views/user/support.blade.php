@@ -16,7 +16,7 @@
                 </nav>
             </figure>
             <div class="row">
-                <form class="form-control p-5" name="form-data">
+                <form class="form-control p-5 fast-access-top" name="form-data">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingWhy" name="subject" placeholder="İletişim Nedeniniz?">
                         <label for="floatingWhy">{{__('user/support.contact_why')}}</label>

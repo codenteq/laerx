@@ -13,6 +13,61 @@ body a{
     padding: 16px;
 }
 
+.sidebar-menu {
+    width: 200px !important;
+    font-size: 0.84rem !important;
+}
+
+.sidebar-menu .sidebar-menu-text {
+    vertical-align: 20%;
+    font-weight: 500;
+}
+
+.sidebar-toggle-button {
+    position: fixed;
+    bottom: 0;
+    z-index: 9;
+}
+
+.sidebar-dropdown-open {
+    width: 200px
+}
+
+.sidebar-logo {
+    width: 122px;
+}
+
+@media (max-width:800px) {
+    .sidebar-menu-list {
+        display:none !important;
+    }
+}
+
+.sidebar-menu-list {
+    margin-top: 39px;
+}
+
+.navbar-border {
+    border-left: 1px solid hsla(0,0%,63.5%,.2);
+}
+
+.navbar-dropdown .name {
+    vertical-align: 20%;
+}
+
+.navbar-dropdown-open {
+    top: 63px; right: 0; bottom: inherit!important;
+}
+
+.navbar-top {
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 8;
+}
+
 .copyright {
     position: fixed;
     bottom: 0;
@@ -157,4 +212,50 @@ section .container .row .base:hover {
     .content-app {
         margin-bottom: calc(50vh - 100px);
     }
+}
+
+.content-app {
+    margin: 5% 0 0 0;
+}
+
+@media (max-width:800px) {
+    .content-app figure {
+        position: fixed;
+        width: 94%;
+        z-index: 8;
+    }
+    .content-app form {
+        margin: 50px 0 100px 0;
+    }
+
+    .content-app h4 .btn, button.btn-primary {
+        margin: 70px 0 0 0;
+    }
+
+    .content-app .dataTables_length {
+        width: 50% !important;
+    }
+
+    .content-app .dataTables_filter {
+        margin: -30px 0 0 0 !important;
+        width: 50% !important;
+        float: right !important;
+    }
+
+    .content-app .fast-access-top {
+        margin: 70px 0 0 0 !important;
+    }
+
+    .content-app .fast-access-bottom {
+        margin: 0 0 100px 0 !important;
+    }
+
+    body #sidebar-wrapper {
+        position: fixed;
+        z-index: 9;
+    }
+}
+
+.content-app table.dataTable {
+    width: 100% !important;
 }

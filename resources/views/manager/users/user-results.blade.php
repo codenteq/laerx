@@ -17,31 +17,31 @@
             </figure>
             <div class="container">
                 <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-                    <div class="col">
+                    <div class="col mt-2 fast-access-top">
                         <div class="p-3 border bg-light rounded-3">
                             <small>{{__('manager/user/trainee-report.number_test_solved')}}</small>
                             <h4>{{$test->count()}}</h4>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col mt-2 fast-access-top">
                         <div class="p-3 border bg-light rounded-3">
                             <small>{{__('manager/user/trainee-report.total_correct_length')}}</small>
                             <h4>{{$testResults->sum('correct')}}</h4>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col mt-2">
                         <div class="p-3 border bg-light rounded-3">
                             <small>{{__('manager/user/trainee-report.total_incorrect_length')}}</small>
                             <h4>{{$testResults->sum('in_correct')}}</h4>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col mt-2">
                         <div class="p-3 border bg-light rounded-3">
                             <small>{{__('manager/user/trainee-report.total_blank_question_length')}}</small>
                             <h4>{{$testResults->sum('blank_question')}}</h4>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col mt-2">
                         <div class="p-3 border bg-light rounded-3">
                             <small>{{__('manager/user/trainee-report.average_point')}}</small>
                             <h4>{{totalPoint($testResults->sum('correct'),$testResults->sum('total_question'))}}</h4>

@@ -10,7 +10,7 @@
                 </blockquote>
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Anasayfa</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Sorular</li>
                     </ol>
                 </nav>

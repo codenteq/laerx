@@ -18,7 +18,7 @@
             <div class="container align-content-center">
                 <div class="row">
                     <div class="col-9">
-                        <h4 class="text-start">{{__('user/my-online-exam.user_guide')}}</h4>
+                        <h4 class="text-start fast-access-top">{{__('user/my-online-exam.user_guide')}}</h4>
                         <hr>
                         <ul>
                             <li>

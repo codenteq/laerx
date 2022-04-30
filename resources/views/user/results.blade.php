@@ -15,33 +15,33 @@
                     </ol>
                 </nav>
             </figure>
-            <div class="container ">
+            <div class="container">
                 <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-                    <div class="col">
+                    <div class="col mt-3 fast-access-top">
                         <div class="p-3 border bg-light rounded-3">
                             <small>{{__('user/my-exam-result.number_test_solved')}}</small>
                             <h4>{{$tests->count()}}</h4>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col mt-3 fast-access-top">
                         <div class="p-3 border bg-light rounded-3">
                             <small>{{__('user/my-exam-result.total_correct_length')}}</small>
                             <h4>{{$tests->sum('correct')}}</h4>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col mt-3">
                         <div class="p-3 border bg-light rounded-3">
                             <small>{{__('user/my-exam-result.total_incorrect_length')}}</small>
                             <h4>{{$tests->sum('in_correct')}}</h4>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col mt-3">
                         <div class="p-3 border bg-light rounded-3">
                             <small>{{__('user/my-exam-result.total_blank_question_length')}}</small>
                             <h4>{{$tests->sum('blank_question')}}</h4>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col mt-3">
                         <div class="p-3 border bg-light rounded-3">
                             <small>{{__('user/my-exam-result.average_point')}}</small>
                             <h4>{{totalPoint($tests->sum('correct'), $tests->sum('test_question_count'))}}</h4>

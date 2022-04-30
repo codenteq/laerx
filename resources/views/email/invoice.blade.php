@@ -107,8 +107,8 @@
                 <table>
                     <tr>
                         <td class="title">
-                            <img src="{{asset('images/codenteq-logo.png')}}"
-                                 style="width: 100%; max-width: 300px"/>
+                            <img src="{{asset('images/laerx.png')}}"
+                                 style="width: 30%; max-width: 300px"/>
                         </td>
 
                         <td>

@@ -18,7 +18,7 @@
 
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
-                    <div class="col base p-5 mb-2">
+                    <div class="col base p-5 mb-2 fast-access-top">
                         <a href="{{route('manager.car.index')}}">
                             <i class="bi bi-minecart-loaded fs-1"></i><br>
                             <span>{{__('manager/menu.car')}}</span>
@@ -30,7 +30,7 @@
                             <span>{{__('manager/menu.appointment')}}</span>
                         </a>
                     </div>
-                    <div class="col base p-5 mb-5">
+                    <div class="col base p-5 mb-5 fast-access-bottom">
                         <a href="{{route('manager.appointment.setting')}}">
                             <i class="bi bi-sliders fs-1"></i><br>
                             <span>{{__('manager/menu.appointment_setting')}}</span>

@@ -33,6 +33,12 @@
                     Giriş yap
                 </button>
             </div>
+            
+            <footer>
+                <p class="text-center mt-5">
+                    <a href="http://127.0.0.1:8000/static-page/privacy-policy" class="text-decoration-none" style="color: #909090" target="_blank">Gizlilik Politikası - KVKK</a>
+                </p>
+            </footer>
         </div>
     </form>
 @endsection

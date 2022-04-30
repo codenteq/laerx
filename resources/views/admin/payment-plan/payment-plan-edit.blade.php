@@ -34,7 +34,7 @@
                         <div class="mt-3 mb-5">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
                             </button>
-                            <a href="{{route('admin.period.index')}}" class="btn btn-danger">İptal</a>
+                            <a href="{{route('admin.payment-plan.index')}}" class="btn btn-danger">İptal</a>
                         </div>
 
                     </form>

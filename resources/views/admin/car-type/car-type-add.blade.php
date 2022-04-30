@@ -26,7 +26,7 @@
                         </div>
                         <div class="mt-3 mb-5">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet</button>
-                            <a href="{{route('admin.group.index')}}" class="btn btn-danger">İptal</a>
+                            <a href="{{route('admin.car-type.index')}}" class="btn btn-danger">İptal</a>
                         </div>
 
                     </form>

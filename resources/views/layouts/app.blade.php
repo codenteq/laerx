@@ -24,8 +24,6 @@
         <img style="width: 50%; margin-bottom: 20px;" src="/storage/{{getSubdomainLogo()}}" alt="">
         @yield('content')
     </div>
-    <p class="text-center mt-5"><a href="{{route('static.page.privacy-policy')}}" class="text-decoration-none"
-                                   style="color: #909090" target="_blank">Gizlilik Politikası - KVKK</a></p>
 </div>
 
 </body>

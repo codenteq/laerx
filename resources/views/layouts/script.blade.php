@@ -7,7 +7,7 @@
                 "searchPlaceholder": "Arama Yapın...",
                 "decimal": "",
                 "emptyTable": "Kayıt Bulunamadı",
-                "info": "_START_ ile _END_ arasını gösteriyor toplam: _TOTAL_",
+                "info": "",
                 "infoEmpty": "",
                 "infoFiltered": "(_MAX_ toplam girişten filtrelendi)",
                 "infoPostFix": "",

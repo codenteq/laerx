@@ -18,7 +18,7 @@
             </figure>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 row">
+                    <div class="col-md-6 row fast-access-top">
                         <div class="col-md-6 p-2">
                             <div class="p-3 border bg-light rounded-3">
                                 <small>{{__('manager/user/trainee-report.total_exam')}}</small>
@@ -123,7 +123,7 @@
             </div>
             <div class="row mx-auto mb-5 mt-2">
                 @foreach($resultTypes as $type)
-                    <div class="col-md-3 col-sm-12 mt-2">
+                    <div class="col-md-3 col-sm-12 mt-2 mb-2 fast-access-bottom">
                         <div class="card p-3 " style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">{{$type->type->title}}</h5>

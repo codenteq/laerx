@@ -16,19 +16,19 @@
             </figure>
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
-                    <div class="col base p-5 mb-2 fast-access-top">
+                    <div class="col base p-5 mt-2 mb-2 fast-access-top">
                         <a href="{{route('admin.company.index')}}">
                             <i class="bi bi-building fs-1"></i><br>
                             <span>Şirketler</span>
                         </a>
                     </div>
-                    <div class="col base p-5 mb-2">
+                    <div class="col base p-5 mt-2 mb-2">
                         <a href="{{route('admin.manager-user.index')}}">
                             <i class="bi bi-people fs-1"></i><br>
                             <span>Kullanıcı Listesi</span>
                         </a>
                     </div>
-                    <div class="col base p-5 mb-2">
+                    <div class="col base p-5 mt-2 mb-2">
                         <a href="{{route('admin.manager-user.create')}}">
                             <i class="bi bi-person-plus fs-1"></i><br>
                             <span>Kullanıcı Ekle</span>

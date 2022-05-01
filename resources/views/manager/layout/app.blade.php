@@ -64,11 +64,21 @@
                         <i class="bi bi-house fs-4"></i>
                         <span class="sidebar-menu-text">{{__('manager/menu.home')}}</span>
                     </a>
-                    <a class="list-group-item list-group-item-action d-none d-md-block text-left {{ request()->is('manager/user-operations*') ? 'active' : '' }} {{ request()->is('manager/user*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                       href="{{route('manager.user.operations')}}">
+
+                    <a class="list-group-item list-group-item-action text-left {{ request()->is('manager/user-operations*', 'manager/user*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-people fs-4"></i>
                         <span class="sidebar-menu-text">{{__('manager/menu.trainee_transactions')}}</span>
+                        <i class="bi bi-chevron-down sidebar-toggle-icon me-1"></i>
                     </a>
+                    <ul class="dropdown-menu sidebar-dropdown-open" aria-labelledby="dropdownMenuButton3">
+                        <span class="text-secondary ms-2">STUDENT</span>
+                        <li><a class="dropdown-item" href="{{route('manager.user.index')}}">{{__('manager/menu.trainee_list')}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('manager.user.results')}}">{{__('manager/menu.trainee_report')}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('manager.user.create')}}">{{__('manager/menu.new_trainee')}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('manager.user.excel-import')}}">{{__('manager/menu.new_trainee_excel')}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('manager.user.mebbis.import')}}">Mebbis Beta</a></li>
+                    </ul>
+
                     <a class="list-group-item list-group-item-action text-left {{ request()->is('manager/question*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                        href="{{route('manager.question.index')}}">
                         <i class="bi bi-question-circle fs-4"></i>
@@ -89,11 +99,6 @@
                         <i class="bi bi-person-plus fs-4"></i>
                         <span class="sidebar-menu-text">{{__('manager/menu.teachers')}}</span>
                     </a>
-                    <a class="list-group-item list-group-item-action text-left {{ request()->is('manager/appointment-car*') ? 'active' : '' }} {{ request()->is('manager/car*') ? 'active' : '' }}{{ request()->is('manager/appointment*') ? 'active' : '' }} {{ request()->is('manager/appointment-setting*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                       href="{{route('manager.appointment-car')}}">
-                        <i class="bi bi-calendar4-range fs-4"></i>
-                        <span class="sidebar-menu-text">{{__('manager/menu.car_appointment')}}</span>
-                    </a>
                     <a class="list-group-item list-group-item-action text-left d-md-none d-lg-none d-xl-none d-xxl-none {{ request()->is('manager/notification*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
                        href="{{route('manager.notification.index')}}">
                         <i class="bi bi-bell fs-4"></i>
@@ -104,14 +109,28 @@
                         <i class="bi bi-info-circle fs-4"></i>
                         <span class="sidebar-menu-text">{{__('manager/menu.support')}}</span>
                     </a>
-                    <a class="list-group-item list-group-item-action text-left d-md-none d-lg-none d-xl-none d-xxl-none mb-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+
+                    <a class="list-group-item list-group-item-action text-left {{ request()->is('manager/appointment-car*', 'manager/car*', 'manager/appointment*', 'manager/appointment-setting*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-calendar4-range fs-4"></i>
+                        <span class="sidebar-menu-text">{{__('manager/menu.car_appointment')}}</span>
+                        <i class="bi bi-chevron-down sidebar-toggle-icon me-1"></i>
+                    </a>
+                    <ul class="dropdown-menu sidebar-dropdown-open" aria-labelledby="dropdownMenuButton2">
+                        <span class="text-secondary ms-2">BOOKING</span>
+                        <li><a class="dropdown-item" href="{{route('manager.car.index')}}">{{__('manager/menu.car')}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('manager.appointment.index')}}">{{__('manager/menu.appointment')}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('manager.appointment.setting')}}">{{__('manager/menu.appointment_setting')}}</a></li>
+                    </ul>
+
+                    <a class="list-group-item list-group-item-action text-left d-md-none d-lg-none d-xl-none d-xxl-none mb-5 {{ request()->is('manager/profile*', 'manager/company*', 'manager/invoice*') ? 'active' : '' }}" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-circle fs-4"></i>
                         <span class="sidebar-menu-text">Hesap</span>
+                        <i class="bi bi-chevron-down sidebar-toggle-icon me-1"></i>
                     </a>
                     <ul class="dropdown-menu sidebar-dropdown-open d-md-none d-lg-none d-xl-none d-xxl-none" aria-labelledby="dropdownMenuButton1">
                         <span class="text-secondary ms-2">ACCOUNT</span>
-                        <li><a class="dropdown-item" href="{{route('manager.profile.edit')}}">{{__('manager/menu.profile')}}</a></li>
-                        <li><a class="dropdown-item" href="{{route('manager.company.edit')}}">{{__('manager/menu.company')}}</a></li>
+                        <li><a class="dropdown-item {{ session('invoice') == true ? 'disabled' : null}}" href="{{route('manager.profile.edit')}}">{{__('manager/menu.profile')}}</a></li>
+                        <li><a class="dropdown-item {{ session('invoice') == true ? 'disabled' : null}}" href="{{route('manager.company.edit')}}">{{__('manager/menu.company')}}</a></li>
                         <li><a class="dropdown-item" href="{{route('manager.invoice.index')}}">{{__('manager/menu.invoices')}}</a></li>
                         <li><a class="dropdown-item" href="{{route('logout-user')}}">{{__('manager/menu.logout')}}</a></li>
                     </ul>
@@ -135,12 +154,12 @@
                 <div class="collapse navbar-collapse d-none d-sm-block" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                         <li class="nav-item me-2">
-                            <a href="{{route('manager.support.index')}}" class="nav-link navbar-border">
+                            <a href="{{route('manager.support.index')}}" class="nav-link navbar-border {{ session('invoice') == true ? 'disabled' : null}}">
                                 <i class="bi bi-info-circle fs-4 ms-2"></i>
                             </a>
                         </li>
                         <li class="nav-item me-2">
-                            <a href="{{route('manager.notification.index')}}" class="nav-link navbar-border">
+                            <a href="{{route('manager.notification.index')}}" class="nav-link navbar-border {{ session('invoice') == true ? 'disabled' : null}}">
                                 <i class="bi bi-bell fs-4 ms-2"></i>
                             </a>
                         </li>
@@ -152,8 +171,8 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end navbar-dropdown-open" aria-labelledby="navbarDropdown">
                                 <span class="text-secondary ms-2">ACCOUNT</span>
-                                <a class="dropdown-item" href="{{route('manager.profile.edit')}}">{{__('manager/menu.profile')}}</a>
-                                <a class="dropdown-item" href="{{route('manager.company.edit')}}">{{__('manager/menu.company')}}</a>
+                                <a class="dropdown-item {{ session('invoice') == true ? 'disabled' : null}}" href="{{route('manager.profile.edit')}}">{{__('manager/menu.profile')}}</a>
+                                <a class="dropdown-item {{ session('invoice') == true ? 'disabled' : null}}" href="{{route('manager.company.edit')}}">{{__('manager/menu.company')}}</a>
                                 <a class="dropdown-item" href="{{route('manager.invoice.index')}}">{{__('manager/menu.invoices')}}</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{route('logout-user')}}">{{__('manager/menu.logout')}}</a>
@@ -177,8 +196,8 @@
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link text-secondary {{ request()->is('user/user-operations*') ? 'active' : '' }}" href="{{route('manager.user.operations')}}">
-                        <i class="bi bi-people navbar-link-icon"></i>
+                    <a class="navbar-link text-secondary {{ request()->is('manager/appointment*') ? 'active' : '' }}" href="{{route('manager.appointment.index')}}">
+                        <i class="bi bi-calendar4-range navbar-link-icon"></i>
                     </a>
                 </li>
 
@@ -189,7 +208,7 @@
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('manager/user-results*') ? 'active' : '' }}" href="{{route('manager.user.results')}}">
+                    <a class="navbar-link {{ request()->is('manager/user*') ? 'active' : '' }}" href="{{route('manager.user.results')}}">
                         <i class="bi bi-clipboard-data navbar-link-icon"></i>
                     </a>
                 </li>

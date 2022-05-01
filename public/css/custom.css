@@ -1,3 +1,7 @@
+@import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css";
+@import "https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.css";
+@import "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css";
+
 body a{
     text-decoration: none;
 }
@@ -19,6 +23,7 @@ body a{
 }
 
 .sidebar-menu .sidebar-menu-text {
+    color: #000;
     vertical-align: 20%;
     font-weight: 500;
 }
@@ -28,18 +33,32 @@ body a{
     bottom: 0;
     z-index: 9;
 }
+.sidebar-toggle-icon {
+    color: #000 !important;
+    display: inline-block !important;
+    position: absolute !important;
+    right: 0 !important;
+    bottom: 35% !important;
+}
+
 
 .sidebar-dropdown-open {
     width: 200px
 }
 
 .sidebar-logo {
-    width: 122px;
+    width: 7% !important;
 }
 
 @media (max-width:800px) {
     .sidebar-menu-list {
         display:none !important;
+    }
+    .sidebar-logo {
+        width: 39% !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -52,6 +71,7 @@ body a{
 }
 
 .navbar-dropdown .name {
+    width: 100%;
     vertical-align: 20%;
 }
 
@@ -66,6 +86,10 @@ body a{
     top: 0;
     right: 0;
     z-index: 8;
+}
+
+.navbar-top .collapse {
+    width: 100%;
 }
 
 .copyright {
@@ -133,7 +157,6 @@ section .container .row .base:hover {
 }
 
 .login-box {
-    background-image: url("/images/login-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;

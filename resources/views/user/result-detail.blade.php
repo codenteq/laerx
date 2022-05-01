@@ -17,7 +17,7 @@
             </figure>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 mb-2">
+                    <div class="col-md-6 mb-2 fast-access-top">
                         <div class="col-md-12 p-2">
                             <div class="p-3 border bg-light rounded-3">
                                 <small>Toplam Soru Sayısı</small>
@@ -76,7 +76,7 @@
         <section class="container mt-5">
             <div class="row mx-auto">
                 @foreach($tests as $test)
-                    <div class="col-md-3 col-sm-12 mt-2">
+                    <div class="col-md-3 col-sm-12 mb-2 fast-access-bottom">
                         <div class="card p-3 " style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">{{$test->type->title}}</h5>

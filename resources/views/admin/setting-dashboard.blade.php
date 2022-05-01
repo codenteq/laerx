@@ -17,19 +17,19 @@
             </figure>
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
-                    <div class="col base p-5 mb-2 fast-access-top">
+                    <div class="col base p-5 mb-2 mt-2 fast-access-top">
                         <a href="{{route('admin.language.index')}}">
                             <i class="bi bi-translate fs-1"></i><br>
                             <span>Diller</span>
                         </a>
                     </div>
-                    <div class="col base p-5 mb-2">
+                    <div class="col base p-5 mb-2 mt-2">
                         <a href="{{route('admin.group.index')}}">
                             <i class="bi bi-collection fs-1"></i><br>
                             <span>Ehliyet Grupları</span>
                         </a>
                     </div>
-                    <div class="col base p-5 mb-2">
+                    <div class="col base p-5 mb-2 mt-2">
                         <a href="{{route('admin.period.index')}}">
                             <i class="bi bi-calendar3-range fs-1"></i><br>
                             <span>Dönemler</span>

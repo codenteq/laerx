@@ -16,7 +16,7 @@
             </figure>
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
-                    <div class="col base p-5 mb-2">
+                    <div class="col base p-5 mb-2 fast-access-top">
                         <a href="{{route('admin.company.index')}}">
                             <i class="bi bi-building fs-1"></i><br>
                             <span>Şirketler</span>
@@ -46,7 +46,7 @@
                             <span>Diller</span>
                         </a>
                     </div>
-                    <div class="col base p-5 mb-5">
+                    <div class="col base p-5 mb-5 fast-access-bottom">
                         <a href="{{route('admin.group.index')}}">
                             <i class="bi bi-collection fs-1"></i><br>
                             <span>Ehliyet Grupları</span>

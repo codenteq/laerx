@@ -16,7 +16,7 @@
                 </nav>
             </figure>
             <div class="row">
-                <form class="form-control" action="{{route('user.lesson.index')}}" method="get">
+                <form class="form-control fast-access-top" action="{{route('user.lesson.index')}}" method="get">
                     <div class="form-floating mb-3">
                         <select class="form-select" onchange="this.form.submit()" name="type"
                                 aria-label="Floating label select example">

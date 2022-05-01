@@ -18,7 +18,7 @@
 
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
-                    <div class="col base p-5 mb-2">
+                    <div class="col base p-5 mb-2 fast-access-top">
                         <a href="{{route('manager.user.create')}}">
                             <i class="bi bi-person-plus fs-1"></i><br>
                             <span>{{__('manager/menu.new_trainee')}}</span>
@@ -42,7 +42,7 @@
                             <span>Mebbis {{__('manager/menu.new_trainee')}}</span>
                         </a>
                     </div>
-                    <div class="col base p-5 mb-5">
+                    <div class="col base p-5 mb-5 fast-access-bottom">
                         <a href="{{route('manager.user.results')}}">
                             <i class="bi bi-clipboard-data fs-1"></i><br>
                             <span>{{__('manager/menu.trainee_report')}}</span>

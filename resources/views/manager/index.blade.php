@@ -24,7 +24,7 @@
 
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">
-                    <div class="alert alert-info mb-3 w-100 text-start" role="alert">
+                    <div class="alert alert-info w-100 text-start fast-access-top" role="alert">
                         @if(session('invoice'))
                             <i class="bi bi-info-square me-2"></i>{{__('manager/index.info_payment_error')}}
                             <button type="button" class="btn btn-success ms-3" data-bs-toggle="modal"
@@ -36,7 +36,7 @@
                         @endif
                     </div>
                     @if(session('invoice') != true)
-                        <div class="col base p-5 mb-2">
+                        <div class="col base p-5 mt-3">
                             <a href="{{route('manager.live-lesson.index')}}">
                                 <i class="bi bi-camera-video fs-1"></i><br>
                                 <span>{{__('manager/menu.live_lesson')}}</span>
@@ -66,7 +66,7 @@
                                 <span>{{__('manager/menu.car_appointment')}}</span>
                             </a>
                         </div>
-                        <div class="col base p-5 mb-5">
+                        <div class="col base p-5 mb-5 fast-access-bottom">
                             <a href="{{route('manager.support.index')}}">
                                 <i class="bi bi-info-circle fs-1"></i><br>
                                 <span>{{__('manager/menu.support')}}</span>

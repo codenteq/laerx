@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container mt-5 p-5">
-    <img src="{{asset('images/codenteq-logo.png')}}" class="img-fluid w-50 mx-auto d-block mb-5">
+    <img src="{{asset('images/laerx.png')}}" class="img-fluid w-50 mx-auto d-block mb-5">
     <h2 style="box-sizing: border-box; font-family: MetropolisBold, Arial; font-weight: inherit; line-height: inherit; margin: 0px 0px 10px; font-size: inherit; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; vertical-align: baseline;">
         <span
             style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 28px; line-height: inherit; font-family: inherit; vertical-align: baseline;">CODENTEQ KİŞİSEL VERİLERİN KORUNMASI POLİTİKASI</span>

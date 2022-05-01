@@ -17,7 +17,7 @@
             </figure>
 
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3 overflow-auto">
+                <div class="col-12 col-lg-12 mt-3 overflow-auto fast-access-top">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>

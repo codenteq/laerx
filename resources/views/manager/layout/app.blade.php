@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="dc.language" content="{{ app()->getLocale() }}">
+    <meta http-equiv="content-language" content="{{ app()->getLocale() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
           content="Quiz app uygulaması codenteq adı altında yazılmış bir online sınav uygulamasıdır.">
@@ -49,83 +52,106 @@
     <!-- Sidebar-->
     <div class="border-end d-flex d-sm-flex" id="sidebar-wrapper">
         <div class="sidebar-heading border-bottom fw-bold">
-            <div style="font-size: 1rem !important; width: 200px !important;"
-                 class="list-group list-group-flush sidebar-menu">
-                <img src="{{companyLogo()}}" class="mb-3" alt="logo">
+            <div class="list-group list-group-flush sidebar-menu">
 
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/dashboard') ? 'active' : '' }}"
-                   href="{{route('manager.dashboard')}}">
-                    <i class="bi bi-house fs-1"></i><br>
-                    <span style="position: relative;">{{__('manager/menu.home')}}</span>
+                <a class="sidebar-logo-link d-md-none d-lg-none d-xl-none d-xxl-none" href="{{route('manager.dashboard')}}">
+                    <img class="sidebar-logo" src="{{ companyLogo() }}" alt="logo">
                 </a>
-                <a class="list-group-item list-group-item-action d-none d-md-block text-center {{ request()->is('manager/user-operations*') ? 'active' : '' }} {{ request()->is('manager/user*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                   href="{{route('manager.user.operations')}}">
-                    <i class="bi bi-people fs-1"></i><br>
-                    <span style="position: relative;">{{__('manager/menu.trainee_transactions')}}</span>
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/question*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                   href="{{route('manager.question.index')}}">
-                    <i class="bi bi-question-circle fs-1"></i><br>
-                    {{__('manager/menu.questions')}}
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/class-exam*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                   href="{{route('manager.class-exam.index')}}">
-                    <i class="bi bi-file-richtext fs-1"></i><br>
-                    {{__('manager/menu.class_exams')}}
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/live-lesson*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                   href="{{route('manager.live-lesson.index')}}">
-                    <i class="bi bi-camera-video fs-1"></i><br>
-                    {{__('manager/menu.live_lesson')}}
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/course-teacher*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                   href="{{route('manager.course-teacher.index')}}">
-                    <i class="bi bi-person-plus fs-1"></i><br>
-                    {{__('manager/menu.teachers')}}
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/appointment-car*') ? 'active' : '' }} {{ request()->is('manager/car*') ? 'active' : '' }}{{ request()->is('manager/appointment*') ? 'active' : '' }} {{ request()->is('manager/appointment-setting*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                   href="{{route('manager.appointment-car')}}">
-                    <i class="bi bi-calendar4-range fs-1"></i><br>
-                    {{__('manager/menu.car_appointment')}}
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/notification*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                   href="{{route('manager.notification.index')}}">
-                    <i class="bi bi-bell fs-1"></i><br>
-                    {{__('manager/menu.notifications')}}
-                </a>
-                <a class="list-group-item list-group-item-action text-center {{ request()->is('manager/support*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
-                   href="{{route('manager.support.index')}}">
-                    <i class="bi bi-info-circle fs-1"></i><br>
-                    {{__('manager/menu.support')}}
-                </a>
-                <a class="list-group-item list-group-item-action text-center mb-5" href="{{route('logout-user')}}">
-                    <i class="bi bi-box-arrow-right fs-1"></i><br>
-                    {{__('manager/menu.logout')}}
+
+                <a class="sidebar-menu-list">
+                    <a class="list-group-item list-group-item-action d-none d-md-block text-left {{ request()->is('manager/dashboard') ? 'active' : '' }}"
+                       href="{{route('manager.dashboard')}}">
+                        <i class="bi bi-house fs-4"></i>
+                        <span class="sidebar-menu-text">{{__('manager/menu.home')}}</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action d-none d-md-block text-left {{ request()->is('manager/user-operations*') ? 'active' : '' }} {{ request()->is('manager/user*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
+                       href="{{route('manager.user.operations')}}">
+                        <i class="bi bi-people fs-4"></i>
+                        <span class="sidebar-menu-text">{{__('manager/menu.trainee_transactions')}}</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action text-left {{ request()->is('manager/question*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
+                       href="{{route('manager.question.index')}}">
+                        <i class="bi bi-question-circle fs-4"></i>
+                        <span class="sidebar-menu-text">{{__('manager/menu.questions')}}</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action text-left {{ request()->is('manager/class-exam*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
+                       href="{{route('manager.class-exam.index')}}">
+                        <i class="bi bi-file-richtext fs-4"></i>
+                        <span class="sidebar-menu-text">{{__('manager/menu.class_exams')}}</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action text-left {{ request()->is('manager/live-lesson*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
+                       href="{{route('manager.live-lesson.index')}}">
+                        <i class="bi bi-camera-video fs-4"></i>
+                        <span class="sidebar-menu-text">{{__('manager/menu.live_lesson')}}</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action text-left {{ request()->is('manager/course-teacher*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
+                       href="{{route('manager.course-teacher.index')}}">
+                        <i class="bi bi-person-plus fs-4"></i>
+                        <span class="sidebar-menu-text">{{__('manager/menu.teachers')}}</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action text-left {{ request()->is('manager/appointment-car*') ? 'active' : '' }} {{ request()->is('manager/car*') ? 'active' : '' }}{{ request()->is('manager/appointment*') ? 'active' : '' }} {{ request()->is('manager/appointment-setting*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
+                       href="{{route('manager.appointment-car')}}">
+                        <i class="bi bi-calendar4-range fs-4"></i>
+                        <span class="sidebar-menu-text">{{__('manager/menu.car_appointment')}}</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action text-left d-md-none d-lg-none d-xl-none d-xxl-none {{ request()->is('manager/notification*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
+                       href="{{route('manager.notification.index')}}">
+                        <i class="bi bi-bell fs-4"></i>
+                        <span class="sidebar-menu-text">{{__('manager/menu.notifications')}}</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action text-left d-md-none d-lg-none d-xl-none d-xxl-none {{ request()->is('manager/support*') ? 'active' : '' }} {{ session('invoice') == true ? 'disabled' : null}}"
+                       href="{{route('manager.support.index')}}">
+                        <i class="bi bi-info-circle fs-4"></i>
+                        <span class="sidebar-menu-text">{{__('manager/menu.support')}}</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action text-left d-md-none d-lg-none d-xl-none d-xxl-none mb-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle fs-4"></i>
+                        <span class="sidebar-menu-text">Hesap</span>
+                    </a>
+                    <ul class="dropdown-menu sidebar-dropdown-open d-md-none d-lg-none d-xl-none d-xxl-none" aria-labelledby="dropdownMenuButton1">
+                        <span class="text-secondary ms-2">ACCOUNT</span>
+                        <li><a class="dropdown-item" href="{{route('manager.profile.edit')}}">{{__('manager/menu.profile')}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('manager.company.edit')}}">{{__('manager/menu.company')}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('manager.invoice.index')}}">{{__('manager/menu.invoices')}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('logout-user')}}">{{__('manager/menu.logout')}}</a></li>
+                    </ul>
                 </a>
             </div>
         </div>
     </div>
+    <div class="sidebar-toggle-button">
+        <a class="btn btn-light" id="sidebarToggle"><i class="bi bi-list fs-4"></i></a>
+    </div>
     <!-- Page content wrapper-->
     <div id="page-content-wrapper">
         <!-- Top navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom d-none d-md-block">
+        <nav class="navbar-top navbar navbar-expand-lg navbar-light bg-light border-bottom d-none d-md-block">
             <div class="container-fluid">
-                <button class="btn btn-light" id="sidebarToggle"><i class="bi bi-list fs-4"></i></button>
-                <button class="navbar-toggler d-none d-sm-block d-lg-none" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
-                </button>
+
+                <a class="navbar-logo-link" href="{{route('manager.dashboard')}}">
+                    <img class="sidebar-logo" src="{{ companyLogo() }}" alt="logo">
+                </a>
+
                 <div class="collapse navbar-collapse d-none d-sm-block" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                        <li class="nav-item active"><a
-                                class="nav-link">{{__('manager/menu.welcome')}}, {{auth()->user()->name .' '. auth()->user()->surname}}</a>
+                        <li class="nav-item me-2">
+                            <a href="{{route('manager.support.index')}}" class="nav-link navbar-border">
+                                <i class="bi bi-info-circle fs-4 ms-2"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a href="{{route('manager.notification.index')}}" class="nav-link navbar-border">
+                                <i class="bi bi-bell fs-4 ms-2"></i>
+                            </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            <a class="nav-link navbar-border" id="navbarDropdown" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="{{imagePath(auth()->user()->info->photo)}}" class="rounded-circle" height="30" alt="">
+                                <span class="name">{{auth()->user()->name .' '. auth()->user()->surname}}</span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-end navbar-dropdown-open" aria-labelledby="navbarDropdown">
+                                <span class="text-secondary ms-2">ACCOUNT</span>
                                 <a class="dropdown-item" href="{{route('manager.profile.edit')}}">{{__('manager/menu.profile')}}</a>
                                 <a class="dropdown-item" href="{{route('manager.company.edit')}}">{{__('manager/menu.company')}}</a>
                                 <a class="dropdown-item" href="{{route('manager.invoice.index')}}">{{__('manager/menu.invoices')}}</a>
@@ -142,7 +168,7 @@
             @yield('content')
         </div>
 
-        <nav class="navbar fixed-bottom bottom-navigation-mb d-flex justify-content-around  d-md-none d-lg-none d-xl-none d-xxl-none">
+        <nav class="navbar fixed-bottom bottom-navigation-mb d-flex justify-content-around d-md-none d-lg-none d-xl-none d-xxl-none">
             <ul class="navbar-list mx-auto ">
                 <li class="navbar-item">
                     <a class="navbar-link" id="sidebarToggleM" >

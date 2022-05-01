@@ -8,12 +8,6 @@
                 <blockquote class="blockquote">
                     <h2>Profil Düzenle</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item">Profil Düzenle</li>
-                    </ol>
-                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 mt-3">

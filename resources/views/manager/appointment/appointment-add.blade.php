@@ -8,13 +8,6 @@
                 <blockquote class="blockquote">
                     <h2>{{__('manager/menu.appointment_create')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment-car')}}">{{__('manager/menu.car_appointment')}}</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment.index')}}">{{__('manager/menu.appointment')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.appointment_create')}}</li>
-                    </ol>
-                </nav>
             </figure>
 
             <div class="row">

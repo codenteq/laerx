@@ -8,12 +8,6 @@
                 <blockquote class="blockquote">
                     <h2>{{__('user/menu.exam_result')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('user/menu.exam_result')}}</li>
-                    </ol>
-                </nav>
             </figure>
             <div class="container">
                 <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">

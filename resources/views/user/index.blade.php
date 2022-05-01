@@ -8,11 +8,6 @@
                 <blockquote class="blockquote">
                     <h2>{{__('user/menu.home')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
-                    </ol>
-                </nav>
             </figure>
 
             <div class="container text-center">

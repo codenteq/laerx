@@ -50,6 +50,28 @@ body a{
     width: 7% !important;
 }
 
+blockquote h2 {
+    color: #363636 !important;
+}
+
+.content-app {
+    margin: 8% 0 0 0 !important;
+}
+
+.btn {
+    padding: 0.5rem 1.5rem !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    outline: none !important;
+}
+
+.btn.btn-success {
+    color: #fff !important;
+    background-color: #0b52a2 !important;
+}
+
 @media (max-width:800px) {
     .sidebar-menu-list {
         display:none !important;

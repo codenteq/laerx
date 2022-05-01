@@ -8,12 +8,6 @@
                 <blockquote class="blockquote">
                     <h2>Sistem Ayarları</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Sistem Ayarları</li>
-                    </ol>
-                </nav>
             </figure>
             <div class="container text-center">
                 <div class="row row-cols-2 d-flex justify-content-between">

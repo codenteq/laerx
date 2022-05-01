@@ -7,14 +7,6 @@
                 <blockquote class="blockquote">
                     <h2>{{__('manager/menu.trainee_report_detail')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.user.results')}}">{{__('manager/menu.trainee_report')}}</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.trainee_report_detail')}}</li>
-                    </ol>
-                </nav>
             </figure>
             <div class="container">
                 <div class="row">

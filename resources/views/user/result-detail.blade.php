@@ -7,13 +7,6 @@
                 <blockquote class="blockquote">
                     <h2>Sınav Sonuç Detay</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('user.results')}}">Sınav Sonuçlarım</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Sınav Sonuç Detay</li>
-                    </ol>
-                </nav>
             </figure>
             <div class="container">
                 <div class="row">

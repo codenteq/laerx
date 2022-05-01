@@ -8,12 +8,6 @@
                 <blockquote class="blockquote">
                     <h2>Diller</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Ana Sayfa</a></li>
-                        <li class="breadcrumb-item">Diller</li>
-                    </ol>
-                </nav>
             </figure>
 
             <div class="row">

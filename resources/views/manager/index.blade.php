@@ -8,12 +8,6 @@
                 <blockquote class="blockquote">
                     <h2>{{__('manager/menu.home')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">{{__('manager/menu.home')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.dashboard')}}</li>
-                    </ol>
-                </nav>
             </figure>
 
             <!-- pay modal -->

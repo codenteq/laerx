@@ -8,13 +8,6 @@
                 <blockquote class="blockquote">
                     <h2>{{__('manager/menu.teacher_edit')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('manager.course-teacher.index')}}">{{__('manager/menu.teachers')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.teacher_edit')}}</li>
-                    </ol>
-                </nav>
             </figure>
 
             <div class="row">

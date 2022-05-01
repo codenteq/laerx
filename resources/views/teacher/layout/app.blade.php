@@ -53,6 +53,7 @@
                     <a class="list-group-item list-group-item-action text-left d-md-none d-lg-none d-xl-none d-xxl-none mb-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-circle fs-4"></i>
                         <span class="sidebar-menu-text">{{__('teacher/profile.profile')}}</span>
+                        <i class="bi bi-chevron-down sidebar-toggle-icon me-1"></i>
                     </a>
                     <ul class="dropdown-menu sidebar-dropdown-open d-md-none d-lg-none d-xl-none d-xxl-none" aria-labelledby="dropdownMenuButton1">
                         <span class="text-secondary ms-2">ACCOUNT</span>

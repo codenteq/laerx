@@ -5303,9 +5303,13 @@ textarea.form-control-lg {
 
 .list-group-item.active {
     z-index: 2;
+    color: #000;
+    border-color: #d9dadd !important;
+}
+
+.active .bi {
+    z-index: 2;
     color: #ffd338;
-    background: #030303 !important;
-    border-radius: 15px;
 }
 
 .list-group-item + .list-group-item {

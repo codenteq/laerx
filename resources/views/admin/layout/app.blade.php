@@ -12,12 +12,7 @@
     <meta name="generator" content="Quiz App">
     @yield('meta')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
-
     <link rel="icon" href="{{asset('images/favicon.png')}}" type="image/x-icon"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
@@ -51,24 +46,48 @@
                         <i class="bi bi-people fs-4"></i>
                         <span class="sidebar-menu-text">Kullanıcılar</span>
                     </a>
-                    <a class="list-group-item list-group-item-action text-left {{ request()->is('admin/lesson-content*') ? 'active' : '' }}"
-                       href="{{route('admin.lesson-content.index')}}">
-                        <i class="bi bi-book fs-4"></i>
-                        <span class="sidebar-menu-text">Dersler</span>
-                    </a>
-                    <a class="list-group-item list-group-item-action text-left {{ request()->is('admin/question*') ? 'active' : '' }}"
-                       href="{{route('admin.question.index')}}">
+
+                    <a class="list-group-item list-group-item-action text-left {{ request()->is('admin/question*', 'admin/type*', 'admin/lesson-content*') ? 'active' : '' }}" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-question-circle fs-4"></i>
-                        <span class="sidebar-menu-text">Sorular</span>
+                        <span class="sidebar-menu-text">Soru Bankası</span>
+                        <i class="bi bi-chevron-down sidebar-toggle-icon me-1"></i>
                     </a>
-                    <a class="list-group-item list-group-item-action text-left {{ request()->is('admin/setting-dashboard*') ? 'active' : '' }} {{ request()->is('admin/language*') ? 'active' : '' }} {{ request()->is('admin/group*') ? 'active' : '' }} {{ request()->is('admin/period*') ? 'active' : '' }} {{ request()->is('admin/type*') ? 'active' : '' }} {{ request()->is('admin/coupon*') ? 'active' : '' }} {{ request()->is('admin/car-type*') ? 'active' : '' }} {{ request()->is('admin/package*') ? 'active' : '' }}"
-                       href="{{route('admin.setting.dashboard')}}">
+                    <ul class="dropdown-menu sidebar-dropdown-open" aria-labelledby="dropdownMenuButton4">
+                        <span class="text-secondary ms-2">BANK</span>
+                        <li><a class="dropdown-item" href="{{route('admin.lesson-content.index')}}">Dersler</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.question.index')}}">Sorular</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.type.index')}}">Soru Kategorileri</a></li>
+                    </ul>
+
+                    <a class="list-group-item list-group-item-action text-left {{ request()->is('admin/coupon*', 'admin/package*', 'admin/payment-plan*') ? 'active' : '' }}" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-megaphone fs-4"></i>
+                        <span class="sidebar-menu-text">Pazarlama</span>
+                        <i class="bi bi-chevron-down sidebar-toggle-icon me-1"></i>
+                    </a>
+                    <ul class="dropdown-menu sidebar-dropdown-open" aria-labelledby="dropdownMenuButton3">
+                        <span class="text-secondary ms-2">MARKETING</span>
+                        <li><a class="dropdown-item" href="{{route('admin.payment-plan.index')}}">Ödeme Planları</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.package.index')}}">Paketler</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.coupon.index')}}">Kuponlar</a></li>
+                    </ul>
+
+                    <a class="list-group-item list-group-item-action text-left {{ request()->is('admin/language*', 'admin/group*', 'admin/period*', 'admin/car-type*') ? 'active' : '' }}" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-gear fs-4"></i>
                         <span class="sidebar-menu-text">Sistem Ayarları</span>
+                        <i class="bi bi-chevron-down sidebar-toggle-icon me-1"></i>
                     </a>
+                    <ul class="dropdown-menu sidebar-dropdown-open" aria-labelledby="dropdownMenuButton2">
+                        <span class="text-secondary ms-2">SETTINGS</span>
+                        <li><a class="dropdown-item" href="{{route('admin.language.index')}}">Dil Seçenekleri</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.group.index')}}">Ehliyet Grupları</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.period.index')}}">Dönemler</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.car-type.index')}}">Araç Türleri</a></li>
+                    </ul>
+
                     <a class="list-group-item list-group-item-action text-left d-md-none d-lg-none d-xl-none d-xxl-none mb-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-circle fs-4"></i>
                         <span class="sidebar-menu-text">Hesap</span>
+                        <i class="bi bi-chevron-down sidebar-toggle-icon me-1"></i>
                     </a>
                     <ul class="dropdown-menu sidebar-dropdown-open d-md-none d-lg-none d-xl-none d-xxl-none" aria-labelledby="dropdownMenuButton1">
                         <span class="text-secondary ms-2">Version : {{ app()->version() }}</span>
@@ -137,19 +156,19 @@
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('manager/dashboard') ? 'active' : '' }}" href="{{route('admin.dashboard')}}">
+                    <a class="navbar-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{route('admin.dashboard')}}">
                         <i class="bi bi-house navbar-link-icon"></i>
                     </a>
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link {{ request()->is('manager/user-results*') ? 'active' : '' }}" href="{{route('admin.manager-user.index')}}">
+                    <a class="navbar-link {{ request()->is('admin/manager-user*') ? 'active' : '' }}" href="{{route('admin.manager-user.index')}}">
                         <i class="bi bi-people navbar-link-icon"></i>
                     </a>
                 </li>
 
                 <li class="navbar-item">
-                    <a class="navbar-link" href="{{route('admin.profile.edit')}}">
+                    <a class="navbar-link {{ request()->is('admin/profile*') ? 'active' : '' }}" href="{{route('admin.profile.edit')}}">
                         <i class="bi bi-person navbar-link-icon"></i>
                     </a>
                 </li>

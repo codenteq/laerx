@@ -47,7 +47,7 @@
                             <span>{{__('user/menu.exam_result')}}</span>
                         </a>
                     </div>
-                    <div class="col base p-5 mb-5 fast-access-buttom">
+                    <div class="col base p-5 mb-5 fast-access-bottom">
                         <a href="{{route('user.support')}}">
                             <i class="bi bi-info-circle fs-1"></i><br>
                             <span>{{__('user/menu.support')}}</span>

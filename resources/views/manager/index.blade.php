@@ -36,19 +36,19 @@
                         @endif
                     </div>
                     @if(session('invoice') != true)
-                        <div class="col base p-5 mt-3">
+                        <div class="col base p-5 mt-2">
                             <a href="{{route('manager.live-lesson.index')}}">
                                 <i class="bi bi-camera-video fs-1"></i><br>
                                 <span>{{__('manager/menu.live_lesson')}}</span>
                             </a>
                         </div>
-                        <div class="col base p-5 mb-2">
+                        <div class="col base p-5 mb-2 mt-2">
                             <a href="{{route('manager.user.create')}}">
                                 <i class="bi bi-person-plus fs-1"></i><br>
                                 <span>{{__('manager/menu.new_trainee')}}</span>
                             </a>
                         </div>
-                        <div class="col base p-5 mb-2">
+                        <div class="col base p-5 mb-2 mt-2">
                             <a href="{{route('manager.user.index')}}">
                                 <i class="bi bi-person-check fs-1"></i><br>
                                 <span>{{__('manager/menu.trainee_list')}}</span>

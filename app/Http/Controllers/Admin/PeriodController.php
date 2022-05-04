@@ -27,7 +27,7 @@ class PeriodController extends Controller
     public function index()
     {
         $periods = Period::all();
-        return view('admin.period.period',compact('periods'));
+        return view('admin.period.index',compact('periods'));
     }
 
     /**
@@ -37,7 +37,7 @@ class PeriodController extends Controller
      */
     public function create()
     {
-        return view('admin.period.period-add');
+        return view('admin.period.create');
     }
 
     /**
@@ -64,7 +64,7 @@ class PeriodController extends Controller
      */
     public function edit(Period $period)
     {
-        return view('admin.period.period-edit', compact('period'));
+        return view('admin.period.edit', compact('period'));
     }
 
     /**

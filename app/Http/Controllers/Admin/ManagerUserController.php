@@ -31,7 +31,7 @@ class ManagerUserController extends Controller
     public function index()
     {
         $users = UserInfo::with('company', 'user', 'language')->whereRelation('user','type',User::Manager)->latest()->get();
-        return view('admin.users.users', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -43,7 +43,7 @@ class ManagerUserController extends Controller
     {
         $companies = Company::with('companies')->latest()->get();
         $languages = Language::all();
-        return view('admin.users.user-add', compact('companies', 'languages'));
+        return view('admin.users.create', compact('companies', 'languages'));
     }
 
     /**
@@ -72,7 +72,7 @@ class ManagerUserController extends Controller
         $companies = Company::with('companies')->get();
         $languages = Language::all();
         $user = UserInfo::where('userId', $manager_user->id)->with('company', 'user', 'language')->first();
-        return view('admin.users.user-edit', compact('user', 'companies', 'languages'));
+        return view('admin.users.edit', compact('user', 'companies', 'languages'));
     }
 
     /**

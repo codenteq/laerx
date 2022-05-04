@@ -6,11 +6,9 @@ use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Manager\AppointmentRequest;
 use App\Models\Appointment;
-use App\Models\AppointmentSetting;
 use App\Models\Car;
 use App\Models\User;
 use App\Services\Manager\AppointmentService;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -33,7 +31,7 @@ class AppointmentController extends Controller
             ->with('user', 'teacher', 'car')
             ->latest()
             ->get();
-        return view('manager.appointment.appointment-list', compact('appointments'));
+        return view('manager.appointment.index', compact('appointments'));
     }
 
     /**
@@ -43,7 +41,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('manager.appointment.appointment-add', [
+        return view('manager.appointment.create', [
             'users' => User::where('type', User::Normal)->whereRelation('info','companyId',companyId())->get(),
             'teachers' => User::where('type', User::Teacher)->whereRelation('info','companyId',companyId())->get(),
             'cars' => Car::where('status', 1)->where('companyId',companyId())->get()
@@ -78,7 +76,7 @@ class AppointmentController extends Controller
      */
     public function edit(Appointment $appointment)
     {
-        return view('manager.appointment.appointment-edit', [
+        return view('manager.appointment.edit', [
             'users' => User::where('type', User::Normal)->whereRelation('info','companyId',companyId())->get(),
             'teachers' => User::where('type', User::Teacher)->get(),
             'cars' => Car::where('status', 1)->where('companyId',companyId())->get(),
@@ -123,15 +121,10 @@ class AppointmentController extends Controller
         }
     }
 
-    public function getManagerAppointment()
-    {
-        return view('manager.appointment.appointment');
-    }
-
     public function getAppointmentSetting()
     {
         $months = currentMounth();
-        return view('manager.appointment.appointment-setting', compact('months'));
+        return view('manager.appointment.setting', compact('months'));
     }
 
     public function postAppointmentSetting(Request $request)

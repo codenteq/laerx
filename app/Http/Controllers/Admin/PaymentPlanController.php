@@ -25,7 +25,7 @@ class PaymentPlanController extends Controller
     public function index()
     {
         $paymentPlans = PaymentPlan::latest()->get();
-        return view('admin.payment-plan.payment-plan', compact('paymentPlans'));
+        return view('admin.payment-plan.index', compact('paymentPlans'));
     }
 
     /**
@@ -35,7 +35,7 @@ class PaymentPlanController extends Controller
      */
     public function create()
     {
-        return view('admin.payment-plan.payment-plan-add');
+        return view('admin.payment-plan.create');
     }
 
     /**
@@ -73,7 +73,7 @@ class PaymentPlanController extends Controller
      */
     public function edit(PaymentPlan $paymentPlan)
     {
-        return view('admin.payment-plan.payment-plan-edit', compact('paymentPlan'));
+        return view('admin.payment-plan.edit', compact('paymentPlan'));
     }
 
     /**

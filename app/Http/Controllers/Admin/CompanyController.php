@@ -33,7 +33,7 @@ class CompanyController extends Controller
         $companies = cache()->remember('companies', 60, function () {
             return Company::with(['companies','invoice'])->get();
         });
-        return view('admin.company.company', compact('companies'));
+        return view('admin.company.index', compact('companies'));
     }
 
     /**
@@ -43,7 +43,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('admin.company.company-add', [
+        return view('admin.company.create', [
             'packages' => Package::all(),
             'paymentPlans' => PaymentPlan::all(),
             'countries' => Country::all()
@@ -74,7 +74,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        return view('admin.company.company-edit', [
+        return view('admin.company.edit', [
             'company' => $company,
             'cities' => City::all(),
             'states' => State::all(),

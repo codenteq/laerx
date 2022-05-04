@@ -70,14 +70,14 @@ class HomeController extends Controller
         $tests = cache()->remember('test_result_users', 60, function () {
             return TestResult::where('userId', auth()->id())->withCount('testQuestion')->latest()->get();
         });
-        return view('user.results', compact('tests'));
+        return view('user.results.index', compact('tests'));
     }
 
     public function getResultDetail($detailId)
     {
         $tests = TestResultType::where('resultId', $detailId)->get();
         $result = TestResult::findOrFail($detailId);
-        return view('user.result-detail', compact('tests', 'result'));
+        return view('user.results.view', compact('tests', 'result'));
     }
 
     public function getLiveLessons()

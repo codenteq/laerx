@@ -10,7 +10,7 @@
                 </blockquote>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
+                <div class="col-12 col-lg-12">
                     <form class="form-control" method="get" onchange="changeValue()">
                         <input type="hidden" name="custom_exam" value="true">
                         @foreach($types as $type)

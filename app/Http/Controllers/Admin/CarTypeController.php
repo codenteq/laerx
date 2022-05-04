@@ -25,7 +25,7 @@ class CarTypeController extends Controller
     public function index()
     {
         $types = CarType::all();
-        return view('admin.car-type.car-type', compact('types'));
+        return view('admin.car-type.index', compact('types'));
     }
 
     /**
@@ -35,7 +35,7 @@ class CarTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.car-type.car-type-add');
+        return view('admin.car-type.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class CarTypeController extends Controller
      */
     public function edit(CarType $car_type)
     {
-        return view('admin.car-type.car-type-edit', compact('car_type'));
+        return view('admin.car-type.edit', compact('car_type'));
     }
 
     /**

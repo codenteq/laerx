@@ -15,11 +15,6 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    public function getSettingDashboard()
-    {
-        return view('admin.setting-dashboard');
-    }
-
     public function getProfile()
     {
         $user = User::find(auth()->id());

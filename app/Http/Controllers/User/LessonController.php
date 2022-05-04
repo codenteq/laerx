@@ -18,7 +18,7 @@ class LessonController extends Controller
     {
         $types = QuestionType::all();
         $lessons = LessonContent::where('typeId',$request->type)->where('languageId',languageId())->get();
-        return view('user.lesson.lessons',compact('types','lessons'));
+        return view('user.lesson.index',compact('types','lessons'));
     }
 
     /**
@@ -28,7 +28,7 @@ class LessonController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -50,7 +50,7 @@ class LessonController extends Controller
      */
     public function show(LessonContent $lesson)
     {
-        return view('user.lesson.lesson-view',compact('lesson'));
+        return view('user.lesson.view',compact('lesson'));
     }
 
     /**

@@ -10,7 +10,7 @@
                 </blockquote>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 overflow-auto fast-access-top">
+                <div class="col-12 col-lg-12 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>
@@ -31,7 +31,7 @@
                                 <td>{{$support->info->phone}}</td>
                                 <td>{{$support->created_at}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                             data-bs-target="#supportShow{{$support->id}}">
                                         <i class="bi bi-eye"></i>
                                     </button>
@@ -53,7 +53,7 @@
                                                         @csrf
                                                         @method('PUT')
                                                         <input type="hidden" name="status" value="1">
-                                                        <button type="button" onclick="modalCreateAndUpdateButton(`${{route('manager.support.update',$support)}}`)" class="btn btn-primary">{{__('manager/support.done_btn')}}</button>
+                                                        <button type="button" onclick="modalCreateAndUpdateButton(`${{route('manager.support.update',$support)}}`)" class="btn btn-success">{{__('manager/support.done_btn')}}</button>
                                                     </form>
                                                 </div>
                                             </div>

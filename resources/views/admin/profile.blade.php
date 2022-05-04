@@ -10,7 +10,7 @@
                 </blockquote>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
+                <div class="col-12 col-lg-12">
                     <form class="form-control" name="form-data">
                         @method('PUT')
                         @csrf
@@ -42,7 +42,7 @@
                             <label for="floatingMail">Eposta Adresi</label>
                         </div>
 
-                        <div class="mt-3 mb-5">
+                        <div class="mt-3">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
                             </button>
                             <a href="{{route('admin.manager-user.index')}}" class="btn btn-danger">İptal</a>

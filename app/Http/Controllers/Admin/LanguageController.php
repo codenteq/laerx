@@ -24,7 +24,7 @@ class LanguageController extends Controller
      */
     public function index(Language $language)
     {
-        return view('admin.language.language', ['languages' => $language->all()]);
+        return view('admin.language.index', ['languages' => $language->all()]);
     }
 
     /**
@@ -34,7 +34,7 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        return view('admin.language.language-add');
+        return view('admin.language.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class LanguageController extends Controller
      */
     public function edit(Language $language)
     {
-        return view('admin.language.language-edit', compact('language'));
+        return view('admin.language.edit', compact('language'));
     }
 
     /**

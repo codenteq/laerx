@@ -10,7 +10,7 @@
                 </blockquote>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
+                <div class="col-12 col-lg-12">
                     <form class="form-control" name="form-data">
                         @method('PUT')
                         @csrf
@@ -100,7 +100,7 @@
                             <label for="floatingFirst">{{__('manager/company.address')}}</label>
                         </div>
 
-                        <div class="mt-3 mb-5">
+                        <div class="mt-3">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/company.save_btn')}}
                             </button>
                             <a href="{{route('manager.dashboard')}}" class="btn btn-danger">{{__('manager/company.cancel_btn')}}</a>

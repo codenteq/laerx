@@ -27,7 +27,7 @@ class NotificationController extends Controller
     public function index()
     {
         $notifications = Notification::where('companyId',companyId())->latest()->get();
-        return view('manager.notification.notifications', compact('notifications'));
+        return view('manager.notification.index', compact('notifications'));
     }
 
     /**
@@ -38,7 +38,7 @@ class NotificationController extends Controller
     public function create()
     {
         $users = User::where('type', User::Normal)->get();
-        return view('manager.notification.notification-add', compact('users'));
+        return view('manager.notification.create', compact('users'));
     }
 
     /**

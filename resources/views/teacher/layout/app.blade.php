@@ -12,9 +12,6 @@
     <meta name="generator" content="Quiz App">
     @yield('meta')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FJZSZQ37J"></script>
     <script>
@@ -25,10 +22,8 @@
         gtag('config', 'G-9FJZSZQ37J');
     </script>
 
-    <link rel="icon" href="{{companyLogo()}}" type="image/x-icon"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="icon" href="{{asset('images/favicon.png')}}" type="image/x-icon"/>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     @yield('css')
 
 </head>

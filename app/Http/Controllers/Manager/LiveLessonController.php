@@ -29,7 +29,7 @@ class LiveLessonController extends Controller
     public function index()
     {
         $live_lessons = LiveLesson::with('type')->where('companyId',companyId())->latest()->get();
-        return view('manager.live.live-lessons', compact('live_lessons'));
+        return view('manager.live.index', compact('live_lessons'));
     }
 
     /**
@@ -39,7 +39,7 @@ class LiveLessonController extends Controller
      */
     public function create()
     {
-        return view('manager.live.live-lessons-add', [
+        return view('manager.live.create', [
             'months' => Month::all(),
             'periods' => Period::all(),
             'groups' => Group::all(),
@@ -71,7 +71,7 @@ class LiveLessonController extends Controller
      */
     public function edit(LiveLesson $live_lesson)
     {
-        return view('manager.live.live-lesson-edit', [
+        return view('manager.live.edit', [
             'months' => Month::all(),
             'periods' => Period::all(),
             'groups' => Group::all(),

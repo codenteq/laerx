@@ -24,7 +24,7 @@ class CouponController extends Controller
     public function index()
     {
         $coupons = Coupon::latest()->get();
-        return view('admin.coupon.coupon',compact('coupons'));
+        return view('admin.coupon.index',compact('coupons'));
     }
 
     /**
@@ -34,7 +34,7 @@ class CouponController extends Controller
      */
     public function create()
     {
-        return view('admin.coupon.coupon-add');
+        return view('admin.coupon.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class CouponController extends Controller
      */
     public function edit(Coupon $coupon)
     {
-        return view('admin.coupon.coupon-edit',compact('coupon'));
+        return view('admin.coupon.edit',compact('coupon'));
     }
 
     /**

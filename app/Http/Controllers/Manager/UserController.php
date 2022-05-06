@@ -19,7 +19,6 @@ use App\Services\GlobalService;
 use Illuminate\Http\Request;
 use App\Http\Requests\Manager\UserRequest;
 use Illuminate\Http\Response;
-use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
@@ -45,7 +44,7 @@ class UserController extends Controller
         $users = UserInfo::filter(\request()->all())->where('companyId', companyId())
             ->whereRelation('user', 'type', User::Normal)
             ->with('company', 'user', 'language', 'period', 'month')->latest()->get();
-        return view('manager.users.user-list', compact('users', 'periods', 'groups', 'months'));
+        return view('manager.users.index', compact('users', 'periods', 'groups', 'months'));
     }
 
     /**
@@ -55,7 +54,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('manager.users.user-add', [
+        return view('manager.users.create', [
             'periods' => Period::all(),
             'groups' => Group::all(),
             'languages' => Language::all(),
@@ -88,7 +87,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('manager.users.user-edit', [
+        return view('manager.users.edit', [
             'periods' => Period::all(),
             'groups' => Group::all(),
             'languages' => Language::all(),
@@ -99,7 +98,7 @@ class UserController extends Controller
 
     public function getImportMebbis()
     {
-        return view('manager.users.mebbis-import', [
+        return view('manager.users.import.mebbis', [
             'periods' => Period::all(),
             'groups' => Group::all(),
             'months' => Month::all(),
@@ -151,11 +150,6 @@ class UserController extends Controller
         }
     }
 
-    public function getManagerUserOperations()
-    {
-        return view('manager.users.user-operations');
-    }
-
     public function getManagerUserResults()
     {
         $test = cache()->remember('test', 60, function () {
@@ -168,7 +162,7 @@ class UserController extends Controller
                 ->whereRelation('userInfo', 'companyId', companyId())
                 ->groupBy('userId')->get();
         });
-        return view('manager.users.user-results', compact('test', 'testResults'));
+        return view('manager.users.results.index', compact('test', 'testResults'));
     }
 
     public function getManagerUserResultDetail($userId)
@@ -182,12 +176,12 @@ class UserController extends Controller
             ->with('type')
             ->get();
         $results = TestResult::where('userId', $userId)->latest()->get();
-        return view('manager.users.user-result-detail', compact('resultTypes', 'results'));
+        return view('manager.users.results.view', compact('resultTypes', 'results'));
     }
 
     public function getImportExcel()
     {
-        return view('manager.users.excel-import');
+        return view('manager.users.import.excel');
     }
 
     public function postImportExcel(Request $request)

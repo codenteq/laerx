@@ -17,7 +17,7 @@
         <!-- pay modal end -->
 
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3 overflow-auto">
+                <div class="col-12 col-lg-12 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>

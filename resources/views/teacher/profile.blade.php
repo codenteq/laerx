@@ -10,7 +10,7 @@
                 </blockquote>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
+                <div class="col-12 col-lg-12">
                     <form class="form-control" name="form-data">
                         @csrf
                         @method('PUT')
@@ -77,7 +77,7 @@
                             <label class="input-group-text" for="inputGroupFile02">{{__('teacher/profile.profile_photo')}}</label>
                         </div>
 
-                        <div class="mt-3 mb-5">
+                        <div class="mt-3">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('teacher/profile.save_btn')}}
                             </button>
                             <a href="{{route('teacher.appointment.index')}}" class="btn btn-danger">{{__('teacher/profile.close_btn')}}</a>

@@ -35,7 +35,7 @@ class ClassExamController extends Controller
             ->with('classExamQuestionType')
             ->withSum('classExamQuestionType', 'length')
             ->get();
-        return view('manager.class-exam.class-exam', compact('classExams'));
+        return view('manager.class-exam.index', compact('classExams'));
     }
 
     /**
@@ -47,7 +47,7 @@ class ClassExamController extends Controller
         $months = Month::all();
         $groups = Group::all();
         $types = QuestionType::all();
-        return view('manager.class-exam.class-exam-add', compact('types', 'periods', 'months', 'groups'));
+        return view('manager.class-exam.create', compact('types', 'periods', 'months', 'groups'));
     }
 
     /**

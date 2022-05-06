@@ -26,7 +26,7 @@ class QuestionTypeController extends Controller
     public function index()
     {
         $types = QuestionType::latest()->get();
-        return view('admin.question-type.question-type',compact('types'));
+        return view('admin.question-type.index',compact('types'));
     }
 
     /**
@@ -36,7 +36,7 @@ class QuestionTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.question-type.question-type-add');
+        return view('admin.question-type.create');
     }
 
     /**
@@ -63,7 +63,7 @@ class QuestionTypeController extends Controller
      */
     public function edit(QuestionType $type)
     {
-        return view('admin.question-type.question-type-edit',compact('type'));
+        return view('admin.question-type.edit',compact('type'));
     }
 
     /**

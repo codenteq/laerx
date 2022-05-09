@@ -8,16 +8,9 @@
                 <blockquote class="blockquote">
                     <h2>{{__('user/menu.custom_exam_add')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('user.exams')}}">{{__('user/menu.online_exam')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('user/menu.custom_exam_add')}}</li>
-                    </ol>
-                </nav>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
+                <div class="col-12 col-lg-12">
                     <form class="form-control" method="get" onchange="changeValue()">
                         <input type="hidden" name="custom_exam" value="true">
                         @foreach($types as $type)

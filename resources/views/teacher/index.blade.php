@@ -8,16 +8,10 @@
                 <blockquote class="blockquote">
                     <h2>{{__('teacher/menu.my_appointment')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment.index')}}">{{__('teacher/menu.my_appointment')}}</a>
-                        </li>
-                    </ol>
-                </nav>
             </figure>
 
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3 overflow-auto">
+                <div class="col-12 col-lg-12 overflow-auto">
                     <table id="data-table" class="table table-striped">
                         <thead>
                         <tr>

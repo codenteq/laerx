@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 @foreach($payment_methods as $payment)
-                    <button type="button" class="btn btn-primary col-md-12 mb-3" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-success col-md-12 mb-3" data-bs-toggle="modal"
                             data-bs-target="#pay{{$payment->code}}">
                         {{$payment->title}}
                     </button>
@@ -33,7 +33,7 @@
                     <span>Iban : {{$payment_methods->where('code','wire_transfer')->pluck('description')->first()}}</span>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                    <button class="btn btn-success" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
                             data-bs-dismiss="modal">Geri git
                     </button>
                 </div>
@@ -65,7 +65,7 @@
                         <a class="btn btn-success col-md-12" href="{{route('manager.pay.online')}}">Öde</a>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                        <button class="btn btn-success" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
                                 data-bs-dismiss="modal">Geri git
                         </button>
                     </div>

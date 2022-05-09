@@ -26,7 +26,7 @@ class PackageController extends Controller
     public function index()
     {
         $packages = Package::all();
-        return view('admin.package.package', compact('packages'));
+        return view('admin.package.index', compact('packages'));
     }
 
     /**
@@ -37,7 +37,7 @@ class PackageController extends Controller
     public function create()
     {
         $paymentPlans = PaymentPlan::all();
-        return view('admin.package.package-add', compact('paymentPlans'));
+        return view('admin.package.create', compact('paymentPlans'));
     }
 
     /**
@@ -76,7 +76,7 @@ class PackageController extends Controller
     public function edit(Package $package)
     {
         $paymentPlans = PaymentPlan::all();
-        return view('admin.package.package-edit', compact('package', 'paymentPlans'));
+        return view('admin.package.edit', compact('package', 'paymentPlans'));
     }
 
     /**

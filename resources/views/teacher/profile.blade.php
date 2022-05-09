@@ -8,15 +8,9 @@
                 <blockquote class="blockquote">
                     <h2>{{__('teacher/menu.profile')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.appointment.index')}}">{{__('teacher/menu.my_appointment')}}</a></li>
-                        <li class="breadcrumb-item">{{__('teacher/menu.profile')}}</li>
-                    </ol>
-                </nav>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
+                <div class="col-12 col-lg-12">
                     <form class="form-control" name="form-data">
                         @csrf
                         @method('PUT')
@@ -83,10 +77,10 @@
                             <label class="input-group-text" for="inputGroupFile02">{{__('teacher/profile.profile_photo')}}</label>
                         </div>
 
-                        <div class="mt-3 mb-5">
+                        <div class="mt-3">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('teacher/profile.save_btn')}}
                             </button>
-                            <button type="button" class="btn btn-danger">{{__('teacher/profile.close_btn')}}</button>
+                            <a href="{{route('teacher.appointment.index')}}" class="btn btn-danger">{{__('teacher/profile.close_btn')}}</a>
                         </div>
 
                     </form>

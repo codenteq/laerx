@@ -29,7 +29,7 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = CompanyQuestion::where('companyId',companyId())->with('question.language')->orderByDesc('questionId')->get();
-        return view('manager.question.question', compact('questions'));
+        return view('manager.question.index', compact('questions'));
     }
 
     /**
@@ -41,7 +41,7 @@ class QuestionController extends Controller
     {
         $types = QuestionType::all();
         $languages = Language::all();
-        return view('manager.question.question-add', compact('types','languages'));
+        return view('manager.question.create', compact('types','languages'));
     }
 
     /**
@@ -70,7 +70,7 @@ class QuestionController extends Controller
     {
         $types = QuestionType::all();
         $languages = Language::all();
-        return view('manager.question.question-edit', compact('question', 'types','languages'));
+        return view('manager.question.edit', compact('question', 'types','languages'));
     }
 
     /**
@@ -109,7 +109,7 @@ class QuestionController extends Controller
     public function getQuestionBug()
     {
         $questions = BugQuestion::with('question')->whereRelation('companyQuestion','companyId',companyId())->get();
-        return view('manager.question.bug-question',compact('questions'));
+        return view('manager.question.bug',compact('questions'));
     }
 
     public function destroyQuestionBug($bugId)

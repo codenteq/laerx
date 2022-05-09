@@ -29,7 +29,7 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::latest()->get();
-        return view('admin.question.question', compact('questions'));
+        return view('admin.question.index', compact('questions'));
     }
 
     /**
@@ -41,7 +41,7 @@ class QuestionController extends Controller
     {
         $types = QuestionType::all();
         $languages = Language::all();
-        return view('admin.question.question-add', compact('types','languages'));
+        return view('admin.question.create', compact('types','languages'));
     }
 
     /**
@@ -70,7 +70,7 @@ class QuestionController extends Controller
     {
         $types = QuestionType::all();
         $languages = Language::all();
-        return view('admin.question.question-edit', compact('question', 'types','languages'));
+        return view('admin.question.edit', compact('question', 'types','languages'));
 
     }
 
@@ -110,7 +110,7 @@ class QuestionController extends Controller
     public function getQuestionBug()
     {
         $questions = BugQuestion::with('question')->get();
-        return view('admin.question.bug-question',compact('questions'));
+        return view('admin.question.bug',compact('questions'));
     }
 
     public function destroyQuestionBug($bugId)

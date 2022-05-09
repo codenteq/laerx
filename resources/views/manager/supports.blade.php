@@ -8,12 +8,6 @@
                 <blockquote class="blockquote">
                     <h2>{{__('manager/menu.support')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.support')}}</li>
-                    </ol>
-                </nav>
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 overflow-auto">
@@ -37,7 +31,7 @@
                                 <td>{{$support->info->phone}}</td>
                                 <td>{{$support->created_at}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                             data-bs-target="#supportShow{{$support->id}}">
                                         <i class="bi bi-eye"></i>
                                     </button>
@@ -59,7 +53,7 @@
                                                         @csrf
                                                         @method('PUT')
                                                         <input type="hidden" name="status" value="1">
-                                                        <button type="button" onclick="modalCreateAndUpdateButton(`${{route('manager.support.update',$support)}}`)" class="btn btn-primary">{{__('manager/support.done_btn')}}</button>
+                                                        <button type="button" onclick="modalCreateAndUpdateButton(`${{route('manager.support.update',$support)}}`)" class="btn btn-success">{{__('manager/support.done_btn')}}</button>
                                                     </form>
                                                 </div>
                                             </div>

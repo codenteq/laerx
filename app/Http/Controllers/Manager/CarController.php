@@ -27,7 +27,7 @@ class CarController extends Controller
     public function index()
     {
         $cars = Car::with('type')->where('companyId',companyId())->latest()->get();
-        return view('manager.cars.cars-list', compact('cars'));
+        return view('manager.cars.index', compact('cars'));
     }
 
     /**
@@ -38,7 +38,7 @@ class CarController extends Controller
     public function create()
     {
         $cartypes = CarType::all();
-        return view('manager.cars.cars-add', compact('cartypes'));
+        return view('manager.cars.create', compact('cartypes'));
     }
 
     /**
@@ -65,7 +65,7 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        return view('manager.cars.cars-edit', [
+        return view('manager.cars.edit', [
             'car' => $car,
             'cartypes' => CarType::all()
         ]);

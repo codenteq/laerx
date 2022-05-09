@@ -27,7 +27,7 @@ class LessonContentController extends Controller
     public function index()
     {
         $lessons = LessonContent::latest()->get();
-        return view('admin.lesson-content.lesson',compact('lessons'));
+        return view('admin.lesson-content.index',compact('lessons'));
     }
 
     /**
@@ -39,7 +39,7 @@ class LessonContentController extends Controller
     {
         $languages = Language::all();
         $types = QuestionType::all();
-        return view('admin.lesson-content.lesson-add',compact('languages','types'));
+        return view('admin.lesson-content.create',compact('languages','types'));
     }
 
     /**
@@ -79,7 +79,7 @@ class LessonContentController extends Controller
     {
         $languages = Language::all();
         $types = QuestionType::all();
-        return view('admin.lesson-content.lesson-edit',compact('lessonContent','languages','types'));
+        return view('admin.lesson-content.edit',compact('lessonContent','languages','types'));
     }
 
     /**

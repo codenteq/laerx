@@ -8,15 +8,9 @@
                 <blockquote class="blockquote">
                     <h2>{{__('manager/menu.profile_edit')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('manager.dashboard')}}">{{__('manager/menu.home')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('manager/menu.profile_edit')}}</li>
-                    </ol>
-                </nav>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
+                <div class="col-12 col-lg-12">
                     <form class="form-control" name="form-data">
                         @method('PUT')
                         @csrf
@@ -75,7 +69,7 @@
                             <label class="input-group-text" for="inputGroupFile02">{{__('manager/profile.profile_photo')}}</label>
                         </div>
 
-                        <div class="mt-3 mb-5">
+                        <div class="mt-3">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">{{__('manager/profile.save_btn')}}
                             </button>
                             <a href="{{route('manager.dashboard')}}" class="btn btn-danger">{{__('manager/profile.cancel_btn')}}</a>

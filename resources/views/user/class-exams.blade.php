@@ -8,15 +8,9 @@
                 <blockquote class="blockquote">
                     <h2>{{__('user/menu.class_exam')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('user/menu.class_exam')}}</li>
-                    </ol>
-                </nav>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3 overflow-auto">
+                <div class="col-12 col-lg-12 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
@@ -31,7 +25,7 @@
                                 <td>{{$exam->class_exam_question_type_sum_length}}</td>
                                 <td>{{examTime($exam->class_exam_question_type_sum_length)}}</td>
                                 <td>
-                                    <a href="{{route('user.quiz.class')}}?class={{$exam->id}}" class="btn btn-primary">
+                                    <a href="{{route('user.quiz.class')}}?class={{$exam->id}}" class="btn btn-success">
                                         {{__('user/my-class-exam.start_exam')}}
                                     </a>
                                 </td>

@@ -28,7 +28,7 @@ class CourseTeacherController extends Controller
     public function index()
     {
         $users = UserInfo::where('companyId', companyId())->whereRelation('user', 'type', User::Teacher)->with('user')->latest()->get();
-        return view('manager.course.course-teachers', compact('users'));
+        return view('manager.teachers.index', compact('users'));
     }
 
     /**
@@ -39,7 +39,7 @@ class CourseTeacherController extends Controller
     public function create()
     {
         $languages = Language::all();
-        return view('manager.course.course-teacher-add',compact('languages'));
+        return view('manager.teachers.create',compact('languages'));
     }
 
     /**
@@ -67,7 +67,7 @@ class CourseTeacherController extends Controller
     {
         $languages = Language::all();
         $user = UserInfo::where('userId', $course_teacher->id)->with('user')->first();
-        return view('manager.course.course-teacher-edit', compact('user','languages'));
+        return view('manager.teachers.dit', compact('user','languages'));
     }
 
     /**

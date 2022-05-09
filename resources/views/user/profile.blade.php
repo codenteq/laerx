@@ -8,15 +8,9 @@
                 <blockquote class="blockquote">
                     <h2>{{__('user/menu.profile')}}</h2>
                 </blockquote>
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">{{__('user/menu.home')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('user/menu.profile')}}</li>
-                    </ol>
-                </nav>
             </figure>
             <div class="row">
-                <div class="col-12 col-lg-12 mt-3">
+                <div class="col-12 col-lg-12">
                     <form class="form-control" name="form-data">
                         @csrf
                         @method('PUT')
@@ -50,7 +44,7 @@
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control" id="floatingMail"
                                    name="password_confirmation">
-                            <label for="floatingMail">Y{{__('user/profile.new_password_repeat')}}</label>
+                            <label for="floatingMail">{{__('user/profile.new_password_repeat')}}</label>
                         </div>
 
                         <div class="form-floating mb-3">

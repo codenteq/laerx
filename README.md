@@ -1,8 +1,11 @@
 <p align="center">
-    <a href="https://codenteq.com"><img width="300" src="https://codenteq.com/assets/img/codenteq.png" alt="Codenteq"></a>
+    <a href="https://codenteq.com"><img width="200" src="https://raw.githubusercontent.com/codenteq/laerx/master/public/images/laerx.png?token=GHSAT0AAAAAABSO4XCGD76556NNEOIPZAPSYT6XNVA" alt="Codenteq"></a>
 </p>
 <p align="center">
     <a href="https://github.com/codenteq/laerx/blob/master/LICENSE"><img src="https://poser.pugx.org/bagisto/bagisto/license.svg" alt="License"></a>
+    <a href="#backers"><img src="https://opencollective.com/codenteq/backers/badge.svg" alt="Backers on Open Collective"></a>
+    <a href="#contributors"><img src="https://opencollective.com/codenteq/contributors/badge.svg" alt="Contributors on Open Collective"></a>
+    <a href="#sponsors"><img src="https://opencollective.com/codenteq/sponsors/badge.svg" alt="Sponsors on Open Collective"></a>
 </p>
 
 <p align="center">
@@ -10,7 +13,7 @@
 </p>
 
 <p align="center">
-    ➡️ <a href="https://www.codenteq.com/">Website</a> | <a href="https://www.facebook.com/codenteq/">Community</a> ⬅️
+    ➡️ <a href="https://www.codenteq.com/">Website</a> | <a href="https://devdocs.codenteq.com/">Documentation</a> | <a href="https://www.facebook.com/codenteq/">Community</a> ⬅️
 </p>
 
 <p align="center" style="display: inline;">
@@ -19,12 +22,15 @@
 
 # Laerx
 
-This project offers you a special course management panel for motor vehicle driving courses.
+**Get detailed information about your clients, exams and courses to create an effective report and track your progress. You can also use audio lessons, online quizzes, and the tool/teacher appointment system.**
 
 
-## Table of Contents
+**Read our documentation: [Laerx Docs](https://devdocs.codenteq.com/)**
 
-1. [Demo](#demo)
+
+## Topics
+
+1. [Documentation](#documentation)
 2. [Features](#features)
 3. [Installation](#installation)
 4. [Author](#author)
@@ -32,6 +38,19 @@ This project offers you a special course management panel for motor vehicle driv
 6. [Sponsor](#sponsor)
   
 # Visit our live [Demo](https://laerx.codenteq.com)
+
+### Documentation
+#### Documentation [https://devdocs.codenteq.com](https://devdocs.codenteq.com)
+
+### Requirements
+
+* **OS**: Ubuntu 16.04 LTS or higher / Windows 7 or Higher (WAMP / XAMP).
+* **SERVER**: Apache 2 or NGINX.
+* **RAM**: 2 GB or higher.
+* **PHP**: 7.3 or higher.
+* **For MySQL users**: 5.7.23 or higher.
+* **Composer**: 1.6.5 or higher.
+* **Docker**: 7.4 or higher.
   
 ### Features
 
@@ -148,6 +167,14 @@ This project offers you a special course management panel for motor vehicle driv
   
 ### Sponsor
 
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
+
 [Sponsor this project](https://opencollective.com/codenteq).
+
+<div>
+    <a href="https://opencollective.com/codenteq/contribute/sponsor-7372/checkout" target="_blank">
+        <img src="https://images.opencollective.com/static/images/become_sponsor.svg">
+    </a>
+</div>
 
 <a href="https://github.com/codenteq/laerx/graphs/contributors"><img src="https://opencollective.com/codenteq/contributors.svg?width=890&button=false"/></a>

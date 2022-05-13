@@ -2,7 +2,7 @@
     <a href="https://codenteq.com"><img width="300" src="https://codenteq.com/assets/img/codenteq.png" alt="Codenteq"></a>
 </p>
 <p align="center">
-    <a href="https://github.com/karabayyazilim/drive-course-app/blob/master/LICENSE"><img src="https://poser.pugx.org/bagisto/bagisto/license.svg" alt="License"></a>
+    <a href="https://github.com/codenteq/laerx/blob/master/LICENSE"><img src="https://poser.pugx.org/bagisto/bagisto/license.svg" alt="License"></a>
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
     <img class="flag-img" src="https://flagicons.lipis.dev/flags/4x3/tr.svg" alt="Turkish" width="24" height="24">
 </p>
 
-# Drive Course App
+# Laerx
 
 This project offers you a special course management panel for motor vehicle driving courses.
 
@@ -25,20 +25,13 @@ This project offers you a special course management panel for motor vehicle driv
 ## Table of Contents
 
 1. [Demo](#demo)
-
 2. [Features](#features)
-
 3. [Installation](#installation)
-
 4. [Author](#author)
-
 5. [Licence](#licence)
-
 6. [Sponsor](#sponsor)
   
-### Demo
-[Visit or live](https://drive-course.app.codenteq.com)
-
+# Visit our live [Demo](https://laerx.codenteq.com)
   
 ### Features
 
@@ -144,16 +137,17 @@ This project offers you a special course management panel for motor vehicle driv
 ### Author
 
 - [@karabayyazilim](https://www.github.com/karabayyazilim)
+- [@arsivpro](https://www.github.com/ahmetarsiv)
 - [@arsivpro](https://www.github.com/arsivpro)
 
   
 ## Licence
 
-[MIT Licence](https://github.com/karabayyazilim/drive-course-app/blob/master/LICENSE)
+[MIT Licence](https://github.com/codenteq/laerx/blob/master/LICENSE)
 
   
 ### Sponsor
 
 [Sponsor this project](https://opencollective.com/codenteq).
 
-  
+<a href="https://github.com/codenteq/laerx/graphs/contributors"><img src="https://opencollective.com/codenteq/contributors.svg?width=890&button=false"/></a>

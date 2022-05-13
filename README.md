@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://codenteq.com"><img width="200" src="https://raw.githubusercontent.com/codenteq/laerx/master/public/images/laerx.png?token=GHSAT0AAAAAABSO4XCGD76556NNEOIPZAPSYT6XNVA" alt="Codenteq"></a>
+    <a href="https://codenteq.com"><img width="200" src="https://github.com/codenteq/laerx/blob/master/public/images/laerx.png" alt="Codenteq"></a>
 </p>
 <p align="center">
     <a href="https://github.com/codenteq/laerx/blob/master/LICENSE"><img src="https://poser.pugx.org/bagisto/bagisto/license.svg" alt="License"></a>

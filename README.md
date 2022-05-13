@@ -47,7 +47,7 @@
 * **OS**: Ubuntu 16.04 LTS or higher / Windows 7 or Higher (WAMP / XAMP).
 * **SERVER**: Apache 2 or NGINX.
 * **RAM**: 2 GB or higher.
-* **PHP**: 7.3 or higher.
+* **PHP**: 8.0 or higher.
 * **For MySQL users**: 5.7.23 or higher.
 * **Composer**: 1.6.5 or higher.
 * **Docker**: 7.4 or higher.

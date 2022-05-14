@@ -33,10 +33,10 @@
                     Giriş yap
                 </button>
             </div>
-            
+
             <footer>
                 <p class="text-center mt-5">
-                    <a href="{{ route('static.page.privacy-policy') }}" class="text-decoration-none" style="color: #909090" target="_blank">Gizlilik Politikası - KVKK</a>
+                    <a href="{{ route('static.page.privacy-policy') }}" class="text-decoration-none small" style="color: #909090" target="_blank">Gizlilik Politikası - KVKK</a>
                 </p>
             </footer>
         </div>

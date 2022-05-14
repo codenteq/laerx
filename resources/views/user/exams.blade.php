@@ -59,16 +59,12 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('user/menu.online_exam')}}</title>
-
 @endsection
 
 @section('css')
-
 @endsection
 
 @section('js')
-
 @endsection
 

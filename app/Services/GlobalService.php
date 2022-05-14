@@ -56,7 +56,7 @@ class GlobalService
             'monthId' => $request->monthId,
             'groupId' => $request->groupId,
             'languageId' => $request->languageId,
-            'photo' => $path ?? '/images/avatar.png',
+            'photo' => $path ?? '/images/avatar.svg',
             'companyId' => auth()->user()->type == User::Admin ? $request->companyId : companyId(),
             'userId' => $id
         ]);

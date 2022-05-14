@@ -30,9 +30,7 @@
 @endsection
 
 @section('meta')
-
     <title>{{$lesson->title}}</title>
-
 @endsection
 
 @section('css')

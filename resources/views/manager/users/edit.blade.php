@@ -11,9 +11,9 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12">
-                    <form class="form-control" name="form-data">
-                        @csrf
-                        @method('PUT')
+                    <form name="form-data">
+                        @csrf @method('PUT')
+
                         <div class="row g-2 col-md-12">
                             <div class="form-floating mb-3 col-md-6">
                                 <input type="text" class="form-control" name="tc" placeholder="TCKN"
@@ -64,8 +64,7 @@
                             </div>
 
                             <div class="form-floating mb-3 col-md-6">
-                                <select class="form-select" id="floatingSelect" name="periodId"
-                                        aria-label="Floating label select example">
+                                <select class="form-select" id="floatingSelect" name="periodId">
                                     @foreach($periods as $period)
                                         <option
                                             value="{{$period->id}}" {{$user->periodId == $period->id ? 'selected' : null}}>{{$period->title}}</option>
@@ -75,7 +74,7 @@
                             </div>
 
                             <div class="form-floating mb-3 col-md-6">
-                                <select class="form-select" name="monthId" aria-label="Floating label select example">
+                                <select class="form-select" name="monthId">
                                     @foreach($months as $month)
                                         <option
                                             value="{{$month->id}}" {{$user->monthId == $month->id ? 'selected' : null}}>{{$month->title}}</option>
@@ -85,7 +84,7 @@
                             </div>
 
                             <div class="form-floating mb-3 col-md-6">
-                                <select class="form-select" name="groupId" aria-label="Floating label select example">
+                                <select class="form-select" name="groupId">
                                     @foreach($groups as $group)
                                         <option
                                             value="{{$group->id}}" {{$user->groupId == $group->id ? 'selected' : null}}>{{$group->title}}</option>
@@ -95,8 +94,7 @@
                             </div>
 
                             <div class="form-floating mb-3 col-md-6">
-                                <select class="form-select" name="languageId"
-                                        aria-label="Floating label select example">
+                                <select class="form-select" name="languageId">
                                     @foreach($languages as $language)
                                         <option
                                             value="{{$language->id}}" {{$user->languageId == $language->id ? 'selected' : null}}>{{$language->title}}</option>
@@ -138,23 +136,17 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('manager/menu.edit_trainee')}}</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('manager.user.update',$user->userId)}}';
         const backUrl = '{{route('manager.user.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
 @endsection

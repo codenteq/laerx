@@ -11,15 +11,16 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12">
-                    <form class="form-control" name="form-data">
+                    <form name="form-data">
                         @csrf
+
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="plate_code" placeholder="Araç Plaka">
                             <label for="floatingFirst">{{__('manager/car-appointment/car.plate_code')}}</label>
                         </div>
 
                         <div class="form-floating">
-                            <select class="form-select" name="typeId" aria-label="Floating label select example">
+                            <select class="form-select" name="typeId">
                                 @foreach($cartypes as $type)
                                     <option value="{{$type->id}}">{{$type->title}}</option>
                                 @endforeach
@@ -50,24 +51,18 @@
 @endsection
 
 @section('meta')
-
     <title>Araç Ekle</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('manager.car.store')}}';
         const backUrl = '{{route('manager.car.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
 @endsection
 

@@ -11,7 +11,8 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12">
-                    <h4><a href="{{route('admin.payment-plan.create')}}" class="btn btn-success">Ödeme Planı Oluştur</a></h4>
+                    <h4><a href="{{route('admin.payment-plan.create')}}" class="btn btn-success">Ödeme Planı Oluştur</a>
+                    </h4>
                 </div>
                 <div class="col-12 col-lg-12 mt-3 overflow-auto">
                     <table id="data-table" class="table table-striped" style="width:100%">
@@ -31,7 +32,8 @@
                                     <a href="{{route('admin.payment-plan.edit',$plan)}}">
                                         <i class="bi bi-pen text-dark"></i>
                                     </a>
-                                    <button onclick="deleteButton(this,`${{route('admin.payment-plan.destroy',$plan)}}`)">
+                                    <button
+                                        onclick="deleteButton(this,`${{route('admin.payment-plan.destroy',$plan)}}`)">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
@@ -48,24 +50,18 @@
 @endsection
 
 @section('meta')
-
     <title>Ödeme Planları</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
     @include('layouts.stylesheet')
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const backUrl = '{{route('admin.payment-plan.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
     @include('layouts.script')
 @endsection

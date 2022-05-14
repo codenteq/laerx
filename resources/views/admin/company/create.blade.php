@@ -11,8 +11,9 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12 ">
-                    <form class="form-control" name="form-data">
+                    <form name="form-data">
                         @csrf
+
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-floating mb-3">
@@ -47,8 +48,8 @@
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" onchange="countryChange()" id="country" name="countryId"
-                                            aria-label="Floating label select example">
+                                    <select class="form-select" onchange="countryChange()" id="country"
+                                            name="countryId">
                                         <option disabled selected>Seçiniz</option>
                                         @foreach($countries as $country)
                                             <option value="{{$country->id}}">{{$country->title}}</option>
@@ -62,16 +63,14 @@
                             <div class="col-md-6 col-sm-12">
 
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" onchange="cityChange()" id="city" name="cityId"
-                                            aria-label="Floating label select example">
+                                    <select class="form-select" onchange="cityChange()" id="city" name="cityId">
                                         <option disabled selected>Seçiniz</option>
                                     </select>
                                     <label for="floatingSelect">İl</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" name="stateId" id="state"
-                                            aria-label="Floating label select example">
+                                    <select class="form-select" name="stateId" id="state">
                                         <option disabled selected>Seçiniz</option>
                                     </select>
                                     <label for="floatingSelect">İlçe</label>
@@ -88,8 +87,7 @@
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" name="planId"
-                                            aria-label="Floating label select example">
+                                    <select class="form-select" name="planId">
                                         <option disabled selected>Seçiniz</option>
                                         @foreach($paymentPlans as $paymentPlan)
                                             <option value="{{$paymentPlan->id}}">{{$paymentPlan->description}}</option>
@@ -126,20 +124,14 @@
 @endsection
 
 @section('meta')
-
     <title>Şirket Oluştur</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('admin.company.store')}}';
         const backUrl = '{{route('admin.company.index')}}';
@@ -170,6 +162,6 @@
             });
         }
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
 @endsection
 

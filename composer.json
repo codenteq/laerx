@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "codenteq/laerx",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "About An easy-to-use, free and open source laravel e-Exam platform to build your online course right away.",
+    "keywords": ["opensource", "laravel", "eExam", "management"],
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",

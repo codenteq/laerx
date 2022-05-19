@@ -2,7 +2,9 @@
     <a href="https://codenteq.com"><img width="200" src="https://github.com/codenteq/laerx/blob/master/public/images/laerx.png" alt="Codenteq"></a>
 </p>
 <p align="center">
-    <a href="https://github.com/codenteq/laerx/blob/master/LICENSE"><img src="https://poser.pugx.org/bagisto/bagisto/license.svg" alt="License"></a>
+    <a href="https://packagist.org/packages/codenteq/laerx"><img src="https://poser.pugx.org/codenteq/laerx/d/total.svg" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/codenteq/laerx"><img src="https://poser.pugx.org/codenteq/laerx/v/stable.svg" alt="Latest Stable Version"></a>
+    <a href="https://github.com/codenteq/laerx/blob/master/LICENSE"><img src="https://poser.pugx.org/codenteq/laerx/license.svg" alt="License"></a>
     <a href="#backers"><img src="https://opencollective.com/codenteq/backers/badge.svg" alt="Backers on Open Collective"></a>
     <a href="https://github.com/codenteq/actions"><img src="https://github.com/bagisto/bagisto/workflows/CI/badge.svg" alt="Actions on Github"></a>
     <a href="#contributors"><img src="https://opencollective.com/codenteq/contributors/badge.svg" alt="Contributors on Open Collective"></a>

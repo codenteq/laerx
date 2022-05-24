@@ -52,9 +52,7 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('user/menu.my_lesson')}}</title>
-
 @endsection
 
 @section('css')

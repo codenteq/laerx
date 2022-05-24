@@ -11,8 +11,9 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12">
-                    <form class="form-control" name="form-data">
+                    <form name="form-data">
                         @csrf
+
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="tc" placeholder="TCKN" maxlength="11">
                             <label for="floatingFirst">TC Kimlik No</label>
@@ -29,12 +30,14 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Şifre">
+                            <input type="password" class="form-control" name="password" id="password"
+                                   placeholder="Şifre">
                             <label for="floatingLast">Şifre</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="password_confirmation" id="password-confirm" placeholder="Şifre">
+                            <input type="password" class="form-control" name="password_confirmation"
+                                   id="password-confirm" placeholder="Şifre">
                             <label for="floatingLast">Şifre Tekrar</label>
                         </div>
 
@@ -54,7 +57,8 @@
                         </div>
 
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" value="1" name="status"
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" value="1"
+                                   name="status"
                                    checked>
                             <label class="form-check-label" for="flexSwitchCheckChecked">Kullanıcı Aktif/Pasif</label>
                         </div>
@@ -62,25 +66,32 @@
                         <br>
 
                         <div class="form-floating">
-                            <select class="form-select" name="languageId" aria-label="Floating label select example">
+                            <select class="form-select" name="languageId">
+                                <option disabled selected>Seçiniz</option>
                                 @foreach($languages as $language)
                                     <option value="{{$language->id}}">{{$language->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Dil</label>
                         </div>
+
                         <br>
+
                         <div class="form-floating">
-                            <select class="form-select" name="companyId" aria-label="Floating label select example">
+                            <select class="form-select" name="companyId">
+                                <option disabled selected>Seçiniz</option>
                                 @foreach($companies as $company)
                                     <option value="{{$company->id}}">{{$company->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Şirket</label>
                         </div>
+
                         <br>
+
                         <div class="mt-3">
-                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet</button>
+                            <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
+                            </button>
                             <a href="{{route('admin.manager-user.index')}}" class="btn btn-danger">İptal</a>
                         </div>
 
@@ -93,23 +104,17 @@
 @endsection
 
 @section('meta')
-
     <title>Kullanıcı Oluştur</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('admin.manager-user.store')}}';
         const backUrl = '{{route('admin.manager-user.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
 @endsection

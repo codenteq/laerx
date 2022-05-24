@@ -11,11 +11,11 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12">
-                    <form class="form-control" name="form-data" onchange="changeValue()">
+                    <form name="form-data" onchange="changeValue()">
                         @csrf
+
                         <div class="form-floating col-md-12 mb-3">
-                            <select class="form-select" id="floatingSelect1" name="periodId"
-                                    aria-label="Floating label select example">
+                            <select class="form-select" id="floatingSelect1" name="periodId">
                                 <option disabled selected>{{__('manager/class_exam.select')}}</option>
                                 @foreach($periods as $period)
                                     <option value="{{$period->id}}">{{$period->title}}</option>
@@ -23,9 +23,9 @@
                             </select>
                             <label for="floatingSelect1">{{__('manager/class_exam.period')}}</label>
                         </div>
+
                         <div class="form-floating col-md-12 mb-3">
-                            <select class="form-select" id="floatingSelect2" name="monthId"
-                                    aria-label="Floating label select example">
+                            <select class="form-select" id="floatingSelect2" name="monthId">
                                 <option disabled selected>{{__('manager/class_exam.select')}}</option>
                                 @foreach($months as $month)
                                     <option value="{{$month->id}}">{{$month->title}}</option>
@@ -33,9 +33,9 @@
                             </select>
                             <label for="floatingSelect2">{{__('manager/class_exam.month')}}</label>
                         </div>
+
                         <div class="form-floating col-md-12 mb-3">
-                            <select class="form-select" id="floatingSelect3" name="groupId"
-                                    aria-label="Floating label select example">
+                            <select class="form-select" id="floatingSelect3" name="groupId">
                                 <option disabled selected>{{__('manager/class_exam.select')}}</option>
                                 @foreach($groups as $group)
                                     <option value="{{$group->id}}">{{$group->title}}</option>
@@ -74,26 +74,19 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('manager/menu.class_exam_create')}}</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
     @include('layouts.stylesheet')
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('manager.class-exam.store')}}';
         const backUrl = '{{route('manager.class-exam.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
     <script>
 
         let output = document.getElementsByTagName("output");
@@ -115,5 +108,6 @@
         }
 
     </script>
+    @include('partials.script')
     @include('layouts.script')
 @endsection

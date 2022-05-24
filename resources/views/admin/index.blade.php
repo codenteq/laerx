@@ -16,16 +16,12 @@
 @endsection
 
 @section('meta')
-
     <title>Üst Yönetici Paneli</title>
-
 @endsection
 
 @section('css')
-
 @endsection
 
 @section('js')
-
 @endsection
 

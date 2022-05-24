@@ -11,8 +11,9 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12">
-                    <form class="form-control" name="form-data">
+                    <form name="form-data">
                         @csrf
+
                         @foreach($users as $user)
                             @if($user->info->companyId == companyId())
                                 <div class="form-check">
@@ -25,7 +26,9 @@
                                 </div>
                             @endif
                         @endforeach
+
                         <br>
+
                         <div class="form-floating">
                                 <textarea class="form-control h-100" placeholder="Bildirim Mesajı" name="message" id="floatingTextarea2"></textarea>
                             <label for="floatingTextarea2">{{__('manager/notification.message')}}</label>
@@ -44,24 +47,18 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('manager/menu.notification_create')}}</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('manager.notification.store')}}';
         const backUrl = '{{route('manager.notification.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
 @endsection
 

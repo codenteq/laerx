@@ -11,9 +11,9 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12">
-                    <form class="form-control" name="form-data">
-                        @csrf
-                        @method('PUT')
+                    <form name="form-data">
+                        @csrf @method('PUT')
+
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingFirst"
                                    name="name"
@@ -62,8 +62,7 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect" name="languageId"
-                                    aria-label="Floating label select example">
+                            <select class="form-select" id="floatingSelect" name="languageId">
                                 @foreach ($languages as $language)
                                     <option
                                         value="{{$language->id}}" {{$language->id == $user->languageId ? 'selected' : null}}>{{$language->title}}</option>
@@ -92,23 +91,17 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('teacher/menu.profile')}}</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('teacher.profile.update',$user)}}';
         const backUrl = '{{route('teacher.profile.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
 @endsection

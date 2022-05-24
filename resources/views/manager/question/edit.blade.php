@@ -12,10 +12,10 @@
             <div class="row">
                 <div class="col-12 col-lg-12">
                     <form class="p-2" name="form-data">
-                        @csrf
-                        @method('PUT')
+                        @csrf @method('PUT')
+
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="languageId" aria-label="Floating label select example">
+                            <select class="form-select" name="languageId">
                                 @foreach($languages as $language)
                                     <option
                                         value="{{$language->id}}" {{$question->language->id == $language->id ? 'selected' : null}}>{{$language->title}}</option>
@@ -24,13 +24,16 @@
                             <label
                                 for="floatingSelect">{{__('manager/question/question-add-edit.language_select')}}</label>
                         </div>
+
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="questionImage"
                                    {{$question->questionImage == 1 ? 'checked' : null}} id="switchQuestionImageShow">
                             <label class="form-check-label"
                                    for="switchQuestionImageShow">{{__('manager/question/question-add-edit.question_photo_checkbox')}}</label>
                         </div>
+
                         <br>
+
                         @if($question->imagePath)
                             <div class="col-md-12">
                                 <img src="{{imagePath($question->imagePath)}}" height="100" class="mb-3 w-auto" alt="">
@@ -41,6 +44,7 @@
                                    value="{{$question->title}}">
                             <label for="floatingFirst">{{__('manager/question/question-add-edit.question')}}</label>
                         </div>
+
                         <div class="input-group mb-3 d-none question-image">
                             <input type="file" class="form-control" name="imagePath">
                             <label class="input-group-text"
@@ -54,7 +58,7 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="typeId" aria-label="Floating label select example">
+                            <select class="form-select" name="typeId">
                                 @foreach($types as $type)
                                     <option
                                         value="{{$type->id}}" {{$question->typeId == $type->id ? 'selected' : null}}>{{$type->title}}</option>
@@ -62,13 +66,16 @@
                             </select>
                             <label for="floatingSelect">{{__('manager/question/question-add-edit.type')}}</label>
                         </div>
+
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="choiceImage"
                                    {{$question->choiceImage == 1 ? 'checked' : null}} id="switchImageShow">
                             <label class="form-check-label"
                                    for="switchImageShow">{{__('manager/question/question-add-edit.choice_photo_checkbox')}}</label>
                         </div>
+
                         <br>
+
                         @foreach($question->choice as $key => $choice)
                         <!-- text choice -->
                             <div class="row mb-3 text-choice">
@@ -112,7 +119,6 @@
                             </div>
                         @endforeach
 
-
                         <div class="mt-3">
                             <button type="button" onclick="createAndUpdateButton()"
                                     class="btn btn-success">{{__('manager/question/question-add-edit.save_btn')}}
@@ -120,6 +126,7 @@
                             <a href="{{route('manager.question.index')}}"
                                class="btn btn-danger">{{__('manager/question/question-add-edit.cancel_btn')}}</a>
                         </div>
+
                     </form>
                 </div>
             </div>
@@ -129,13 +136,11 @@
 @endsection
 
 @section('meta')
-
     <title>Soru Düzenle</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
@@ -143,15 +148,10 @@
     <script>
         CKEDITOR.replace('ckeditor');
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('manager.question.update',$question)}}';
         const backUrl = '{{route('manager.question.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
     <script>
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -215,4 +215,5 @@
             })
         }
     </script>
+    @include('partials.script')
 @endsection

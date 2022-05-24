@@ -130,9 +130,7 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('manager/menu.trainee_report_detail')}}</title>
-
 @endsection
 
 

@@ -32,7 +32,7 @@
                             <li><a href="{{asset('/files/kursiyer-excel-sablon.xls')}}" class="btn btn-success" target="_blank"><i class="bi bi-download me-2"></i>{{__('manager/user/trainee-excel-import.download_template_btn')}}</a></li>
                         </ul>
                     </div>
-                    <form class="form-control" name="form-data">
+                    <form name="form-data">
                         @csrf
                         <div class="input-group mb-3">
                             <input type="file" class="form-control" name="excel">
@@ -54,23 +54,17 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('manager/menu.new_trainee_excel')}}</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('manager.user.excel-import.create')}}';
         const backUrl = '{{route('manager.user.excel-import')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
 @endsection

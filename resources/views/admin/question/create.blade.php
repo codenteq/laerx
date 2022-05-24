@@ -13,28 +13,34 @@
                 <div class="col-12 col-lg-12">
                     <form class="p-2" name="form-data">
                         @csrf
+
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="languageId" aria-label="Floating label select example">
+                            <select class="form-select" name="languageId">
                                 @foreach($languages as $language)
                                     <option value="{{$language->id}}">{{$language->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Soru Dilini Seçin</label>
                         </div>
+
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="questionImage"
                                    id="switchQuestionImageShow">
                             <label class="form-check-label" for="switchQuestionImageShow">Soru Resim</label>
                         </div>
+
                         <br>
+
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="title" placeholder="Başlık">
                             <label for="floatingFirst">Soru</label>
                         </div>
+
                         <div class="input-group mb-3 d-none question-image">
                             <input type="file" class="form-control" name="imagePath">
                             <label class="input-group-text" for="inputGroupFile02">Soru Resim</label>
                         </div>
+
                         <div class="mb-3">
                             <label class="mb-2">Açıklama</label>
                             <textarea id="ckeditor" name="description"></textarea>
@@ -42,18 +48,21 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="typeId" aria-label="Floating label select example">
+                            <select class="form-select" name="typeId">
                                 @foreach($types as $type)
                                     <option value="{{$type->id}}">{{$type->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Soru Tipi</label>
                         </div>
+
                         <div class="form-check form-switch">
                             <input class="form-check-input " type="checkbox" name="choiceImage" id="switchImageShow">
                             <label class="form-check-label" for="switchImageShow">Cevap Resim</label>
                         </div>
+
                         <br>
+
                         <div class="row mb-3 text-choice">
                             <div class="form-floating ps-1 col-10">
                                 <input type="text" class="form-control " name="choice_text_1" placeholder="Cevap 01">
@@ -69,6 +78,7 @@
                                        title="Doğru Cevabı Seçin">
                             </div>
                         </div>
+
                         <div class="row mb-3 text-choice">
                             <div class="form-floating ps-1 col-10">
                                 <input type="text" class="form-control " name="choice_text_2" placeholder="Cevap 02">
@@ -84,6 +94,7 @@
                                        title="Doğru Cevabı Seçin">
                             </div>
                         </div>
+
                         <div class="row mb-3 text-choice">
                             <div class="form-floating ps-1 col-10">
                                 <input type="text" class="form-control " name="choice_text_3" placeholder="Cevap 0">
@@ -99,6 +110,7 @@
                                        title="Doğru Cevabı Seçin">
                             </div>
                         </div>
+
                         <div class="row mb-3 text-choice">
                             <div class="form-floating ps-1 col-10">
                                 <input type="text" class="form-control " name="choice_text_4" placeholder="Cevap 04">
@@ -129,6 +141,7 @@
                                        title="Doğru Cevabı Seçin">
                             </div>
                         </div>
+
                         <div class="row mb-3 image-choice d-none">
                             <div class="mb-3 col-10">
                                 <input type="file" class="form-control" name="choice_image_2">
@@ -144,6 +157,7 @@
                                        title="Doğru Cevabı Seçin">
                             </div>
                         </div>
+
                         <div class="row mb-3 image-choice d-none">
                             <div class="mb-3 col-10">
                                 <input type="file" class="form-control" name="choice_image_3">
@@ -158,6 +172,7 @@
                                        title="Doğru Cevabı Seçin">
                             </div>
                         </div>
+
                         <div class="row mb-3 image-choice d-none">
                             <div class="mb-3 col-10">
                                 <input type="file" class="form-control" name="choice_image_4">
@@ -178,6 +193,7 @@
                             </button>
                             <a href="{{route('admin.question.index')}}" class="btn btn-danger">İptal</a>
                         </div>
+
                     </form>
                 </div>
             </div>
@@ -187,13 +203,11 @@
 @endsection
 
 @section('meta')
-
     <title>Soru Ekle</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
@@ -201,15 +215,10 @@
     <script>
         CKEDITOR.replace('ckeditor');
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('admin.question.store')}}';
         const backUrl = '{{route('admin.question.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
     <script>
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -256,4 +265,5 @@
             })
         }
     </script>
+    @include('partials.script')
 @endsection

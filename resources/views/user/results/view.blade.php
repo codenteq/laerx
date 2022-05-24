@@ -84,9 +84,10 @@
 @endsection
 
 @section('meta')
-
     <title>Sınav Sonuç Detay</title>
+@endsection
 
+@section('css')
 @endsection
 
 @section('js')
@@ -98,17 +99,17 @@
             type: 'doughnut',
             data: {
                 labels: [
-                    'Doğru',
-                    'Yanlış',
-                    'Boş'
+                        'Doğru',
+                        'Yanlış',
+                        'Boş'
                 ],
                 datasets: [{
                     label: 'My First Dataset',
                     data: [{{$test->correct}}, {{$test->in_correct}}, {{$test->blank_question}}],
                     backgroundColor: [
-                        'rgb(17,255,0)',
-                        'rgb(232,18,18)',
-                        'rgb(0,218,255)'
+                            'rgb(17,255,0)',
+                            'rgb(232,18,18)',
+                            'rgb(0,218,255)'
                     ],
                     hoverOffset: 4
                 }]
@@ -118,7 +119,4 @@
     </script>
 @endsection
 
-@section('css')
-
-@endsection
 

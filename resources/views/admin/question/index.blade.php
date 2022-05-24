@@ -36,7 +36,8 @@
                                     <a href="{{route('admin.question.edit',$question)}}">
                                         <i class="bi bi-pen text-dark"></i>
                                     </a>
-                                    <button onclick="deleteButton(this,`${{route('admin.question.destroy',$question)}}`)">
+                                    <button
+                                        onclick="deleteButton(this,`${{route('admin.question.destroy',$question)}}`)">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
@@ -52,25 +53,18 @@
 @endsection
 
 @section('meta')
-
     <title>Sorular</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
     @include('layouts.stylesheet')
 @endsection
 
 @section('js')
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    @include('layouts.script')
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const backUrl = '{{route('admin.question.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
+    @include('layouts.script')
 @endsection

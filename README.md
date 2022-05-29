@@ -40,7 +40,7 @@
 5. [Licence](#licence)
 6. [Sponsor](#sponsor)
   
-# Visit our live [Demo](https://laerx.codenteq.com)
+# Visit our live [Demo](https://demo.codenteq.com)
 
 ### Documentation
 #### Documentation [https://devdocs.codenteq.com](https://devdocs.codenteq.com)

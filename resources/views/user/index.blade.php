@@ -20,15 +20,11 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('user/menu.panel')}}</title>
-
 @endsection
 
 @section('css')
-
 @endsection
 
 @section('js')
-
 @endsection

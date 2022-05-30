@@ -10,7 +10,7 @@
                 </blockquote>
             </figure>
             <div class="row">
-                <form class="form-control p-5" name="form-data">
+                <form class="p-5" name="form-data">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingWhy" name="subject" placeholder="İletişim Nedeniniz?">
                         <label for="floatingWhy">{{__('user/support.contact_why')}}</label>
@@ -33,25 +33,19 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('user/menu.support')}}</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('user.support.store')}}';
         const backUrl = '{{route('user.support')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
 @endsection
 
 

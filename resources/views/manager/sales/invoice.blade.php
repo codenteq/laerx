@@ -57,9 +57,7 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('manager/menu.invoices')}}</title>
-
 @endsection
 
 @section('css')

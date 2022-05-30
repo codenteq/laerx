@@ -43,9 +43,7 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('user/menu.my_appointment')}}</title>
-
 @endsection
 
 @section('css')

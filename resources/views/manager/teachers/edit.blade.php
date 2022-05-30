@@ -12,9 +12,9 @@
 
             <div class="row">
                 <div class="col-12 col-lg-12">
-                    <form class="form-control" name="form-data">
-                        @csrf
-                        @method('put')
+                    <form name="form-data">
+                        @csrf @method('put')
+
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="tc" placeholder="TCKN" maxlength="11" value="{{$user->user->tc}}">
                             <label for="floatingFirst">{{__('manager/teacher/teacher-add-edit.tc')}}</label>
@@ -58,8 +58,7 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect" name="languageId"
-                                    aria-label="Floating label select example">
+                            <select class="form-select" id="floatingSelect" name="languageId">
                                 @foreach ($languages as $language)
                                     <option
                                         value="{{$language->id}}" {{$language->id == $user->languageId ? 'selected' : null}}>{{$language->title}}</option>
@@ -86,24 +85,18 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('manager/menu.teacher_edit')}}</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('manager.course-teacher.update',$user->userId)}}';
         const backUrl = '{{route('manager.course-teacher.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
 @endsection
 

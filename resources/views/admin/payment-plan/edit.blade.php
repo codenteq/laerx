@@ -11,16 +11,18 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12">
-                    <form class="form-control" name="form-data">
-                        @method('PUT')
-                        @csrf
+                    <form name="form-data">
+                        @method('PUT') @csrf
+
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" name="month" placeholder="Ay" value="{{$paymentPlan->month}}">
+                            <input type="number" class="form-control" name="month" placeholder="Ay"
+                                   value="{{$paymentPlan->month}}">
                             <label for="floatingFirst">Ay</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="description" placeholder="Açıklama" value="{{$paymentPlan->description}}">
+                            <input type="text" class="form-control" name="description" placeholder="Açıklama"
+                                   value="{{$paymentPlan->description}}">
                             <label for="floatingFirst">Açıklama</label>
                         </div>
 
@@ -39,23 +41,17 @@
 @endsection
 
 @section('meta')
-
     <title>Ödeme Planı Güncelle</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('admin.payment-plan.update',$paymentPlan)}}';
         const backUrl = '{{route('admin.payment-plan.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
 @endsection

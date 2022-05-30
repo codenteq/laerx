@@ -42,9 +42,7 @@
 @endsection
 
 @section('meta')
-
     <title>Özel Sınav Oluştur</title>
-
 @endsection
 
 @section('css')

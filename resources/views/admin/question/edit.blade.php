@@ -12,22 +12,26 @@
             <div class="row">
                 <div class="col-12 col-lg-12">
                     <form class="p-2" name="form-data">
-                        @csrf
-                        @method('PUT')
+                        @csrf @method('PUT')
+
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="languageId" aria-label="Floating label select example">
+                            <select class="form-select" name="languageId">
                                 @foreach($languages as $language)
-                                    <option value="{{$language->id}}" {{$question->language->id == $language->id ? 'selected' : null}}>{{$language->title}}</option>
+                                    <option
+                                        value="{{$language->id}}" {{$question->language->id == $language->id ? 'selected' : null}}>{{$language->title}}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">Soru Dilini Seçin</label>
                         </div>
+
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="questionImage"
                                    {{$question->questionImage == 1 ? 'checked' : null}} id="switchQuestionImageShow">
                             <label class="form-check-label" for="switchQuestionImageShow">Soru Resim</label>
                         </div>
+
                         <br>
+
                         @if($question->imagePath)
                             <img src="{{imagePath($question->imagePath)}}" height="100" class="mb-3 w-auto" alt="">
                         @endif
@@ -36,6 +40,7 @@
                                    value="{{$question->title}}">
                             <label for="floatingFirst">Soru</label>
                         </div>
+
                         <div class="input-group mb-3 d-none question-image">
                             <input type="file" class="form-control" name="imagePath">
                             <label class="input-group-text" for="inputGroupFile02">Soru Resim</label>
@@ -48,7 +53,7 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <select class="form-select" name="typeId" aria-label="Floating label select example">
+                            <select class="form-select" name="typeId">
                                 @foreach($types as $type)
                                     <option
                                         value="{{$type->id}}" {{$question->typeId == $type->id ? 'selected' : null}}>{{$type->title}}</option>
@@ -56,14 +61,17 @@
                             </select>
                             <label for="floatingSelect">Soru Tipi</label>
                         </div>
+
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="choiceImage"
                                    {{$question->choiceImage == 1 ? 'checked' : null}} id="switchImageShow">
                             <label class="form-check-label" for="switchImageShow">Cevap Resim</label>
                         </div>
+
                         <br>
+
                         @foreach($question->choice as $key => $choice)
-                        <!-- text choice -->
+                            <!-- text choice -->
                             <div class="row mb-3 text-choice">
                                 <div class="form-floating ps-1 col-10 col-md-10">
                                     <input type="text" class="form-control " name="{{$choice->id}}"
@@ -74,7 +82,9 @@
                                 <div class="col-2 col-md-1">
                                     <input class="form-check-input p-3" type="checkbox" id="flexCheckDefault"
                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                           @if($choice->path == null){{$choice->id == $choice->choiceKey->choiceId ? 'checked' : null}} @endif
+                                           @if($choice->path == null)
+                                               {{$choice->id == $choice->choiceKey->choiceId ? 'checked' : null}}
+                                           @endif
                                            name="correct_choice"
                                            value="{{$choice->id}}"
                                            onclick="correctChoice(this)"
@@ -84,7 +94,8 @@
                             <!-- image choice -->
                             <div class="row mb-3 image-choice d-none">
                                 @if($choice->path)
-                                    <div> <img src="{{imagePath($choice->path)}}" height="100" class="mb-3 w-auto" alt=""> </div>
+                                    <div><img src="{{imagePath($choice->path)}}" height="100" class="mb-3 w-auto"
+                                              alt=""></div>
                                 @endif
                                 <div class="mb-3 col-10 col-md-10">
                                     <input type="file" class="form-control" name="{{$choice->id}}">
@@ -95,18 +106,20 @@
                                            name="correct_choice"
                                            data-bs-toggle="tooltip" data-bs-placement="top"
                                            onclick="correctChoice(this)"
-                                           @if($choice->path != null){{$choice->id == $choice->choiceKey->choiceId ? 'checked' : null}} @endif
+                                           @if($choice->path != null)
+                                               {{$choice->id == $choice->choiceKey->choiceId ? 'checked' : null}}
+                                           @endif
                                            title="Doğru Cevabı Seçin">
                                 </div>
                             </div>
                         @endforeach
-
 
                         <div class="mt-3">
                             <button type="button" onclick="createAndUpdateButton()" class="btn btn-success">Kaydet
                             </button>
                             <a href="{{route('admin.question.index')}}" class="btn btn-danger">İptal</a>
                         </div>
+
                     </form>
                 </div>
             </div>
@@ -116,13 +129,11 @@
 @endsection
 
 @section('meta')
-
     <title>Soru Düzenle</title>
-
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/plugins/toastr/toastr.min.css')}}">
+    @include('partials.stylesheet')
 @endsection
 
 @section('js')
@@ -130,15 +141,10 @@
     <script>
         CKEDITOR.replace('ckeditor');
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script>
         const actionUrl = '{{route('admin.question.update',$question)}}';
         const backUrl = '{{route('admin.question.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
     <script>
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -202,4 +208,5 @@
             })
         }
     </script>
+    @include('partials.script')
 @endsection

@@ -35,22 +35,16 @@
 @endsection
 
 @section('meta')
-
     <title>{{__('user/menu.notification')}}</title>
-
 @endsection
 
 @section('css')
-
     @include('layouts.stylesheet')
-
 @endsection
 
 @section('js')
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     @include('layouts.script')
-
 @endsection
 

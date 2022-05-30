@@ -11,7 +11,7 @@
             </figure>
             <div class="row">
                 <div class="col-12 col-lg-12">
-                    <form class="form-control" name="form-data">
+                    <form name="form-data">
                         @csrf
                         <div class="row g-2 mb-2">
                             <div class="form-floating col-md-3">
@@ -76,9 +76,7 @@
 @endsection
 
 @section('meta')
-
     <title>Mebbis {{__('manager/menu.new_trainee')}}</title>
-
 @endsection
 
 @section('css')
@@ -86,10 +84,6 @@
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('/plugins/toastr/custom-toastr.js')}}"></script>
     <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('ckeditor');
@@ -98,5 +92,5 @@
         const actionUrl = '{{route('manager.user.mebbis.store')}}';
         const backUrl = '{{route('manager.user.index')}}';
     </script>
-    <script src="{{asset('js/post.js')}}"></script>
+    @include('partials.script')
 @endsection

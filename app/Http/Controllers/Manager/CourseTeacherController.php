@@ -67,7 +67,7 @@ class CourseTeacherController extends Controller
     {
         $languages = Language::all();
         $user = UserInfo::where('userId', $course_teacher->id)->with('user')->first();
-        return view('manager.teachers.dit', compact('user','languages'));
+        return view('manager.teachers.edit', compact('user','languages'));
     }
 
     /**

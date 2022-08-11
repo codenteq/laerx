@@ -20,7 +20,7 @@ class AdminSeeder extends Seeder
             [
                 'name' => 'Ali',
                 'surname' => 'Karabay',
-                'tc' => '21071778216',
+                'tc' => '01234567891',
                 'email' => 'alikarabay77@gmail.com',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
@@ -31,7 +31,7 @@ class AdminSeeder extends Seeder
             [
                 'name' => 'Ahmet',
                 'surname' => 'Arşiv',
-                'tc' => '26339606072',
+                'tc' => '01234567892',
                 'email' => 'aarsiv80@gmail.com',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),

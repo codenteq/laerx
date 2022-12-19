@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://codenteq.com"><img width="200" src="https://codenteq.com/wp-content/uploads/2022/12/laerx-default.png" alt="Codenteq Laerx"></a>
+    <a href="https://codenteq.com"><img width="200" src="https://codenteq.com/wp-content/uploads/2022/12/laerx-default.webp" alt="Codenteq Laerx"></a>
 </p>
 <p align="center">
     <a href="https://packagist.org/packages/codenteq/laerx"><img src="https://poser.pugx.org/codenteq/laerx/d/total.svg" alt="Total Downloads"></a>

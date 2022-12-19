@@ -1,13 +1,13 @@
 {
-    "name": "laravel/laravel",
+    "name": "codenteq/laerx",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Laerx Laravel E-Exam",
+    "keywords": ["opensource", "laravel", "eExam", "management"],
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.6",
         "iyzico/iyzipay-php": "^2.0",
         "kutia-software-company/larafirebase": "^1.3",

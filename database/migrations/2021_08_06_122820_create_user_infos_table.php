@@ -22,7 +22,7 @@ class CreateUserInfosTable extends Migration
             $table->foreignId('monthId')->nullable();
             $table->foreignId('groupId')->nullable();
             $table->foreignId('languageId')->default(1);
-            $table->string('photo')->default('/images/avatar.png');
+            $table->string('photo')->default('/images/avatar.svg');
             $table->foreignId('companyId')->nullable();
             $table->foreignId('userId')->nullable();
             $table->timestamps();

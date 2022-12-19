@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://codenteq.com"><img width="200" src="https://github.com/codenteq/laerx/blob/master/public/images/laerx.png" alt="Codenteq"></a>
+    <a href="https://codenteq.com"><img width="200" src="https://codenteq.com/wp-content/uploads/2022/12/laerx-default.webp" alt="Codenteq Laerx"></a>
 </p>
 <p align="center">
     <a href="https://packagist.org/packages/codenteq/laerx"><img src="https://poser.pugx.org/codenteq/laerx/d/total.svg" alt="Total Downloads"></a>
@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-    ➡️ <a href="https://www.codenteq.com/">Website</a> | <a href="https://devdocs.codenteq.com/">Documentation</a> | <a href="https://www.facebook.com/codenteq/">Community</a> ⬅️
+    ➡️ <a href="https://www.codenteq.com/">Website</a> | <a href="https://twitter.com/i/communities/1588983448135417859">Community</a> ⬅️
 </p>
 
 <p align="center" style="display: inline;">
@@ -25,37 +25,21 @@
 
 # Laerx
 
-**Get detailed information about your clients, exams and courses to create an effective report and track your progress. You can also use audio lessons, online quizzes, and the tool/teacher appointment system.**
+Get detailed information about your clients, exams and courses to create an effective report and track your progress. You can also use audio lessons, online quizzes, and the tool/teacher appointment system.
 
 
-**Read our documentation: [Laerx Docs](https://devdocs.codenteq.com/)**
+# Topics
 
-
-## Topics
-
-1. [Documentation](#documentation)
+1. [Visit our live](#visit-our-live-demo)
 2. [Features](#features)
 3. [Installation](#installation)
-4. [Author](#author)
-5. [Licence](#licence)
-6. [Sponsor](#sponsor)
+4. [Contributions](#contributions)
+5. [Sponsor](#sponsor)
+6. [Licence](#licence)
   
-# Visit our live [Demo](https://demo.codenteq.com)
-
-### Documentation
-#### Documentation [https://devdocs.codenteq.com](https://devdocs.codenteq.com)
-
-### Requirements
-
-* **OS**: Ubuntu 16.04 LTS or higher / Windows 7 or Higher (WAMP / XAMP).
-* **SERVER**: Apache 2 or NGINX.
-* **RAM**: 2 GB or higher.
-* **PHP**: 8.0 or higher.
-* **For MySQL users**: 5.7.23 or higher.
-* **Composer**: 1.6.5 or higher.
-* **Docker**: 7.4 or higher.
+## Visit our live [Demo](https://dev-laerx.codenteq.com)
   
-### Features
+## Features
 
 - Admin Module
   - Question Module
@@ -101,7 +85,7 @@
   - Support Module
 
   
-### Installation
+## Installation
 
 > If you are using Docker run the following command
 
@@ -154,30 +138,15 @@
 ```bash
     php artisan migrate --seed
 ```
-
   
-### Author
+## Contributions
 
-- [@karabayyazilim](https://www.github.com/karabayyazilim)
-- [@ahmetarsiv](https://www.github.com/ahmetarsiv)
-- [@arsivpro](https://www.github.com/arsivpro)
+<a href="https://github.com/codenteq/laerx/graphs/contributors"><img src="https://opencollective.com/codenteq/contributors.svg?width=890&button=false"/></a>
 
-  
-## Licence
-
-[MIT Licence](https://github.com/codenteq/laerx/blob/master/LICENSE)
-
-  
-### Sponsor
-
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
+## Sponsor
 
 [Sponsor this project](https://opencollective.com/codenteq).
 
-<div>
-    <a href="https://opencollective.com/codenteq/contribute/sponsor-7372/checkout" target="_blank">
-        <img src="https://images.opencollective.com/static/images/become_sponsor.svg">
-    </a>
-</div>
+## Licence
 
-<a href="https://github.com/codenteq/laerx/graphs/contributors"><img src="https://opencollective.com/codenteq/contributors.svg?width=890&button=false"/></a>
+[MIT Licence](https://github.com/codenteq/laerx/blob/master/LICENSE)

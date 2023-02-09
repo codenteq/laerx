@@ -33,6 +33,7 @@
       "type": "open_collective",
       "url": "https://opencollective.com/codenteq"
     }
+  ],
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",

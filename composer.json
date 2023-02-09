@@ -2,38 +2,43 @@
     "name": "codenteq/laerx",
     "type": "project",
     "description": "Laerx Laravel E-Exam",
-    "keywords": ["opensource", "laravel", "eExam", "management"],
+    "keywords": [
+        "opensource",
+        "laravel",
+        "eExam",
+        "management"
+    ],
     "license": "MIT",
     "homepage": "https://codenteq.com",
-  "authors": [
-    {
-      "name": "Ahmet Sefa Arşiv",
-      "email": "ahmetarsivpm@gmail.com",
-      "homepage": "https://github.com/ahmetarsiv",
-      "role": "Developer"
+    "authors": [
+        {
+            "name": "Ahmet Sefa Arşiv",
+            "email": "ahmetarsivpm@gmail.com",
+            "homepage": "https://github.com/ahmetarsiv",
+            "role": "Developer"
+        },
+        {
+            "name": "Ali Karabay",
+            "email": "alikarabay77@gmail.com",
+            "homepage": "https://github.com/karabayyazilim",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/codenteq/laerx",
+        "issues": "https://github.com/codenteq/laerx/issues",
+        "email": "info@codenteq.com"
     },
-    {
-      "name": "Ali Karabay",
-      "email": "alikarabay77@gmail.com",
-      "homepage": "https://github.com/karabayyazilim",
-      "role": "Developer"
-    }
-  ],
-  "support": {
-    "source": "https://github.com/codenteq/laerx",
-    "issues": "https://github.com/codenteq/laerx/issues",
-    "email": "info@codenteq.com"
-  },
-  "funding": [
-    {
-      "type": "github",
-      "url": "https://github.com/sponsors/codenteq"
-    },
-    {
-      "type": "open_collective",
-      "url": "https://opencollective.com/codenteq"
-    }
-  ],
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/codenteq"
+        },
+        {
+            "type": "open_collective",
+            "url": "https://opencollective.com/codenteq"
+        }
+    ],
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",

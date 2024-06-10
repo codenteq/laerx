@@ -17,38 +17,38 @@ Get detailed information about your clients, exams and courses to create an effe
 First, install the package:
 
 ```bash
-    composer create-project codenteq/laerx
+composer create-project codenteq/laerx
 ```
 
 ### Docker Installation
 
 Run the following command
 ```bash
-  docker run --rm \
-    -u "$(id -u):$(id -g)" \
-    -v $(pwd):/var/www/html \
-    -w /var/www/html \
-    laravelsail/php81-composer:latest \
-    composer install --ignore-platform-reqs
+docker run --rm \
+  -u "$(id -u):$(id -g)" \
+  -v $(pwd):/var/www/html \
+  -w /var/www/html \
+  laravelsail/php81-composer:latest \
+  composer install --ignore-platform-reqs
 ```
 
 ```bash
-    ./vendor/sail/bin artisan storage link
+./vendor/sail/bin artisan storage link
 ```
 
 Configure the database connection is going to be using in `.env`
 
 ```bash
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=laerx
-    DB_USERNAME=sail
-    DB_PASSWORD=password
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laerx
+DB_USERNAME=sail
+DB_PASSWORD=password
 ```
 
 ```bash
-    ./vendor/bin/sail artisan migrate --seed
+./vendor/bin/sail artisan migrate --seed
 ```
 
 ### Composer Installation
@@ -56,26 +56,26 @@ Configure the database connection is going to be using in `.env`
 Run the following command
 
 ```bash
-    composer install
+composer install
 ```
 
 ```bash
-    php artisan storage:link
+php artisan storage:link
 ```
 
 Configure the database connection is going to be using in `.env`
 
 ```bash
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=laerx
-    DB_USERNAME=root
-    DB_PASSWORD=
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laerx
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
 ```bash
-    php artisan migrate --seed
+php artisan migrate --seed
 ```
 
 ## How to contribute

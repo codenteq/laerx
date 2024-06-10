@@ -15,16 +15,16 @@ class LessonContent extends Model
         'content',
         'file',
         'languageId',
-        'typeId'
+        'typeId',
     ];
 
     public function type()
     {
-        return $this->hasOne(QuestionType::class,'id','typeId');
+        return $this->hasOne(QuestionType::class, 'id', 'typeId');
     }
 
     public function language()
     {
-        return $this->hasOne(Language::class,'id','languageId');
+        return $this->hasOne(Language::class, 'id', 'languageId');
     }
 }

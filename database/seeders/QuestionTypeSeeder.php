@@ -34,7 +34,7 @@ class QuestionTypeSeeder extends Seeder
                 'title' => 'Trafik Adabı',
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
         ]);
     }
 }

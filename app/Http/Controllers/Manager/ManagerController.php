@@ -28,26 +28,29 @@ class ManagerController extends Controller
                 'price' => $invoice->price,
                 'total_amount' => $invoice->price,
                 'discount' => 0,
-                'couponId' => null
+                'couponId' => null,
             ];
             session(['cart' => $data]);
         }
 
         $payment_methods = session('invoice') ? PaymentMethod::where('status', 1)->get() : null;
+
         return view('manager.index', compact('payment_methods', 'invoice'));
     }
 
     public function getProfile()
     {
         $languages = Language::all();
-        $user = UserInfo::where('userId',auth()->id())->with(['user','language'])->firstOrFail();
-        return view('manager.profile',compact('user','languages'));
+        $user = UserInfo::where('userId', auth()->id())->with(['user', 'language'])->firstOrFail();
+
+        return view('manager.profile', compact('user', 'languages'));
     }
 
     public function updateProfile(ProfileRequest $request, GlobalService $globalService)
     {
         try {
-            $globalService->userUpdate($request,auth()->id());
+            $globalService->userUpdate($request, auth()->id());
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -60,7 +63,7 @@ class ManagerController extends Controller
             'company' => Company::find(companyId()),
             'cities' => City::all(),
             'states' => State::all(),
-            'countries' => Country::all()
+            'countries' => Country::all(),
         ]);
     }
 
@@ -68,6 +71,7 @@ class ManagerController extends Controller
     {
         try {
             $companyService->update($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

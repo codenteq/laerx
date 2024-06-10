@@ -28,7 +28,7 @@ class PaymentMethodSeeder extends Seeder
                 'description' => 'wire_transfer',
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
         ]);
     }
 }

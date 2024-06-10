@@ -5,5 +5,5 @@ return [
     'status' => 'حالة',
     'date' => 'تاريخ',
     'save_btn' => 'يحفظ',
-    'cancel_btn' => 'يلغي'
+    'cancel_btn' => 'يلغي',
 ];

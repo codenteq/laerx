@@ -16,5 +16,5 @@ return [
     'download_template_btn' => 'Download Template',
     'upload_excel_list_file_input' => 'Upload Excel List',
     'save_btn' => 'Save',
-    'cancel_btn' => 'Cancel'
+    'cancel_btn' => 'Cancel',
 ];

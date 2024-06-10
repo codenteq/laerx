@@ -25,6 +25,7 @@ class GroupController extends Controller
     public function index()
     {
         $groups = Group::all();
+
         return view('admin.group.index', compact('groups'));
     }
 
@@ -41,13 +42,13 @@ class GroupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Admin\GroupRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(GroupRequest $request)
     {
         try {
             $this->groupService->store($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -57,7 +58,6 @@ class GroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Group $group
      * @return \Illuminate\Http\Response
      */
     public function edit(Group $group)
@@ -68,14 +68,13 @@ class GroupController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Admin\GroupRequest $request
-     * @param \App\Models\Group $group
      * @return \Illuminate\Http\Response
      */
     public function update(GroupRequest $request, Group $group)
     {
         try {
             $this->groupService->update($request, $group->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -85,13 +84,13 @@ class GroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Group $group
      * @return \Illuminate\Http\Response
      */
     public function destroy(Group $group)
     {
         try {
             $this->groupService->destroy($group->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

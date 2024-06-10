@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,8 +12,11 @@ class User extends Authenticatable
     use HasFactory, Notifiable, SoftDeletes;
 
     const Admin = 1;
+
     const Manager = 2;
+
     const Teacher = 3;
+
     const Normal = 4;
 
     /**
@@ -52,6 +54,6 @@ class User extends Authenticatable
 
     public function info()
     {
-        return $this->hasOne(UserInfo::class,'userId','id');
+        return $this->hasOne(UserInfo::class, 'userId', 'id');
     }
 }

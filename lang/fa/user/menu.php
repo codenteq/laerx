@@ -14,5 +14,5 @@ return [
     'welcome' => 'خوش آمدی',
     'profile' => 'مشخصات',
     'panel' => 'پانل',
-    'logout' => 'خروج'
+    'logout' => 'خروج',
 ];

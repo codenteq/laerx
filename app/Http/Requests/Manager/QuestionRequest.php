@@ -29,7 +29,7 @@ class QuestionRequest extends FormRequest
             'choiceImage' => 'string',
             'imagePath' => 'file|mimes:jpg,jpeg,png',
             'correct_choice' => 'required',
-            'languageId' => 'required|numeric'
+            'languageId' => 'required|numeric',
         ];
     }
 }

@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Services\ImageConvertService;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -15,7 +14,9 @@ class ImageConvertJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $id;
+
     protected $model;
+
     protected $path;
 
     /**

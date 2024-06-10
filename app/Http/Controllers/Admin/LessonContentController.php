@@ -27,7 +27,8 @@ class LessonContentController extends Controller
     public function index()
     {
         $lessons = LessonContent::latest()->get();
-        return view('admin.lesson-content.index',compact('lessons'));
+
+        return view('admin.lesson-content.index', compact('lessons'));
     }
 
     /**
@@ -39,19 +40,20 @@ class LessonContentController extends Controller
     {
         $languages = Language::all();
         $types = QuestionType::all();
-        return view('admin.lesson-content.create',compact('languages','types'));
+
+        return view('admin.lesson-content.create', compact('languages', 'types'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\LessonContentRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(LessonContentRequest $request)
     {
         try {
             $this->lessonContentService->store($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -61,7 +63,6 @@ class LessonContentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\LessonContent  $lessonContent
      * @return \Illuminate\Http\Response
      */
     public function show(LessonContent $lessonContent)
@@ -72,27 +73,26 @@ class LessonContentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\LessonContent  $lessonContent
      * @return \Illuminate\Http\Response
      */
     public function edit(LessonContent $lessonContent)
     {
         $languages = Language::all();
         $types = QuestionType::all();
-        return view('admin.lesson-content.edit',compact('lessonContent','languages','types'));
+
+        return view('admin.lesson-content.edit', compact('lessonContent', 'languages', 'types'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\LessonContentRequest  $request
-     * @param  \App\Models\LessonContent  $lessonContent
      * @return \Illuminate\Http\Response
      */
     public function update(LessonContentRequest $request, LessonContent $lessonContent)
     {
         try {
-            $this->lessonContentService->update($request,$lessonContent->id);
+            $this->lessonContentService->update($request, $lessonContent->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -102,13 +102,13 @@ class LessonContentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\LessonContent  $lessonContent
      * @return \Illuminate\Http\Response
      */
     public function destroy(LessonContent $lessonContent)
     {
         try {
             $this->lessonContentService->destroy($lessonContent->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

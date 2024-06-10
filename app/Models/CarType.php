@@ -11,6 +11,6 @@ class CarType extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-      'title'
+        'title',
     ];
 }

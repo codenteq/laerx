@@ -15,14 +15,14 @@ class CreateCompanyInfosTable extends Migration
     {
         Schema::create('company_infos', function (Blueprint $table) {
             $table->id();
-            $table->string('tax_no',11);
+            $table->string('tax_no', 11);
             $table->string('email');
             $table->string('website_url')->nullable();
             $table->string('phone');
             $table->foreignId('countryId');
             $table->foreignId('cityId');
             $table->foreignId('stateId');
-            $table->string('address',600);
+            $table->string('address', 600);
             $table->string('zip_code');
             $table->string('logo')->default('/companies/default.png');
             $table->foreignId('planId');

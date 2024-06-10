@@ -5,5 +5,5 @@ return [
     'status' => 'Durum',
     'date' => 'Tarih',
     'save_btn' => 'Kaydet',
-    'cancel_btn' => 'İptal'
+    'cancel_btn' => 'İptal',
 ];

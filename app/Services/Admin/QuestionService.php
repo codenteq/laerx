@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 class QuestionService
 {
     protected $convertService;
+
     protected $except;
 
     public function __construct(ImageConvertService $convertService)
@@ -26,8 +27,8 @@ class QuestionService
             $question = new Question();
             $question->title = $request->title;
             $question->description = $request->description;
-            $question->questionImage = isset($request->questionImage) == "on" ? 1 : 0;
-            $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
+            $question->questionImage = isset($request->questionImage) == 'on' ? 1 : 0;
+            $question->choiceImage = isset($request->choiceImage) == 'on' ? 1 : 0;
             $question->languageId = $request->languageId;
             $question->typeId = $request->typeId;
             if ($request->file('imagePath') && isset($request->questionImage)) {
@@ -40,7 +41,7 @@ class QuestionService
                 //ImageConvertJob::dispatch($question->id, 'question', $path)->onQueue('image');
                 $this->convertService->execute($question->id, 'question', $path);
             }
-            if (isset($request->choiceImage) == "on") {
+            if (isset($request->choiceImage) == 'on') {
                 self::choiceImageStore($request, $question->id);
             } else {
                 self::choiceStore($request, $question->id);
@@ -48,18 +49,14 @@ class QuestionService
         });
     }
 
-    /**
-     * @param $request
-     * @param $id
-     */
     public function choiceStore($request, $id)
     {
         for ($i = 1; $i <= 4; $i++) {
-            $choiceText = 'choice_text_' . $i;
+            $choiceText = 'choice_text_'.$i;
             $choice = QuestionChoice::create([
                 'title' => $request->$choiceText,
                 'path' => null,
-                'questionId' => $id
+                'questionId' => $id,
             ]);
             if ($request->correct_choice == $i) {
                 self::choiceKeyStore($choice->id, $id);
@@ -67,20 +64,16 @@ class QuestionService
         }
     }
 
-    /**
-     * @param $request
-     * @param $id
-     */
     public function choiceImageStore($request, $id)
     {
         $request->except($this->except);
         for ($i = 1; $i <= 4; $i++) {
-            $choiceImage = 'choice_image_' . $i;
+            $choiceImage = 'choice_image_'.$i;
             $path = $request->file($choiceImage)->store('choices', 'public');
             $choice = QuestionChoice::create([
                 'title' => null,
                 'path' => $path,
-                'questionId' => $id
+                'questionId' => $id,
             ]);
             //ImageConvertJob::dispatch($choice->id, 'questionChoice', $path)->onQueue('image');
             $this->convertService->execute($choice->id, 'questionChoice', $path);
@@ -88,10 +81,6 @@ class QuestionService
         }
     }
 
-    /**
-     * @param $cId
-     * @param $qId
-     */
     public function choiceKeyStore($cId, $qId)
     {
         QuestionChoiceKey::create([
@@ -100,17 +89,14 @@ class QuestionService
         ]);
     }
 
-    /**
-     * @param $id
-     */
     public function update($request, $id)
     {
         DB::transaction(function () use ($request, $id) {
             $question = Question::find($id);
             $question->title = $request->title;
             $question->description = $request->description;
-            $question->questionImage = isset($request->questionImage) == "on" ? 1 : 0;
-            $question->choiceImage = isset($request->choiceImage) == "on" ? 1 : 0;
+            $question->questionImage = isset($request->questionImage) == 'on' ? 1 : 0;
+            $question->choiceImage = isset($request->choiceImage) == 'on' ? 1 : 0;
             $question->languageId = $request->languageId;
             $question->typeId = $request->typeId;
             $question->save();
@@ -123,16 +109,14 @@ class QuestionService
             }
 
             self::choiceKeyUpdate($request, $id);
-            if (isset($request->choiceImage) == "on")
+            if (isset($request->choiceImage) == 'on') {
                 self::choiceImageUpdate($request);
-            else
+            } else {
                 self::choiceUpdate($request);
+            }
         });
     }
 
-    /**
-     * @param $request
-     */
     public function choiceUpdate($request)
     {
         $req = $request->except($this->except);
@@ -144,10 +128,6 @@ class QuestionService
         }
     }
 
-    /**
-     * @param $request
-     * @param $id
-     */
     public function choiceKeyUpdate($request, $id)
     {
         QuestionChoiceKey::where('questionId', $id)->update([
@@ -156,9 +136,6 @@ class QuestionService
         ]);
     }
 
-    /**
-     * @param $request
-     */
     public function choiceImageUpdate($request)
     {
         $req = $request->except($this->except);
@@ -175,9 +152,6 @@ class QuestionService
         }
     }
 
-    /**
-     * @param $id
-     */
     public function destroy($id)
     {
         Question::find($id)->delete();
@@ -189,5 +163,4 @@ class QuestionService
     {
         BugQuestion::find($id)->delete();
     }
-
 }

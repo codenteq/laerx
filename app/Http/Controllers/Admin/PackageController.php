@@ -26,6 +26,7 @@ class PackageController extends Controller
     public function index()
     {
         $packages = Package::all();
+
         return view('admin.package.index', compact('packages'));
     }
 
@@ -37,19 +38,20 @@ class PackageController extends Controller
     public function create()
     {
         $paymentPlans = PaymentPlan::all();
+
         return view('admin.package.create', compact('paymentPlans'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Admin\PackageRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(PackageRequest $request)
     {
         try {
             $this->packageService->store($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -59,7 +61,6 @@ class PackageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Package $package
      * @return \Illuminate\Http\Response
      */
     public function show(Package $package)
@@ -70,26 +71,25 @@ class PackageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Package $package
      * @return \Illuminate\Http\Response
      */
     public function edit(Package $package)
     {
         $paymentPlans = PaymentPlan::all();
+
         return view('admin.package.edit', compact('package', 'paymentPlans'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Admin\PackageRequest $request
-     * @param \App\Models\Package $package
      * @return \Illuminate\Http\Response
      */
     public function update(PackageRequest $request, Package $package)
     {
         try {
             $this->packageService->update($package->id, $request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -99,13 +99,13 @@ class PackageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Package $package
      * @return \Illuminate\Http\Response
      */
     public function destroy(Package $package)
     {
         try {
             $this->packageService->destroy($package->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

@@ -28,7 +28,8 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = CompanyQuestion::where('companyId',companyId())->with('question.language')->orderByDesc('questionId')->get();
+        $questions = CompanyQuestion::where('companyId', companyId())->with('question.language')->orderByDesc('questionId')->get();
+
         return view('manager.question.index', compact('questions'));
     }
 
@@ -41,19 +42,20 @@ class QuestionController extends Controller
     {
         $types = QuestionType::all();
         $languages = Language::all();
-        return view('manager.question.create', compact('types','languages'));
+
+        return view('manager.question.create', compact('types', 'languages'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Manager\QuestionRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(QuestionRequest $request)
     {
         try {
             $this->questionService->store($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -63,27 +65,26 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Question $question
      * @return \Illuminate\Http\Response
      */
     public function edit(Question $question)
     {
         $types = QuestionType::all();
         $languages = Language::all();
-        return view('manager.question.edit', compact('question', 'types','languages'));
+
+        return view('manager.question.edit', compact('question', 'types', 'languages'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Manager\QuestionRequest $request
-     * @param \App\Models\Question $question
      * @return \Illuminate\Http\Response
      */
     public function update(QuestionRequest $request, Question $question)
     {
         try {
             $this->questionService->update($request, $question->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -93,13 +94,13 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Question $question
      * @return \Illuminate\Http\Response
      */
     public function destroy(Question $question)
     {
         try {
             $this->questionService->destroy($question->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -108,14 +109,16 @@ class QuestionController extends Controller
 
     public function getQuestionBug()
     {
-        $questions = BugQuestion::with('question')->whereRelation('companyQuestion','companyId',companyId())->get();
-        return view('manager.question.bug',compact('questions'));
+        $questions = BugQuestion::with('question')->whereRelation('companyQuestion', 'companyId', companyId())->get();
+
+        return view('manager.question.bug', compact('questions'));
     }
 
     public function destroyQuestionBug($bugId)
     {
         try {
             $this->questionService->bugDestroy($bugId);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

@@ -9,7 +9,6 @@ use App\Models\Language;
 use App\Models\User;
 use App\Models\UserInfo;
 use App\Services\GlobalService;
-use Illuminate\Http\Request;
 
 class CourseTeacherController extends Controller
 {
@@ -28,6 +27,7 @@ class CourseTeacherController extends Controller
     public function index()
     {
         $users = UserInfo::where('companyId', companyId())->whereRelation('user', 'type', User::Teacher)->with('user')->latest()->get();
+
         return view('manager.teachers.index', compact('users'));
     }
 
@@ -39,19 +39,20 @@ class CourseTeacherController extends Controller
     public function create()
     {
         $languages = Language::all();
-        return view('manager.teachers.create',compact('languages'));
+
+        return view('manager.teachers.create', compact('languages'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Manager\CourseTeacherRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(CourseTeacherRequest $request)
     {
         try {
             $this->globalService->userStore($request, User::Teacher);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -60,27 +61,27 @@ class CourseTeacherController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     * @param \App\Models\User $course_teacher
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(User $course_teacher)
     {
         $languages = Language::all();
         $user = UserInfo::where('userId', $course_teacher->id)->with('user')->first();
-        return view('manager.teachers.edit', compact('user','languages'));
+
+        return view('manager.teachers.edit', compact('user', 'languages'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Manager\CourseTeacherRequest $request
-     * @param \App\Models\User $course_teacher
      * @return \Illuminate\Http\Response
      */
     public function update(CourseTeacherRequest $request, User $course_teacher)
     {
         try {
             $this->globalService->userUpdate($request, $course_teacher->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -90,13 +91,13 @@ class CourseTeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\User $course_teacher
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $course_teacher)
     {
         try {
             $this->globalService->userDestroy($course_teacher->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

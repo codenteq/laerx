@@ -35,6 +35,7 @@ class ClassExamController extends Controller
             ->with('classExamQuestionType')
             ->withSum('classExamQuestionType', 'length')
             ->get();
+
         return view('manager.class-exam.index', compact('classExams'));
     }
 
@@ -47,41 +48,39 @@ class ClassExamController extends Controller
         $months = Month::all();
         $groups = Group::all();
         $types = QuestionType::all();
+
         return view('manager.class-exam.create', compact('types', 'periods', 'months', 'groups'));
     }
 
     /**
-     * @param ClassExamRequest $request
      * @return Application|ResponseFactory|Response
      */
     public function store(ClassExamRequest $request)
     {
         try {
             $this->classExamService->store($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
         }
     }
 
-
-    /**
-     *
-     */
     public function update($classId)
     {
         $this->classExamService->update($classId);
+
         return back();
     }
 
     /**
-     * @param $classId
      * @return Application|ResponseFactory|Response
      */
     public function destroy($classId)
     {
         try {
             $this->classExamService->destroy($classId);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

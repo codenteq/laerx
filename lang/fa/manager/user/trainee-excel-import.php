@@ -16,5 +16,5 @@ return [
     'download_template_btn' => 'دانلود قالب',
     'upload_excel_list_file_input' => 'فهرست اکسل را آپلود کنید',
     'save_btn' => 'صرفه جویی',
-    'cancel_btn' => 'لغو کنید'
+    'cancel_btn' => 'لغو کنید',
 ];

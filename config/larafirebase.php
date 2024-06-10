@@ -2,6 +2,6 @@
 
 return [
 
-    'authentication_key' => env('FIREBASE_AUTHENCATION_KEY')
+    'authentication_key' => env('FIREBASE_AUTHENCATION_KEY'),
 
 ];

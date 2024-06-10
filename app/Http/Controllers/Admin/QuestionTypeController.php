@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\QuestionTypeRequest;
 use App\Models\QuestionType;
 use App\Services\Admin\QuestionTypeService;
-use Illuminate\Http\Request;
 
 class QuestionTypeController extends Controller
 {
@@ -26,7 +25,8 @@ class QuestionTypeController extends Controller
     public function index()
     {
         $types = QuestionType::latest()->get();
-        return view('admin.question-type.index',compact('types'));
+
+        return view('admin.question-type.index', compact('types'));
     }
 
     /**
@@ -42,13 +42,13 @@ class QuestionTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\QuestionTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(QuestionTypeRequest $request)
     {
         try {
             $this->questionTypeService->store($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -58,25 +58,23 @@ class QuestionTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\QuestionType  $type
      * @return \Illuminate\Http\Response
      */
     public function edit(QuestionType $type)
     {
-        return view('admin.question-type.edit',compact('type'));
+        return view('admin.question-type.edit', compact('type'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\QuestionTypeRequest  $request
-     * @param  \App\Models\QuestionType  $type
      * @return \Illuminate\Http\Response
      */
     public function update(QuestionTypeRequest $request, QuestionType $type)
     {
         try {
-            $this->questionTypeService->update($request,$type->id);
+            $this->questionTypeService->update($request, $type->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -86,13 +84,13 @@ class QuestionTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\QuestionType  $type
      * @return \Illuminate\Http\Response
      */
     public function destroy(QuestionType $type)
     {
         try {
             $this->questionTypeService->destroy($type->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

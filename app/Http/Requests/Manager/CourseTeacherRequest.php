@@ -24,8 +24,10 @@ class CourseTeacherRequest extends FormRequest
     public function rules()
     {
         $id = null;
-        if ($this->course_teacher)
+        if ($this->course_teacher) {
             $id = $this->course_teacher->id;
+        }
+
         return [
             'tc' => 'required|string|min:11|max:11|unique:users,tc,'.$id,
             'name' => 'required',
@@ -34,14 +36,14 @@ class CourseTeacherRequest extends FormRequest
             'phone' => 'required',
             'address' => 'required|string',
             'languageId' => 'required|numeric',
-            'password' => 'confirmed'
+            'password' => 'confirmed',
         ];
     }
 
     public function messages()
     {
         return [
-            'tc.unique' => 'Bu TCKN kullanılıyor.'
+            'tc.unique' => 'Bu TCKN kullanılıyor.',
         ];
     }
 }

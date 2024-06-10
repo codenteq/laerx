@@ -6,6 +6,7 @@ use App\Excel\Exports\UsersExport;
 use App\Excel\Imports\UserImport;
 use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Manager\UserRequest;
 use App\Models\Group;
 use App\Models\Language;
 use App\Models\Month;
@@ -17,7 +18,6 @@ use App\Models\User;
 use App\Models\UserInfo;
 use App\Services\GlobalService;
 use Illuminate\Http\Request;
-use App\Http\Requests\Manager\UserRequest;
 use Illuminate\Http\Response;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -44,6 +44,7 @@ class UserController extends Controller
         $users = UserInfo::filter(\request()->all())->where('companyId', companyId())
             ->whereRelation('user', 'type', User::Normal)
             ->with('company', 'user', 'language', 'period', 'month')->latest()->get();
+
         return view('manager.users.index', compact('users', 'periods', 'groups', 'months'));
     }
 
@@ -58,31 +59,29 @@ class UserController extends Controller
             'periods' => Period::all(),
             'groups' => Group::all(),
             'languages' => Language::all(),
-            'months' => Month::all()
+            'months' => Month::all(),
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Manager\UserRequest $request
      * @return Response
      */
     public function store(UserRequest $request)
     {
         try {
             $this->globalService->userStore($request, User::Normal);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
         }
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\User $user
      * @return Response
      */
     public function edit(User $user)
@@ -92,7 +91,7 @@ class UserController extends Controller
             'groups' => Group::all(),
             'languages' => Language::all(),
             'months' => Month::all(),
-            'user' => UserInfo::where('userId', $user->id)->with('company', 'user', 'language', 'period')->first()
+            'user' => UserInfo::where('userId', $user->id)->with('company', 'user', 'language', 'period')->first(),
         ]);
     }
 
@@ -109,14 +108,13 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Manager\UserRequest $request
-     * @param \App\Models\User $user
      * @return Response
      */
     public function update(UserRequest $request, User $user)
     {
         try {
             $this->globalService->userUpdate($request, $user->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -126,13 +124,13 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\User $user
      * @return Response
      */
     public function destroy(User $user)
     {
         try {
             $this->globalService->userDestroy($user->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -144,6 +142,7 @@ class UserController extends Controller
         try {
             $ids = $request->ids;
             $this->globalService->userMultipleDestroy($ids);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -162,6 +161,7 @@ class UserController extends Controller
                 ->whereRelation('userInfo', 'companyId', companyId())
                 ->groupBy('userId')->get();
         });
+
         return view('manager.users.results.index', compact('test', 'testResults'));
     }
 
@@ -176,6 +176,7 @@ class UserController extends Controller
             ->with('type')
             ->get();
         $results = TestResult::where('userId', $userId)->latest()->get();
+
         return view('manager.users.results.view', compact('resultTypes', 'results'));
     }
 
@@ -188,6 +189,7 @@ class UserController extends Controller
     {
         try {
             Excel::import(new UserImport(), $request->excel);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -211,6 +213,7 @@ class UserController extends Controller
                 $request->merge(['status' => 1]);
                 $this->globalService->userStore($request, User::Normal);
             }
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

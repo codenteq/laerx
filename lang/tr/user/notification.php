@@ -2,5 +2,5 @@
 
 return [
     'message' => 'Mesaj',
-    'date' => 'Tarih'
+    'date' => 'Tarih',
 ];

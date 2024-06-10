@@ -27,13 +27,11 @@ class HomeController extends Controller
 
     /**
      * Show the application dashboard.
-     *
-     * @return RedirectResponse
      */
     public function redirect(): RedirectResponse
     {
         $type = Auth::user()->type;
-        switch($type) {
+        switch ($type) {
             case 1:
                 return redirect()->route('admin.dashboard');
             case 2:
@@ -48,18 +46,21 @@ class HomeController extends Controller
     public function logoutUser()
     {
         Auth::logout();
+
         return redirect('login');
     }
 
     public function getCity($countryId): JsonResponse
     {
-        $cities =  City::where('countryId',$countryId)->get();
+        $cities = City::where('countryId', $countryId)->get();
+
         return response()->json($cities);
     }
 
     public function getState($cityId): JsonResponse
     {
-        $states =  State::where('cityId',$cityId)->get();
+        $states = State::where('cityId', $cityId)->get();
+
         return response()->json($states);
     }
 
@@ -74,12 +75,13 @@ class HomeController extends Controller
                 'price' => $invoice->price,
                 'total_amount' => $invoice->price - $discount,
                 'discount' => $discount,
-                'couponId' => $coupon->id
+                'couponId' => $coupon->id,
             ];
             session(['cart' => $data]);
+
             return response()->json($data);
         }
+
         return response(ResponseMessage::CouponMessage());
     }
-
 }

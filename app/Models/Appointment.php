@@ -19,7 +19,7 @@ class Appointment extends Model
         'teacherId',
         'userId',
         'carId',
-        'companyId'
+        'companyId',
     ];
 
     /**
@@ -27,7 +27,7 @@ class Appointment extends Model
      */
     public function user()
     {
-        return $this->hasOne(User::class,'id','userId')->withDefault();
+        return $this->hasOne(User::class, 'id', 'userId')->withDefault();
     }
 
     /**
@@ -35,7 +35,7 @@ class Appointment extends Model
      */
     public function teacher()
     {
-        return $this->hasOne(User::class,'id','teacherId')->withDefault();
+        return $this->hasOne(User::class, 'id', 'teacherId')->withDefault();
     }
 
     /**
@@ -43,6 +43,6 @@ class Appointment extends Model
      */
     public function car()
     {
-        return $this->hasOne(Car::class,'id','carId')->withDefault();
+        return $this->hasOne(Car::class, 'id', 'carId')->withDefault();
     }
 }

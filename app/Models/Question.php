@@ -18,7 +18,7 @@ class Question extends Model
         'choiceImage',
         'imagePath',
         'languageId',
-        'typeId'
+        'typeId',
     ];
 
     /**
@@ -29,26 +29,28 @@ class Question extends Model
         'choiceImage' => 'boolean',
     ];
 
-    public function choice() {
-        return $this->hasMany(QuestionChoice::class,'questionId','id');
+    public function choice()
+    {
+        return $this->hasMany(QuestionChoice::class, 'questionId', 'id');
     }
 
-    public function types() {
-        return $this->hasMany(QuestionType::class,'id','typeId');
+    public function types()
+    {
+        return $this->hasMany(QuestionType::class, 'id', 'typeId');
     }
 
     public function company()
     {
-        return $this->hasOne(Company::class,'companyId');
+        return $this->hasOne(Company::class, 'companyId');
     }
 
     public function questionType()
     {
-        return $this->hasOne(QuestionType::class,'id', 'typeId');
+        return $this->hasOne(QuestionType::class, 'id', 'typeId');
     }
 
     public function language()
     {
-        return $this->hasOne(Language::class,'id','languageId');
+        return $this->hasOne(Language::class, 'id', 'languageId');
     }
 }

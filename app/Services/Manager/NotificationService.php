@@ -23,7 +23,7 @@ class NotificationService
         DB::transaction(function () use ($request) {
             $notification = Notification::create([
                 'message' => ucfirst($request->message),
-                'companyId' => companyId()
+                'companyId' => companyId(),
             ]);
             self::storeUser($request, $notification->id);
             //NotificationJob::dispatch($notification->id,companyId())->onQueue('notification');
@@ -36,7 +36,7 @@ class NotificationService
         foreach ($request->except(['message', '_token']) as $key => $val) {
             NotificationUser::create([
                 'userId' => $key,
-                'notificationId' => $id
+                'notificationId' => $id,
             ]);
         }
     }

@@ -14,6 +14,6 @@ class NotificationUser extends Model
 
     public function notification()
     {
-        return $this->hasOne(Notification::class,'id','notificationId')->latest();
+        return $this->hasOne(Notification::class, 'id', 'notificationId')->latest();
     }
 }

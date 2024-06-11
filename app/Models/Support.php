@@ -17,20 +17,19 @@ class Support extends Model
         'subject',
         'message',
         'userId',
-        'status'
+        'status',
     ];
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function user()
     {
-        return $this->hasOne(User::class, 'id','userId');
+        return $this->hasOne(User::class, 'id', 'userId');
     }
 
     public function info()
     {
-        return $this->hasOne(UserInfo::class, 'userId','userId');
+        return $this->hasOne(UserInfo::class, 'userId', 'userId');
     }
 }

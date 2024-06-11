@@ -22,7 +22,7 @@ class CompanyService
     {
         DB::transaction(function () use ($request) {
             Company::find(companyId())->update([
-                'title' => Str::title($request->title)
+                'title' => Str::title($request->title),
             ]);
             self::InfoUpdate($request, companyId());
         });
@@ -30,7 +30,7 @@ class CompanyService
 
     public function InfoUpdate($request, $id): void
     {
-        !$request->file('logo') ? $path = null : $path = $request->file('logo')->store('companies', 'public');
+        ! $request->file('logo') ? $path = null : $path = $request->file('logo')->store('companies', 'public');
 
         $info = CompanyInfo::where('companyId', $id)->first();
         $info->tax_no = $request->tax_no;

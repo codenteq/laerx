@@ -5,5 +5,5 @@ return [
     'status' => 'وضعیت',
     'date' => 'تاریخ',
     'save_btn' => 'صرفه جویی',
-    'cancel_btn' => 'لغو کنید'
+    'cancel_btn' => 'لغو کنید',
 ];

@@ -31,6 +31,7 @@ class AppointmentController extends Controller
             ->with('user', 'teacher', 'car')
             ->latest()
             ->get();
+
         return view('manager.appointment.index', compact('appointments'));
     }
 
@@ -42,23 +43,23 @@ class AppointmentController extends Controller
     public function create()
     {
         return view('manager.appointment.create', [
-            'users' => User::where('type', User::Normal)->whereRelation('info','companyId',companyId())->get(),
-            'teachers' => User::where('type', User::Teacher)->whereRelation('info','companyId',companyId())->get(),
-            'cars' => Car::where('status', 1)->where('companyId',companyId())->get()
+            'users' => User::where('type', User::Normal)->whereRelation('info', 'companyId', companyId())->get(),
+            'teachers' => User::where('type', User::Teacher)->whereRelation('info', 'companyId', companyId())->get(),
+            'cars' => Car::where('status', 1)->where('companyId', companyId())->get(),
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Manager\AppointmentRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(AppointmentRequest $request)
     {
         try {
-            if (!ignoreDateCheck($request->date)) {
+            if (! ignoreDateCheck($request->date)) {
                 $this->appointmentService->store($request);
+
                 return response(ResponseMessage::SuccessMessage());
             } else {
                 return response(ResponseMessage::IgnoreDateMessage());
@@ -71,31 +72,29 @@ class AppointmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Appointment $appointment
      * @return \Illuminate\Http\Response
      */
     public function edit(Appointment $appointment)
     {
         return view('manager.appointment.edit', [
-            'users' => User::where('type', User::Normal)->whereRelation('info','companyId',companyId())->get(),
+            'users' => User::where('type', User::Normal)->whereRelation('info', 'companyId', companyId())->get(),
             'teachers' => User::where('type', User::Teacher)->get(),
-            'cars' => Car::where('status', 1)->where('companyId',companyId())->get(),
-            'appointment' => $appointment
+            'cars' => Car::where('status', 1)->where('companyId', companyId())->get(),
+            'appointment' => $appointment,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Manager\AppointmentRequest $request
-     * @param \App\Models\Appointment $appointment
      * @return \Illuminate\Http\Response
      */
     public function update(AppointmentRequest $request, Appointment $appointment)
     {
         try {
-            if (!ignoreDateCheck($request->date)) {
+            if (! ignoreDateCheck($request->date)) {
                 $this->appointmentService->update($request, $appointment->id);
+
                 return response(ResponseMessage::SuccessMessage());
             } else {
                 return response(ResponseMessage::IgnoreDateMessage());
@@ -108,13 +107,13 @@ class AppointmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Appointment $appointment
      * @return \Illuminate\Http\Response
      */
     public function destroy(Appointment $appointment)
     {
         try {
             $this->appointmentService->destroy($appointment->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -124,6 +123,7 @@ class AppointmentController extends Controller
     public function getAppointmentSetting()
     {
         $months = currentMounth();
+
         return view('manager.appointment.setting', compact('months'));
     }
 
@@ -131,10 +131,10 @@ class AppointmentController extends Controller
     {
         try {
             $this->appointmentService->settingStoreAndUpdate($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
         }
     }
 }
-

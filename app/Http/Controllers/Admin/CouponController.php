@@ -11,6 +11,7 @@ use App\Services\Admin\CouponService;
 class CouponController extends Controller
 {
     protected $couponService;
+
     public function __construct(CouponService $couponService)
     {
         $this->couponService = $couponService;
@@ -24,7 +25,8 @@ class CouponController extends Controller
     public function index()
     {
         $coupons = Coupon::latest()->get();
-        return view('admin.coupon.index',compact('coupons'));
+
+        return view('admin.coupon.index', compact('coupons'));
     }
 
     /**
@@ -40,13 +42,13 @@ class CouponController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\CouponRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CouponRequest $request)
     {
         try {
             $this->couponService->store($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -56,25 +58,23 @@ class CouponController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
     public function edit(Coupon $coupon)
     {
-        return view('admin.coupon.edit',compact('coupon'));
+        return view('admin.coupon.edit', compact('coupon'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\CouponRequest  $request
-     * @param  \App\Models\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
     public function update(CouponRequest $request, Coupon $coupon)
     {
         try {
-            $this->couponService->update($coupon->id,$request);
+            $this->couponService->update($coupon->id, $request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

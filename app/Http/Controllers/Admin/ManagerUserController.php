@@ -10,9 +10,6 @@ use App\Models\Language;
 use App\Models\User;
 use App\Models\UserInfo;
 use App\Services\GlobalService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class ManagerUserController extends Controller
 {
@@ -30,7 +27,8 @@ class ManagerUserController extends Controller
      */
     public function index()
     {
-        $users = UserInfo::with('company', 'user', 'language')->whereRelation('user','type',User::Manager)->latest()->get();
+        $users = UserInfo::with('company', 'user', 'language')->whereRelation('user', 'type', User::Manager)->latest()->get();
+
         return view('admin.users.index', compact('users'));
     }
 
@@ -43,18 +41,21 @@ class ManagerUserController extends Controller
     {
         $companies = Company::with('companies')->latest()->get();
         $languages = Language::all();
+
         return view('admin.users.create', compact('companies', 'languages'));
     }
 
     /**
      * Store a newly created resource in storage.
-     * @param \App\Models\User $user
+     *
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function store(ManagerUserRequest $request)
     {
         try {
-            $this->globalService->userStore($request,User::Manager);
+            $this->globalService->userStore($request, User::Manager);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -64,7 +65,6 @@ class ManagerUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\User $manager_user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $manager_user)
@@ -72,20 +72,21 @@ class ManagerUserController extends Controller
         $companies = Company::with('companies')->get();
         $languages = Language::all();
         $user = UserInfo::where('userId', $manager_user->id)->with('company', 'user', 'language')->first();
+
         return view('admin.users.edit', compact('user', 'companies', 'languages'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\User $manager_user
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function update(ManagerUserRequest $request, User $manager_user)
     {
         try {
-            $this->globalService->userUpdate($request,$manager_user->id);
+            $this->globalService->userUpdate($request, $manager_user->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -95,13 +96,13 @@ class ManagerUserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\User $manager_user
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $manager_user)
     {
         try {
             $this->globalService->userDestroy($manager_user->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

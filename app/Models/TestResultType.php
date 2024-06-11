@@ -18,16 +18,16 @@ class TestResultType extends Model
         'testId',
         'typeId',
         'resultId',
-        'userId'
+        'userId',
     ];
 
     public function type()
     {
-        return $this->hasOne(QuestionType::class,'id','typeId');
+        return $this->hasOne(QuestionType::class, 'id', 'typeId');
     }
 
     public function result()
     {
-        return $this->hasOne(QuestionType::class,'id','resultId');
+        return $this->hasOne(QuestionType::class, 'id', 'resultId');
     }
 }

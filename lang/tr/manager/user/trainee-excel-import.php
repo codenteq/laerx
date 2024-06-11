@@ -16,5 +16,5 @@ return [
     'download_template_btn' => 'Şablon İndir',
     'upload_excel_list_file_input' => 'Excel Listesi Yükleyiniz',
     'save_btn' => 'Kaydet',
-    'cancel_btn' => 'İptal'
+    'cancel_btn' => 'İptal',
 ];

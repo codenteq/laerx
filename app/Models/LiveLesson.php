@@ -18,7 +18,7 @@ class LiveLesson extends Model
         'monthId',
         'groupId',
         'typeId',
-        'companyId'
+        'companyId',
     ];
 
     /**
@@ -26,21 +26,21 @@ class LiveLesson extends Model
      */
     public function period()
     {
-        return $this->hasOne(Period::class,'id','periodId');
+        return $this->hasOne(Period::class, 'id', 'periodId');
     }
 
     public function group()
     {
-        return $this->hasOne(Group::class,'id','groupId');
+        return $this->hasOne(Group::class, 'id', 'groupId');
     }
 
     public function type()
     {
-        return $this->hasOne(QuestionType::class,'id','typeId');
+        return $this->hasOne(QuestionType::class, 'id', 'typeId');
     }
 
     public function month()
     {
-        return $this->hasOne(Month::class,'id','monthId');
+        return $this->hasOne(Month::class, 'id', 'monthId');
     }
 }

@@ -22,9 +22,9 @@ return [
     | you can enter the path to your own at this point
     |
     */
-//    'generator' => [
-//        'stub' => app_path('stubs/modelfilter.stub')
-//    ]
+    //    'generator' => [
+    //        'stub' => app_path('stubs/modelfilter.stub')
+    //    ]
 
     /*
     |--------------------------------------------------------------------------
@@ -34,6 +34,6 @@ return [
     | Set paginate limit
     |
     */
-    'paginate_limit' => env('PAGINATION_LIMIT_DEFAULT',15)
+    'paginate_limit' => env('PAGINATION_LIMIT_DEFAULT', 15),
 
 ];

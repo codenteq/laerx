@@ -30,7 +30,7 @@ class LiveLessonRequest extends FormRequest
             'periodId' => 'required|numeric',
             'monthId' => 'required|numeric',
             'groupId' => 'required|numeric',
-            'typeId' => 'required|numeric'
+            'typeId' => 'required|numeric',
         ];
     }
 }

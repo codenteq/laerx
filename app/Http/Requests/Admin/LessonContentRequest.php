@@ -28,7 +28,7 @@ class LessonContentRequest extends FormRequest
             'content' => 'required|string',
             'file' => 'file|mimes:mp3,vav,wv',
             'languageId' => 'required|numeric',
-            'typeId' => 'required|numeric'
+            'typeId' => 'required|numeric',
         ];
     }
 }

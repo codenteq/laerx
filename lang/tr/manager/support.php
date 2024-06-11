@@ -7,5 +7,5 @@ return [
     'contact_phone' => 'İletişim Numarası',
     'created_at' => 'Oluşturulma Tarihi',
     'transactions' => 'İşlemler',
-    'done_btn' => 'Tamamlandı'
+    'done_btn' => 'Tamamlandı',
 ];

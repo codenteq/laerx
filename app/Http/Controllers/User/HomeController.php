@@ -14,8 +14,8 @@ use App\Models\Support;
 use App\Models\TestResult;
 use App\Models\TestResultType;
 use App\Models\UserInfo;
-use App\Services\GlobalService;
 use App\Services\FirebaseNotificationService;
+use App\Services\GlobalService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -46,9 +46,11 @@ class HomeController extends Controller
                 $arr += [$key => $val];
             }
             session(['custom_exam_setting' => $arr]);
+
             return redirect()->route('user.quiz.custom');
         }
         $types = QuestionType::all();
+
         return view('user.custom-exam', compact('types'));
     }
 
@@ -62,6 +64,7 @@ class HomeController extends Controller
             ->with('classExamQuestionType')
             ->withSum('classExamQuestionType', 'length')
             ->get();
+
         return view('user.class-exams', compact('classExams'));
     }
 
@@ -70,6 +73,7 @@ class HomeController extends Controller
         $tests = cache()->remember('test_result_users', 60, function () {
             return TestResult::where('userId', auth()->id())->withCount('testQuestion')->latest()->get();
         });
+
         return view('user.results.index', compact('tests'));
     }
 
@@ -77,6 +81,7 @@ class HomeController extends Controller
     {
         $tests = TestResultType::where('resultId', $detailId)->get();
         $result = TestResult::findOrFail($detailId);
+
         return view('user.results.view', compact('tests', 'result'));
     }
 
@@ -89,6 +94,7 @@ class HomeController extends Controller
             ->where('live_date', '>=', Carbon::now())
             ->latest()
             ->get();
+
         return view('user.live-lessons', compact('liveLessons'));
     }
 
@@ -96,6 +102,7 @@ class HomeController extends Controller
     {
         $user = UserInfo::where('userId', auth()->id())->with('language', 'user')->first();
         $languages = Language::all();
+
         return view('user.profile', compact('user', 'languages'));
     }
 
@@ -103,6 +110,7 @@ class HomeController extends Controller
     {
         try {
             $this->globalService->userUpdate($request, auth()->id());
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -122,6 +130,7 @@ class HomeController extends Controller
                 'message' => $request->input('message'),
                 'userId' => auth()->id(),
             ]);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -131,15 +140,16 @@ class HomeController extends Controller
     public function getNotifications()
     {
         $notifications = NotificationUser::where('userId', auth()->id())->latest()->get();
+
         return view('user.notifications', compact('notifications'));
     }
 
     public function token(FirebaseNotificationService $notificationService, Request $request)
     {
-        if ($request->userId != null && isset($request->token))
-        {
+        if ($request->userId != null && isset($request->token)) {
             return $notificationService->setToken($request);
         }
+
         return response(ResponseMessage::ErrorMessage());
     }
 }

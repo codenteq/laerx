@@ -9,7 +9,6 @@ use App\Models\NotificationDeviceToken;
 use App\Models\NotificationUser;
 use Kutia\Larafirebase\Facades\Larafirebase;
 
-
 class FirebaseNotificationService
 {
     public function execute($notificationId, $companyId)
@@ -44,6 +43,7 @@ class FirebaseNotificationService
         foreach ($devices as $device) {
             array_push($deviceArr, $device->token);
         }
+
         return $deviceArr;
     }
 
@@ -51,9 +51,10 @@ class FirebaseNotificationService
     {
         $company = Company::find($companyId);
         $info = CompanyInfo::where('companyId', $companyId)->first();
+
         return [
             'title' => $company->title,
-            'logo' => $info->logo
+            'logo' => $info->logo,
         ];
     }
 }

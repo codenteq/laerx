@@ -31,8 +31,9 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = cache()->remember('companies', 60, function () {
-            return Company::with(['companies','invoice'])->get();
+            return Company::with(['companies', 'invoice'])->get();
         });
+
         return view('admin.company.index', compact('companies'));
     }
 
@@ -46,20 +47,20 @@ class CompanyController extends Controller
         return view('admin.company.create', [
             'packages' => Package::all(),
             'paymentPlans' => PaymentPlan::all(),
-            'countries' => Country::all()
+            'countries' => Country::all(),
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Admin\CompanyRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(CompanyRequest $request)
     {
         try {
             $this->companyService->store($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -69,7 +70,6 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Company $company
      * @return \Illuminate\Http\Response
      */
     public function edit(Company $company)
@@ -78,23 +78,23 @@ class CompanyController extends Controller
             'company' => $company,
             'cities' => City::all(),
             'states' => State::all(),
-            'invoice' => Invoice::select('start_date','end_date')->where('companyId', $company->id)->orderBy('id', 'desc')->first(),
+            'invoice' => Invoice::select('start_date', 'end_date')->where('companyId', $company->id)->orderBy('id', 'desc')->first(),
             'paymentPlans' => PaymentPlan::all(),
-            'countries' => Country::all()
+            'countries' => Country::all(),
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Company $company
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function update(CompanyRequest $request, Company $company)
     {
         try {
             $this->companyService->update($request, $company->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -103,13 +103,14 @@ class CompanyController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @param \App\Models\Company $company
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Company $company)
     {
         try {
             $this->companyService->destroy($company->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

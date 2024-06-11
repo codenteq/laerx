@@ -5,5 +5,5 @@ return [
     'status' => 'Status',
     'date' => 'Date',
     'save_btn' => 'Save',
-    'cancel_btn' => 'Cancel'
+    'cancel_btn' => 'Cancel',
 ];

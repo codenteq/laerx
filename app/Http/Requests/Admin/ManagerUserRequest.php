@@ -24,8 +24,10 @@ class ManagerUserRequest extends FormRequest
     public function rules()
     {
         $id = null;
-        if ($this->manager_user)
+        if ($this->manager_user) {
             $id = $this->manager_user->id;
+        }
+
         return [
             'tc' => 'required|string|min:11|max:11|unique:users,tc,'.$id,
             'name' => 'required|string',
@@ -45,5 +47,4 @@ class ManagerUserRequest extends FormRequest
             'tc.unique' => 'Bu TCKN kullanılıyor.',
         ];
     }
-
 }

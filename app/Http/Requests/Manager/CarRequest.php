@@ -25,7 +25,7 @@ class CarRequest extends FormRequest
     {
         return [
             'plate_code' => 'required|string',
-            'typeId' => 'required|numeric'
+            'typeId' => 'required|numeric',
         ];
     }
 }

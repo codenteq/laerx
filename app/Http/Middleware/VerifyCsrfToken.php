@@ -13,6 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         '/manager/pay-callback*',
-        '/mobile/token'
+        '/mobile/token',
     ];
 }

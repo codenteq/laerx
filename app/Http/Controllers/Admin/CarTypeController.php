@@ -25,6 +25,7 @@ class CarTypeController extends Controller
     public function index()
     {
         $types = CarType::all();
+
         return view('admin.car-type.index', compact('types'));
     }
 
@@ -41,13 +42,13 @@ class CarTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         try {
             $this->carTypeService->store($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -57,7 +58,6 @@ class CarTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\CarType $car_type
      * @return \Illuminate\Http\Response
      */
     public function edit(CarType $car_type)
@@ -68,14 +68,13 @@ class CarTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\CarType $car_type
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, CarType $car_type)
     {
         try {
             $this->carTypeService->update($car_type->id, $request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -85,13 +84,13 @@ class CarTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\CarType $car_type
      * @return \Illuminate\Http\Response
      */
     public function destroy(CarType $car_type)
     {
         try {
             $this->carTypeService->destroy($car_type->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

@@ -8,7 +8,6 @@ use App\Models\Test;
 use App\Models\TestQuestion;
 use App\Services\QuizService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
@@ -34,6 +33,7 @@ class QuizController extends Controller
     public function getClassExam()
     {
         session(['class_exam' => request()->get('class')]);
+
         return view('user.quiz');
     }
 
@@ -41,6 +41,7 @@ class QuizController extends Controller
     {
         $questions = $this->quizService->normalExam();
         $this->quizService->testStore($questions);
+
         return QuestionResource::collection($questions);
     }
 
@@ -48,6 +49,7 @@ class QuizController extends Controller
     {
         $questions = $this->quizService->customExam();
         $this->quizService->testStore($questions);
+
         return QuestionResource::collection($questions);
     }
 
@@ -55,26 +57,29 @@ class QuizController extends Controller
     {
         $questions = $this->quizService->classExamQuestion(session('class_exam'));
         $this->quizService->testStore($questions);
+
         return QuestionResource::collection($questions);
     }
 
     public function fetchUserAndTest(): JsonResponse
     {
-        $test = Test::select('id')->where('userId',auth()->id())->latest()->first();
+        $test = Test::select('id')->where('userId', auth()->id())->latest()->first();
         $data = [
             'user' => [
                 'id' => auth()->id(),
-                'name_surname' => auth()->user()->name . ' ' . auth()->user()->surname,
-                'email' => auth()->user()->email
+                'name_surname' => auth()->user()->name.' '.auth()->user()->surname,
+                'email' => auth()->user()->email,
             ],
-            'test' => $test->id
+            'test' => $test->id,
         ];
+
         return response()->json($data);
     }
 
     public function postUserAnswer(QuizService $questionService, Request $request): JsonResponse
     {
         $questionService->userAnswerStore($request);
+
         return response()->json('success');
     }
 
@@ -82,13 +87,15 @@ class QuizController extends Controller
     public function postCloseExam(Request $request): JsonResponse
     {
         Test::find($request->testId)->delete();
-        TestQuestion::where('testId',$request->testId)->delete();
+        TestQuestion::where('testId', $request->testId)->delete();
+
         return response()->json('success');
     }
 
     public function postBugQuestion(QuizService $questionService, Request $request): JsonResponse
     {
         $questionService->bugQuestionStore($request);
+
         return response()->json('success');
     }
 }

@@ -22,11 +22,11 @@ class Company extends Model
 
     public function info()
     {
-        return $this->hasOne(CompanyInfo::class,'companyId');
+        return $this->hasOne(CompanyInfo::class, 'companyId');
     }
 
     public function invoice()
     {
-        return $this->hasOne(Invoice::class,'companyId');
+        return $this->hasOne(Invoice::class, 'companyId');
     }
 }

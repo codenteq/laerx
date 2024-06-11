@@ -15,11 +15,12 @@ class QuestionChoiceResource extends JsonResource
     public function toArray($request)
     {
         $questions = $this->whenLoaded('question');
+
         return [
             'id' => $this->id,
             'title' => $this->title,
             'path' => imagePath($this->path),
-            'questions' => new QuestionResource($questions)
+            'questions' => new QuestionResource($questions),
         ];
     }
 }

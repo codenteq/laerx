@@ -18,7 +18,7 @@ class LiveLessonService
             'monthId' => $request->monthId,
             'groupId' => $request->groupId,
             'typeId' => $request->typeId,
-            'companyId' => companyId()
+            'companyId' => companyId(),
         ]);
     }
 
@@ -32,7 +32,7 @@ class LiveLessonService
             'monthId' => $request->monthId,
             'groupId' => $request->groupId,
             'typeId' => $request->typeId,
-            'companyId' => companyId()
+            'companyId' => companyId(),
         ]);
     }
 

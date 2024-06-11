@@ -17,12 +17,12 @@ class TestResult extends Model
         'in_correct',
         'blank_question',
         'testId',
-        'userId'
+        'userId',
     ];
 
     public function testQuestion()
     {
-        return $this->hasOne(TestQuestion::class, 'testId','testId');
+        return $this->hasOne(TestQuestion::class, 'testId', 'testId');
     }
 
     public function test()
@@ -32,11 +32,11 @@ class TestResult extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class,'id','userId');
+        return $this->hasOne(User::class, 'id', 'userId');
     }
 
     public function userInfo()
     {
-        return $this->hasOne(UserInfo::class,'userId','userId');
+        return $this->hasOne(UserInfo::class, 'userId', 'userId');
     }
 }

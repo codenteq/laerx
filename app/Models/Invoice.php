@@ -21,21 +21,21 @@ class Invoice extends Model
         'packageId',
         'paymentId',
         'couponId',
-        'status'
+        'status',
     ];
 
     public function company(): HasOne
     {
-        return $this->hasOne(Company::class,'id','companyId');
+        return $this->hasOne(Company::class, 'id', 'companyId');
     }
 
     public function payment(): HasOne
     {
-        return $this->hasOne(PaymentMethod::class,'id','paymentId');
+        return $this->hasOne(PaymentMethod::class, 'id', 'paymentId');
     }
 
     public function package(): HasOne
     {
-        return $this->hasOne(Package::class,'id','packageId');
+        return $this->hasOne(Package::class, 'id', 'packageId');
     }
 }

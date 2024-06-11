@@ -22,12 +22,9 @@ class QuizService
         $this->testResultService = $testResultService;
     }
 
-    /**
-     * @param $questions
-     */
     public function testStore($questions)
     {
-        $test = Test::create(['title' => rand(),'userId' => auth()->id()]);
+        $test = Test::create(['title' => rand(), 'userId' => auth()->id()]);
         foreach ($questions as $question) {
             TestQuestion::create([
                 'questionId' => $question->id,
@@ -36,9 +33,6 @@ class QuizService
         }
     }
 
-    /**
-     * @param $request
-     */
     public function userAnswerStore($request): void
     {
         foreach ($request->userAnswerKeys as $key => $val) {
@@ -46,35 +40,30 @@ class QuizService
                 'testId' => $request->testId,
                 'userId' => $request->userId,
                 'questionId' => $val['questionId'],
-                'choiceId' => $val['choiceId']
+                'choiceId' => $val['choiceId'],
             ]);
         }
         //TestResultJob::dispatch($request->userId ,$request->testId)->onQueue('result');
-        $this->testResultService->execute($request->userId ,$request->testId);
+        $this->testResultService->execute($request->userId, $request->testId);
     }
 
-    /**
-     * @param $classId
-     * @return array
-     */
     public function classExamQuestion($classId): array
     {
         $arr = [];
-        $questions = ClassExamQuestionType::where('classExamId',$classId)->get();
+        $questions = ClassExamQuestionType::where('classExamId', $classId)->get();
         foreach ($questions as $question) {
-            array_push($arr, Question::where('typeId', $question->typeId)->with('choice','types')->take($question->length)->get());
+            array_push($arr, Question::where('typeId', $question->typeId)->with('choice', 'types')->take($question->length)->get());
         }
 
         return Arr::collapse($arr);
     }
-
 
     public function customExam(): array
     {
         $arr = [];
         $types = session('custom_exam_setting');
         foreach ($types as $key => $val) {
-            array_push($arr, Question::where('typeId', $key)->where('languageId',languageId())->with('choice','types')->inRandomOrder()->take($val)->get());
+            array_push($arr, Question::where('typeId', $key)->where('languageId', languageId())->with('choice', 'types')->inRandomOrder()->take($val)->get());
         }
 
         return Arr::collapse($arr);
@@ -85,14 +74,14 @@ class QuizService
         $arr = [];
         $types = NormalExam::QUIZ_EXAM_TYPE;
         foreach ($types as $key => $val) {
-            array_push($arr, Question::where('typeId', $key)->where('languageId',languageId())->with('choice','types')->inRandomOrder()->take($val)->get());
+            array_push($arr, Question::where('typeId', $key)->where('languageId', languageId())->with('choice', 'types')->inRandomOrder()->take($val)->get());
         }
 
         return Arr::collapse($arr);
     }
 
     /**
-     * @param $questions
+     * @param  $questions
      */
     public function bugQuestionStore($request)
     {

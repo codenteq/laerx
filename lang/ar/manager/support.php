@@ -7,5 +7,5 @@ return [
     'contact_phone' => 'رقم الاتصال',
     'created_at' => 'تاريخ الإنشاء',
     'transactions' => 'المعاملات',
-    'done_btn' => 'أنجز'
+    'done_btn' => 'أنجز',
 ];

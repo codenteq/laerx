@@ -16,5 +16,5 @@ return [
     'download_template_btn' => 'تحميل النموذج',
     'upload_excel_list_file_input' => 'قم بتنزيل قائمة Excel',
     'save_btn' => 'يحفظ',
-    'cancel_btn' => 'يلغي'
+    'cancel_btn' => 'يلغي',
 ];

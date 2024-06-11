@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class CompanyFactory extends Factory
 {
@@ -25,7 +24,7 @@ class CompanyFactory extends Factory
         return [
             'title' => $this->faker->company,
             'start_date' => $this->faker->date,
-            'end_date' => $this->faker->date
+            'end_date' => $this->faker->date,
         ];
     }
 }

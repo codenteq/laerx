@@ -13,6 +13,6 @@ class ClassExamQuestionType extends Model
     protected $fillable = [
         'classExamId',
         'typeId',
-        'length'
+        'length',
     ];
 }

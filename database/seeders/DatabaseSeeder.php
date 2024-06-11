@@ -8,16 +8,13 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
-        //User::factory(10)->create();
-        //Company::factory(30)->create();
         $this->call(MonthSeeder::class);
         $this->call(PaymentMethodSeeder::class);
         $this->call(QuestionTypeSeeder::class);
         $this->call(AdminSeeder::class);
+        $this->call(LangSeeder::class);
     }
 }

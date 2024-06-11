@@ -14,5 +14,5 @@ return [
     'welcome' => 'Hoşgeldiniz',
     'profile' => 'Profil',
     'panel' => 'Panel',
-    'logout' => 'Çıkış yap'
+    'logout' => 'Çıkış yap',
 ];

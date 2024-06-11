@@ -18,6 +18,7 @@ class AdminController extends Controller
     public function getProfile()
     {
         $user = User::find(auth()->id());
+
         return view('admin.profile', compact('user'));
     }
 
@@ -25,6 +26,7 @@ class AdminController extends Controller
     {
         try {
             $globalService->userUpdate($request, auth()->id());
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

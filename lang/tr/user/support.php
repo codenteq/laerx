@@ -3,5 +3,5 @@
 return [
     'contact_why' => 'İletişim Nedeniniz?',
     'message' => 'Mesajınız',
-    'send_btn' => 'Gönder'
+    'send_btn' => 'Gönder',
 ];

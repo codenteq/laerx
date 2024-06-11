@@ -15,9 +15,10 @@ class QuestionTypeResource extends JsonResource
     public function toArray($request)
     {
         $questions = $this->whenLoaded('question');
+
         return [
             'title' => $this->title,
-            'questions' => new QuestionResource($questions)
+            'questions' => new QuestionResource($questions),
         ];
     }
 }

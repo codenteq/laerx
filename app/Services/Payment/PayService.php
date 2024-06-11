@@ -10,7 +10,6 @@ use App\Models\UserInfo;
 
 class PayService
 {
-
     public function pay()
     {
         $requestIyzico = new \Iyzipay\Request\CreateCheckoutFormInitializeRequest();
@@ -24,10 +23,10 @@ class PayService
         $requestIyzico->setPrice(number_format($cart['price'], '2', '.', ''));
         $requestIyzico->setPaidPrice(number_format($cart['total_amount'], '2', '.', ''));
         $requestIyzico->setCurrency(\Iyzipay\Model\Currency::TL);
-        $requestIyzico->setBasketId("B67832");
+        $requestIyzico->setBasketId('B67832');
         $requestIyzico->setPaymentGroup(\Iyzipay\Model\PaymentGroup::PRODUCT);
         $requestIyzico->setCallbackUrl(route('manager.pay.callback', ['companyId' => companyId(), 'couponId' => $cart['couponId']]));
-        $requestIyzico->setEnabledInstallments(array(2, 3, 6, 9));
+        $requestIyzico->setEnabledInstallments([2, 3, 6, 9]);
 
         $buyer = new \Iyzipay\Model\Buyer();
         $buyer->setId(rand());
@@ -36,8 +35,8 @@ class PayService
         $buyer->setGsmNumber($info->phone);
         $buyer->setEmail($user->email);
         $buyer->setIdentityNumber(rand());
-        $buyer->setLastLoginDate((string)now());
-        $buyer->setRegistrationDate((string)$user->created_at);
+        $buyer->setLastLoginDate((string) now());
+        $buyer->setRegistrationDate((string) $user->created_at);
         $buyer->setRegistrationAddress($info->address);
         $buyer->setIp(request()->ip());
         $buyer->setCity('Karaman');
@@ -46,7 +45,7 @@ class PayService
         $requestIyzico->setBuyer($buyer);
 
         $shippingAddress = new \Iyzipay\Model\Address();
-        $shippingAddress->setContactName($user->name . ' ' . $user->surname);
+        $shippingAddress->setContactName($user->name.' '.$user->surname);
         $shippingAddress->setCity('Karaman');
         $shippingAddress->setCountry('Turkey');
         $shippingAddress->setAddress($info->address);
@@ -54,19 +53,19 @@ class PayService
         $requestIyzico->setShippingAddress($shippingAddress);
 
         $billingAddress = new \Iyzipay\Model\Address();
-        $billingAddress->setContactName($user->name . ' ' . $user->surname);
+        $billingAddress->setContactName($user->name.' '.$user->surname);
         $billingAddress->setCity('karaman');
         $billingAddress->setCountry('karaman');
         $billingAddress->setAddress($company->address);
         $billingAddress->setZipCode($company->zip_code);
         $requestIyzico->setBillingAddress($billingAddress);
 
-        $basketItems = array();
+        $basketItems = [];
         $BasketItem = new \Iyzipay\Model\BasketItem();
         $BasketItem->setId(rand());
-        $BasketItem->setName("Ehliyet Sürücü Kurs Yönetim Sistemi");
-        $BasketItem->setCategory1("Yazılım");
-        $BasketItem->setCategory2("Kurs Yönetim Sistemi");
+        $BasketItem->setName('Ehliyet Sürücü Kurs Yönetim Sistemi');
+        $BasketItem->setCategory1('Yazılım');
+        $BasketItem->setCategory2('Kurs Yönetim Sistemi');
         $BasketItem->setItemType(\Iyzipay\Model\BasketItemType::PHYSICAL);
         $BasketItem->setPrice(number_format($cart['price'], '2', '.', ''));
         $basketItems[] = $BasketItem;
@@ -74,6 +73,7 @@ class PayService
 
         $checkoutFormInitialize = \Iyzipay\Model\CheckoutFormInitialize::create($requestIyzico, self::options());
         $paymentForm = $checkoutFormInitialize->getCheckoutFormContent();
+
         return $paymentForm;
     }
 
@@ -83,6 +83,7 @@ class PayService
         $options->setApiKey(env('IYZICO_API_KEY'));
         $options->setSecretKey(env('IYZICO_SECRET_KEY'));
         $options->setBaseUrl(env('IYZICO_BASE_URL'));
+
         return $options;
     }
 

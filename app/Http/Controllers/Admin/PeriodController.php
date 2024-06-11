@@ -7,8 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PeriodRequest;
 use App\Models\Period;
 use App\Services\Admin\PeriodService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class PeriodController extends Controller
 {
@@ -27,7 +25,8 @@ class PeriodController extends Controller
     public function index()
     {
         $periods = Period::all();
-        return view('admin.period.index',compact('periods'));
+
+        return view('admin.period.index', compact('periods'));
     }
 
     /**
@@ -43,13 +42,13 @@ class PeriodController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\PeriodRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(PeriodRequest $request)
     {
         try {
             $this->periodService->store($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -59,7 +58,6 @@ class PeriodController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Period  $period
      * @return \Illuminate\Http\Response
      */
     public function edit(Period $period)
@@ -70,14 +68,13 @@ class PeriodController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\PeriodRequest  $request
-     * @param  \App\Models\Period  $period
      * @return \Illuminate\Http\Response
      */
     public function update(PeriodRequest $request, Period $period)
     {
         try {
-            $this->periodService->update($request,$period->id);
+            $this->periodService->update($request, $period->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -87,13 +84,13 @@ class PeriodController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Period  $period
      * @return \Illuminate\Http\Response
      */
     public function destroy(Period $period)
     {
         try {
             $this->periodService->destroy($period->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

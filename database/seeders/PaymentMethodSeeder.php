@@ -9,10 +9,8 @@ class PaymentMethodSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         DB::table('payment_methods')->insert([
             [
@@ -28,7 +26,7 @@ class PaymentMethodSeeder extends Seeder
                 'description' => 'wire_transfer',
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
         ]);
     }
 }

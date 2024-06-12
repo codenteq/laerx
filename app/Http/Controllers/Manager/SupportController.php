@@ -16,7 +16,8 @@ class SupportController extends Controller
      */
     public function index()
     {
-        $supports = Support::where('status',0)->with(['user','info'])->whereRelation('info','companyId',companyId())->latest()->get();
+        $supports = Support::where('status', 0)->with(['user', 'info'])->whereRelation('info', 'companyId', companyId())->latest()->get();
+
         return view('manager.supports', compact('supports'));
     }
 
@@ -24,6 +25,7 @@ class SupportController extends Controller
     {
         try {
             $support->update($request->all());
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

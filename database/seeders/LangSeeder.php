@@ -5,31 +5,35 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class QuestionTypeSeeder extends Seeder
+class LangSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('question_types')->insert([
+        DB::table('languages')->insert([
             [
-                'title' => 'İlk Yardım',
+                'title' => 'Türkçe',
+                'code' => 'tr',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'title' => 'Trafik Çevre',
+                'title' => 'English',
+                'code' => 'en',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'title' => 'Araç Tekniği',
+                'title' => 'فارسی',
+                'code' => 'fa',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'title' => 'Trafik Adabı',
+                'title' => 'عربي',
+                'code' => 'ar',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

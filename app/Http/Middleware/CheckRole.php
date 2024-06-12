@@ -12,8 +12,6 @@ class CheckRole
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
@@ -32,22 +30,21 @@ class CheckRole
         abort(401);
     }
 
-
     private function userAccessRole()
     {
         return [
             'admin' => [
-                User::Admin
+                User::Admin,
             ],
             'manager' => [
-                User::Manager
+                User::Manager,
             ],
             'teacher' => [
-                User::Teacher
+                User::Teacher,
             ],
             'user' => [
-                User::Normal
-            ]
+                User::Normal,
+            ],
         ];
     }
 }

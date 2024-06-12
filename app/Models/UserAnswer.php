@@ -14,7 +14,7 @@ class UserAnswer extends Model
         'testId',
         'userId',
         'questionId',
-        'choiceId'
+        'choiceId',
     ];
 
     /**
@@ -22,7 +22,7 @@ class UserAnswer extends Model
      */
     public function user()
     {
-        return $this->hasOne(User::class,'userId');
+        return $this->hasOne(User::class, 'userId');
     }
 
     /**
@@ -30,7 +30,7 @@ class UserAnswer extends Model
      */
     public function question()
     {
-        return $this->hasOne(Question::class,'questionId');
+        return $this->hasOne(Question::class, 'questionId');
     }
 
     /**
@@ -38,7 +38,7 @@ class UserAnswer extends Model
      */
     public function choice()
     {
-        return $this->hasOne(QuestionChoice::class,'choiceId');
+        return $this->hasOne(QuestionChoice::class, 'choiceId');
     }
 
     /**
@@ -46,6 +46,6 @@ class UserAnswer extends Model
      */
     public function test()
     {
-        return $this->hasOne(Test::class,'testId');
+        return $this->hasOne(Test::class, 'testId');
     }
 }

@@ -11,14 +11,14 @@ class QuestionTypeService
     public function store(QuestionTypeRequest $request)
     {
         QuestionType::create([
-            'title' => Str::title($request->title)
+            'title' => Str::title($request->title),
         ]);
     }
 
     public function update(QuestionTypeRequest $request, $id)
     {
         QuestionType::find($id)->update([
-            'title' => Str::title($request->title)
+            'title' => Str::title($request->title),
         ]);
     }
 

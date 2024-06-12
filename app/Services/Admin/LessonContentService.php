@@ -16,7 +16,7 @@ class LessonContentService
             'content' => $request->content,
             'languageId' => $request->languageId,
             'typeId' => $request->typeId,
-            'file' => $path
+            'file' => $path,
         ]);
     }
 

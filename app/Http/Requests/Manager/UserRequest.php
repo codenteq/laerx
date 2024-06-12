@@ -4,7 +4,6 @@ namespace App\Http\Requests\Manager;
 
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Log;
 
 class UserRequest extends FormRequest
 {
@@ -26,10 +25,12 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $id = null;
-        if ($this->user)
+        if ($this->user) {
             $id = $this->user->id;
+        }
+
         return [
-            'tc' => 'required|string|min:11|max:11|unique:users,tc,' . $id,
+            'tc' => 'required|string|min:11|max:11|unique:users,tc,'.$id,
             'name' => 'required',
             'surname' => 'required',
             'email' => 'required|email',
@@ -46,7 +47,7 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'tc.unique' => 'Bu TCKN kullanılıyor.'
+            'tc.unique' => 'Bu TCKN kullanılıyor.',
         ];
     }
 }

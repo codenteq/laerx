@@ -20,7 +20,7 @@ class TestQuestion extends Model
      */
     public function question()
     {
-        return $this->hasOne(Question::class,'questionId');
+        return $this->hasOne(Question::class, 'questionId');
     }
 
     /**
@@ -28,6 +28,6 @@ class TestQuestion extends Model
      */
     public function test()
     {
-        return $this->hasOne(Test::class,'testId');
+        return $this->hasOne(Test::class, 'testId');
     }
 }

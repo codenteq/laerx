@@ -4,13 +4,12 @@ namespace App\Http\Constants;
 
 class ResponseMessage
 {
-
     public static function SuccessMessage(): array
     {
         return [
             'status' => true,
             'title' => __('response-message.success_title'),
-            'message' => __('response-message.success_message')
+            'message' => __('response-message.success_message'),
         ];
     }
 
@@ -19,7 +18,7 @@ class ResponseMessage
         return [
             'status' => false,
             'title' => __('response-message.error_title'),
-            'message' => __('response-message.error_message')
+            'message' => __('response-message.error_message'),
         ];
     }
 
@@ -36,7 +35,7 @@ class ResponseMessage
     {
         return [
             'status' => false,
-            'title' =>  __('response-message.coupon_title'),
+            'title' => __('response-message.coupon_title'),
             'message' => __('response-message.coupon_message'),
         ];
     }

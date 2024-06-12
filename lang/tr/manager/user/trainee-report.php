@@ -31,4 +31,3 @@ return [
     'point' => 'Puan',
     'result' => 'Sonuç',
 ];
-

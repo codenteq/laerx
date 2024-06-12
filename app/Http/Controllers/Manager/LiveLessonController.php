@@ -28,7 +28,8 @@ class LiveLessonController extends Controller
      */
     public function index()
     {
-        $live_lessons = LiveLesson::with('type')->where('companyId',companyId())->latest()->get();
+        $live_lessons = LiveLesson::with('type')->where('companyId', companyId())->latest()->get();
+
         return view('manager.live.index', compact('live_lessons'));
     }
 
@@ -50,13 +51,13 @@ class LiveLessonController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Manager\LiveLessonRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(LiveLessonRequest $request)
     {
         try {
             $this->liveLessonService->store($request);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -66,7 +67,6 @@ class LiveLessonController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\LiveLesson $live_lesson
      * @return \Illuminate\Http\Response
      */
     public function edit(LiveLesson $live_lesson)
@@ -83,14 +83,13 @@ class LiveLessonController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Manager\LiveLessonRequest $request
-     * @param \App\Models\LiveLesson $live_lesson
      * @return \Illuminate\Http\Response
      */
     public function update(LiveLessonRequest $request, LiveLesson $live_lesson)
     {
         try {
             $this->liveLessonService->update($request, $live_lesson->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());
@@ -100,13 +99,13 @@ class LiveLessonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\LiveLesson $live_lesson
      * @return \Illuminate\Http\Response
      */
     public function destroy(LiveLesson $live_lesson)
     {
         try {
             $this->liveLessonService->destroy($live_lesson->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

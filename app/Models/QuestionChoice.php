@@ -13,17 +13,19 @@ class QuestionChoice extends Model
     protected $fillable = [
         'title',
         'path',
-        'questionId'
+        'questionId',
     ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function question() {
+    public function question()
+    {
         return $this->belongsTo(Question::class);
     }
 
-    public function choiceKey() {
-        return $this->hasOne(QuestionChoiceKey::class,'questionId','questionId');
+    public function choiceKey()
+    {
+        return $this->hasOne(QuestionChoiceKey::class, 'questionId', 'questionId');
     }
 }

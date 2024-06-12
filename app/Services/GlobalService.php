@@ -13,8 +13,8 @@ use Illuminate\Support\Str;
 
 class GlobalService
 {
-
     protected $convertService;
+
     protected $sendPortalService;
 
     public function __construct(ImageConvertService $convertService, SendPortalService $sendPortalService)
@@ -42,12 +42,9 @@ class GlobalService
         });
     }
 
-    /**
-     * @param $id
-     */
     public function userInfoStore($request, $id): void
     {
-        !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar', 'public');
+        ! $request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar', 'public');
         UserInfo::create([
             'phone' => $request->phone,
             'address' => $request->address,
@@ -58,7 +55,7 @@ class GlobalService
             'languageId' => $request->languageId,
             'photo' => $path ?? '/images/avatar.svg',
             'companyId' => auth()->user()->type == User::Admin ? $request->companyId : companyId(),
-            'userId' => $id
+            'userId' => $id,
         ]);
         if ($path != null) {
             //ImageConvertJob::dispatch($id, 'user', $path)->onQueue('image');
@@ -66,9 +63,6 @@ class GlobalService
         }
     }
 
-    /**
-     * @param $id
-     */
     public function userUpdate($request, $id): void
     {
         $user = User::find($id);
@@ -83,12 +77,9 @@ class GlobalService
         }
     }
 
-    /**
-     * @param $id
-     */
     public function userInfoUpdate($request, $id): void
     {
-        !$request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar', 'public');
+        ! $request->file('photo') ? $path = null : $path = $request->file('photo')->store('avatar', 'public');
         $user = UserInfo::where('userId', $id, 'user')->first();
         if ($path != null) {
             //ImageConvertJob::dispatch($id, 'user', $path)->onQueue('image');
@@ -102,8 +93,7 @@ class GlobalService
         if (auth()->user()->type == User::Admin || auth()->user()->type == User::Manager) {
             if (auth()->user()->type == User::Admin) {
                 $user->status = $request->status ?? 0;
-            }
-            else if (auth()->user()->type == User::Manager) {
+            } elseif (auth()->user()->type == User::Manager) {
                 $user->status = $request->status ?? $user->status;
             }
             $user->periodId = $request->periodId;
@@ -116,18 +106,12 @@ class GlobalService
         $user->save();
     }
 
-    /**
-     * @param $id
-     */
     public function userDestroy($id): void
     {
         User::find($id)->delete();
         self::userInfoDestroy($id);
     }
 
-    /**
-     * @param $ids
-     */
     public function userMultipleDestroy($ids): void
     {
         info($ids);
@@ -135,17 +119,11 @@ class GlobalService
         self::userInfoMultipleDestroy($ids);
     }
 
-    /**
-     * @param $id
-     */
     public function userInfoDestroy($id): void
     {
         UserInfo::where('userId', $id)->delete();
     }
 
-    /**
-     * @param $ids
-     */
     public function userInfoMultipleDestroy($ids): void
     {
         UserInfo::whereIn('userId', $ids)->delete();

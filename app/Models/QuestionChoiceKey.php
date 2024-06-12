@@ -12,7 +12,7 @@ class QuestionChoiceKey extends Model
 
     protected $fillable = [
         'questionId',
-        'choiceId'
+        'choiceId',
     ];
 
     /**
@@ -20,7 +20,7 @@ class QuestionChoiceKey extends Model
      */
     public function question()
     {
-        return $this->hasOne(Question::class,'questionId');
+        return $this->hasOne(Question::class, 'questionId');
     }
 
     /**
@@ -28,6 +28,6 @@ class QuestionChoiceKey extends Model
      */
     public function choice()
     {
-        return $this->hasOne(QuestionChoice::class,'choiceId');
+        return $this->hasOne(QuestionChoice::class, 'choiceId');
     }
 }

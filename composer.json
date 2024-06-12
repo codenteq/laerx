@@ -1,13 +1,8 @@
 {
     "name": "codenteq/laerx",
     "type": "project",
-    "description": "Laerx Laravel E-Exam",
-    "keywords": [
-        "opensource",
-        "laravel",
-        "eExam",
-        "management"
-    ],
+    "description": "The Laravel E-Exam Course Management",
+    "keywords": ["laravel", "framework", "e-exam"],
     "license": "MIT",
     "homepage": "https://codenteq.com",
     "authors": [
@@ -33,33 +28,29 @@
         {
             "type": "github",
             "url": "https://github.com/sponsors/codenteq"
-        },
-        {
-            "type": "open_collective",
-            "url": "https://opencollective.com/codenteq"
         }
     ],
     "require": {
-        "php": "^7.3|^8.0",
-        "fruitcake/laravel-cors": "^2.0",
+        "php": "^8.2",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.6",
         "iyzico/iyzipay-php": "^2.0",
         "kutia-software-company/larafirebase": "^1.3",
-        "laravel/framework": "^9.0",
+        "laravel/framework": "^10.0",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.3",
+        "laravel/ui": "^4.0",
         "maatwebsite/excel": "^3.1",
         "tucker-eric/eloquentfilter": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
-        "spatie/laravel-ignition": "^1.0",
         "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.16",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.3.3"
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.0",
+        "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -101,6 +92,6 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }

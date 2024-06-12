@@ -15,8 +15,6 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 class UserImport implements ToModel, WithHeadingRow
 {
     /**
-     * @param array $row
-     *
      * @return User|null
      */
     public function model(array $row)
@@ -24,9 +22,6 @@ class UserImport implements ToModel, WithHeadingRow
         return self::userStore($row);
     }
 
-    /**
-     * @param $row
-     */
     public function userStore($row): void
     {
         DB::transaction(function () use ($row) {
@@ -43,15 +38,11 @@ class UserImport implements ToModel, WithHeadingRow
         });
     }
 
-    /**
-     * @param $row
-     * @param $id
-     */
     public function userInfoStore($row, $id): void
     {
-        $period = Period::where('title',$row['donem'])->first();
-        $month = Month::where('title',$row['ay'])->first();
-        $group = Group::where('title',$row['sinif'])->first();
+        $period = Period::where('title', $row['donem'])->first();
+        $month = Month::where('title', $row['ay'])->first();
+        $group = Group::where('title', $row['sinif'])->first();
 
         $info = new UserInfo();
         $info->status = 1;

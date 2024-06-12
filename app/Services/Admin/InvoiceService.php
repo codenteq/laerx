@@ -14,10 +14,13 @@ class InvoiceService
      * @var null
      */
     private $price = null;
+
     private $month = null;
+
     private $packageId = null;
 
-    public function __construct() {
+    public function __construct()
+    {
         $request = request();
         if ($request->planId) {
             $plan = PaymentPlan::find($request->planId);
@@ -28,11 +31,7 @@ class InvoiceService
         }
     }
 
-    /**
-     * @param CompanyRequest $request
-     * @param $id
-     */
-    public function store(CompanyRequest $request, $id) : void
+    public function store(CompanyRequest $request, $id): void
     {
         Invoice::create([
             'price' => $this->price,
@@ -43,8 +42,8 @@ class InvoiceService
         ]);
     }
 
-    public function destroy($id) : void
+    public function destroy($id): void
     {
-        Invoice::where('companyId',$id)->delete();
+        Invoice::where('companyId', $id)->delete();
     }
 }

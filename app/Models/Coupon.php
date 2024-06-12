@@ -14,6 +14,6 @@ class Coupon extends Model
         'code',
         'discount',
         'start_date',
-        'end_date'
+        'end_date',
     ];
 }

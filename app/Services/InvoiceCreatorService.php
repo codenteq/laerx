@@ -17,7 +17,7 @@ class InvoiceCreatorService
             $company = Company::find($billing->companyId);
             $paymentPlan = PaymentPlan::find($company->info->planId);
             $package = Package::where('planId', $company->info->planId)->first();
-            if ($company->status == 1 && $billing->end_date < now() ) {
+            if ($company->status == 1 && $billing->end_date < now()) {
                 Invoice::create([
                     'price' => $package->price,
                     'total_amount' => $package->price,

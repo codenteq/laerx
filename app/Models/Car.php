@@ -14,11 +14,11 @@ class Car extends Model
         'plate_code',
         'companyId',
         'typeId',
-        'status'
+        'status',
     ];
 
     public function type()
     {
-        return $this->hasOne(CarType::class,'id','typeId');
+        return $this->hasOne(CarType::class, 'id', 'typeId');
     }
 }

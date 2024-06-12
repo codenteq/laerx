@@ -14,6 +14,6 @@ class Package extends Model
         'title',
         'description',
         'price',
-        'planId'
+        'planId',
     ];
 }

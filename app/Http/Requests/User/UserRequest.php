@@ -31,7 +31,7 @@ class UserRequest extends FormRequest
             'phone' => 'required',
             'address' => 'required|string',
             'languageId' => 'required|numeric',
-            'photo' => 'file|mimes:jpeg,jpg,png'
+            'photo' => 'file|mimes:jpeg,jpg,png',
         ];
     }
 }

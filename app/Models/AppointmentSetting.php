@@ -9,5 +9,5 @@ class AppointmentSetting extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ignore_date','companyId'];
+    protected $fillable = ['ignore_date', 'companyId'];
 }

@@ -14,11 +14,11 @@ class BugQuestion extends Model
 
     public function companyQuestion(): HasOne
     {
-        return $this->hasOne(CompanyQuestion::class,'questionId','questionId');
+        return $this->hasOne(CompanyQuestion::class, 'questionId', 'questionId');
     }
 
     public function question(): HasOne
     {
-        return $this->hasOne(Question::class,'id','questionId');
+        return $this->hasOne(Question::class, 'id', 'questionId');
     }
 }

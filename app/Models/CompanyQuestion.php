@@ -13,7 +13,7 @@ class CompanyQuestion extends Model
 
     protected $fillable = [
         'questionId',
-        'companyId'
+        'companyId',
     ];
 
     public function question(): BelongsTo

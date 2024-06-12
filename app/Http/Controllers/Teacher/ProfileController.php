@@ -6,7 +6,6 @@ use App\Http\Constants\ResponseMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Teacher\ProfileRequest;
 use App\Models\Language;
-use App\Models\User;
 use App\Models\UserInfo;
 use App\Services\GlobalService;
 use Illuminate\Http\Request;
@@ -21,8 +20,9 @@ class ProfileController extends Controller
     public function index()
     {
         $languages = Language::all();
-        $user = UserInfo::where('userId', auth()->id())->with('user','language')->first();
-        return view('teacher.profile',compact('user','languages'));
+        $user = UserInfo::where('userId', auth()->id())->with('user', 'language')->first();
+
+        return view('teacher.profile', compact('user', 'languages'));
     }
 
     /**
@@ -38,7 +38,6 @@ class ProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -70,14 +69,14 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Teacher\ProfileRequest  $request
-     * @param \App\Models\User $profile
+     * @param  \App\Models\User  $profile
      * @return \Illuminate\Http\Response
      */
     public function update(GlobalService $globalService, ProfileRequest $request)
     {
         try {
-            $globalService->userUpdate($request,auth()->id());
+            $globalService->userUpdate($request, auth()->id());
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::ErrorMessage());

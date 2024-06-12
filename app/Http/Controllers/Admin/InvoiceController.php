@@ -20,12 +20,13 @@ class InvoiceController extends Controller
                 'price' => $invoice->price,
                 'total_amount' => $invoice->price,
                 'discount' => 0,
-                'couponId' => null
+                'couponId' => null,
             ];
             session(['cart' => $data]);
         }
 
         $invoices = Invoice::where('companyId', $companyId)->latest()->get();
+
         return view('admin.company.invoice.invoice', compact('invoices', 'companyId'));
     }
 
@@ -34,6 +35,7 @@ class InvoiceController extends Controller
         try {
             $payment = PaymentMethod::where('code', 'wire_transfer')->first();
             $payService->paySuccess($request->companyId, session('cart')['couponId'], $payment->id);
+
             return response(ResponseMessage::SuccessMessage());
         } catch (\Exception $ex) {
             return response(ResponseMessage::IgnoreDateMessage());
@@ -44,6 +46,7 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::find($invoiceId);
         $user = User::where('type', User::Manager)->whereRelation('info', 'companyId', $invoice->companyId)->first();
+
         return view('email.invoice', compact('invoice', 'user'));
     }
 }

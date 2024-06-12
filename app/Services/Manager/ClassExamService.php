@@ -4,7 +4,6 @@ namespace App\Services\Manager;
 
 use App\Models\ClassExam;
 use App\Models\ClassExamQuestionType;
-use App\Models\Test;
 
 class ClassExamService
 {
@@ -18,11 +17,11 @@ class ClassExamService
             'groupId' => $request->groupId,
         ]);
 
-        foreach ($request->except(['_token','periodId','monthId','groupId']) as $key => $value) {
+        foreach ($request->except(['_token', 'periodId', 'monthId', 'groupId']) as $key => $value) {
             ClassExamQuestionType::create([
                 'classExamId' => $class->id,
                 'typeId' => $key,
-                'length' => $value
+                'length' => $value,
             ]);
         }
     }
@@ -30,7 +29,7 @@ class ClassExamService
     public function update($classId): void
     {
         $class = ClassExam::find($classId);
-        $class->status =  $class->status == 1 ? 0 : 1;
+        $class->status = $class->status == 1 ? 0 : 1;
         $class->save();
     }
 

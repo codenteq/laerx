@@ -10,9 +10,6 @@ use Illuminate\Http\Request;
 
 class AppointmentService
 {
-    /**
-     * @param AppointmentRequest $request
-     */
     public function store(AppointmentRequest $request): void
     {
         Appointment::create([
@@ -20,14 +17,10 @@ class AppointmentService
             'teacherId' => $request->teacherId,
             'carId' => $request->carId,
             'companyId' => companyId(),
-            'date' => $request->date
+            'date' => $request->date,
         ]);
     }
 
-    /**
-     * @param AppointmentRequest $request
-     * @param $id
-     */
     public function update(AppointmentRequest $request, $id): void
     {
         Appointment::find($id)->update([
@@ -35,29 +28,23 @@ class AppointmentService
             'teacherId' => $request->teacherId,
             'carId' => $request->carId,
             'companyId' => companyId(),
-            'date' => $request->date
+            'date' => $request->date,
         ]);
     }
 
-    /**
-     * @param $id
-     */
     public function destroy($id): void
     {
         Appointment::find($id)->delete();
     }
 
-    /**
-     * @param Request $request
-     */
     public function settingStoreAndUpdate(Request $request): void
     {
         $arr = [];
         foreach ($request->except('_token') as $key => $val) {
-            array_push($arr,$val);
+            array_push($arr, $val);
             AppointmentSetting::updateOrCreate([
                 'ignore_date' => $val,
-                'companyId' => companyId()
+                'companyId' => companyId(),
             ]);
         }
         AppointmentSetting::whereNotIn('ignore_date', $arr)->delete();

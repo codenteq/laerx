@@ -1,4 +1,4 @@
-<p align="center"><img src="https://codenteq.com/wp-content/uploads/2022/12/laerx-default.webp" width="250" alt="Laerx Course Management Logo" /></p>
+<p align="center"><img src="https://opensource.codenteq.com/wp-content/uploads/2022/12/laerx-default.webp" width="250" alt="Laerx Course Management Logo" /></p>
 
 <h1 align="center">Laerx Course Management</h1>
 

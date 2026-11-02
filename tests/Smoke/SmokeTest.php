@@ -175,4 +175,16 @@ class SmokeTest extends TestCase
             Storage::disk('public')->delete(['users/avatar.png', 'users/avatar.webp']);
         }
     }
+
+    public function test_days_left_on_subscription_is_positive(): void
+    {
+        // Shown on the manager dashboard and the admin company list.
+        $company = $this->companyWithInvoice();
+        Invoice::where('companyId', $company->id)->update(['end_date' => now()->addDays(10)->toDateString()]);
+
+        $days = invoiceDiffDate($company->id);
+
+        $this->assertGreaterThanOrEqual(9, $days);
+        $this->assertLessThanOrEqual(10, $days);
+    }
 }

@@ -3,12 +3,15 @@
 namespace Tests\Smoke;
 
 use App\Models\Company;
+use App\Models\Group;
+use App\Models\Period;
 use App\Models\Invoice;
 use App\Models\Question;
 use App\Models\User;
 use App\Models\UserInfo;
 use App\Services\ImageConvertService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -186,5 +189,55 @@ class SmokeTest extends TestCase
 
         $this->assertGreaterThanOrEqual(9, $days);
         $this->assertLessThanOrEqual(10, $days);
+    }
+
+    public function test_manager_can_import_students_from_excel(): void
+    {
+        $company = $this->companyWithInvoice();
+        $manager = $this->userOfType(User::Manager, $company);
+        Period::create(['title' => '2026-A']);
+        Group::create(['title' => 'Sinif 1']);
+        $tc = (string) random_int(10000000000, 99999999999);
+
+        // Same column headings the app's import template uses (Turkish).
+        $sheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+        $sheet->getActiveSheet()->fromArray([
+            ['tc', 'adi', 'soyadi', 'eposta', 'telefon', 'adres', 'donem', 'ay', 'sinif'],
+            [$tc, 'Ada', 'Yilmaz', 'ada'.$tc.'@example.com', '5550000000', 'Istanbul', '2026-A', 'Ocak', 'Sinif 1'],
+        ], null, 'A1', true);
+        $path = tempnam(sys_get_temp_dir(), 'import').'.xlsx';
+        (new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($sheet))->save($path);
+
+        $this->actingAs($manager)->post(route('manager.user.excel-import.create'), [
+            'excel' => new UploadedFile($path, 'students.xlsx', null, null, true),
+        ])->assertOk();
+
+        $student = User::where('tc', $tc)->first();
+        $this->assertNotNull($student, 'imported student was not stored');
+        $this->assertSame($company->id, (int) UserInfo::where('userId', $student->id)->value('companyId'));
+    }
+
+    public function test_payment_callback_stays_outside_csrf_check(): void
+    {
+        // The payment provider posts back to this URL without a CSRF token.
+        // Laravel skips CSRF checks in tests, so run the app's middleware
+        // with that shortcut turned off.
+        $middleware = new class(app(), app('encrypter')) extends \App\Http\Middleware\VerifyCsrfToken
+        {
+            protected function runningUnitTests()
+            {
+                return false;
+            }
+        };
+        $next = fn () => response('ok');
+
+        $callback = \Illuminate\Http\Request::create('/manager/pay-callback/1', 'POST');
+        $callback->setLaravelSession(app('session.store'));
+        $this->assertSame('ok', $middleware->handle($callback, $next)->getContent());
+
+        $other = \Illuminate\Http\Request::create('/manager/company/update', 'POST');
+        $other->setLaravelSession(app('session.store'));
+        $this->expectException(\Illuminate\Session\TokenMismatchException::class);
+        $middleware->handle($other, $next);
     }
 }

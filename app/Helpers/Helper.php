@@ -38,7 +38,8 @@ function invoiceDiffDate($id): int
     $invoice = Invoice::select('end_date')->where('companyId', $id)->orderBy('id', 'desc')->first();
     $end = Carbon::parse($invoice->end_date);
 
-    return $end->diffInDays(Carbon::now());
+    // Carbon 3 returns a signed float here; Carbon 2 returned whole days as a positive int.
+    return (int) $end->diffInDays(Carbon::now(), true);
 }
 
 function invoiceStatus($id): bool

@@ -7,7 +7,10 @@ use App\Models\Question;
 use App\Models\QuestionChoice;
 use App\Models\UserInfo;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\Drivers\Gd\Driver as GdDriver;
+use Intervention\Image\Drivers\Imagick\Driver as ImagickDriver;
+use Intervention\Image\Format;
+use Intervention\Image\ImageManager;
 
 class ImageConvertService
 {
@@ -15,7 +18,12 @@ class ImageConvertService
     {
         $explode = explode('.', $path);
         $image = $explode[0].'.webp';
-        Image::make(storage_path('app/public/'.$path))->encode('webp')->save(storage_path('app/public/'.$image));
+        // Intervention Image 2 (abandoned since 2022) -> 4. Quality 90 was the v2 default for encode('webp').
+        $driver = config('image.driver') === 'imagick' ? ImagickDriver::class : GdDriver::class;
+        ImageManager::usingDriver($driver)
+            ->decodePath(storage_path('app/public/'.$path))
+            ->encodeUsingFormat(Format::WEBP, quality: 90)
+            ->save(storage_path('app/public/'.$image));
         Storage::disk('public')->delete($path);
         switch ($model) {
             case 'user':

@@ -13,8 +13,8 @@ class ExampleTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        // routes/web.php redirects "/" to the login page, so the
+        // original 200 assertion failed on Laravel 10 already.
+        $this->get('/')->assertRedirect('/login');
     }
 }

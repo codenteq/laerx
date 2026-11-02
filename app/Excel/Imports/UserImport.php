@@ -7,6 +7,7 @@ use App\Models\Month;
 use App\Models\Period;
 use App\Models\User;
 use App\Models\UserInfo;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -15,11 +16,15 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 class UserImport implements ToModel, WithHeadingRow
 {
     /**
-     * @return User|null
+     * Laravel Excel 4 types this method natively. The app saves the user
+     * itself inside a transaction, so nothing is returned for the package
+     * to save (same behaviour as before).
      */
-    public function model(array $row)
+    public function model(array $row): Model|array|null
     {
-        return self::userStore($row);
+        self::userStore($row);
+
+        return null;
     }
 
     public function userStore($row): void
